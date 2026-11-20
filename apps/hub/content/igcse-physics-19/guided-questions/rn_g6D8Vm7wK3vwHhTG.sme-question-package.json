@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "The palm plays no role in the rule.",
           "misconception": "hand-part invention"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the thumb",
+                    "thumb"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,24 @@
           "correct": false,
           "explanation": "Force belongs to the thumb.",
           "misconception": "finger swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the electron flow",
+            "the conventional current",
+            "the force",
+            "the magnetic field, north to south"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the magnetic field, north to south"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +156,24 @@
           "explanation": "Electrons run against the second finger.",
           "misconception": "charge confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the conventional current, from positive to negative",
+            "the electron flow direction",
+            "the resistance current",
+            "the alternating current peak value"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the conventional current, from positive to negative"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "Reversing one input mirrors the predicted force.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the same force direction",
+            "no force at all",
+            "a force in the opposite direction",
+            "a larger force in the same direction"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a force in the opposite direction"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,24 @@
           "correct": false,
           "explanation": "The rule works wire by wire, straight or coiled.",
           "misconception": "scope confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a wire carrying current across the field",
+            "a wire carrying current parallel to the field lines",
+            "a wire between two opposite poles",
+            "a straight wire rather than a coil"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a wire carrying current parallel to the field lines"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

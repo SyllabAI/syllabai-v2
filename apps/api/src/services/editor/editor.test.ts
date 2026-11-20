@@ -39,7 +39,7 @@ function fakeSql(grants: GrantRow[]) {
 
 describe("editorMe (the grant-row law, ADR-044 §3)", () => {
   test("possession of an unrevoked row IS the role — view with scopes", async () => {
-    const deps = { sql: fakeSql([{ scopes: ["workbench"], revoked_at: null }]) };
+    const deps = { sql: fakeSql([{ scopes: ["workbench"], revoked_at: null }]), env: {} };
     const view = await editorMe(deps, USER);
     expect(view).not.toBeNull();
     expect(view!.editor).toBe(true);
@@ -47,18 +47,18 @@ describe("editorMe (the grant-row law, ADR-044 §3)", () => {
   });
 
   test("no grant row → null (the caller renders the Boot 403)", async () => {
-    const deps = { sql: fakeSql([]) };
+    const deps = { sql: fakeSql([]), env: {} };
     expect(await editorMe(deps, USER)).toBeNull();
   });
 
   test("a revoked grant does not surface (revoked_at filter)", async () => {
-    const deps = { sql: fakeSql([{ scopes: ["workbench"], revoked_at: "2026-11-01T00:00:00Z" }]) };
+    const deps = { sql: fakeSql([{ scopes: ["workbench"], revoked_at: "2026-11-01T00:00:00Z" }]), env: {} };
     expect(await editorMe(deps, USER)).toBeNull();
   });
 
   test("fail-closed: a drifted scope degrades to null, never a 500", async () => {
     for (const scopes of [["admin"], ["workbench", "admin"], ["nope"], [42], "workbench"]) {
-      const deps = { sql: fakeSql([{ scopes, revoked_at: null }]) };
+      const deps = { sql: fakeSql([{ scopes, revoked_at: null }]), env: {} };
       expect(await editorMe(deps, USER)).toBeNull();
     }
   });

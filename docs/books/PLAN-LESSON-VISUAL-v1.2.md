@@ -5,7 +5,7 @@
 
 **Surviving operator-approved decisions carried into v1.2 verbatim:**
 - Q4 — font stack unchanged (no new faces; the T-HUB-AUDITFIX-1 run-002 house face stands).
-- Q5 — reading measure `max-w-[36rem]` + `text-base` ≈ 72ch on the Lesson prose column.
+- Q5 — reading measure `max-w-[42rem]` + `text-base` ≈ 78–84ch on the Lesson prose column (AMENDED per operator order 2026-11-13: was `max-w-[36rem]` ≈ 72ch; the loosening is disclosed in t-lesson-measure-w42/run-001).
 - Nested radius law — child radii step down from the parent radius; one radius voice per surface.
 - Motion tokens — durations/easings as tokens, explicit transition lists, `prefers-reduced-motion` respected.
 - States checklist — every interactive element carries hover / focus-visible / active / disabled voices.

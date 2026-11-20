@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -302,6 +302,24 @@
           "explanation": "No such combustion is on the list; pale green in solution belongs to chlorine chemistry, not burning magnesium.",
           "misconception": "observation borrowed from another topic"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "An intense white flame with white powder produced",
+            "A blue flame with a colourless gas produced",
+            "No flame, but the metal slowly tarnishes",
+            "A pale green flame with a dense gas produced"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "An intense white flame with white powder produced"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -337,6 +355,26 @@
           "correct": false,
           "explanation": "Hydrogen's oxide is water itself, a liquid turned to vapour in the hot flame, not a powder.",
           "misconception": "state of the product misjudged"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Water"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -374,6 +412,20 @@
           "explanation": "One sulfur atom joins one oxygen molecule to give one sulfur dioxide molecule, already balanced as written.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "eq-builder",
+          "target": "S (s) + O2 (g) → SO2 (g)",
+          "tokens": [
+            "O2 (g)",
+            "S (s)",
+            "2S (s)",
+            "SO2 (g)",
+            "SO3 (g)"
+          ],
+          "prompt": "Build the equation — tap species tokens to add them to a side, then check."
+        }
       ]
     },
     {
@@ -410,6 +462,24 @@
           "explanation": "The dioxide does not reignite; the hazard to describe is its poisonous nature.",
           "misconception": "second combustion invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because it burns a second time with a hotter flame",
+            "Because the colourless sulfur dioxide produced is poisonous",
+            "Because the gas is explosive on contact with air",
+            "Because it is a heavy liquid that floods the bench"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because the colourless sulfur dioxide produced is poisonous"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -445,6 +515,24 @@
           "correct": false,
           "explanation": "One O2 supplies two oxygens but only one MgO accepts them, so the equation as written is unbalanced.",
           "misconception": "unbalanced equation accepted"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Change O2 to O, because equations use single atoms",
+            "Balance it as 2Mg + O2 → 2MgO so the oxygen atoms match on both sides",
+            "Add heat on the right-hand side to balance the energy",
+            "It is already balanced and needs no correction"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Balance it as 2Mg + O2 → 2MgO so the oxygen atoms match on both sides"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

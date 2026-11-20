@@ -510,7 +510,21 @@ export function CourseShell({
           <div className={cn("flex items-center py-3", sidebarOpen ? "justify-between px-4" : "justify-center")}>
             {sidebarOpen ? (
               <>
-                <span className="text-sm font-semibold tracking-tight">{data.course.label ?? data.course.subject}</span>
+                {/* V-11 completion (visual audit): the sidebar title wrapped
+                    mid-compound ("Chemistry — A– / Level") when the rail is
+                    narrow (measured live: 3-line choppy wrap at 120px) —
+                    break only between words, never inside "A-Level" or
+                    "Co-ordinated". */}
+                <span className="text-sm font-semibold tracking-tight">
+                  {(data.course.label ?? data.course.subject)
+                    .split(" ")
+                    .map((tok, i, toks) => (
+                      <span key={`${i}-${tok}`} className="whitespace-nowrap">
+                        {tok}
+                        {i < toks.length - 1 ? " " : null}
+                      </span>
+                    ))}
+                </span>
                 {sidebarFloating ? (
                   <Button
                     variant="ghost"

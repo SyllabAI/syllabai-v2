@@ -377,7 +377,7 @@ export async function buildQuestionHistory(
 ): Promise<QuestionHistoryPayload> {
   const bank = corpusBankPathOfRecord(course, set);
   if (!bank) {
-    throw new BankHistoryError("not_found", "no corpus bank path of record for this set");
+    throw new BankHistoryError("not_found", "no question bank recorded for this set");
   }
   const [commitsStub, headFile] = await Promise.all([listBankCommits(bank.path), fetchHeadFile(bank.path)]);
   const region = findQuestionRegion(headFile, q);
@@ -438,8 +438,8 @@ export async function buildQuestionHistory(
       : null,
     commits,
     disclosure: region
-      ? "Read-only provenance from the corpus of record (syllabai-resources git history). Attribution is content-anchored to the question's corpus region; a commit is marked when its diff touches that region."
-      : "Read-only provenance from the corpus of record (syllabai-resources git history). The question's corpus region could not be content-anchored in the current file — the commit list is the bank-path history of record, not per-question attribution.",
+      ? "Read-only edit history for the question bank. A commit is listed when its changes touch the part of the bank file holding this question."
+      : "Read-only edit history for the question bank. This question couldn't be pinned to a region of the bank file, so the list shows the whole file's history rather than per-question edits.",
   };
 }
 
@@ -450,7 +450,7 @@ export async function buildSetHistory(
 ): Promise<{ bank: BankPathOfRecord; commits: BankCommit[] }> {
   const bank = corpusBankPathOfRecord(course, set);
   if (!bank) {
-    throw new BankHistoryError("not_found", "no corpus bank path of record for this set");
+    throw new BankHistoryError("not_found", "no question bank recorded for this set");
   }
   const commitsStub = await listBankCommits(bank.path);
   return {

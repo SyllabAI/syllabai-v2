@@ -1,0 +1,142 @@
+version: 1
+task:
+  id: T-SME-SEL-W9-9
+  title: 'SME picker layer wave 9, tranche 9 — the Revision-Notes picker mirror
+    for the queue pair (igcse-chemistry-19 Pearson Edexcel 4CH1 2017 Issue 3 /
+    cie-igcse-geography-25 CIE 0460 2025-2026; the #1039 merge record''s
+    next-queue ranks 1-2, tied at 112 — same build recipe; ZERO drift rows on
+    both trees (the 4CH1 tree runs the 4PH1 class, NOT the 4BI1
+    skills-placeholder class; the new 0460 family lands clean), both
+    single-match, both trees perfect 1:1s (112/112 and 117/117); the wave-8
+    fleet-safety probe roster rotates its igcse-chemistry-19 slot (rotation
+    #3) to the last no-layer Pearson-science family member
+    igcse-science-double-award-17-biology)'
+  owner: Super Z (zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6,
+    chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-SME-SEL (the SME selector band — wave 9 tranche 9 after tranche 8
+    #1039; the W1-W8 waves #867/#878/#886/#890/#907/#932/#942/#949/#952/#970)
+  wave: sme-selector
+  deps: [T-SME-SEL-W9-8, T-SME-SEL-W9-7, T-SME-SEL-W9-6, T-SME-SEL-W9-5,
+    T-SME-SEL-W9-4, T-SME-SEL-W9-3, T-SME-SEL-W9-2, T-SME-SEL-W9-1,
+    T-SME-SEL-W8-1, T-SME-SEL-W7-1, T-SME-SEL-W6-1, T-SME-SEL-W5-1,
+    T-SME-SEL-W4-1, T-SME-SEL-W3-1, T-SME-SEL-COSM-1, T-SME-SEL-W2-1,
+    T-SME-SEL-W1-1]
+  scope:
+    allowed:
+    - apps/hub/content/igcse-chemistry-19/curriculum.json (+32 SME_REFERENCE
+      nodes append-only: 4 section rows + 28 topic rows, verbatim from the
+      live Revision-Notes picker fetch 2026-11-16; removal round-trip
+      asserted byte-identical; the fleet's first COMPACT serialization —
+      the builder's byte-format detector gained its 4th candidate
+      (compact + trailing newline) and the fail-closed law held until the
+      exact dumper existed — no reformatting)
+    - apps/hub/content/cie-igcse-geography-25/curriculum.json (+59: 13+46;
+      ZERO drift rows — the new 0460 family lands clean; standard indent-1
+      format; the corpus census's 5 dup-class notes now resolve through the
+      layer)
+    - apps/hub/scripts/sme-wave9-fixtures.json (MERGED — the prior 19 course
+      blocks byte-preserved, asserted deep-equal by the builder; 17 sections
+      / 74 rows appended; per-course fetched 2026-11-16; NO setLaw pin —
+      blanket tranche-1/2 set law on both (chem 28 topic-class sets / geog
+      30, all resolve); NO multiMatch declaration — both courses
+      single-match throughout; NO DRIFT_BY_COURSE entries — both empty)
+    - apps/hub/scripts/verify_sme_wave9.ts (header tranche-9 + DRIFT_BY_COURSE
+      rows for the pair, both empty Sets; ZERO runtime-code change)
+    - apps/hub/scripts/verify_sme_wave8.ts (the DISCLOSED fleet-safety probe
+      pin-refresh rotation #3: igcse-chemistry-19 rotated OUT of the no-layer
+      probe roster — it GAINED its SME layer in this tranche, alongside
+      cie-igcse-geography-25 — and the last no-layer Pearson-science family
+      member igcse-science-double-award-17-biology (the 4SD0 strand; its
+      4BI1/4CH1/4PH1 siblings all layered now) takes the probe slot; the
+      roster comment documents the rotation chain tranche-2 -> tranche-7 ->
+      tranche-8 -> tranche-9; same disclosed pin-refresh class as the
+      wave-6 run-002)
+    - apps/api/test/curriculum/bundle-seed.test.ts (the DISCLOSED
+      bundle-contract pin-refresh, round 2: the lane C ruling A describe
+      (trace 1a15beb5881f7f31) pins igcse-chemistry-19's raw family counts
+      and bare-code/mapping laws — the +32 SME_REFERENCE rows moved TOPIC
+      4->8 / SUBTOPIC 28->52 — so THREE tests now filter the OFFICIAL spine
+      (provenanceTier !== "SME_REFERENCE", every official pin unchanged:
+      1/4/28/182, 28 bare-tail dbCodes, 4 UNIT dbCodes, the CIE hybrid gate)
+      and the count contract adds fail-closed pins for the layer itself
+      (32 = 4 TOPIC + 28 SUBTOPIC, bundle total 247); CAUGHT LOCALLY by the
+      post-T8 fail-grep discipline (bun test apps/api packages before push) —
+      CI never saw this red; the T8 tranche-8 repo-wide "pinned content
+      contract" search missed this describe because it phrases its pins
+      differently (lane C ruling A language) — the search class of record
+      for future tranches is by COURSE CODE, not by pin phrasing)
+    - .syllabai/tasks/T-SME-SEL-W9-9.yaml + .syllabai/receipts/
+      T-SME-SEL-W9-9/run-001.md + lane artifacts + both worklogs
+      (append-only)
+    forbidden:
+    - notes.json / questions.json (content untouched; homes are runtime via
+      smeRowOfNote / smeRowOfQuestionSet by the carried slugs)
+    - the official 215/138 spines (byte-untouched — family counts + per-node
+      digest pinned in the fixtures and asserted by the gate)
+    - any set home, question content, note content, flashcard
+    - revision-notes/page.tsx + exam-questions/page.tsx + spec-tree.ts (the
+      W7/W8 runtime already serves the layer generically; zero-code tranche)
+  evidence:
+  - baseline of record (fleet census at main 99e15f65 — the tip of record
+    carrying tranches 1-8 plus the T-MG-CALC run-001 lane #1040, merged
+    after the #1039 tranche-8 merge e8593360; no SME-surface files touched
+    by #1040 — 6 files all under apps/hub/src/components/pastpapers/):
+    resolved 5,224 (46 layered), user-facing loose 3,835; targets of the
+    queue: igcse-chemistry-19 112 loose, cie-igcse-geography-25 112 loose
+    (117 notes with 5 dup-class rows) — 224 loose notes, zero SME overlap
+  - tranche selection: the #1039 merge record's next-queue ranks 1-2, tied
+    at 112 (igcse-chemistry-19 / cie-igcse-geography-25)
+  - live Revision-Notes picker fetches 2026-11-16 (polite curl,
+    __NEXT_DATA__, URLs of record from the corpus notes' own sourceUrl —
+    chem at /igcse/chemistry/edexcel/19/, geog at /igcse/geography/cie/25/
+    with the family's NEW 2-level sourceUrl shape, no numbered section
+    prefix): chem 4 sections/28 topics/112 subtopics and geog 13/46/117 —
+    BOTH live subtopic counts equal their corpus note counts (perfect 1:1s;
+    the geog census dup-class column was cross-note traffic on shared
+    subtopics, not unresolved rows)
+  - bijection audit of record (lane w9t9_live_audit.py): 0 note slugs
+    missing, 0 set slugs missing, 0 exact-one failures, both courses
+    single-match throughout (no multiMatch class), ZERO drift rows on
+    either course; ONE disclosed title mismatch on chem-19 (corpus-side
+    display divergence: the corpus set '1-2-elements-compounds-and-
+    mixtures' carries "Elements, Compounds & Mixtures" while today's live
+    RN title is "Elements, Compounds or Mixtures" — sets untouched, slug
+    resolution unaffected, the appended SME rows mirror the live title
+    verbatim)
+  verification:
+  - bun apps/hub/scripts/verify_sme_wave9.ts PASS extended to 21 courses:
+    spine family counts + official-node digests intact (chem 215
+    41f879bac3ed28d0 / geog 138 36dcd2d2816ce251); 17 section rows + 74
+    topic rows all SME_REFERENCE verbatim; per-row CORPUS note+set counts
+    pinned through the resolution law; chem ALL 112 notes + 28 sets
+    resolve; geog ALL 117 notes + 30 sets resolve; drift rows exactly
+    documented (none on both); deep links resolve; official tree.topics
+    carries zero SME codes; prior 19 fixture blocks byte-preserved
+    (asserted by the builder)
+  - wave1 + wave7 + cosmetics1 PASS; wave8 PASS (after the DISCLOSED probe
+    rotation #3 — igcse-science-double-award-17-biology, 0 SME-row hits on
+    all three probes); wire_r0 PASS (2,574 placed / 0 unplaced —
+    byte-identical to the tranche-3..8 records); bun run typecheck (root,
+    CI parity) rc=0
+  - the FULL CI-verify reproduction run BEFORE push (the tranche-8 lesson,
+    fail-grep discipline): bun test apps/api packages -> caught the 3
+    lane-C-pin fails ON THE LANE (CI never saw red), refreshed (see
+    scope), re-run -> 0 fail (3,548 tests / 44,771 expects)
+  - hub lib battery at the lane tree: 2 standing fails (1,043 tests /
+    40,048 expects) — VERIFIED PRISTINE at the 99e15f65 base by stash-run:
+    the T-UGM-RENDER-1 katex red + the requestPartRegrade dual-run red;
+    the 6-fail set of record at the 4ef09e31 base shrank to 2 with the
+    #1040 upstream window (4 v2-flip reds went green). Zero new failures
+    from this lane
+  - PRE-EXISTING DEBTS DISCLOSED NOT TOUCHED (zero contact with this lane's
+    files): verify_sme_wave6 2 failures (RN-DEBRIS-11 run-023 class;
+    W6-1 run-003 pin-refresh queued); the 2 standing lib reds above; the
+    standing credential rotation reminder (THIRTIETH filing)
+  effect_of_record:
+  - the queue pair's /revision-notes selectors now mirror SaveMyExams' own
+    Revision-Notes organization verbatim with corpus-true counts; the
+    loose-notes cards empty (224 formerly-loose notes now have rows)
+  - fleet-wide 48 layered courses / 5,453 resolved / user-facing loose
+    3,611; next-tranche queue re-measured at the lane tree (see receipt)

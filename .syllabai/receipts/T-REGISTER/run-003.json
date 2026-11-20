@@ -1,0 +1,50 @@
+{
+  "task": "T-REGISTER",
+  "run": "run-003",
+  "date": "2026-11-15",
+  "operator_order": {
+    "orders": [
+      "pROCEED (trace 1a1dd71357993a81) — proceed on the lane after the reconciliation exchange (traces 1a1dcd16c975ba05 + 1a1dcd383870c289) that demanded the executed runs be reconciled against the original 3-run proposal / 42-item inventory",
+      "prior orders carried: 'Register copy leak … Find it all' (trace 1a1d7eb7) + 'start T-REGISTER run-001' (trace 1a1da597c5f3500d) + the standing review+self-merge authorisation (trace 1a1db56ca58cedc5)"
+    ],
+    "channel": "zai-web",
+    "session": "web-7b4a27df-7d97-438a-849c-05a9c0003aa8",
+    "chat": "0fade780-1ab5-4951-bfd9-13f43e897f40",
+    "traces": ["1a1dd71357993a81", "1a1dcd16c975ba05", "1a1dcd383870c289", "1a1d7eb7", "1a1da597c5f3500d", "1a1db56ca58cedc5"]
+  },
+  "change": {
+    "summary": "The merged-tree verification sweep (part 3): a fresh 42-item-plus seed sweep on merged main (59d9e9c2) — string-literal contexts only, comments/internal identifiers/test files/teacher-side surfaces/about-provenance excluded — confirmed the run-002 zero-hit law held for the original inventory and found nine learner-visible register strings standing OUTSIDE it (two aria labels, one else-branch fallback, the add-course overlay's lanes/registry voice, the teach-me review heading + hint, the coverage failure card, the past-papers coverage tooltips). All nine retired to student prose with meaning kept; strings only, zero engine bytes; 8 files, +13 -13.",
+    "prs_of_record": [
+      {
+        "pr": 1030,
+        "merge_commit": "91b5ab3d2e585e6eeb0e2e5217c0819748bc1f17",
+        "commits": ["343ad087 (the merged-tree verification sweep: 8 hub src files, +13 -13)"],
+        "base_head": "59d9e9c2"
+      }
+    ],
+    "files": [
+      "app/page.tsx — homepage section aria 'Pilot corpus stats' -> 'Hub stats' (the scoped-honestly comment stays; not learner-visible)",
+      "courses/[course]/page.tsx — grade-boundaries card else-branch desc 'landing with the corpus rollout.' -> 'coming soon.' (the directory ghost-chip voice)",
+      "dashboard/add-course-overlay.tsx — 'No {board} {level} lanes in the registry yet.' -> 'No {board} {level} courses are available yet.'; dialog intro 'then the subject lane.' -> 'then the subject.'; footer count 'lane/lanes' -> 'course/courses'",
+      "experiments/semantic-search/client.tsx — input aria 'Search the corpus' -> 'Search everything' (matches the placeholder)",
+      "components/hub/seneca-browser.tsx — tablist aria 'Seneca source course' -> 'Seneca course'",
+      "components/hub/teach-me/review.tsx — heading 'Spec point verdicts' -> 'Spec point checks' (the badge chips already render plain covered/partially covered/not covered); section hint 'Real past-paper anchors from this course's serving corpus — never invented.' -> 'Real past-paper questions from this course — never invented.'",
+      "courses/[course]/coverage/coverage-panel.tsx — FailureCard body 'The evidence join for this course did not answer, so coverage cannot be attributed honestly…' -> 'The coverage data for this course did not come back, so nothing is shown rather than guessed — every point would read \"not started\", and that would not be honest either.'",
+      "lib/pastpapers-reconstruction.ts — coverageTitle tooltips: 'parsed marks differ slightly from the official paper' x2 -> 'the marks differ slightly from the official paper'; 'the corpus holds only part of each' -> 'we hold only part of each'"
+    ],
+    "reconciliation": "The operator's run-003-as-proposed (cluster E) was already retired by run-002 (#1028) and its plan explicitly retired in the run-002 filing; this run-003 is a NEW run — the closeout the PROCEED order paid for: the verification sweep that proves the merged tree clean and retires the nine strings the original inventory never listed. Original 42-item inventory A-E: fully retired (per the run-002 reconciliation, unchanged). Out-of-inventory residuals: retired here."
+  },
+  "gates": {
+    "tsc": "hub exit 0; api exit 0; contracts exit 0 (at the PR head tree)",
+    "bun_test": "85 pass 0 fail across the touched-module suites: past-papers planes (the coverageTitle consumer), teach-me laws + gate, teach-genie laws (the lane's byte-pin guard), video-map, editor-history, directory-stats, directory-groups",
+    "eslint": "0 NEW problems on all 8 touched files; seneca-browser 1 error + 1 warning pre-existing (stash-verified byte-identical on the pristine main file — the run-002 disclosure, unchanged)",
+    "residue_and_ci": "grep for all nine retired strings over apps/hub/src returns only code comments (not learner-visible, protected by the card's forbidden list); CI: PR head 343ad087 check-runs 5/5 success (verify, hub, law-readback, coordination, Vercel Preview Comments; the census job did not run — no content/ bytes in the diff)"
+  },
+  "review_loop": "self-review per the standing authorisation: every candidate hit from the refined sweep (124 string-literal contexts) classified one by one with context reads — retired only the learner-visible register strings; deliberate keeps re-verified (the operator-ordered 'full corpus' hero StatChip per the card-design round trace 1a1beb40a15f8125; the reconstruction chip vocabulary — honest model nouns never flagged by the inventory; teacher-side surfaces per the standing deferral; about/provenance; internal identifiers incl. drill.ts corpus-of-record type literal and contracts.ts AI_SUGGESTED enum; lib/data/core-api.ts 'bundled corpus' detail — zero render sites, diagnostics-plane); law tests confirmed unpinned to any touched string; src diff readback reviewed before the merge-commit PUT",
+  "disclosures": [
+    "the run-002 disclosures carry forward unchanged: the syllabai-resources emitter rewrite, the teacher-ops register deferral, the video-map governance metadata by-design ops voice",
+    "the reconstruction tooltip family keeps its 'Complete/Partial reconstruction' model nouns — reviewed and kept (honest, student-comprehensible, never flagged by the inventory); only the 'parsed marks'/'corpus holds' register tails were retired",
+    "the 'full corpus' hero StatChip on the courses page stays per the operator's own card-design order (trace 1a1beb40a15f8125: 'retire the full corpus pill and fold papers into the count line' — the pill died, the hero chip owns the aggregate)"
+  ],
+  "verdict": "SHIP — the merged tree now sweeps clean: every learner-visible surface (the original 42-item inventory AND the out-of-inventory residuals) reads in student register; the lane's zero-hit law holds beyond the inventory for the first time."
+}

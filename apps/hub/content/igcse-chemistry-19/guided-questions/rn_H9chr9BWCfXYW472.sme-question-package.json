@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "Crude oil contains no water or salts; it is hydrocarbons throughout.",
           "misconception": "aqueous confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "A mixture of hydrocarbons",
+                    "mixture of hydrocarbons"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,24 @@
           "correct": false,
           "explanation": "Hydrogen count varies within a fraction; chain length is the organising feature.",
           "misconception": "hydrogen count blamed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because fractions are chemically bonded to each other",
+            "Because their hydrocarbon chains have similar lengths",
+            "Because they all contain the same number of hydrogen atoms",
+            "Because they were distilled at the same temperature"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because their hydrocarbon chains have similar lengths"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +156,24 @@
           "explanation": "The cool top collects low-boiling vapours; high boilers never make the climb.",
           "misconception": "height inverted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They never condense inside the column at all",
+            "Halfway up, regardless of boiling point",
+            "Near the bottom of the column, where it is hottest",
+            "Near the top of the column, where it is coolest"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Near the bottom of the column, where it is hottest"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "Vaporising first lets the hydrocarbon vapours rise and separate on the gradient.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It is mixed with water to dilute it",
+            "It is cooled until it solidifies",
+            "It is heated so that it vaporises",
+            "It is filtered to remove the alkanes"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It is heated so that it vaporises"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,24 @@
           "correct": false,
           "explanation": "The column has one smooth gradient, not alternating zones.",
           "misconception": "striped gradient imagined"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It decreases, so high-boiling compounds leave lower down",
+            "It increases, pushing heavy molecules upward",
+            "It alternates hot and cold in bands",
+            "It stays constant from bottom to top"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It decreases, so high-boiling compounds leave lower down"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -281,6 +374,26 @@
           "explanation": "Diesel runs engines; surfacing is bitumen work.",
           "misconception": "heavy fractions confused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Bitumen"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -316,6 +429,24 @@
           "correct": false,
           "explanation": "Longer chains are heavier, not lighter, and sinking is not how viscosity works.",
           "misconception": "mass direction flipped"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because fractions are cooled before collection",
+            "Longer chains are lighter, so they sink and thicken",
+            "Viscosity does not change along the ladder",
+            "Longer chains attract each other more, so the liquid flows less easily"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Longer chains attract each other more, so the liquid flows less easily"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -353,6 +484,26 @@
           "explanation": "Kerosene sits at 12-16 carbons and boils across 150-240 degrees in the table.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Kerosene"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -389,6 +540,24 @@
           "explanation": "Colour tracks the same ladder but does not cause volatility.",
           "misconception": "colour causation"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Liquids become less volatile because molecules are held more tightly",
+            "Volatility depends only on the colour of the fraction",
+            "Volatility stays fixed across the fractions",
+            "Liquids become more volatile as they get thicker"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Liquids become less volatile because molecules are held more tightly"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -424,6 +593,24 @@
           "correct": false,
           "explanation": "Both halves are wrong; diesel engines burn diesel and cooking uses refinery gas.",
           "misconception": "both mispaired"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Gasoline for ships and fuel oil for cars",
+            "Kerosene for jet fuel and refinery gas for domestic heating",
+            "Bitumen for jet fuel and kerosene for roads",
+            "Diesel for cooking and refinery gas for trucks"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Kerosene for jet fuel and refinery gas for domestic heating"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -517,6 +704,26 @@
           "explanation": "Natural gas is a separate fossil fuel, not a product distilled from crude oil.",
           "misconception": "fossil fuels merged"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Detergents and solvents"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -552,6 +759,24 @@
           "correct": true,
           "explanation": "Carbon chaining to itself builds skeletons of any length, which multiplies the possible compounds.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "That one carbon atom can bond strongly to several other carbon atoms",
+            "Its refusal to react with hydrogen",
+            "Its radioactive behaviour in fuels",
+            "Its unusually low boiling point"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "That one carbon atom can bond strongly to several other carbon atoms"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -589,6 +814,26 @@
           "explanation": "Refining solves viscosity by sorting fractions to each engine type.",
           "misconception": "viscosity objection"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Cars, trains and aircraft"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -625,6 +870,24 @@
           "explanation": "The crude itself is not useful; the separated fractions and their products are.",
           "misconception": "crude usefulness claimed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because modern society runs on its fuels and manufactured products",
+            "Because it supplies drinking water",
+            "Because fractions cannot be modified once separated",
+            "Because crude oil is useful exactly as it comes out of the ground"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because modern society runs on its fuels and manufactured products"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -660,6 +923,26 @@
           "correct": false,
           "explanation": "Paraffin is the alias of kerosene, one rung down the ladder.",
           "misconception": "alias misassigned"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Liquid petroleum gases"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

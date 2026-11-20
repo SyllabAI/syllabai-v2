@@ -126,7 +126,13 @@ export function SideNavRow({
         )}
       >
         <item.icon className="size-4 shrink-0 text-muted-foreground/70" aria-hidden />
-        {!collapsed && <span className="min-w-0 flex-1 truncate">{item.label}</span>}
+        {!collapsed && (
+          // visual audit V-11: title floor — truncated sidebar labels
+          // ("Biology — Modular 2024, U…") stay recoverable on hover/touch
+          <span className="min-w-0 flex-1 truncate" title={item.label}>
+            {item.label}
+          </span>
+        )}
         {!collapsed && badge}
       </span>
     );

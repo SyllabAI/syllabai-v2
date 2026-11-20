@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -532,6 +532,24 @@
           "explanation": "The interaction is a third law pair: equal and opposite.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Zero, because the two pushes cancel",
+            "Equal in size and opposite in direction",
+            "Larger in size on the faster trolley",
+            "Smaller in size on the heavier trolley"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Equal in size and opposite in direction"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -567,6 +585,26 @@
           "correct": false,
           "explanation": "A collision changes momentum; it need not erase it.",
           "misconception": "total-loss myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Slows down, losing momentum"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -604,6 +642,26 @@
           "explanation": "Equal magnitude, opposite sign — the third law in symbols.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "F(B–A) = −F(A–B)"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -640,6 +698,24 @@
           "explanation": "The force pair is symmetric; history does not enter F = ma.",
           "misconception": "agency myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Zero, because the forces cancel",
+            "Whatever caused the collision decides",
+            "Equal, because equal masses feel equal forces",
+            "Different, because the trolleys move differently"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Equal, because equal masses feel equal forces"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -675,6 +751,24 @@
           "correct": false,
           "explanation": "Both bodies feel the pair for as long as they touch.",
           "misconception": "mass exemption"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The forces are equal, but the light trolley accelerates more",
+            "The light trolley feels the larger force",
+            "Both feel equal forces and accelerate equally",
+            "The heavy trolley feels no force at all"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The forces are equal, but the light trolley accelerates more"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

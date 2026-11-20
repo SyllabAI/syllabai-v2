@@ -10,6 +10,14 @@
  * How-it-works card, then Recent sessions as a house list section
  * (UTC-day-grouped rows with status dot + time-ago). Every token is a hub
  * token; the MG palette and left rail are retired.
+ *
+ * T-TEACHGENIE-008 run-002: the landing footnote joined the conditional
+ * ratification law (teacher claim on the affirmative classroomStudent
+ * flag only). T-TEACHGENIE-008 run-003 (operator order 2026-11-13,
+ * "remove the footer thing from the bottom"): the landing footnote is
+ * REMOVED entirely — both voices. The landing states no AI_SUGGESTED /
+ * ratification copy at all; the evidence copy lives where the evidence
+ * lives — the picker footer + the review screen's evidence lead.
  */
 import { useState } from "react";
 import { Plus } from "lucide-react";
@@ -57,14 +65,14 @@ export function TeachGenieLanding({
                   preview.map((row) =>
                     row.role === "pupil" ? (
                       <div key={row.id} className="flex flex-col items-start">
-                        <span className="mb-1 px-2 text-xs font-medium text-muted-foreground/60">SillyAI</span>
+                        <span className="mb-1 px-2 text-xs font-medium text-muted-foreground">SillyAI</span>
                         <div className="w-fit max-w-[65%] rounded-2xl border bg-card p-2 px-3 text-left text-xs font-medium leading-relaxed text-pretty text-foreground shadow-sm">
                           {row.text}
                         </div>
                       </div>
                     ) : (
                       <div key={row.id} className="flex flex-col items-end">
-                        <span className="mb-1 px-2 text-xs font-medium text-muted-foreground/60">You</span>
+                        <span className="mb-1 px-2 text-xs font-medium text-muted-foreground">You</span>
                         <div className="w-fit max-w-[65%] rounded-2xl bg-muted p-2 px-3 text-left text-xs font-medium leading-relaxed text-pretty text-foreground shadow-sm">
                           {row.text}
                         </div>
@@ -182,11 +190,6 @@ export function TeachGenieLanding({
           </div>
         </section>
       )}
-
-      <p className="text-center text-2xs leading-relaxed text-muted-foreground">
-        What you cover is saved as an AI_SUGGESTED suggestion your teacher can ratify — the end-of-session review
-        is the correction of record, so read it even when everything ticks green.
-      </p>
     </div>
   );
 }

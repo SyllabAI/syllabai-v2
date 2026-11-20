@@ -25,7 +25,7 @@ import {
   postMessageRequestSchema,
   type PupilMessage,
   type ReviewCard,
-  type SessionHistoryItem,
+  type SessionHistoryResponse,
   type TeachObjective,
   type TeachSession,
   type TeachMeErrorCode,
@@ -933,8 +933,15 @@ export function createTeachMeService(deps: {
   }
 
   /* -- listSessions (plan §6 route 4 — history) ---------------------- */
-  async function listSessions(userId: string, courseId: string | null): Promise<{ items: SessionHistoryItem[] }> {
-    const rows = await store.listSessions(userId, courseId);
+  /* T-TEACHGENIE-008: the envelope carries the enrollment flag of record
+   * (store.hasClassEnrollment) beside the items — the ONLY consumer is the
+   * learner-visible ratification footnote copy (picker + review). A read,
+   * never a law: D1–D4 are untouched. */
+  async function listSessions(userId: string, courseId: string | null): Promise<SessionHistoryResponse> {
+    const [rows, classroomStudent] = await Promise.all([
+      store.listSessions(userId, courseId),
+      store.hasClassEnrollment(userId),
+    ]);
     return {
       items: rows.map((r) => ({
         sessionId: r.id,
@@ -943,6 +950,7 @@ export function createTeachMeService(deps: {
         status: r.status,
         createdAt: r.createdAt,
       })),
+      classroomStudent,
     };
   }
 

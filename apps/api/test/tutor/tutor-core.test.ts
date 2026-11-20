@@ -372,8 +372,8 @@ the topic (e.g. "moles", "bonding", "equilibria"), or open the tutor from
 inside your course so it searches that course's material.`);
     expect(courseScopeRefusal("4CH1")).toContain('scoped to the course "4CH1"');
     expect(courseScopeRefusal("4CH1")).toContain("SyllabAI never answers across\ncourses");
-    // v17 (T-TUTOR-PIVOT-1): the refusal shape law follows the bumped prompt
-    expect(promptIdentity()).toBe("tutor-grounded/v17");
+    // v20 (T-TUTOR-AIM-P3 run-003): the identity follows the bumped prompt
+    expect(promptIdentity()).toBe("tutor-grounded/v20");
   });
 
   test("the v17 refusal shape law is in the system prompt", () => {
@@ -384,6 +384,34 @@ inside your course so it searches that course's material.`);
     expect(prompt).toContain("state precisely what is missing");
     expect(prompt).toContain("start a new conversation on the new topic");
     expect(prompt).toContain("Never refuse a part\n  the SOURCES do cover");
+  });
+
+  test("the v18 voice law is in the system prompt (DC10 §7.2)", () => {
+    const prompt = systemPrompt();
+    expect(prompt).toContain("Open with the substance — never with praise or pleasantries");
+    expect(prompt).toContain('("great question", "good thinking")');
+    expect(prompt).toContain("correct the premise\n  plainly first, then answer what remains");
+    expect(prompt).toContain("never open by agreeing with\n  a wrong premise to be kind");
+  });
+
+  test("the v18 command-word shape law is in the system prompt (DC10 §7.3)", () => {
+    const prompt = systemPrompt();
+    expect(prompt).toContain("answer in the shape that word is marked for");
+    expect(prompt).toContain('"state"/"give"/\n  "name" — the answer alone, one line, no reasoning');
+    expect(prompt).toContain('"explain" — the because/therefore chain,\n  every step cited');
+    expect(prompt).toContain('"evaluate" — both\n  sides plus an explicit judgement');
+    // the shape law is presentation-only: sourcing + disclosure stay sovereign
+    expect(prompt).toContain("The shape governs presentation\n  only: every claim still comes from the SOURCES with its citation");
+    expect(prompt).toContain("the two-tier disclosure law still governs what may be stated");
+  });
+
+  test("the v19 aim law is in the system prompt (DC10 §7.5)", () => {
+    const prompt = systemPrompt();
+    expect(prompt).toContain("AIM. When the user message carries an AIM block");
+    expect(prompt).toContain("compress what it marks PROVEN to at most one line");
+    expect(prompt).toContain("never\n  re-derive it; pick examples from the strong areas it lists");
+    // the aim is presentation/selection only — sourcing sovereignty unchanged
+    expect(prompt).toContain("every claim still comes from the SOURCES with its citation, and an\n  ask without an AIM block is answered exactly as before");
   });
 
   test("the v11 spec-is-a-map quiz law is in the system prompt", () => {

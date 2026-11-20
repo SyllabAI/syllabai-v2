@@ -493,8 +493,9 @@ describe("ClaService — the KG_TOPIC pipeline", () => {
     // the interaction event carries the provenance (the 061 posture)
     const event = telemetry[0] as Record<string, unknown>;
     expect(event.refused).toBe(false);
-    // v17 (T-TUTOR-PIVOT-1): the refusal shape law follows the bumped prompt
-    expect(event.promptIdentity).toBe("tutor-grounded/v17");
+    // v20 (T-TUTOR-AIM-P3 run-003): the identity follows the bumped prompt
+    // (the CLA surface carries no exam context — the v20 law bullet is inert)
+    expect(event.promptIdentity).toBe("tutor-grounded/v20");
     expect(event.kind).toBe("KG_TOPIC");
     expect(event.mode).toBe("EXPLAIN");
   });

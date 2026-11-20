@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight, ExternalLink, ScrollText } from "lucide-react";
 import { PageHeader } from "@/components/layout/page-header";
-import { allArchiveSpecs, corpusIndex, type CorpusArchiveSpec } from "@/lib/pastpapers-corpus";
+import { allArchiveSpecs, type CorpusArchiveSpec } from "@/lib/pastpapers-corpus";
+import { fmtCount } from "@/lib/format";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import officialLinksJson from "@/data/pastpapers-official-links.json";
@@ -105,32 +106,30 @@ export default function PastPapersArchivePage() {
         }
         description={
           <>
-            Every specification held in the{" "}
-            <span className="font-mono text-xs">syllabai-pastpapers</span> corpus — grouped by
+            Every specification in the past-papers library — grouped by
             board, qualification and subject. Specs with a hub course open the full archive
             (mocks, interactive play); the rest open a direct PDF browser.
           </>
         }
         actions={
           <Badge variant="secondary" className="font-medium">
-            {specs.length} specifications · {paperTotal} papers
-            {officialCount > 0 ? ` · ${officialCount} with official links` : ""}
+            {/* F-15 one-format count law (R-2): corpus totals are four-digit —
+                grouped like every other count chip on the hub. */}
+            {fmtCount(specs.length)} specifications · {fmtCount(paperTotal)} papers
+            {officialCount > 0 ? ` · ${fmtCount(officialCount)} with official links` : ""}
           </Badge>
         }
       />
 
       <div className="mt-4 rounded-xl border bg-muted/30 p-3 text-xs leading-relaxed text-muted-foreground print:hidden">
         <p>
-          Official exam documents streamed from the{" "}
-          <span className="font-mono text-2xs">syllabai-pastpapers</span> archive — auto-matched
-          to each course, official-source verification in progress · index generated{" "}
-          {corpusIndex.meta.generatedAt.slice(0, 10)}, tree{" "}
-          <span className="font-mono text-2xs">{corpusIndex.meta.treeSha.slice(0, 7)}</span>.
+          Official question papers, mark schemes and examiner reports, grouped
+          by session.
         </p>
         <p className="mt-1">
-          Where the archive has known gaps (cancelled sessions, unpublished mark schemes), the spec
-          carries an <span className="font-medium text-foreground">Official source</span> link to
-          Pearson&apos;s own past-papers page — retrieved and verified {OFFICIAL.meta.retrievedAt}.
+          Missing a session? The{" "}
+          <span className="font-medium text-foreground">Official source</span> link
+          goes to the exam board&apos;s own site.
         </p>
       </div>
 
@@ -161,9 +160,13 @@ export default function PastPapersArchivePage() {
                         // no longer repeat the subject inline). The header
                         // rides the quiet recipe, count included.
                         <div key={subject} className="overflow-hidden rounded-xl border">
-                          <p className="border-b bg-muted/30 px-3 py-2 text-xs font-semibold sm:px-4">
+                          {/* visual audit V-9: raw corpus slugs ("accounting",
+                              "bangla") rendered lowercase under the uppercase
+                              qualification header — capitalize at display,
+                              data stays canonical */}
+                          <p className="border-b bg-muted/30 px-3 py-2 text-xs font-semibold capitalize sm:px-4">
                             {subject}
-                            <span className="font-normal text-muted-foreground/60"> · {rows.length}</span>
+                            <span className="font-normal text-muted-foreground"> · {fmtCount(rows.length)}</span>
                           </p>
                           <ul>
                             {rows.map((s) => (
@@ -201,7 +204,7 @@ function SpecRow({ s }: { s: CorpusArchiveSpec }) {
             )}
           </p>
           <p className="mt-0.5 text-2xs text-muted-foreground">
-            {s.paperCount} paper{s.paperCount === 1 ? "" : "s"} · {s.sessionCount} session
+            {fmtCount(s.paperCount)} paper{s.paperCount === 1 ? "" : "s"} · {fmtCount(s.sessionCount)} session
             {s.sessionCount === 1 ? "" : "s"}
             {s.courseSlug ? " · mocks + interactive in the hub archive" : " · direct PDF browsing"}
           </p>
@@ -230,7 +233,7 @@ function SpecRow({ s }: { s: CorpusArchiveSpec }) {
                 href={official.url}
                 target="_blank"
                 rel="noreferrer noopener"
-                title={`Official Pearson past-papers page (verified HTTP ${official.httpStatus}, retrieved ${OFFICIAL.meta.retrievedAt}) — use it for sessions missing from this archive`}
+                title={`Pearson's own past-papers page — use it for papers missing from this library`}
               >
                 Official source
                 <ExternalLink className="size-3" aria-hidden />

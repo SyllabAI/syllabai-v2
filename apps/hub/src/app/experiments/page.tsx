@@ -26,7 +26,7 @@ const EXPERIMENTS = [
     icon: Search,
     title: "semantic-search",
     status: "SEED",
-    desc: "One search box over the whole bundled corpus (notes + questions + concepts) with kind filters and spec-point chips. Tests retrieval UX before any semantic backend exists.",
+    desc: "One search box over everything in a course (notes, questions, concepts) with kind filters and spec-point chips. A preview of course-wide search before it ships everywhere.",
   },
 ];
 

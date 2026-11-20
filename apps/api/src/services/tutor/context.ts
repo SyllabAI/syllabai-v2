@@ -19,6 +19,9 @@
 import type { EvidenceItem } from "./evidence";
 import type { QuizScaffold } from "./quiz-scaffold";
 import type { MarkContext } from "./mark-context";
+import { classifyCommandWord, type CommandWordClassification } from "./command-word";
+import type { CourseExamTargetView } from "@syllabai/contracts";
+import { examContextBriefOf, type ExamContextBrief } from "./exam-calendar";
 
 // ── KnowledgeRetriever.KnowledgeContext (:39-73) ────────────────────────────
 
@@ -104,6 +107,106 @@ export function relaxedToPrior(
   if (!(now.getTime() > lastEvidenceAt.getTime())) return p;
   const ageMs = now.getTime() - lastEvidenceAt.getTime();
   return clamp01(base + (p - base) * Math.exp(-ageMs / (stalenessTauDays * DAY_MS)));
+}
+
+// ── DC10 §7.5: the aim (composition consumes the ALREADY-read state) ────────
+
+/** P2 selection constant (test-pinned, disclosed in the run record): a
+ *  prerequisite at this mastery or better counts PROVEN — re-deriving it
+ *  wastes the answer's budget. The misconception gate reuses the
+ *  assembler's active threshold (0.5) — one gate, one meaning. */
+export const AIM_PROVEN_MASTERY = 0.7;
+
+/** The deterministic aim for ONE ask — computed by assembleTutorContext from
+ *  the learner reads it already holds (M3: no new read, no LLM). Null when
+ *  nothing in the read aims this ask (the empty-context byte-stability
+ *  law: no learner signal ⇒ no AIM block ⇒ the composed prompt is the
+ *  pre-DC10 bytes). The node ids/titles come from the KG catalog
+ *  (knowledge.misconceptions / knowledge.prerequisites) — the §11
+ *  injection law keeps free-text readings out of composition. */
+export interface AimBrief {
+  /** strongest active misconception attached to a matched topic — the
+   *  correction-first opening target (catalog node id + title) */
+  correction: { nodeId: string; title: string } | null;
+  /** proven prerequisites of the matched topics — compressed to one line,
+   *  never re-derived (the DC10 §4 plain changelog row 4) */
+  provenPrerequisites: Array<{ nodeId: string; title: string }>;
+  /** proven-strong DIRECTLY adjacent areas (depth-1 prerequisite nodes at
+   *  proven mastery, excluding the matched topics themselves) — the
+   *  example-bias targets */
+  strongAreas: Array<{ nodeId: string; title: string }>;
+  /** the answered topic is due for spaced review (pendingReviews ∩ matched
+   *  topics) — flagged for the §7.8 hook (P3); P2 renders nothing from it */
+  decayDue: boolean;
+}
+
+/** render cap constants (deterministic byte bounds, disclosed): the proven
+ *  line lists at most 4 prerequisites, the examples line at most 3 areas */
+const AIM_PROVEN_CAP = 4;
+const AIM_STRONG_CAP = 3;
+
+/** assembleAim — the §7.5 selection laws, pure and unit-pinned. Returns
+ *  null when the aim has nothing to render (decayDue alone aims nothing in
+ *  P2 — the flag is the §7.8 hook's input, computed and dropped here until
+ *  P3 wires the hook). */
+export function assembleAim(
+  knowledge: KnowledgeContext,
+  states: ReadonlyArray<SkillState>,
+  readings: ReadonlyArray<MisconceptionReading>,
+  pendingReviews: ReadonlyArray<ReviewSchedulePendingRow>,
+): AimBrief | null {
+  const matchedIds = new Set(knowledge.topics.map((t) => t.nodeId));
+
+  // CORRECTION — the strongest active reading on a misconception the KG
+  // attached to a matched topic (the same gate learnerBriefOf uses:
+  // membership on the staleness-relaxed probability); ties break by the
+  // knowledge order (deterministic)
+  let correction: AimBrief["correction"] = null;
+  let bestEffective = 0;
+  for (const m of knowledge.misconceptions) {
+    if (!matchedIds.has(m.forTopicId)) continue;
+    const reading = readings.find(
+      (r) =>
+        r.misconceptionNodeId === m.nodeId &&
+        r.effective >= ASSEMBLER_ACTIVE_MISCONCEPTION_THRESHOLD,
+    );
+    if (reading != null && reading.effective > bestEffective) {
+      bestEffective = reading.effective;
+      correction = { nodeId: m.nodeId, title: m.title };
+    }
+  }
+
+  // PROVEN — any-depth prerequisites the learner has proven (the plan's
+  // "proven prerequisites → compressed to one line, no re-derivation")
+  const masteryByNode = new Map<string, number>();
+  for (const s of states) {
+    if (!masteryByNode.has(s.nodeId)) masteryByNode.set(s.nodeId, s.mastery);
+  }
+  const provenPrerequisites = knowledge.prerequisites
+    .filter((p) => (masteryByNode.get(p.nodeId) ?? -1) >= AIM_PROVEN_MASTERY)
+    .slice(0, AIM_PROVEN_CAP)
+    .map((p) => ({ nodeId: p.nodeId, title: p.title }));
+
+  // STRONG AREAS — proven mastery on DIRECTLY adjacent nodes that are not
+  // themselves matched topics ("examples biased toward proven-strong
+  // adjacent areas")
+  const strongAreas = knowledge.prerequisites
+    .filter(
+      (p) =>
+        p.depth === 1 &&
+        !matchedIds.has(p.nodeId) &&
+        (masteryByNode.get(p.nodeId) ?? -1) >= AIM_PROVEN_MASTERY,
+    )
+    .slice(0, AIM_STRONG_CAP)
+    .map((p) => ({ nodeId: p.nodeId, title: p.title }));
+
+  // DECAY-DUE — the §7.8 flag (P3): a matched topic with a PENDING review
+  const decayDue = pendingReviews.some((r) => matchedIds.has(r.nodeId));
+
+  if (correction == null && provenPrerequisites.length === 0 && strongAreas.length === 0) {
+    return null;
+  }
+  return { correction, provenPrerequisites, strongAreas, decayDue };
 }
 
 // ── TutorPolicyService (:42-111) ────────────────────────────────────────────
@@ -381,6 +484,21 @@ export interface TutorContext {
    *  marking engine's OWN artifacts for the explicitly referenced marked
    *  part (null = fail-open — the ask proceeds without any mark state). */
   markContext?: MarkContext | null;
+  /** T-TUTOR-AIM-P2 (DC10 §7.5): the deterministic aim computed from the
+   *  reads this assembly already holds (null = nothing aims this ask — the
+   *  empty-context byte-stability law keeps the composed prompt at the
+   *  pre-DC10 bytes). Consumed by the generator's AIM block. */
+  aim: AimBrief | null;
+  /** T-TUTOR-AIM-P2 (DC10 §7.3 refinement): the ask-side command-word
+   *  classification (null = the question does not OPEN with an exam command
+   *  word — nothing renders, the v18 shape law governs alone). */
+  commandWord: CommandWordClassification | null;
+  /** T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the exam-calendar brief computed
+   *  from the learner's DECLARED exam target for the ask's scoped course
+   *  (null = no declared target / unscoped / window ended — NOTHING renders,
+   *  the empty-context byte-stability law keeps the composed prompt at the
+   *  pre-run bytes). Consumed by the generator's EXAM CONTEXT block. */
+  exam: ExamContextBrief | null;
 }
 
 /** Java String.format(Locale.ROOT, "%.2f", v) posture for the briefs. */
@@ -418,6 +536,15 @@ export interface AssembleInputs {
    *  referenced marked part (optional for call-site compatibility; absent
    *  → no mark context — the ordinary grounded ask). */
   markContext?: MarkContext | null;
+  /** T-TUTOR-AIM-P2 (DC10 §7.3): the raw question text — the command-word
+   *  classifier's input (deterministic, no read, no LLM; absent/null =
+   *  unclassified, nothing renders). */
+  query?: string | null;
+  /** T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the learner's DECLARED exam target
+   *  for the ask's scoped course, prematched by the pipeline (absent/null =
+   *  no declared target / unscoped — the brief computes to null and nothing
+   *  renders). The countdown derives on the exam-target read (ADR-031). */
+  examTarget?: CourseExamTargetView | null;
   now: Date;
 }
 
@@ -470,6 +597,16 @@ export function assembleTutorContext(inputs: AssembleInputs): TutorContext {
     // DC-1 (spec §3.1): the mark context rides the shared contract —
     // populated by prepare step 2.8 on the tutor pipeline, absent elsewhere
     markContext: inputs.markContext ?? null,
+    // T-TUTOR-AIM-P2 (DC10 §7.5): the aim consumes the reads THIS call
+    // already received — no new read, no LLM; null keeps the prompt at the
+    // pre-DC10 bytes (the byte-stability law)
+    aim: assembleAim(knowledge, states, readings, inputs.pendingReviews),
+    // T-TUTOR-AIM-P2 (DC10 §7.3): the deterministic command-word pin
+    commandWord: inputs.query == null ? null : classifyCommandWord(inputs.query),
+    // T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the exam-calendar brief — pure
+    // over the prematched target, no read, no LLM; null keeps the prompt at
+    // the pre-run bytes (the byte-stability law)
+    exam: examContextBriefOf(inputs.examTarget ?? null),
   };
 }
 

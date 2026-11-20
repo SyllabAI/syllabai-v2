@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "That inverts the relationship between energy and current.",
           "misconception": "inversion slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "energy transfer per second"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": true,
           "explanation": "The watt is exactly one joule of energy moved every second.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "one joule per second"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,36 @@
           "explanation": "Adding the two quantities carries no physical meaning.",
           "misconception": "addition slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "52 V"
+            },
+            {
+              "id": "3",
+              "text": "12 V"
+            },
+            {
+              "id": "2",
+              "text": "0.083 V"
+            },
+            {
+              "id": "1",
+              "text": "192 V"
+            }
+          ],
+          "correctOrder": [
+            "2",
+            "3",
+            "4",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -153,6 +223,26 @@
           "explanation": "Ohms belong to resistance, a different relationship.",
           "misconception": "unit confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "current, measured in amperes"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +278,24 @@
           "correct": false,
           "explanation": "Only two quantities multiply in P = I × V.",
           "misconception": "factor miscount"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "two, because only one factor counts",
+            "four, because both factors double",
+            "eight, because three quantities multiply",
+            "no change, because the effects cancel"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "four, because both factors double"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -290,6 +398,24 @@
           "explanation": "Cooling is not how a fuse acts.",
           "misconception": "function myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "cooling the wires with a heat sink",
+            "melting its wire and breaking the circuit when the current is too large",
+            "lowering the voltage at the socket",
+            "storing the surplus charge"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "melting its wire and breaking the circuit when the current is too large"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -325,6 +451,24 @@
           "correct": false,
           "explanation": "A plausible-looking but incorrect set.",
           "misconception": "value slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "10 A, 20 A and 30 A",
+            "5 A, 10 A and 15 A",
+            "3 A, 5 A and 13 A",
+            "1 A, 2 A and 3 A"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "3 A, 5 A and 13 A"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -362,6 +506,36 @@
           "explanation": "P = I × V = 4 × 230 = 920 W.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "2",
+              "text": "234 W"
+            },
+            {
+              "id": "3",
+              "text": "1840 W"
+            },
+            {
+              "id": "4",
+              "text": "920 W"
+            },
+            {
+              "id": "1",
+              "text": "57.5 W"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "2",
+            "4",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -398,6 +572,24 @@
           "explanation": "The rating does not throttle the current before melting.",
           "misconception": "function myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "raise the appliance's power",
+            "never blow at all",
+            "make the current smaller",
+            "blow as soon as the appliance runs normally"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "blow as soon as the appliance runs normally"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -433,6 +625,24 @@
           "correct": false,
           "explanation": "That would blow at once, like an underrating.",
           "misconception": "undersize myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the smallest that exists",
+            "the largest available",
+            "the next size up from the current it needs",
+            "exactly equal to the current it needs"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the next size up from the current it needs"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

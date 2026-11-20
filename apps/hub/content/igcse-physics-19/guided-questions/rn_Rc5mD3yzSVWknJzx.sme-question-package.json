@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "That is density's equation.",
           "misconception": "equation tangle"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "p = A ÷ F",
+            "p = F × A",
+            "p = F ÷ A",
+            "p = m ÷ V"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "p = F ÷ A"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "The area entered the equation; the answer changed.",
           "misconception": "no-transfer slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it decreases, because the same force divides by more area",
+            "it stays the same",
+            "it increases, because more area carries more force",
+            "it doubles regardless"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it decreases, because the same force divides by more area"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,27 @@
           "explanation": "Newtons measure force alone.",
           "misconception": "unit swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the pascal",
+                    "pascal"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "Perpendicular contact is the definition.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the cross-sectional area the force acts across at right angles",
+            "the floor's area beneath the whole room",
+            "the area of the force's arrow diagram",
+            "the object's total surface area"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the cross-sectional area the force acts across at right angles"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,24 @@
           "correct": false,
           "explanation": "Static pushes still exert pressure.",
           "misconception": "absurd limit"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "becomes zero, because the box is not moving",
+            "stays the same, because the weight is unchanged",
+            "increases, because the same weight now squeezes a smaller area",
+            "decreases, because the box is more stable"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "increases, because the same weight now squeezes a smaller area"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

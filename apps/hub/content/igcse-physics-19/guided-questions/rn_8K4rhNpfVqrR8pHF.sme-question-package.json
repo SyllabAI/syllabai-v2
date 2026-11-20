@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "X-rays image internal structure.",
           "misconception": "band mix-up"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "radio waves"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "Night vision belongs to infrared.",
           "misconception": "band mix-up"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "satellite transmissions"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,24 @@
           "explanation": "Thermal imaging works in infrared, which warm objects emit.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "infrared emitted by warm bodies",
+            "radio waves from the person",
+            "gamma rays",
+            "x-rays passed through the person"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "infrared emitted by warm bodies"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +211,24 @@
           "explanation": "Energy is converted, never destroyed.",
           "misconception": "conservation myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "destroys it",
+            "reflects it unchanged",
+            "re-emits the energy as visible light",
+            "stores it permanently"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "re-emits the energy as visible light"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +264,26 @@
           "correct": false,
           "explanation": "Visible light photographs and illuminates.",
           "misconception": "band mix-up"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "gamma rays"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

@@ -1,0 +1,23 @@
+{
+  "task": "T-LESSON-MEASURE-W42",
+  "run": "run-001",
+  "date": "2026-11-13",
+  "lane": "Operator order: \"loosen the width standard\" — the WS4 reading-measure law widened from the offered example (42rem) on the same gated path",
+  "surface": "apps/hub/src/components/books/lesson/lesson-view.tsx:308 (the article measure cap — the single choke point) + docs/books/PLAN-LESSON-VISUAL-v1.2.md Q5 (the standing spec line)",
+  "base": "origin/main 09a169e9 (verified; no other 36rem code sites — the question-player.tsx hit is an unrelated Sheet-width comment)",
+  "the_law": "max-w-[36rem] -> max-w-[42rem] on the Lesson prose article (672px ≈ 78–84ch at text-base depending on the char-width estimate). The plan-of-record Q5 line is AMENDED in the same commit with the disclosure (was 36rem ≈ 72ch); the plan doc stays historical everywhere else.",
+  "honest_tradeoff": "42rem sits AT/ABOVE the upper bound of the classic 45–75ch comfort band — this is an operator-ordered loosening, not a claim of optimal measure; the line-return-sweep cost rises slightly in exchange for wider tables/diagrams/code in lesson prose. Below-lg stays viewport-natural (the cap only binds on wide screens); the rail and max-w-6xl shell are untouched; freed space still falls right (docs-standard).",
+  "gates": {
+    "typecheck": "tsc --noEmit: 0 errors",
+    "lint": "eslint (changed file): 0",
+    "lesson_trio": "24 tests / 42 expects / 0 fail",
+    "full_battery": "1339 tests / 1 error / 42,167 expects across 95 files — fail set A/B-IDENTICAL (diff empty) to the clean origin/main baseline captured in the same worktree (6-file class incl. the main-advance-arrived account-docs-stores; the class moved with main, NOT with this edit — disclosed)",
+    "emission": "@tailwindcss/cli proof: max-w-[42rem] emits (2 occurrences, .max-w-\\[42rem\\] among the arbitrary widths); max-w-[36rem] emits ZERO — the old cap is fully retired from the compiled CSS",
+    "test_assertions": "no test references 36rem/max-w-[ anywhere (grep of *.test.ts/tsx: 0) — the measure class is not snapshot-asserted"
+  },
+  "method_disclosures": [
+    "The local repo had been recycled back to the conversation-start snapshot (no remotes, main @ d29cb1dd) — origin re-added and fetched; the lane ran in an ISOLATED worktree (syllabai-w42) off origin/main so the 3,040-dirty foreign checkout in the main repo dir stayed untouched.",
+    "bun install failed once on tarball extraction (invalid baseline: 3 suite errors, 1316 tests) — clean re-install restored 1339 tests / 1 error; the baseline was re-captured AFTER the clean install and the A/B compares against that.",
+    "The first emission grep used the raw (unescaped) selector form and falsely returned 0 — re-proven with the escaped form (the WS7 lesson)."
+  ]
+}

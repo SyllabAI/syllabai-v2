@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -285,6 +285,24 @@
           "explanation": "That is Earth's radius without the altitude.",
           "misconception": "radius error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "6400 km",
+            "560 km",
+            "6400 + 560 = 6960 km",
+            "6960 m"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "6400 + 560 = 6960 km"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +338,36 @@
           "correct": false,
           "explanation": "That drops a factor of six.",
           "misconception": "conversion error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "960 s"
+            },
+            {
+              "id": "2",
+              "text": "576,000 s"
+            },
+            {
+              "id": "1",
+              "text": "96 s"
+            },
+            {
+              "id": "3",
+              "text": "5760 s"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "4",
+            "3",
+            "2"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -357,6 +405,36 @@
           "explanation": "2π × 6,960,000 / 5760 ≈ 7592, quoted as 7590 to 3 s.f.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "759 m/s"
+            },
+            {
+              "id": "2",
+              "text": "75,900 m/s"
+            },
+            {
+              "id": "3",
+              "text": "6960 m/s"
+            },
+            {
+              "id": "4",
+              "text": "7590 m/s"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "3",
+            "4",
+            "2"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -393,6 +471,24 @@
           "explanation": "Nothing in this equation squares the radius.",
           "misconception": "arithmetic error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "left in km",
+            "divided by 1000",
+            "multiplied by 1000 to give metres",
+            "squared"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "multiplied by 1000 to give metres"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +524,36 @@
           "correct": false,
           "explanation": "A factor of ten high.",
           "misconception": "arithmetic error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "7000 m/s"
+            },
+            {
+              "id": "2",
+              "text": "7330 m/s"
+            },
+            {
+              "id": "4",
+              "text": "73,300 m/s"
+            },
+            {
+              "id": "3",
+              "text": "733 m/s"
+            }
+          ],
+          "correctOrder": [
+            "3",
+            "1",
+            "2",
+            "4"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },

@@ -1,0 +1,101 @@
+#!/usr/bin/env python3
+"""T-SME-SEL-W9-12 run-001 — dual worklog append (append-only; the lane suffix
+is appended byte-exact at the tail of BOTH ledgers; prefix byte-identity
+asserted pre/post — the ADR-044 receipt lanes' worklog rows ride beneath).
+Same shape as the tranche-11 lane artifact w9t11_worklog_append.py."""
+import sys
+
+REPO = "/home/z/my-project/repos/syllabai-v2"
+
+ENTRY = ("- T-SME-SEL-W9-12 run-001 — SME picker layer wave 9, tranche 12: the Revision-Notes "
+         "picker mirror for the queue pair (PR of record opened for the integrator; branch "
+         "t-sme-sel-w9-12/run-001 from origin/main ee398201). Operator order 'Proceed with "
+         "next' executes the tranche-11 merge record's next-queue ranks 1-2 — "
+         "igcse-geography-19 (Pearson Edexcel 4GE1 2017) / cie-as-accounting-21 (CIE AS 9706 "
+         "2023-2025). BASE OF RECORD: main ee398201 — the tranche-11 merge f18f538e ADVANCED "
+         "to ee398201 by the orthogonal #1049 T-MG-CALC research-cards / #1051 ADR-044 "
+         "run-009 cutover gate2 / #1052 ADR-044 run-010 phase2 prereg windows before this "
+         "lane started (worklog rows + receipts, zero selector-surface contact); census at "
+         "that tip: resolved 5,865 (52 layered) / user-facing loose 3,199. TRANCHE: geog-19 "
+         "102 + acct-21 98 loose = 200 notes. LIVE FETCHES 2026-11-17 (polite curl, "
+         "__NEXT_DATA__, URLs of record from the corpus notes' own sourceUrl — geog at "
+         "/igcse/geography/edexcel/19/ (the NUMBERED-SECTION 4GE1 shape, unlike its 2-level "
+         "CIE sibling), acct at /as/accounting/cie/21/ (the 2-level AS shape)): geog-19 17 "
+         "sections/41 topics/105 subtopics and acct-21 2/14/98. BIJECTION AUDIT OF RECORD "
+         "(lane w9t12_live_audit.py): the THIRD consecutive FULLY-CLEAN audit — 0 note "
+         "slugs missing / 0 set slugs missing / 0 exact-one failures; BOTH COURSES "
+         "SINGLE-MATCH throughout; ZERO DRIFT ROWS; ZERO TITLE MISMATCHES. geog-19's "
+         "105-subtopic live tree vs 102 notes: the +3 subtopics all sit under "
+         "traffic-bearing topics (NOT the drift class); all 41 live topics == the 41 "
+         "corpus note-pairs and the 39 sets spread across 39 pairs all resolve. acct-21 is "
+         "a NEW family of record: a 30-node AS spine (1/2/8/19) behind a perfect "
+         "notes-only 1:1 mirror (2/14/98, 0 sets — the blanket set law covers it "
+         "trivially); its TOPICs carry the cie-a-level-accounting-2023-2025 version-scoped "
+         "namespace shape. THE BUNDLE-SEED PIN QUESTION RESOLVED BEFORE BUILDING: the "
+         "wave-7 'ln class' test asserts dbCode mappings for mapBundleNodes(load("
+         "\"cie-igcse-accounting-21\")) — the IGCSE 0452 course, a DIFFERENT course id "
+         "from this tranche's cie-AS-accounting-21 (9706); the targeted by-CODE pin search "
+         "(rg \"cie-as-accounting-21|cie-a-level-accounting-2023-2025\" over apps/api/test "
+         "+ packages + hub scripts) found NO direct pins (the single hit is the ln bundle "
+         "roster line) — lesson #2 caught the near-miss by code, not by name similarity. "
+         "No multiMatch declaration, no DRIFT_BY_COURSE entries, no setLaw pin; no "
+         "byte-format event. APPENDS +74 SME_REFERENCE nodes: geog-19 +58 (17+41; official "
+         "243 intact, digest 6ee47d7bb6da04d9), acct-21 +16 (2+14; official 30 intact, "
+         "digest a6134e4e13c0b768); removal round-trips asserted byte-identical per "
+         "course; official nodes list-equal per course; FIXTURES MERGED into "
+         "sme-wave9-fixtures.json (27 courses) with the prior 25 blocks byte-preserved "
+         "(asserted deep-equal by the builder), each new block carrying fetched "
+         "2026-11-17. GATE verify_sme_wave9.ts extended to 27 courses: PASS — spine "
+         "digests + 19 section rows + 55 topic rows all SME_REFERENCE verbatim, per-row "
+         "CORPUS counts pinned through the resolution law, geog-19 ALL 102 notes + 39 "
+         "sets resolve, acct-21 ALL 98 notes resolve (0 sets), drift rows exactly "
+         "documented (none on both), deep links resolve, official tree.topics carries "
+         "zero SME codes. NO WAVE-8 PROBE ROTATION THIS TRANCHE: bio-mod-U1 holds the "
+         "no-layer probe slot from the tranche-11 rotation #5 and stays no-layer — the "
+         "roster is UNTOUCHED (verify_sme_wave8.ts byte-unchanged). LESSONS APPLIED "
+         "BEFORE PUSH: #2 by-CODE pin search (above); #3 the prebuild chain on the lane "
+         "BEFORE push (verify_corpus_23a PASSED; flashcard core-sync manifest matches "
+         "[igcse-chemistry-19] — the tranche-9 SME_REFERENCE filter holds; "
+         "validate_cie_bundles PASS 106 rows; validate_gradeb_bundle clean; "
+         "verify_subject_identity PASS 106/106) — NO CI-hub surprise. RECYCLE LESSON HIT "
+         "AGAIN AND SHARPENED: node_modules was wiped mid-lane; the first bun install "
+         "--frozen-lockfile ran BEFORE the git reset to ee398201 (952 pkgs, stale tree) "
+         "and typecheck still exited 127; re-running the install AT THE FINAL TREE (40 "
+         "pkgs topped up) restored tsc — rc=0. The standing lesson sharpens: install "
+         "AFTER the tree is final, before battery runs. ACCEPTANCE: wave1 + wave7 + "
+         "cosmetics1 + wave8 PASS; wire_r0 PASS (2,574 placed / 0 unplaced — "
+         "byte-identical to the tranche-3..11 records); bun run typecheck (root, CI "
+         "parity) rc=0; CI-verify reproduction 0 fail (3,548 tests / 44,771 expects) — "
+         "no pin events; hub lib battery: the 6 standing fails of record at the pristine "
+         "base (the #1041 window's set, stash-verified in the T10 lane) — zero new "
+         "failures from this lane. PRE-EXISTING DEBTS DISCLOSED NOT TOUCHED (zero contact "
+         "with this lane's files): verify_sme_wave6 2 failures 'spec points 34 != 36' "
+         "(RN-DEBRIS-11 run-023 class; W6-1 run-003 pin-refresh queued); the standing "
+         "credential rotation reminder. EFFECT OF RECORD: the queue pair's "
+         "/revision-notes selectors now mirror SaveMyExams' own Revision-Notes "
+         "organization verbatim with corpus-true counts; the loose-notes cards empty "
+         "(200 formerly-loose notes now have rows); fleet-wide 54 layered courses / 6,065 "
+         "resolved / user-facing loose 3,199 -> 3,003; next-tranche queue re-measured "
+         "(user-facing: cie-igcse-religious-studies-23 97, "
+         "igcse-science-double-award-17-physics 95, cie-igcse-computer-science-23 93, "
+         "igcse-maths-a-modular-24-higher-unit-2 92, cie-as-physics-25 92). Census "
+         "engines: rn_selector_census.ts (untouched) + w9_sme_census.ts (read-only). Lane "
+         "artifacts .syllabai/lane-artifacts/T-SME-SEL-W9-12/run-001/ (parsed live RN "
+         "trees + builder + audit + worklog scripts); receipt "
+         ".syllabai/receipts/T-SME-SEL-W9-12/run-001.md; task card T-SME-SEL-W9-12.yaml "
+         "IN_REVIEW; author does not self-merge; no DB contact; fetch-first race-guard at "
+         "push; no force")
+
+REMINDER = ("Standing reminder (THIRTY-THIRD filing): the PAT remains exposed from chat "
+            "transmission and MUST be revoked/rotated (the Vercel token likewise).")
+
+SUFFIX = f"{ENTRY}\n{REMINDER}\n"
+
+for f in ["worklog.md", ".syllabai/worklog.md"]:
+    p = f"{REPO}/{f}"
+    before = open(p, encoding="utf-8").read()
+    open(p, "w", encoding="utf-8").write(before + SUFFIX)
+    after = open(p, encoding="utf-8").read()
+    assert after.startswith(before) and after.endswith(SUFFIX) and after.count(SUFFIX) == 1
+    print(f"{f}: +{len(SUFFIX)}B appended at tail (prefix byte-identity asserted)")
+print("DUAL WORKLOG APPEND OK")

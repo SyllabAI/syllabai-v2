@@ -1527,8 +1527,7 @@ export function GradeBoundariesWorkspace({
                     className="underline decoration-border underline-offset-2 hover:decoration-foreground"
                   >
                     {s.title}
-                  </a>{" "}
-                  (sha256 {s.sha256_16}…)
+                  </a>
                 </span>
               ))}
               .
@@ -1540,8 +1539,7 @@ export function GradeBoundariesWorkspace({
       {/* provenance footer (MG's muted page footer slot) */}
       <p className="flex items-start gap-1.5 px-1 text-sm text-muted-foreground">
         <span>
-          Source: official {entry.board} grade-boundary documents — every file
-          sha256-recorded in the syllabai-resources GradeBoundaries lane. A
+          Source: official {entry.board} grade-boundary documents. A
           boundary is the minimum mark for the grade.
         </span>
       </p>

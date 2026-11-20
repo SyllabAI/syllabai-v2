@@ -1,0 +1,61 @@
+{
+ "task": "T-TUTOR-AIM-P3",
+ "run": "run-001",
+ "kind": "DC10 Phase 3 — served-evidence ledger (§7.7) + tutor→drill loop (§7.8) + calibration surfaces (§7.9), one changeset",
+ "agent": "Super Z (zai-web session web-b30b2f0b-5100-49db-a722-e5370b2ed7d5, chat e55037d4-6fd0-4a2e-94b0-dc777c61929f, dispatch trace 1a1ed4c8e69c96a9)",
+ "date": "2026-11-18",
+ "plan_of_record": "docs/DC10-TUTOR-AIMED-ANSWERING-PLAN.md §6 P3 (§7.7/§7.8/§7.9) + §13.2/§13.3 — merged plan (#880 base, #889 amendments, #1057 appendices); P1 merged #1061, P2 merged #1068",
+ "operator_order": "Proceed with P3 (served-evidence ledger + tutor→drill loop + calibration surfaces) — the user's named scope; exam-date awareness parked (disclosed)",
+ "implemented": {
+  "s77_served_evidence_ledger": {
+   "migration": "packages/db/drizzle/0030_tutor-served-evidence.sql — raw SQL per the 0007/0027/0029 disclosure law: tutor_served_evidence (the plan's sketch verbatim: spec_node_id text, chunk_id nullable, session_id + turn_id NOT NULL, the four-surface + four-kind CHECK vocabularies, the (learner_id, spec_node_id, served_at) index of record + the (session_id, turn_id) turn anchor) + tutor_drill_directives (the §7.8 claimable plane: directive_id text PK — the deterministic hash, course_ref, node_ids jsonb, correction_node_id, scheduled_count, claimed_at — the CAS guard)",
+   "fold": "BOTH tables folded into ALL THREE schema-of-record planes (schema.ts + the checked-in 0000_snapshot.json + the rebaseline pin) per the P2 review-fix precedent — verify PASS 0 drifts, the pin moved 103/958/136/103/187 → 105/977/139/103/189",
+   "projection": "apps/api/src/services/tutor/served-evidence.ts projectServedEvidence (pure, zero LLM/extraction): citations on KG node ids (or the item's associated topics with chunk_id riding), correction/prereq_recap/example from the P2 aim, dedupe by (spec_node_id, chunk_id, kind); refusals project empty",
+   "write_path": "routes/tutor.ts BOTH ask paths: sessionStore.append returns assistantSeq (additive) → the route appends the ledger rows AFTER the §22 append (fire-and-forget, the append-guard class); anonymous previews + sessionless asks write NOTHING (account-only); the projection + the directive basis stay OFF the wire body (internal carriers)",
+   "retention": "180 days (the §12 open question 4 FIXED at build time — the learner-model staleness tau of record); purgeExpiredServedEvidence unit-pinned; the nightly wiring = the disclosed residual",
+   "law": "SESSION-SCOPED by the schema of record; node-addressable evidence only (node-less chunk items skip — the honest residual)"
+  },
+  "s78_tutor_drill_loop": {
+   "decision": "selectDrillDirectiveBasis (pure, M3): the decay-due basis = the PENDING review_schedules rows ∩ matched topics — the SAME read P2's assembleContext already holds; zero new reads, zero LLM; null when nothing decayed; the Teach SillyAI handoff rides INDEPENDENTLY (the aim's correction — §7.8's correction arm)",
+   "mint": "directiveIdOf — the deterministic domain-prefixed SHA-256 of (learner, session, turn): stable under re-render, learner-bound; the route mints AFTER the §22 append fixes the turn; insertDrillDirective lands the row BEFORE the wire moves (on conflict do nothing — the id is content-addressed)",
+   "wire": "contracts tutorDrillDirectiveSchema (turnId + nodes{nodeId,code,title} + courseRef + plannedCount + teachHandoff) on BOTH the answer view and the done frame (optional — absent on older upstreams / sessionless asks / refusals / when nothing decayed); METADATA ONLY per §13.2 (catalog ids/codes/titles, never learner free text); the hub relay forwards the done frame verbatim",
+   "claim": "POST /tutor/drill-directives/claim — EXACTLY-ONCE under TWO INDEPENDENT STATE GUARDS: (1) the server-issued row exists + learner-owned (the id recomputes from the caller's OWN §22 identity pair — the id never travels from the client); (2) the claimed_at CAS (update where claimed_at is null returning) — a re-render/double-tap/race answers already_claimed with the SAME artefact; the draws are created by drawForLearner (the F-185 law — the decay law's pick) at the ROW'S OWN course + targets; zero scheduled → the compensating release re-opens the CAS (409, retryable) — a claim that scheduled nothing is NOT a claim",
+   "hub": "the tonight-chip (Add N practice items for tonight?) flips to the claimed copy from the response's ACTUAL count; the claim proxy crosses the cookie→Bearer boundary (the /api/ai posture); the Teach handoff chip pre-fills the composer (the P2 probe-chip pattern)"
+  },
+  "s79_calibration_surfaces": {
+   "api": "GET /tutor/calibration — readCalibration: THREE bounded per-learner reads (tutor_ask_confidence + the ledger's tutor_answer rows + the graded drill evidence) → the pure calibrationReadout core",
+   "pairing": "a logged ask pairs to its own session's served rows inside the ±120s pairing window (the two writers' clock-skew absorber); null-session asks pair to nothing (the ledger is session-scoped — the honest residual)",
+   "outcome": "graded drill parts (marks_awarded not null — the S1 discipline) at the paired nodes' resolved codes within 14 days; correct = majority of the part's marks; each part attributes ONCE to its NEAREST PRECEDING covered ask (latest-first); node → code via the KG catalog",
+   "gates": "the §7.4 rules RENDER HONESTLY: gathering (< 15 covered asks, rule 1's floor) / no_signal (both endpoints present, the sure-vs-guessing gap < 10 points — stay log-only, rule 5) / ok (the bands, the plan's own words); per-learner ONLY (rule 1 — never population stats); rule 3 untouched (the answer path never learns)",
+   "hub": "the CalibrationCard on the dashboard (per-learner section): zero free text on the wire (bands + numbers), renders nothing on transport failure, the honest copy per status"
+  }
+ },
+ "gates": {
+  "typecheck": "bun x turbo run typecheck rc=0 — 5/5 surfaces (contracts, db, shared, api, hub)",
+  "api_suite": "3037 pass / 13 skip / 0 fail (43,535 expects, 173 files) — the P2 baseline 2979 + the 58 new pins, ZERO regressions (the P2 aim/probe/confidence byte-stability pins all green inside the run)",
+  "new_pins": "served-evidence 14/14 · drill-directive 17/17 · calibration 16/16 · drill-claim-routes 8/8 · rebaseline 33/33",
+  "rebaseline": "verify PASS — 0 drifts across tables/columns/notNull/types/defaults/indexes/FKs/checks; the pin 105/977/139/103/189 moved deliberately with the recorded delta",
+  "hub": "tsc clean; hub tutor battery green (12/12 + the 26 decay/lib pins)",
+  "prompt_budget": "v19 registry UNTOUCHED — no bump this run; the budget lint green inside the full suite (the aim block renders nothing new; the byte-stability law holds)"
+ },
+ "laws_held": {
+  "degrade_never_block": "the ledger write is fire-and-forget (a lost row never corrupts a delivered answer); the directive insert failure degrades to no chip; the claim's scheduling failures degrade honestly (409 + release); the calibration failure renders nothing",
+  "fail_closed": "the claim validates the row's OWN data (never the caller's wire); the dormant 503 posture on unwired deps",
+  "account_only": "every read + write is learner-scoped; anonymous previews write and read nothing",
+  "m3_single_read": "the directive decision rides the SAME pendingReviews read P2 holds — zero new per-ask reads",
+  "zero_llm": "every P3 surface is deterministic — zero mandatory, zero optional LLM calls",
+  "offer_not_claim": "§13.2 held verbatim — metadata-only ambient surfaces; the artefact claimed exactly once under two independent state guards",
+  "ai_suggested": "unchanged — no new AI-content class (the calibration is deterministic arithmetic, the directive is catalog metadata)"
+ },
+ "deviations_disclosed": [
+  "exam-date awareness PARKED (not in the operator's named scope; its prompt-assembly bump is a §13.3-separate decision)",
+  "the ledger's surface enum admits probe/drill/mock_mark rows by schema; THIS changeset's writer covers tutor_answer only — the other writers ride those surfaces' own builds (the plan's own forward-compatible enum)",
+  "the retention purge ships unit-pinned; the nightly cron wiring is the disclosed residual (the nightly band is a heavily pinned transaction)",
+  "the calibration outcome join matches drill evidence by CODE (the (course, code) address space is code-keyed — the cross-course code collision is that address space's own disclosed residual)",
+  "the directive's decay-due OFFER decision rides the held pendingReviews read (M3's boundary); the F184 decay law picks the CLAIM's items via the drill serve path's F-185 reading — offer decision and item selection each ride their own already-built law",
+  "the CLA surface carries no ledger/directive/calibration in P3 (the tutor chat ships first — the P2 disclosure's posture continues)"
+ ],
+ "receipt_review_record": "T-TUTOR-AIM-P3 run-001 (2026-11-18): the pre-push self-review pass — the served-evidence projection re-read line-against-line against the plan's §7.7 sketch (the schema shape, the taxonomy, the index — verbatim; the spec_node_id TEXT reading disclosed); the §13.2 two-guard law re-read against the claim implementation (the CAS + the server-issued row, exactly-once, the release-on-empty compensating write); the §7.4 gate constants re-read against the calibration statuses; the M3 law re-read against assembleContext (zero new reads); the §22 append-guard class re-read against both write paths. ONE fix in the pass: the claim route's validation order (the closed body 400s BEFORE the dormant 503 — the client error is independent of dormancy); everything else landed as implemented.",
+ "worklog": "appended to .syllabai/worklog.md (append-only, the run entry below the P2 review record)",
+ "task_card": ".syllabai/tasks/T-TUTOR-AIM-P3.yaml (IN_REVIEW; the CI-green merge is the operator's standing order of record — the #1061 review+merge precedent)"
+}

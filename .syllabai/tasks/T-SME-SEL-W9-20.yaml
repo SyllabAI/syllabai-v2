@@ -1,0 +1,122 @@
+version: 1
+task:
+  id: T-SME-SEL-W9-20
+  title: 'SME picker layer wave 9, tranche 20 — the Revision-Notes picker mirror
+    for the queue pair (cie-igcse-economics-20 CIE 0455 2023-2025 — the
+    NUMBERED 3-level CIE URL shape /
+     cie-igcse-ict-21 CIE 0417 2023-2025 — the UN-NUMBERED CIE shape; the
+    tranche-19 merge record''s next-queue ranks 1-2 — 79 + 78 loose = 157
+    notes; the ELEVENTH consecutive FULLY-CLEAN audit with ZERO DRIFT
+    EVENTS: econ-20 live 6/39/79 — a PERFECT 1:1 (79 live subtopics = 79
+    notes), all 39 pairs single-match, 39 sets across all 39 pairs;
+    ict-21 live 13/23/78 — likewise PERFECT (78 = 78), 23 sets across all
+    23 pairs; ZERO title mismatches on both; NO wave-8 probe rotation
+    (bio-mod-U1 holds the slot from rotation #5); by-CODE pin searches (rg
+    cie-igcse-economics-2023-2025-T | cie-igcse-ict-2023-2025-T) found
+    ZERO pins — the fixture blocks of record carry only the 2027-2029
+    families T17 layered; BASE NOTE: main advanced between turns
+    (7df68e28 -> 8bc24b80, PR #1068 the tutor-aim lane over api
+    routes/services — ZERO selector-surface contact, orthogonal)'
+  owner: Super Z (zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6,
+    chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-SME-SEL (the SME selector band — wave 9 tranche 20 after tranche 19
+    #1076; the W1-W8 waves #867/#878/#886/#890/#907/#932/#942/#949/#952/#970)
+  wave: sme-selector
+  deps: [T-SME-SEL-W9-19, T-SME-SEL-W9-18, T-SME-SEL-W9-17, T-SME-SEL-W9-16,
+    T-SME-SEL-W9-15, T-SME-SEL-W9-14, T-SME-SEL-W9-13, T-SME-SEL-W9-12,
+    T-SME-SEL-W9-11, T-SME-SEL-W9-10, T-SME-SEL-W9-9, T-SME-SEL-W9-8,
+    T-SME-SEL-W9-7, T-SME-SEL-W9-6, T-SME-SEL-W9-5, T-SME-SEL-W9-4,
+    T-SME-SEL-W9-3, T-SME-SEL-W9-2, T-SME-SEL-W9-1, T-SME-SEL-W8-1,
+    T-SME-SEL-W7-1, T-SME-SEL-W6-1, T-SME-SEL-W5-1, T-SME-SEL-W4-1,
+    T-SME-SEL-W3-1, T-SME-SEL-COSM-1, T-SME-SEL-W2-1, T-SME-SEL-W1-1]
+  scope:
+    allowed:
+    - apps/hub/content/cie-igcse-economics-20/curriculum.json (+45
+      SME_REFERENCE nodes append-only: 6 section rows + 39 topic rows,
+      verbatim from the live Revision-Notes picker fetch 2026-11-17;
+      removal round-trip asserted byte-identical; standard format — no
+      byte-format event)
+    - apps/hub/content/cie-igcse-ict-21/curriculum.json (+36: 13+36 —
+      13 section rows + 23 topic rows; standard format — no byte-format
+      event)
+    - apps/hub/scripts/sme-wave9-fixtures.json (MERGED — the prior 41
+      course blocks byte-preserved, asserted deep-equal by the builder; 19
+      sections / 62 rows appended; per-course fetched 2026-11-17; NO
+      setLaw pin; NO multiMatch declaration — both courses single-match
+      throughout; DRIFT_BY_COURSE: both EMPTY — zero drift events)
+    - apps/hub/scripts/verify_sme_wave9.ts (header tranche-20 + DRIFT_BY_
+      COURSE rows for the pair; ZERO runtime-code change)
+    - .syllabai/tasks/T-SME-SEL-W9-20.yaml + .syllabai/receipts/
+      T-SME-SEL-W9-20/run-001.md + lane artifacts + both worklogs
+      (append-only)
+    forbidden:
+    - notes.json / questions.json (content untouched; homes are runtime via
+      smeRowOfNote / smeRowOfQuestionSet by the carried slugs)
+    - the official 175/163 spines (byte-untouched — family counts + per-node
+      digest pinned in the fixtures and asserted by the gate)
+    - any set home, question content, note content, flashcard
+    - verify_sme_wave8.ts (NO probe rotation this tranche — the roster is
+      untouched)
+    - revision-notes/page.tsx + exam-questions/page.tsx + spec-tree.ts (the
+      W7/W8 runtime already serves the layer generically; zero-code tranche)
+    - src/lib/flashcard-sync-eligibility.ts + the core-sync walker (the
+      tranche-9 SME_REFERENCE filter already makes it layer-safe; the
+      prebuild chain ran GREEN on this lane BEFORE push)
+  evidence:
+  - baseline of record (fleet census at main 8bc24b80 — main ADVANCED since
+    the tranche-19 merge 7df68e28: PR #1068 the tutor-aim lane over api
+    routes/services, ZERO selector-surface contact): at that tip resolved
+    7,310 (68 layered), user-facing loose 1,788; targets of the queue:
+    cie-igcse-economics-20 79 loose, cie-igcse-ict-21 78 loose — 157 loose
+    notes, zero SME overlap
+  - tranche selection: the tranche-19 merge record's next-queue ranks 1-2
+  - live Revision-Notes picker fetches 2026-11-17 (polite curl,
+    __NEXT_DATA__, URLs of record from the corpus notes' own sourceUrl —
+    econ-20 at /igcse/economics/cie/20/ (the NUMBERED 3-level CIE shape),
+    ict-21 at /igcse/ict/cie/21/ (the UN-NUMBERED CIE shape)): econ-20 6
+    sections/39 topics/79 subtopics and ict-21 13/23/78
+  - bijection audit of record (lane w9t20_live_audit.py): the ELEVENTH
+    consecutive FULLY-CLEAN audit with ZERO DRIFT EVENTS — 0 note slugs
+    missing, 0 set slugs missing, 0 exact-one failures, both courses
+    single-match throughout, ZERO title mismatches, both courses PERFECT
+    1:1 (live subtopics = corpus notes on BOTH)
+  - LESSON #2 applied (by-CODE pin searches): rg "cie-igcse-economics-2023-
+    2025-T" and "cie-igcse-ict-2023-2025-T" over apps/api/test + packages +
+    hub scripts — ZERO pins (the fixture blocks of record carry only the
+    2027-2029 families T17 layered)
+  verification:
+  - bun apps/hub/scripts/verify_sme_wave9.ts PASS extended to 43 courses:
+    spine family counts + official-node digests intact (econ-20 175
+    4941ae39d2ed3db4 / ict-21 163 724a96469e232637); 19 section rows + 62
+    topic rows all SME_REFERENCE verbatim; per-row CORPUS note+set counts
+    pinned through the resolution law; econ-20 ALL 79 notes + 39 sets
+    resolve; ict-21 ALL 78 notes + 23 sets resolve; drift rows exactly
+    documented (both EMPTY); deep links resolve; official tree.topics
+    carries zero SME codes; prior 41 fixture blocks byte-preserved
+    (asserted by the builder)
+  - wave8 PASS (the roster UNTOUCHED — no rotation); wave1 + wave7 +
+    cosmetics1 PASS; wire_r0 PASS (2,574 placed / 0 unplaced —
+    byte-identical to the tranche-3..19 records)
+  - LESSON #3 applied (the prebuild chain BEFORE push): verify_corpus_23a
+    PASSED + flashcard core-sync manifest matches [igcse-chemistry-19] +
+    validate_cie_bundles PASS 106 rows + validate_gradeb_bundle clean +
+    verify_subject_identity PASS 106/106
+  - the FULL CI-verify reproduction run BEFORE push: bun test apps/api
+    packages -> 0 fail (3,605 tests / 44,927 expects) — no pin events
+  - typecheck CI-parity reproduction: bun x turbo run typecheck rc=0 (the
+    T17 install-artifact class REPRODUCED and RESOLVED on this lane: the
+    fresh install initially missed @types/js-yaml — a second `bun install`
+    landed it; rc=0 after)
+  - hub lib battery: the 6 standing fails of record at the pristine base
+    (the #1041 window's set) — zero contact with this lane's files
+  - PRE-EXISTING DEBTS DISCLOSED NOT TOUCHED (zero contact with this lane's
+    files): the 6 standing lib reds above; the standing credential rotation
+    reminder (FORTY-SECOND filing)
+  effect_of_record:
+  - the queue pair's /revision-notes selectors now mirror SaveMyExams' own
+    Revision-Notes organization verbatim with corpus-true counts; the
+    loose-notes cards empty (157 formerly-loose notes now have rows)
+  - fleet-wide 70 layered courses / 7,467 resolved / user-facing loose
+    1,631; next-tranche queue re-measured at the lane tree (see receipt)

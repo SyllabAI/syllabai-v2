@@ -195,7 +195,10 @@ export default function CourseBodyTabs({
   return (
     <div>
       {/* the MG tab trio */}
-      <div className="mt-6 flex items-end gap-5 border-b text-sm font-semibold">
+      {/* visual audit V-11: the trio must stay single-line per label —
+          "Strengths & Weaknesses" used to wrap to two lines while its
+          siblings stayed single-line; the row scrolls if space runs out */}
+      <div className="mt-6 flex items-end gap-5 overflow-x-auto border-b text-sm font-semibold">
         {(
           [
             { key: "topics", label: "Topics", icon: List },
@@ -211,7 +214,7 @@ export default function CourseBodyTabs({
             className={cn(
               // t-ui-polish run-004 — the site's focus-visible ring law, the
               // recipe the resource Link tiles already carry.
-              "flex items-center gap-1.5 border-b-[3px] px-1 pb-2.5 pt-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+              "flex items-center gap-1.5 whitespace-nowrap border-b-[3px] px-1 pb-2.5 pt-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
               tab === t.key
                 ? "border-primary text-primary"
                 : "border-transparent text-muted-foreground hover:text-foreground",

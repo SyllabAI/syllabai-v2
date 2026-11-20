@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Nothing doubles here.",
           "misconception": "arithmetic error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "decreases, and the frequency increases",
+            "doubles",
+            "increases, and the frequency decreases",
+            "stays the same"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "decreases, and the frequency increases"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Waves still propagate behind the source.",
           "misconception": "absolutism error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "bunch up, raising the frequency",
+            "stretch out, so wavelength increases and frequency decreases",
+            "vanish completely",
+            "reverse direction"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "stretch out, so wavelength increases and frequency decreases"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "No relative motion, no shift.",
           "misconception": "condition error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the source and observer are both stationary",
+            "the wave changes medium",
+            "the wave amplitude changes",
+            "the wave source moves relative to the observer"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the wave source moves relative to the observer"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,27 @@
           "explanation": "Delta marks the change.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the change in wavelength",
+                    "change in wavelength"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +263,24 @@
           "correct": false,
           "explanation": "Stationary sources still emit waves.",
           "misconception": "nonsense option"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "absent, since it is not moving",
+            "stretched behind only",
+            "evenly spaced in every direction",
+            "bunched ahead only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "evenly spaced in every direction"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -285,6 +378,24 @@
           "explanation": "That is v.",
           "misconception": "symbol swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the reference wavelength measured from a stationary source",
+            "the change in wavelength",
+            "the galaxy's velocity",
+            "the observed wavelength"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the reference wavelength measured from a stationary source"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +431,24 @@
           "correct": false,
           "explanation": "Approach would blue-shift the light.",
           "misconception": "sign error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "undefined",
+            "positive, moving away from the observer",
+            "zero, since light is involved",
+            "negative, moving towards us"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "positive, moving away from the observer"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +486,24 @@
           "explanation": "Same-unit ratios are dimensionless.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "m/s",
+            "metres",
+            "none — both numerator and denominator are wavelengths",
+            "hertz"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "none — both numerator and denominator are wavelengths"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +540,24 @@
           "explanation": "Red-shift gives a positive change.",
           "misconception": "sign error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "50 nm, since Δλ = λ − λ₀",
+            "435 nm",
+            "920 nm",
+            "−50 nm"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "50 nm, since Δλ = λ − λ₀"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +593,26 @@
           "correct": false,
           "explanation": "That would exceed the speed of light.",
           "misconception": "physics error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "3.4 × 10⁷ m/s"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

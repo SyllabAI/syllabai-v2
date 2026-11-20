@@ -6,7 +6,17 @@
   "provider": "cognito (Cognito Edu YouTube channel)",
   "label": "igcse-further-maths-19",
   "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY (no high rows); tightened binding rule (title must name the spec's distinctive content); sewage filter applied (promo/announcement/non-teaching uploads excluded)",
-  "enumeratedUtc": "2026-11-10T03:03:19Z"
+  "enumeratedUtc": "2026-11-10T03:03:19Z",
+  "p9": {
+   "provider": "mr-hassaans-maths (Mr Hassaan's Maths Channel — Edexcel IAL + CAIE paper-code walkthrough channel)",
+   "method": "yt-dlp flat channel enumeration 2026-11-13 (3,150 public uploads, 0 overlap with the 1,556-video shipped union); routing: paper-code Tier B + unit-marker/idf Tier A with board-restricted candidates; judgment: class decision tables over every distinctive-candidate row",
+   "enumeratedUtc": "2026-11-13T05:57:42Z"
+  },
+  "p18": {
+   "provider": "IGCSE & A Level ExamCrack (CIE A-level sciences 9700/9701/9702 papers 1-3 AS / 4-5 A2 + IGCSE 0620/0625/0610 (+ the 5090 dual) paper walkthroughs and predicted papers, 9609 business, 9708 econ, Edexcel 4MA1/4WM/4MB1 maths incl. the 4WM1H modular paper, IAL WPH/WBI/WCH predicted papers, 0580 (+ 4024 dual), 0452 (+ 7707 dual), 0606; the 9709 maths walkthroughs skip per ANCHOR-GRANULARITY section 6 (the P9/P17 precedent); grade-thresholds/timetables/results meta skipped; p15-swept resurfaced with the sentinel disclosure) + TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) + TSIL (pure-maths differentiation/topic lectures binding igcse-further-maths-19 at the df<=3 bar; 4MB1/4MA1/4BS1 coded titles anchor) + WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly)",
+   "method": "IGCSE & A Level ExamCrack (CIE A-level sciences 9700/9701/9702 papers 1-3 AS / 4-5 A2 + IGCSE 0620/0625/0610 (+ the 5090 dual) paper walkthroughs and predicted papers, 9609 business, 9708 econ, Edexcel 4MA1/4WM/4MB1 maths incl. the 4WM1H modular paper, IAL WPH/WBI/WCH predicted papers, 0580 (+ 4024 dual), 0452 (+ 7707 dual), 0606; the 9709 maths walkthroughs skip per ANCHOR-GRANULARITY section 6 (the P9/P17 precedent); grade-thresholds/timetables/results meta skipped; p15-swept resurfaced with the sentinel disclosure) flat-enumerated 2026-11-20T06:05:00Z; TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) flat-enumerated 2026-11-20T06:05:00Z; TSIL (pure-maths differentiation/topic lectures binding igcse-further-maths-19 at the df<=3 bar; 4MB1/4MA1/4BS1 coded titles anchor) flat-enumerated 2026-11-20T06:05:00Z; WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) flat-enumerated 2026-11-20T06:05:00Z; routing: machine-checkable Tier B anchors (CIE IGCSE sciences 0610/0620/0625 session/paper registers incl. the disclosed 5090 dual; 0654 co-ordinated shared-paper anchors; CIE A-level sciences 9700/9701/9702 papers 1-3 AS / 4-5 A2; 0417/4IT1+4IT0 ICT incl. the International-GCSE-ICT register text; 4MA1/4WM/4XM maths-A higher/foundation/modular-24 routing; 4MB1; 0580 papers 2/4 extended vs 1/3 core (the P9/P14 law, code-required); 4PM0/4PM1 Further Pure (the NEW P18 register); 0606 with the disclosed 4037-dual-branding precedence; 0452/0985 (+ the disclosed 7707 dual)/0455 (+ the disclosed 2281 dual)/0680/0460/4BS1/9708/9609/8021 General Paper (the NEW P18 register); IAL WPH/WBI/WCH \"Unit N <session>\" unit-paper anchors + the Pearson-pipe register family) + the P16 Class W set-text predicate for 0475-register titles (with the disclosed P18 suffix-collision ledger) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-20T10:48:03Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P4 (shelf-direct lane, Cognito maths shelf: igcse-further-maths-19)",
@@ -14,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Checked every mapping row of the 34-row draft against the igcse-further-maths-19 (4PM1) spine, per (video,spec). Kept the low rows whose partial support names a clause genuinely in the spec (index rules for 1B's indices half, linear-only solving for 3D 'Simple inequalities, linear and quadratic', cubic/reciprocal for 4A's halves, parallel/perpendicular for 8E's halves, resultants for 7A addition, SOH CAH TOA for 10B's three-basic-ratios head). Rejected 3 spec-level bindings where the evidence concedes the spec's distinctive content is not title-evidenced: sequence-classification off 5B series, degree-measure arc/sector off 10A radian measure, and basic 2D Pythagoras off 10C's 2D/3D applied-problems frame.",
-  "rowsApproved": 31,
+  "rowsApproved": 121,
   "rowsRejected": 3,
   "rejects": [
    {
@@ -34,6 +44,30 @@
     "video": "CnHgqfBSgco",
     "spec": "10C",
     "reason": "'Pythagoras' Theorem And How To Use It' is the basic right-triangle theorem lesson; 10C is 'Applications to simple problems in two or three dimensions (including angles between a line and a plane and between two planes)' — the evidence concedes the 3D plane-angle clause is not named and offers only generic 2D use. Title names a tool, not the spec's applied-problems frame; keyword-adjacent, rejected at low."
+   }
+  ],
+  "lanes": [
+   {
+    "lane": "external-channels-p9 (mr-hassaans-maths completion)",
+    "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+    "ruledUtc": "2026-11-13T06:48:16Z",
+    "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
+    "rowsApproved": 1,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p18 (p18-residual-gap judgment lane: the fresh post-P17 residual sweep — 4PM0/4PM1 Further Pure, 8021 General Paper, CIE A-level sciences 9700/9701/9702 paper routing, 0580 paper routing with the generalized spine-code precedence over O-Level duals, the International-GCSE-ICT register text, the P16 Class W predicate with the disclosed P18 suffix-collision ledger; honest register calls: indigo 8021 = tuition marketing 0 binds, no-waffle 0475 = UK GCSE lit with 1 genuine dual-anthology bind, the unit-summary pools bind only at the df<=3 bar)",
+    "task": "T-VIDEOMAP-P18 (gap-profile judgment lane: the P18 filing PR #362 pool set admitted by owner order 'run P18 judgment' 2026-11-20; 5,843 pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+    "ruledUtc": "2026-11-20T10:48:03Z",
+    "evidenceBasis": "Identity: oEmbed sweep 1566/1566 routed videos alive — 1562 author_url channel == channel-of-record via UC id (0 mismatch) + 4 thumbnail-liveness fallbacks disclosed per the P2D law (oembed HTTP 200 all-null payload; identity rides on the channel-of-record upload provenance), 0 bad. Tier B: session/paper codes regex-verified in titles (the P15/P17 registers plus the P18 additions: 4PM0/4PM1 Further Pure, 8021 General Paper, 9700/9701/9702 paper-number routing, 0580 paper-number routing, the International-GCSE-ICT register text). Class W: the P16 committed predicate with the disclosed P18 suffix-collision ledger (\"singh song\" does not bind Szirtes' \"Song\"). Tier A: the P13/P15 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar. Guidance/promo/tuition, meta announcements, the certification register, CIE AS/A Level IT 9626, the O-Level register (the disclosed duals exempt), IAL/CIE maths 9709 (section 6) and out-of-spine boards skipped with reasons (4277 ledgered in work/p18/skips.json by class: {'no honest binding at the df<=3 bar': 2922, 'meta announcement (grade thresholds/timetables/results/celebration)': 62, 'guidance/advice/marketing register': 167, 'O-Level register with no IGCSE spine-code token (the generalized P14 spine-code precedence law; the disclosed 4037/2281/7707/5090 duals exempt)': 185, 'IAL/CIE maths register (9709) — bare walkthroughs skip per ANCHOR-GRANULARITY section 6 (P9 precedent)': 117, 'channel promo/tuition marketing (no qualification register)': 30, 'digital-literacy certification register (IC3/Certiport/MOS) — out-of-spine register': 138, 'CIE AS/A Level IT 9626 / Edexcel IAL IT (WIT) — no spine course': 6, 'lit register: out-of-spine board (AQA/Eduqas/WJEC/Edexcel/GCSE) naming no spine set text': 551, 'lit register: work not on the 0475 2023-2025 set-text lists': 87, 'lit register: character-study title without a set-text token': 2, 'NT-board titles re-adjudicated to skip on the final sanity pass': 10}).",
+    "rowsApproved": 89,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ]
  },
@@ -581,6 +615,996 @@
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "2t-ww5YTIN8",
+   "title": "[12], IGCSE FM, (Edexcel), 4PM1/02, June 2024, Volumes of Revolution between Curves",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=2t-ww5YTIN8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-C3xysMvQHA",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q7",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=-C3xysMvQHA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-sjhlf0zAIA",
+   "title": "Edexcel Further Pure Maths IGCSE Past Papers | Jan 2009 P2 Q7",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=-sjhlf0zAIA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0N65F4dNRPg",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 10 : Graphs of Trig Functions",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=0N65F4dNRPg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0SQqTkZ-sNo",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 6 : Sin, Cos, Tan",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=0SQqTkZ-sNo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "26YPLlxPWNc",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 19 : The 3-Part Sine Rule",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=26YPLlxPWNc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2vo2WM_rERU",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 8 : The Unit Circle",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=2vo2WM_rERU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3HyPhIcn62A",
+   "title": "Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q8",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=3HyPhIcn62A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3Y1f2Thm3dg",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGSCE (2017) | Part 1 : The Significance of Pi",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=3Y1f2Thm3dg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4TjmJDT2kcQ",
+   "title": "Edexcel IGCSE 4PM1/01R Jan 2023 Exam Solutions Q6b",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=4TjmJDT2kcQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "5irY2U_8Ri8",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 22 : Graph Symmetry, Tan(A+-B)",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=5irY2U_8Ri8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "5z_94vb0LT8",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 23 : Trig Equation Techniques",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=5z_94vb0LT8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "67mC5kPkBvc",
+   "title": "Edexcel IGCSE 4PM1/01R Jan 2023 Exam Solutions Q6a",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=67mC5kPkBvc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6_qhQkw--V8",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q10",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=6_qhQkw--V8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6tGIvptlc8o",
+   "title": "Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q7",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=6tGIvptlc8o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7C0ndWbD8yo",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q2",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=7C0ndWbD8yo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7l15aSl4Ph0",
+   "title": "Edexcel IGCSE Further Pure Maths 4PM1 June 2011 Past Papers Solutions Q6 part 1",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=7l15aSl4Ph0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8m_VJz9_3pc",
+   "title": "Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q2",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=8m_VJz9_3pc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "A8BNJ8QW2L4",
+   "title": "Edexcel IGCSE 4PM1/01R Jan 2023 Exam Solutions Q1",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=A8BNJ8QW2L4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "AuPOTpgQ5kA",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q2",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=AuPOTpgQ5kA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BGooykudqGw",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q5",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=BGooykudqGw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BIttSYielSo",
+   "title": "Edexcel Further Pure Maths IGCSE Past Papers | Jun 2010 P2 Q6",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=BIttSYielSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CYcyqEqCRMY",
+   "title": "Edexcel IGCSE Further Pure Maths 4PM1 June 2011 Past Papers Solutions Q4 part 1",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=CYcyqEqCRMY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DFyM-Mx7ceU",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q10",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=DFyM-Mx7ceU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DPiPSMGJh3s",
+   "title": "IGCSE Pure Mathematics (4PM1) May Series | Full Specification Review | Complete Exam Revision",
+   "provider": "tsil-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=DPiPSMGJh3s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TSIL (pure-maths differentiation/topic lectures binding igcse-further-maths-19 at the df<=3 bar; 4MB1/4MA1/4BS1 coded titles anchor) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Dmn12fs8CZc",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 21 : Sin(A+B), Cos(A+B)",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=Dmn12fs8CZc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "E1uhb8FhcrE",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q1",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=E1uhb8FhcrE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ENf-KmqbOEM",
+   "title": "Edexcel IGCSE Further Pure Maths 4PM1/01 Jan 2020 Q.7",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=ENf-KmqbOEM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "EcjJ_9LAMRk",
+   "title": "Edexcel IGCSE Further Pure Maths (4PM0/02) June 2018 Q4a",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=EcjJ_9LAMRk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ElR6IE4Csdc",
+   "title": "Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q4",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=ElR6IE4Csdc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FB-ZmIDx-9E",
+   "title": "Edexcel IGCSE Further Pure Maths 4PM1 June 2011 Past Papers Solutions Q4 part 2",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=FB-ZmIDx-9E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FqjHaNp1wT8",
+   "title": "Edexcel IGCSE Further Pure Maths 4PM1 June 2011 Past Papers Solutions Q9 part 2",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=FqjHaNp1wT8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GZ22pk1NZJw",
+   "title": "Solving the sine rule & cosine rule in Pure Math",
+   "provider": "tsil-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=GZ22pk1NZJw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TSIL (pure-maths differentiation/topic lectures binding igcse-further-maths-19 at the df<=3 bar; 4MB1/4MA1/4BS1 coded titles anchor) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Gm93dK7b8cw",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 14 : More on Inverse Trig",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=Gm93dK7b8cw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "IpdNcj5luY4",
+   "title": "Edexcel Further Pure Maths IGCSE Past Papers | Jan 2013 P2 Q1-6",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=IpdNcj5luY4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JDcKvijUaSo",
+   "title": "Edexcel IGCSE Further Pure Maths 4PM1 June 2011 Past Papers Solutions Q6 part 2",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=JDcKvijUaSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KdKE5Wngc0c",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 12 : Trig ratio for any angle",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=KdKE5Wngc0c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LtR52jObFeE",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 7 : Special Sin, Cos, Tan",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=LtR52jObFeE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MR_7ayt0u_I",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q11",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=MR_7ayt0u_I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "N1SbGzn0Zig",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q8",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=N1SbGzn0Zig",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NkqCmDIjoG4",
+   "title": "Edexcel Further Pure Maths IGCSE Past Papers | June 2011 P2 Q9",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=NkqCmDIjoG4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RPB6ORC2BvI",
+   "title": "Edexcel IGCSE Further Pure Maths 4PM1/02R Jan 2020 Q.5 Part 2",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=RPB6ORC2BvI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SFFIOLrN2P8",
+   "title": "Pearson Edexcel IGCSE Further P.Math (4PM1/01) | Paper 1 | Question 7-11 Solution | October 2025",
+   "provider": "tsil-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=SFFIOLrN2P8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TSIL (pure-maths differentiation/topic lectures binding igcse-further-maths-19 at the df<=3 bar; 4MB1/4MA1/4BS1 coded titles anchor) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "TKuZawQKK08",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 13 : 2D Problem Solving",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=TKuZawQKK08",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "U2yh3neX1zA",
+   "title": "Pearson Edexcel IGCSE Further P.Math (4PM1/01) | Paper 1 | Question 1-6 Solution | October 2025 Exam",
+   "provider": "tsil-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=U2yh3neX1zA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TSIL (pure-maths differentiation/topic lectures binding igcse-further-maths-19 at the df<=3 bar; 4MB1/4MA1/4BS1 coded titles anchor) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ULzg21fCS4s",
+   "title": "Edexcel IGCSE 4PM1/02R Jan 2023 Exam Solutions Q2ab",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=ULzg21fCS4s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UTgj0LpQ27A",
+   "title": "Edexcel Further Pure Maths IGCSE Past Paper - June 2016 P1 Q8: Vectors",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=UTgj0LpQ27A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WK-lHRM-83k",
+   "title": "Edexcel Further Pure Maths IGCSE Past Papers | Jun 2015 P2 Q10",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=WK-lHRM-83k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "X3VuvAURRvE",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 15 : Triangles in 3D",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=X3VuvAURRvE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "X6vcfYKQT50",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 5 : Area of a Sector",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=X6vcfYKQT50",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "X7VsYDKdDts",
+   "title": "[SEE DESCRIPTION] Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q11",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=X7VsYDKdDts",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XXoFN4mws3c",
+   "title": "Edexcel Further Pure Maths IGCSE Past Papers | Jan 2013 P1 Q1-7",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=XXoFN4mws3c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Y0EeT51D8WI",
+   "title": "Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q1",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=Y0EeT51D8WI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Yj1Riuf0G5M",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 18 : The Cosine Rule",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=Yj1Riuf0G5M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "abElU__vDxE",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q6",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=abElU__vDxE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "b5OcPH-VitY",
+   "title": "Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q6",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=b5OcPH-VitY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "c0H3i7CWbjs",
+   "title": "Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q5",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=c0H3i7CWbjs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "cB0dSMPf0Vo",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | SEASON FINALE : REVISION VIDEO",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=cB0dSMPf0Vo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "co4948GzIYU",
+   "title": "Edexcel IGCSE Further Pure Maths 4PM1 June 2011 Past Papers Solutions Q9 part1",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=co4948GzIYU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ctMlZ8J7KOc",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q1",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=ctMlZ8J7KOc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dMhHj7bSDUk",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 2 : Radians",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=dMhHj7bSDUk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fILC8DzOXOE",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q4",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=fILC8DzOXOE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fIkIu7VSehA",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q7",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=fIkIu7VSehA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fKgWuX5KTWA",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q5",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=fKgWuX5KTWA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "g2ixBE3XMHI",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q9",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=g2ixBE3XMHI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "g2rgVt_NEm0",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 20 : Sin^2 x and Cos^2 x",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=g2rgVt_NEm0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hOjIbYc-GKs",
+   "title": "Edexcel IGCSE Further Pure Maths 4PM1/02R Jan 2020 Q.5 Part 1",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=hOjIbYc-GKs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hT5ENQtrZ38",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 16 : Trig Rule Nomenclature",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=hT5ENQtrZ38",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "i4rtRGGxXd0",
+   "title": "Why is the product rule? | Edexcel IGCSE Further Pure Calculus",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=i4rtRGGxXd0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "k-wRbIaYwt8",
+   "title": "Edexcel IGCSE Further Pure Maths 4PM1 June 2011 Past Papers Solutions Q3",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=k-wRbIaYwt8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "k6pGTVAXvaU",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 3 : Arc Length",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=k6pGTVAXvaU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "kFsaY2lCnCM",
+   "title": "Edexcel IGCSE 4PM1/02R Jan 2023 Exam Solutions Q2c",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=kFsaY2lCnCM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "klJhIYdb6e0",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 17 : The Sine Area Rule",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=klJhIYdb6e0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ldlO2pcFVeY",
+   "title": "Dear Zubair, Edexcel Further Pure Maths IGCSE Past Papers | Jan 2013 P2 Q7-10",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=ldlO2pcFVeY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lyCLIo5xJes",
+   "title": "Edexcel IGCSE 4PM1/01 May/Jun 2020 Exam Solutions Q1",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=lyCLIo5xJes",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "m-VbgALFRN4",
+   "title": "Edexcel IGCSE 4PM1/01R Jan 2023 Exam Solutions Q3",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=m-VbgALFRN4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "me52kWJaoPs",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 11 : Inverse Trig Functions",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=me52kWJaoPs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oz6YML6Gkso",
+   "title": "Learn Trigonometry for Edexcel Further Pure Maths IGCSE (2017) | Part 9 : Tangent on the Unit Circle",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=oz6YML6Gkso",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pf7vPcjH_yM",
+   "title": "Finding Tangents & Normals Using Differentiation | Pure Mathematics | Syed Sabiur Rahman",
+   "provider": "tsil-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=pf7vPcjH_yM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TSIL (pure-maths differentiation/topic lectures binding igcse-further-maths-19 at the df<=3 bar; 4MB1/4MA1/4BS1 coded titles anchor) (oEmbed author verified per video)",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "phNHoEBU6tY",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q8",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=phNHoEBU6tY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pk91e50JV4Y",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q11",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=pk91e50JV4Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "s46aSlKN_3o",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q3",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=s46aSlKN_3o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "sVi7UNMUkXY",
+   "title": "Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q3",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=sVi7UNMUkXY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uTAYpn3HMRI",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q3",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=uTAYpn3HMRI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vxa0GfXHqM8",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q9",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=vxa0GfXHqM8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xCT-aPUkTB4",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q4",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=xCT-aPUkTB4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yu2IuloKDIs",
+   "title": "4pm1 P1 Oct Nov 2026",
+   "provider": "igcse-a-level-examcrack",
+   "watchUrl": "https://www.youtube.com/watch?v=yu2IuloKDIs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE & A Level ExamCrack (CIE A-level sciences 9700/9701/9702 papers 1-3 AS / 4-5 A2 + IGCSE 0620/0625/0610 (+ the 5090 dual) paper walkthroughs and predicted papers, 9609 business, 9708 econ, Edexcel 4MA1/4WM/4MB1 maths incl. the 4WM1H modular paper, IAL WPH/WBI/WCH predicted papers, 0580 (+ 4024 dual), 0452 (+ 7707 dual), 0606; the 9709 maths walkthroughs skip per ANCHOR-GRANULARITY section 6 (the P9/P17 precedent); grade-thresholds/timetables/results meta skipped; p15-swept resurfaced with the sentinel disclosure) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zRfPbQ8_Zy8",
+   "title": "Edexcel Further Pure Maths IGCSE Past Papers | Jan 2013 P1 Q8-11",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=zRfPbQ8_Zy8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zVxh54vihx8",
+   "title": "Edexcel IGCSE Further Pure Maths 4PM1/01 Jan 2020 Q.2",
+   "provider": "the-maths-centre",
+   "watchUrl": "https://www.youtube.com/watch?v=zVxh54vihx8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "TheMathsCentreCom (CIE 0606 additional maths paper walkthroughs — the 4037 O-Level token is the dual branding of the same syllabus, disclosed; Edexcel IGCSE Further Pure 4PM0/4PM1 walkthroughs; 0452 accounting revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "z_g5z5nzhJk",
+   "title": "Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q6",
+   "provider": "watchme-do-math",
+   "watchUrl": "https://www.youtube.com/watch?v=z_g5z5nzhJk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "WatchMeDoMath (Edexcel IGCSE Further Pure Maths 4PM0/4PM1 past-paper walkthroughs — the NEW P18 register onto igcse-further-maths-19; the channel's off-register vlog remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
@@ -1048,20 +2072,1751 @@
    "boardMismatch": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
    "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "2t-ww5YTIN8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[12], IGCSE FM, (Edexcel), 4PM1/02, June 2024, Volumes of Revolution between Curves\"; paper code 4PM in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "yu2IuloKDIs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"4pm1 P1 Oct Nov 2026\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "kFsaY2lCnCM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE 4PM1/02R Jan 2023 Exam Solutions Q2c\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "ULzg21fCS4s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE 4PM1/02R Jan 2023 Exam Solutions Q2ab\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "4TjmJDT2kcQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE 4PM1/01R Jan 2023 Exam Solutions Q6b\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "67mC5kPkBvc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE 4PM1/01R Jan 2023 Exam Solutions Q6a\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "m-VbgALFRN4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE 4PM1/01R Jan 2023 Exam Solutions Q3\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "A8BNJ8QW2L4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE 4PM1/01R Jan 2023 Exam Solutions Q1\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "lyCLIo5xJes",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE 4PM1/01 May/Jun 2020 Exam Solutions Q1\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "JDcKvijUaSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE Further Pure Maths 4PM1 June 2011 Past Papers Solutions Q6 part 2\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "7l15aSl4Ph0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE Further Pure Maths 4PM1 June 2011 Past Papers Solutions Q6 part 1\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "FB-ZmIDx-9E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE Further Pure Maths 4PM1 June 2011 Past Papers Solutions Q4 part 2\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "CYcyqEqCRMY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE Further Pure Maths 4PM1 June 2011 Past Papers Solutions Q4 part 1\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "FqjHaNp1wT8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE Further Pure Maths 4PM1 June 2011 Past Papers Solutions Q9 part 2\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "co4948GzIYU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE Further Pure Maths 4PM1 June 2011 Past Papers Solutions Q9 part1\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "k-wRbIaYwt8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE Further Pure Maths 4PM1 June 2011 Past Papers Solutions Q3\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "RPB6ORC2BvI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE Further Pure Maths 4PM1/02R Jan 2020 Q.5 Part 2\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "hOjIbYc-GKs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE Further Pure Maths 4PM1/02R Jan 2020 Q.5 Part 1\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "ENf-KmqbOEM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE Further Pure Maths 4PM1/01 Jan 2020 Q.7\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "zVxh54vihx8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE Further Pure Maths 4PM1/01 Jan 2020 Q.2\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "EcjJ_9LAMRk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel IGCSE Further Pure Maths (4PM0/02) June 2018 Q4a\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "UTgj0LpQ27A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Paper - June 2016 P1 Q8: Vectors\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "BIttSYielSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Papers | Jun 2010 P2 Q6\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "-sjhlf0zAIA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Papers | Jan 2009 P2 Q7\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "WK-lHRM-83k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Papers | Jun 2015 P2 Q10\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "6tGIvptlc8o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q7\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "c0H3i7CWbjs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q5\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "X7VsYDKdDts",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"[SEE DESCRIPTION] Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q11\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "sVi7UNMUkXY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q3\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "8m_VJz9_3pc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q2\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Y0EeT51D8WI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q1\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "IpdNcj5luY4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Papers | Jan 2013 P2 Q1-6\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "ldlO2pcFVeY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Dear Zubair, Edexcel Further Pure Maths IGCSE Past Papers | Jan 2013 P2 Q7-10\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "zRfPbQ8_Zy8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Papers | Jan 2013 P1 Q8-11\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "XXoFN4mws3c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Papers | Jan 2013 P1 Q1-7\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "3HyPhIcn62A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q8\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "ElR6IE4Csdc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q4\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "NkqCmDIjoG4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Papers | June 2011 P2 Q9\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "b5OcPH-VitY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE Past Papers | Jan 2012 P1 Q6\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "pk91e50JV4Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q11\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "DFyM-Mx7ceU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q10\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "g2ixBE3XMHI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q9\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "phNHoEBU6tY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q8\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "-C3xysMvQHA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q7\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "z_g5z5nzhJk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q6\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "fILC8DzOXOE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q4\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "AuPOTpgQ5kA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q2\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "ctMlZ8J7KOc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q1\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "MR_7ayt0u_I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q11\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "6_qhQkw--V8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q10\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "vxa0GfXHqM8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q9\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "N1SbGzn0Zig",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q8\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "fIkIu7VSehA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q7\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "abElU__vDxE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q6\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "xCT-aPUkTB4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q4\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "7C0ndWbD8yo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q2\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "E1uhb8FhcrE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q1\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "BGooykudqGw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q5\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "s46aSlKN_3o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 2 Q3\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "fKgWuX5KTWA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q5\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "uTAYpn3HMRI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Edexcel Further Pure Maths IGCSE (2017) SAM Paper 1 Q3\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "DPiPSMGJh3s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"IGCSE Pure Mathematics (4PM1) May Series | Full Specification Review | Complete Exam Revision\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "SFFIOLrN2P8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Pearson Edexcel IGCSE Further P.Math (4PM1/01) | Paper 1 | Question 7-11 Solution | October 2025\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-further-maths-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "U2yh3neX1zA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"Pearson Edexcel IGCSE Further P.Math (4PM1/01) | Paper 1 | Question 1-6 Solution | October 2025 Exam\"; Edexcel IGCSE Further Pure Maths (4PM0/4PM1) session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "i4rtRGGxXd0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9A",
+    "9B",
+    "9C",
+    "9D",
+    "9E",
+    "9F",
+    "9G"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Calculus' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "cB0dSMPf0Vo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "5z_94vb0LT8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "5irY2U_8Ri8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "Dmn12fs8CZc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 9A 'Differentiation and integration of sums of multiples of powe' via token(s) ['cos', 'sin'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "g2rgVt_NEm0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 9A 'Differentiation and integration of sums of multiples of powe' via token(s) ['cos', 'sin'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "26YPLlxPWNc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "Yj1Riuf0G5M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "klJhIYdb6e0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "hT5ENQtrZ38",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "X3VuvAURRvE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "Gm93dK7b8cw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "TKuZawQKK08",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "KdKE5Wngc0c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "me52kWJaoPs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "0N65F4dNRPg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "oz6YML6Gkso",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "2vo2WM_rERU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "0SQqTkZ-sNo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 9A 'Differentiation and integration of sums of multiples of powe' via token(s) ['cos', 'sin'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "LtR52jObFeE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 9A 'Differentiation and integration of sums of multiples of powe' via token(s) ['cos', 'sin'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "X6vcfYKQT50",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 10A 'Radian measure, including use for arc length and area of sec' via token(s) ['area', 'sector'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "k6pGTVAXvaU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 10A 'Radian measure, including use for arc length and area of sec' via token(s) ['arc', 'length'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "dMhHj7bSDUk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "3Y1f2Thm3dg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "10F",
+    "10G",
+    "10H"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "pf7vPcjH_yM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9F"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 9F 'The equations of tangents and normals to the curvey = f(x)' via token(s) ['normals', 'tangents'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
+  },
+  {
+   "video": "GZ22pk1NZJw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 10D 'Use of the sine and cosine formulae 2 2' via token(s) ['cosine', 'sine'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 43,
-  "specPointsMapped": 15,
-  "specPointsUnmapped": 28,
-  "videosTotal": 34,
-  "videosMapped": 31,
+  "specPointsMapped": 29,
+  "specPointsUnmapped": 14,
+  "videosTotal": 124,
+  "videosMapped": 121,
   "videosUnmapped": 3,
-  "mappingRows": 31,
+  "mappingRows": 121,
   "byConfidence": {
-   "high": 0,
-   "medium": 18,
-   "low": 13
+   "high": 64,
+   "medium": 26,
+   "low": 31
   }
  },
  "inputs": {
@@ -1074,7 +3829,19 @@
    "path": "Videos/drafts/igcse-further-maths-19/video-map.draft.external.json",
    "task": "T-VIDEOMAP-P4 (shelf-direct lane, Cognito maths shelf: igcse-further-maths-19)",
    "reviewAppliedUtc": "2026-11-11T14:41:20Z"
+  },
+  "p9": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-further-maths-19/video-map.draft.external-p9.json",
+   "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
+   "reviewAppliedUtc": "2026-11-13T06:48:16Z"
+  },
+  "p18": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-further-maths-19/video-map.draft.external-p18.json",
+   "task": "T-VIDEOMAP-P18 (gap-profile judgment lane: the P18 filing PR #362 pool set admitted by owner order 'run P18 judgment' 2026-11-20; 5,843 pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-20T10:48:03Z"
   }
  },
- "generatedUtc": "2026-11-12T20:09:49.694Z"
+ "generatedUtc": "2026-11-20T10:53:23.275Z"
 }

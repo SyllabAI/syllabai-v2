@@ -1,0 +1,219 @@
+# EDITOR-W3R3-PROVISION — the ADR-044 fork-option-2 step-1 lane (the run-006
+# receipt's "App-role re-provisioning cutover — the F5-S7 law done right").
+#
+# WHY THIS LANE EXISTS: the app role of record (syllabai_v2_app_w2r2) is an
+# INHERIT member of neon_superuser — the Neon platform provisions
+# console/API-created roles into that membership (runs 004-006 measured the
+# full refusal ladder: per-table REVOKE invisible, ALTER ROLE refused from the
+# owner vantage, the Neon API refusing a password reset on neon_superuser).
+# The append-only receipts law (ADR-044 §7) is therefore UNENFORCEABLE on
+# w2r2 at the DB privilege layer. The run-007 CREATE-ROLE probe (workflow run
+# 43172104479) proved a SQL-created role holds ZERO memberships (P2) and
+# EXACTLY its granted verbs (P3) — this lane provisions that successor role
+# (syllabai_v2_app_w3r3) and proves it end-to-end on the same guard protocol
+# the 0028 apply lane of record runs on.
+#
+# Executed behind the t-tier1 guard protocol of record (the 0028 lane
+# verbatim, minus the enforcement-vantage steps the successor does not need):
+#   job 1 (cow-provision): a disposable Neon COW branch off production, a
+#     branch-local owner password reset (PRODUCTION ROLES NEVER TOUCHED),
+#     then the driver scripts/editor-provision-app-role.ts creates the
+#     successor role ON THE COW (in-process generated password — the branch
+#     dies at leg end), grants the law set and runs the full wire-proof
+#     battery (memberships [] / default-privileges verdict / positive+negative
+#     has_*_privilege sweep / read-only smoke AS the successor). THEN the
+#     FROZEN 0028 apply driver runs against the same COW with
+#     EDITOR_APP_ROLE=syllabai_v2_app_w3r3 — the full grants-apply path the
+#     cutover re-dispatch will take, proven green BEFORE prod sees anything.
+#     Receipts ALWAYS uploaded (even on failure); the COW is dropped +
+#     404-verified even on failure (if: always()).
+#   job 2 (prod-provision, needs job 1 ALL GREEN, mode=cow+prod): the
+#     provision driver against the OWNER-CAPABLE production DSN of record
+#     (SIB_PROD_DATABASE_URL). THE OPERATOR GATE IS STRUCTURAL: the prod leg
+#     refuses to run unless the successor DSN secret SIB_W3R3_DATABASE_URL is
+#     staged (the successor's password is the OPERATOR'S credential, staged
+#     via the console like every secret of record — it never crosses a
+#     receipt, an artifact, or this workflow's logs). Idempotent: a re-run
+#     over an already-provisioned role verifies instead of recreating.
+#
+# AFTER A GREEN PROD LEG (the run-006 receipt's sequence): (2) the operator
+# cuts the app's DATABASE_URL over to the staged successor DSN in Vercel +
+# live-verifies; (3) the 0028 apply lane re-dispatches with
+# app_role=syllabai_v2_app_w3r3 — its enforcement block now passes and the
+# wire proofs complete the Phase 1 exit criterion; (4) hygiene: retire the
+# w2r2/w2 surface once the app runs clean.
+#
+# Secrets of record: NEON_API_KEY (exists), SIB_PROD_DATABASE_URL (exists,
+# owner-capable), SIB_W3R3_DATABASE_URL (operator stages before mode=cow+prod
+# — THE OPERATOR GATE). Vars of record: NEON_PROJECT_ID,
+# NEON_PARENT_BRANCH_ID (exist). Receipts are scrubbed by construction: the
+# drivers record DB hosts only, never URIs, passwords or tokens.
+#
+# OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
+# dispatched, and the prod leg additionally refuses without the staged
+# successor secret. mode default = cow-only (disposable, zero prod contact).
+
+name: editor-w3r3-provision
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "cow-only (default — the COW proof; prod only after the operator stages SIB_W3R3_DATABASE_URL and reviews the receipt) | cow+prod"
+        required: false
+        default: "cow-only"
+      note:
+        description: "Operator note for this run"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: editor-w3r3-provision
+  cancel-in-progress: false
+
+jobs:
+  cow-provision:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+      - name: Install workspace deps (frozen lockfile)
+        run: bun install --frozen-lockfile
+      - name: Create COW branch (in-line read_write endpoint)
+        id: cow
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          set -euo pipefail
+          NAME="editor-w3r3-cow-${GITHUB_RUN_ID}"
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"parent_id\":\"${NEON_PARENT_BRANCH_ID}\",\"name\":\"${NAME}\"},\"endpoints\":[{\"type\":\"read_write\"}]}")
+          BRANCH_ID=$(echo "$RESP" | jq -r '.branch.id')
+          echo "branch_id=${BRANCH_ID}" >> "$GITHUB_OUTPUT"
+          HOST=""
+          for i in $(seq 1 60); do
+            EP=$(curl -sf "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}/endpoints" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
+            STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
+            # run-008 rehearsal finding (2026-11-13): the endpoints API now
+          # reports the COW lifecycle as init -> active with no 'ready' state
+          # observed in 270s of polling — accept both (see the 0028 lane).
+          if [ -n "$HOST" ] && { [ "$STATE" = "ready" ] || [ "$STATE" = "active" ]; }; then break; fi
+            sleep 3
+          done
+          [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+      - name: Reset BRANCH-LOCAL owner password (production roles untouched; 423-aware)
+        id: role
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          PW=""
+          for i in $(seq 1 20); do
+            CODE=$(curl -s -o /tmp/w3r3-reset.json -w "%{http_code}" \
+              -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neondb_owner/reset_password" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            if [ "$CODE" = "200" ]; then
+              PW=$(jq -r '.role.password' /tmp/w3r3-reset.json)
+              break
+            fi
+            if [ "$CODE" = "423" ]; then sleep 5; continue; fi
+            echo "unexpected reset status ${CODE}"; exit 1
+          done
+          [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
+          ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+          echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+      - name: Provision the successor role on the COW (law-set grants + full battery)
+        run: |
+          printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/w3r3.uri
+          chmod 600 /tmp/w3r3.uri
+          bun scripts/editor-provision-app-role.ts \
+            --db file:/tmp/w3r3.uri \
+            --receipt cow-w3r3-provision-receipt.json \
+            --role syllabai_v2_app_w3r3 \
+            --source-role syllabai_v2_app_w2r2 \
+            --password-source generate
+      - name: Apply 0028 AS the successor on the same COW (the cutover re-dispatch, proven green pre-prod)
+        env:
+          EDITOR_APP_ROLE: syllabai_v2_app_w3r3
+        run: |
+          bun scripts/editor-apply-0028.ts --db file:/tmp/w3r3.uri --receipt cow-editor-0028-w3r3-receipt.json
+      - name: Upload the receipt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: editor-w3r3-cow-receipts
+          path: |
+            cow-w3r3-provision-receipt.json
+            cow-editor-0028-w3r3-receipt.json
+          if-no-files-found: ignore
+      - name: DROP the COW + 404-verify (zero residue, even on failure)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          BRANCH_ID="${{ steps.cow.outputs.branch_id }}"
+          [ -n "$BRANCH_ID" ] || { echo "no branch to drop"; exit 0; }
+          curl -sf -X DELETE "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" > /dev/null || true
+          sleep 5
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          echo "post-delete GET = ${CODE}"
+          [ "$CODE" = "404" ] || { echo "COW residue — 404 verification FAILED"; exit 1; }
+
+  prod-provision:
+    needs: cow-provision
+    if: ${{ inputs.mode == 'cow+prod' && !failure() && !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+      - name: Install workspace deps (frozen lockfile)
+        run: bun install --frozen-lockfile
+      - name: Stage the prod vantages (the OPERATOR GATE is structural)
+        env:
+          SIB_PROD_DATABASE_URL: ${{ secrets.SIB_PROD_DATABASE_URL }}
+          SIB_W3R3_DATABASE_URL: ${{ secrets.SIB_W3R3_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          [ -n "$SIB_PROD_DATABASE_URL" ] || { echo "SIB_PROD_DATABASE_URL not staged — abort"; exit 2; }
+          [ -n "$SIB_W3R3_DATABASE_URL" ] || { echo "OPERATOR GATE: SIB_W3R3_DATABASE_URL is not staged — the successor's password is the operator's credential (stage it via the console first); refusing to invent one on production"; exit 2; }
+          printf '%s' "$SIB_PROD_DATABASE_URL" > /tmp/w3r3-prod.uri
+          printf '%s' "$SIB_W3R3_DATABASE_URL" > /tmp/w3r3-successor.uri
+          chmod 600 /tmp/w3r3-prod.uri /tmp/w3r3-successor.uri
+      - name: Provision the successor role against PRODUCTION (idempotent verify-or-create)
+        run: |
+          set -euo pipefail
+          [ -s /tmp/w3r3-prod.uri ] || { echo "prod URI not staged — abort"; exit 2; }
+          bun scripts/editor-provision-app-role.ts \
+            --db file:/tmp/w3r3-prod.uri \
+            --receipt prod-w3r3-provision-receipt.json \
+            --role syllabai_v2_app_w3r3 \
+            --source-role syllabai_v2_app_w2r2 \
+            --password-source file:/tmp/w3r3-successor.uri
+      - name: Upload the receipt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: editor-w3r3-prod-receipts
+          path: prod-w3r3-provision-receipt.json
+          if-no-files-found: ignore

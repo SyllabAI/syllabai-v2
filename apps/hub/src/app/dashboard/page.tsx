@@ -4,7 +4,7 @@ import { DashboardClient } from "./dashboard-client";
 
 export const metadata = {
   title: "Dashboard",
-  description: "Your subjects and their spec-anchored resources.",
+  description: "Your subjects and their spec-mapped resources.",
 };
 
 export default async function DashboardPage() {

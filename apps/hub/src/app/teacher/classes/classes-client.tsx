@@ -119,7 +119,7 @@ export function TeacherClassesClient({
             Classes
           </span>
         }
-        description="Your classes per subject — rosters, announcements and class-targeted assignments. Live from the SyllabAI backend; members see the classroom overlay inside their subject workspace, and independent students are never touched by it."
+        description="Your classes per subject — rosters, announcements and assignments."
         actions={
           <Button onClick={() => setShowCreate((v) => !v)} aria-expanded={showCreate}>
             <Plus className="size-4" aria-hidden /> New class
@@ -205,7 +205,7 @@ export function TeacherClassesClient({
           </p>
           <p className="mx-auto mt-1 max-w-md text-xs leading-relaxed text-muted-foreground">
             {localClasses.length > 0
-              ? "Your browser-local class containers are listed below — they live in this device only. Live rosters, announcements and class-targeted assignments start here: create a class, enroll registered students by email."
+              ? "Your locally saved classes are listed below — they live on this device only. Live rosters, announcements and class-targeted assignments start here: create a class, enroll registered students by email."
               : "Create your first class, enroll registered students by email, and publish announcements. A class-targeted assignment is visible to exactly its members; assignments without a class still reach every student."}
           </p>
         </div>

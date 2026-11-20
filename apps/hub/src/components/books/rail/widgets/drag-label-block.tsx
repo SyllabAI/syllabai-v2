@@ -11,7 +11,7 @@ import { useState } from "react";
 
 import type { RailBlock } from "@/lib/books-rail";
 
-import { CheckResetButtons, LiveHint, VerdictChip, WidgetCard, type Verdict } from "../check-shared";
+import { CheckResetButtons, echoCap, LiveHint, VerdictChip, WidgetCard, type InteractionVerdictListener, type Verdict } from "../check-shared";
 import { matchesAny } from "@/lib/books-chem";
 
 interface LabelSlot {
@@ -21,7 +21,16 @@ interface LabelSlot {
   alt?: string[];
 }
 
-export function DragLabelBlock({ block }: { block: RailBlock }) {
+export function DragLabelBlock({
+  block,
+  embedded = false,
+  onVerdict,
+}: {
+  block: RailBlock;
+  /** P2 interaction bridge (guided check slots): see sort-match-block. */
+  embedded?: boolean;
+  onVerdict?: InteractionVerdictListener;
+}) {
   const c = block.content;
   const labels = Array.isArray(c.labels) ? (c.labels as unknown[]).filter((l): l is string => typeof l === "string" && l.trim() !== "") : [];
   const slots = Array.isArray(c.slots)
@@ -56,8 +65,15 @@ export function DragLabelBlock({ block }: { block: RailBlock }) {
       if (got == null) return true;
       return !matchesAny(got, [s.answer, ...(s.alt ?? [])]);
     }).length;
-    setVerdict(wrong === 0 ? "correct" : wrong === slots.length ? "wrong" : "partial");
-    setDetail(wrong === 0 ? null : `${slots.length - wrong}/${slots.length} labelled correctly`);
+    const verdict: Verdict = wrong === 0 ? "correct" : wrong === slots.length ? "wrong" : "partial";
+    const detail = wrong === 0 ? null : `${slots.length - wrong}/${slots.length} labelled correctly`;
+    setVerdict(verdict);
+    setDetail(detail);
+    onVerdict?.({
+      verdict,
+      detail,
+      echo: echoCap(slots.map((s) => `${s.id} → ${placement[s.id] ?? "?"}`).join("; ")),
+    });
   };
 
   const reset = () => {
@@ -65,10 +81,11 @@ export function DragLabelBlock({ block }: { block: RailBlock }) {
     setSelected(null);
     setVerdict("unchecked");
     setDetail(null);
+    onVerdict?.({ verdict: "unchecked", detail: null, echo: null });
   };
 
   return (
-    <WidgetCard ord={block.ord} typeLabel="Label the diagram" prompt={prompt} accent>
+    <WidgetCard ord={block.ord} typeLabel="Label the diagram" prompt={prompt} accent hideMeta={embedded}>
       <LiveHint text={selected ? `Selected label: ${selected}` : ""} />
       {diagramCaption && (
         <p className="mb-2 rounded-md border bg-muted/50 px-2 py-1.5 text-xs text-muted-foreground">
@@ -85,7 +102,7 @@ export function DragLabelBlock({ block }: { block: RailBlock }) {
               type="button"
               onClick={() => setSelected(l === selected ? null : l)}
               aria-pressed={selected === l}
-              className={`rounded-md border px-2 py-1 text-xs ${
+              className={`rounded-md border px-2 py-1 text-xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:border-primary focus-visible:ring-2 focus-visible:ring-ring ${
                 selected === l ? "border-primary bg-primary/10" : "border-border bg-background"
               }`}
             >
@@ -107,7 +124,7 @@ export function DragLabelBlock({ block }: { block: RailBlock }) {
                   place(s.id);
                 }
               }}
-              className={`flex w-full items-center justify-between rounded-md border px-2 py-1.5 text-left text-xs ${
+              className={`flex w-full items-center justify-between rounded-md border px-2 py-1.5 text-left text-xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none ${
                 got ? "border-border bg-muted/60" : "border-dashed border-muted-foreground/40 text-muted-foreground"
               } ${selected != null ? "hover:border-primary" : ""}`}
               disabled={selected == null}
@@ -120,9 +137,11 @@ export function DragLabelBlock({ block }: { block: RailBlock }) {
         })}
       </div>
       <CheckResetButtons onCheck={check} onReset={reset} />
-      <div className="mt-1.5">
-        <VerdictChip verdict={verdict} detail={detail} />
-      </div>
+      {!embedded && (
+        <div className="mt-1.5">
+          <VerdictChip verdict={verdict} detail={detail} />
+        </div>
+      )}
     </WidgetCard>
   );
 }

@@ -36,8 +36,8 @@ const simLearner = SimLearnerState.parse(learnerJson) as SimLearnerState;
 export function mockProvider(): DemoDataProvider {
   return {
     id: "mock",
-    displayName: "Bundled corpus (real import)",
-    detail: `syllabai-resources@${manifest.importSource.ref} · 4CH1 · generated ${manifest.generatedUtc.slice(0, 10)}`,
+    displayName: "Built-in demo content",
+    detail: "Edexcel IGCSE Chemistry pilot bundle",
     manifest: async () => manifest,
     curriculum: async () => curriculum,
     conceptGraph: async () => conceptGraph,

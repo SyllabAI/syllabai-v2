@@ -1,6 +1,6 @@
 # DC10 — Tutor upgrade: keep the grounding, add the aim (T-TUTOR-AIM-1)
 
-**Status:** proposed, not started · **Date:** 2026-11-09 · **Provenance:** operator-directed upgrade study — learnharness mechanism analysis → internal v1/v2/v3 proposal → adversarial external review (Claude, relayed by operator, 2026-11) + GLM substitute review + ai-memory governance review (hardening only, 2026-11) · **Trace:** 1a1bcaac733073a1 · **Succeeds:** DC7 / DC9 (tutor retrieval, pivot, refusal — untouched; this plan layers above them)
+**Status:** P1 implemented (T-TUTOR-AIM-P1 run-001, merged #1061) · P2 implemented (T-TUTOR-AIM-P2 run-001 — §7.4/§7.5/§7.6 + the §7.3 refinement; merged #1068) · P3 implemented (T-TUTOR-AIM-P3 run-001 — §7.7 ledger + §7.8 loop + §7.9 calibration surfaces; PR of record; exam-date awareness parked) · **Date:** 2026-11-09 · **Provenance:** operator-directed upgrade study — learnharness mechanism analysis → internal v1/v2/v3 proposal → adversarial external review (Claude, relayed by operator, 2026-11) + GLM substitute review + ai-memory governance review (hardening only, 2026-11) · **Trace:** 1a1bcaac733073a1 · **Succeeds:** DC7 / DC9 (tutor retrieval, pivot, refusal — untouched; this plan layers above them)
 
 ## 1. Thesis
 
@@ -38,9 +38,11 @@ time and is therefore rationed to one optional post-answer probe.
    served-evidence-grounded learner graph.
 3. **Consultation brief** issued to an external reviewer — Appendix A
    (reconstructed from session records; the original text lives in operator
-   chat, trace 1a1b23049c206ef1).
+   chat, trace 1a1b23049c206ef1). The full reconstruction lives as
+   `DC10-APPENDIX-A-CONSULTATION-BRIEF.md`.
 4. **GLM substitute review** — Appendix B (position summary; ran on the same
-   brief when no direct Claude path existed).
+   brief when no direct Claude path existed). The position-level
+   reconstruction lives as `DC10-APPENDIX-B-GLM-SUBSTITUTE-REVIEW.md`.
 5. **External review (Claude, relayed by operator)** — the decisive input.
    Its full text lives in operator chat; §9 carries the condensed decision
    log with the load-bearing quotes.
@@ -162,6 +164,48 @@ on model updates. The work is discipline and closure, not schema:
 independent signals and no effect on downstream drill performance over 4
 weeks, revert the generation law to optional. Cheap kill: it is a lint rule
 and a prompt bump.
+
+**Run-001 (T-TUTOR-AIM-P1, 2026-11-17):** the corpus-side half shipped — the
+`insertOption` null hardcode is retired; packages carry `misconceptionNodeId`
+per option (additive parse); the apply flow enforces the tag law fail-closed
+(every wrong option names a catalog node when its topic's catalog is live;
+unresolvable or correct-option tags refuse the package; topics with no
+catalog rows pass untagged as the disclosed progressive-coverage residual,
+counted per package). The read side and the model-update write law were
+already wired and now have something to consume. The authoring-toolchain
+prompt bump is the content team's follow-up.
+
+**Run-001 (T-TUTOR-AIM-P2, 2026-11-18):** the P2 changeset shipped as ONE
+run. §7.4 capture-only, log-first: the three buttons (sure / think_so /
+guessing) ride the ask wire as an optional closed enum with NO server-side
+default (a no-tap ask logs NOTHING — the absence of a row is the null);
+the raw selection lands in the new append-only `tutor_ask_confidence`
+table (migration 0029) through the FREE_TUTOR sink's second guarded
+append; refusals still log the tap; anonymous previews log nothing
+(account-only); NOTHING reads the table — rule 4 gates every consumption
+on weeks of pure logging. §7.5 the aim lives: `assembleAim` (pure) is
+computed inside `assembleTutorContext` from the reads that call already
+holds — M3 stands, zero new reads, zero LLM. The strongest active
+misconception on a matched topic (catalog node id + title per the §11
+injection law) drives the correction-first opening; proven prerequisites
+(mastery ≥ 0.70) compress to one line; proven-strong depth-1 adjacent
+areas bias examples; the decay-due flag computes for the §7.8 hook and
+renders nothing in P2. The v19 bump (registry `tutor-grounded`) carries
+the AIM law; the aim renders as one unfenced block ONLY when it has
+something to aim — the EMPTY-tables user prompt is byte-identical to the
+pre-P2 composition (test-pinned at the prompt level AND the pipeline
+level). §7.3 refinement: the ask-side classifier (precision-first — only
+a question OPENING with one of the six exam command words pins) renders
+one COMMAND WORD OF RECORD line; the v18 shape law is byte-unchanged.
+§7.6 the probe: `selectProbe` offers at most ONE depth-1 prerequisite
+with an active gap signal (weak practiced state or an active attached
+misconception), offer-not-claim per §13.2 — metadata only on the answer
+view and the done frame, null on every refusal; the hub chip pre-fills
+the composer on tap (nothing is sent until the learner sends); ignoring
+it does nothing. Disclosed residuals: the CLA surface carries no
+confidence/aim in P2; the probe's tap pre-fills rather than serving an
+inline bank question (the inline probe is P3 with the drill loop); the
+books rail does not forward confidence.
 
 ### 7.2 Voice law (P1)
 Pinned-prompt additions to the tutor generation bump: no praise padding ("great
@@ -438,6 +482,10 @@ drills with decay; Teach SillyAI); the seven learnharness mechanisms; the
 v1/v2/v3 proposal; and the eight questions reproduced in §9. The brief's
 closing instruction to the reviewer: challenge, don't admire.
 
+The full reconstruction of the brief — all sections, the eight questions
+and the closing instruction — lives as
+`DC10-APPENDIX-A-CONSULTATION-BRIEF.md`.
+
 ## Appendix B — GLM substitute review (position summary)
 
 Ran on the identical brief when no direct Claude path was available; clearly
@@ -448,3 +496,7 @@ one pass; binary confidence rather than three buttons (rejected — §7.4 keeps
 three buttons with the log-first gate); opt-in diagnose mode (rejected —
 §7.6 keeps the collapsed post-answer probe instead). Full text was produced
 in-session and lives in operator chat.
+
+The position-level reconstruction — each surviving position, its convergence
+or divergence, and how DC10 resolved it — lives as
+`DC10-APPENDIX-B-GLM-SUBSTITUTE-REVIEW.md`.

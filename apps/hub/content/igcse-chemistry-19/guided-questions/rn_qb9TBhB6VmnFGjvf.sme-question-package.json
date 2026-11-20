@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -284,6 +284,24 @@
           "explanation": "Filtration speed is unaffected by how much reactant was in excess.",
           "misconception": "rate purpose invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "To dissolve any leftover solid",
+            "To speed up filtration",
+            "To make the precipitate purer",
+            "To obtain the maximum amount of precipitate"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "To obtain the maximum amount of precipitate"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -319,6 +337,24 @@
           "correct": false,
           "explanation": "The precipitate is insoluble by design, so it cannot be redissolved this way.",
           "misconception": "method confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Adding water of crystallisation",
+            "Dissolving the precipitate for recrystallisation",
+            "Cooling the residue for storage",
+            "Removing traces of the other solutions clinging to the residue"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Removing traces of the other solutions clinging to the residue"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -356,6 +392,26 @@
           "explanation": "The universal solubility of nitrates lets silver and lead(II) nitrates be used as the soluble reactants.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "All nitrates are soluble"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -392,6 +448,24 @@
           "explanation": "Melting point plays no part in precipitation.",
           "misconception": "irrelevant property cited"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because they are highly soluble",
+            "Because those salts are often insoluble, so they precipitate cleanly",
+            "Because they are the cheapest salts available",
+            "Because they melt at low temperature"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because those salts are often insoluble, so they precipitate cleanly"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -427,6 +501,24 @@
           "correct": false,
           "explanation": "No acid appears in this preparation at all.",
           "misconception": "wrong method frame"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The soluble salt by-product dissolved in water",
+            "The excess unreacted acid",
+            "The filter paper itself",
+            "The insoluble salt, which is the product"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The insoluble salt, which is the product"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

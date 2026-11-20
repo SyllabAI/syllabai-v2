@@ -1,0 +1,145 @@
+version: 1
+task:
+  id: T-SME-SEL-W9-34
+  title: 'SME picker layer wave 9, tranche 34 — the Revision-Notes picker mirror
+    for the queue pair (igcse-science-double-award-modular-24-chemistry-
+    unit-2 Pearson 4XSD1 2024 — the double-award-modular shape, letter
+    subcodes (T5:SUBf), 29 notes in 9 pairs + 0 sets (SETLESS) — ***
+    WAVE-8 PROBE ROSTER SLOT 3 *** /
+     ial-further-maths-18-further-pure-1 Pearson YFM01 2018 — the IAL
+    further-maths shape, the ial-maths-T code family with the NEW SUB_
+    subcode pattern, 25 notes in 9 pairs + 9 sets — *** WAVE-8 PROBE
+    ROSTER SLOT 1 ***; 29 + 25 loose = 54 notes; the TWENTY-FIFTH
+    consecutive FULLY-CLEAN audit — sdaw-chem-U2 PERFECT with zero
+    drift, ial-fp1-18 PERFECT on notes WITH THE WAVE''S TWELFTH DRIFT
+    EVENT: ELEVEN live-only paper-session rows (january-2021 ..
+    specimen-paper — the fm19 class from T28), carried as corpus-zero
+    rows + DRIFT_BY_COURSE; *** THE THIRD DOUBLE ROTATION (#12) —
+    PROACTIVE ***: BOTH tranche courses sit on the roster (slots 1 AND
+    3) — layering BOTH trips both slots; replacements:
+    accounting-17-financial-statements 20 (slot 1) + eng-lang-a-16-paper-2
+    11 (slot 3); as-english-gp-21 STAYS at slot 2; PIN SEARCH of record:
+    the by-T-CODE searches found ZERO pins; the by-SLUG searches hit
+    DATA-TOOLING one-shots (the inspected classes); BASE: 2a5a279e, NO
+    advance between turns'
+  owner: Super Z (zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6,
+    chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-SME-SEL (the SME selector band — wave 9 tranche 34 after tranche 33
+    #1104; the W1-W8 waves #867/#878/#886/#890/#907/#932/#942/#949/#952/#970)
+  wave: sme-selector
+  deps: [T-SME-SEL-W9-33, T-SME-SEL-W9-32, T-SME-SEL-W9-31, T-SME-SEL-W9-30,
+    T-SME-SEL-W9-29, T-SME-SEL-W9-28, T-SME-SEL-W9-27, T-SME-SEL-W9-26,
+    T-SME-SEL-W9-25, T-SME-SEL-W9-24, T-SME-SEL-W9-23, T-SME-SEL-W9-22,
+    T-SME-SEL-W9-21, T-SME-SEL-W9-20, T-SME-SEL-W9-19, T-SME-SEL-W9-18,
+    T-SME-SEL-W9-17, T-SME-SEL-W9-16, T-SME-SEL-W9-15, T-SME-SEL-W9-14,
+    T-SME-SEL-W9-13, T-SME-SEL-W9-12, T-SME-SEL-W9-11, T-SME-SEL-W9-10,
+    T-SME-SEL-W9-9, T-SME-SEL-W9-8, T-SME-SEL-W9-7, T-SME-SEL-W9-6,
+    T-SME-SEL-W9-5, T-SME-SEL-W9-4, T-SME-SEL-W9-3, T-SME-SEL-W9-2,
+    T-SME-SEL-W9-1, T-SME-SEL-W8-1, T-SME-SEL-W7-1, T-SME-SEL-W6-1,
+    T-SME-SEL-W5-1, T-SME-SEL-W4-1, T-SME-SEL-W3-1, T-SME-SEL-COSM-1,
+    T-SME-SEL-W2-1, T-SME-SEL-W1-1]
+  scope:
+    allowed:
+    - apps/hub/content/igcse-science-double-award-modular-24-chemistry-unit-2/
+      curriculum.json (+13 SME_REFERENCE nodes append-only: 4 section rows +
+      9 topic rows, verbatim from the live Revision-Notes picker fetch
+      2026-11-18; removal round-trip asserted byte-identical; standard
+      format — no byte-format event)
+    - apps/hub/content/ial-further-maths-18-further-pure-1/curriculum.json
+      (+28: 8 section rows + 20 topic rows + the 11 drift rows carried in
+      the fixtures block; standard format — no byte-format event)
+    - apps/hub/scripts/sme-wave9-fixtures.json (MERGED — the prior 69
+      course blocks byte-preserved, asserted deep-equal by the builder; 12
+      sections / 29 topic rows appended + ial-fp1's 11 corpus-zero drift
+      rows; per-course fetched 2026-11-18; NO setLaw pin; NO multiMatch
+      declaration — both courses single-match throughout;
+      DRIFT_BY_COURSE: sdaw-chem-U2 EMPTY; ial-fp1-18 the 11 session
+      slugs — the second NON-EMPTY drift set since T28 after T32's)
+    - apps/hub/scripts/verify_sme_wave9.ts (header tranche-34 + DRIFT_BY_
+      COURSE rows for the pair; ZERO runtime-code change)
+    - apps/hub/scripts/verify_sme_wave8.ts (THE THIRD DOUBLE ROTATION #12:
+      BOTH roster rows replaced — igcse-science-double-award-modular-24-
+      chemistry-unit-2 -> igcse-english-language-a-16-paper-2-poetry-and-
+      prose-texts-and-imaginative-writing AND ial-further-maths-18-further-
+      pure-1 -> igcse-accounting-17-financial-statements + the rotation-
+      history comment; as-english-gp-21 STAYS — NOTHING else)
+    - .syllabai/tasks/T-SME-SEL-W9-34.yaml + .syllabai/receipts/
+      T-SME-SEL-W9-34/run-001.md + lane artifacts + both worklogs
+      (append-only)
+    forbidden:
+    - notes.json / questions.json (content untouched; homes are runtime via
+      smeRowOfNote / smeRowOfQuestionSet by the carried slugs)
+    - the official 61/42 spines (byte-untouched — family counts + per-node
+      digest pinned in the fixtures and asserted by the gate)
+    - any set home, question content, note content, flashcard
+    - the as-english-gp-21 roster row (slot 2 stays untouched)
+    - revision-notes/page.tsx + exam-questions/page.tsx + spec-tree.ts (the
+      W7/W8 runtime already serves the layer generically; zero-code tranche)
+    - src/lib/flashcard-sync-eligibility.ts + the core-sync walker (the
+      tranche-9 SME_REFERENCE filter already makes it layer-safe; the
+      prebuild chain ran GREEN on this lane BEFORE push)
+  evidence:
+  - baseline of record (fleet census at main 2a5a279e): resolved 8,988 (96
+    layered), user-facing loose 118; targets of the queue:
+    igcse-science-double-award-modular-24-chemistry-unit-2 29 loose,
+    ial-further-maths-18-further-pure-1 25 loose — 54 loose notes, zero
+    SME overlap
+  - tranche selection: the tranche-33 merge record's next-queue ranks 1-2
+  - live Revision-Notes picker fetches 2026-11-18 (polite curl,
+    __NEXT_DATA__, URLs of record from the corpus notes' own sourceUrl):
+    sdaw-chem-U2 4 sections/9 topics/29 subtopics and ial-fp1-18 8/20/25
+  - bijection audit of record (lane w9t34_live_audit.py): the TWENTY-FIFTH
+    consecutive FULLY-CLEAN audit — sdaw-chem-U2 PERFECT (0 missing, 0
+    exact-one failures, single-match, ZERO title mismatches, 29 = 29,
+    zero drift); ial-fp1-18 PERFECT on notes (25 = 25, single-match, ZERO
+    title mismatches) with the TWELFTH DRIFT EVENT disclosed (the eleven
+    fm19-class session rows)
+  - LESSON #2 applied (by-T-CODE + by-SLUG pin searches): the T-CODE
+    searches clean; the SLUG hits inspected and cleared (above)
+  - THE THIRD DOUBLE ROTATION #12 — PROACTIVE: both tranche courses sat on
+    the roster (slots 1 and 3); layering BOTH trips both slots — planned
+    at recon time and executed BEFORE the battery; replacements
+    accounting-17-financial-statements (slot 1) + eng-lang-a-16-paper-2
+    (slot 3) per the T10 rank-pick precedent and the
+    not-already-on-the-roster law; as-english-gp-21 STAYS; wave8 re-run
+    PASS with the triply-rotated roster; NOTE for T35: as-english-gp-21 +
+    accounting-17-financial-statements are the next queue pair (likely
+    ANOTHER double — slots 2 and the new slot 1); eng-lang-a-16-paper-2
+    likewise when reached
+  verification:
+  - bun apps/hub/scripts/verify_sme_wave9.ts PASS extended to 71 courses:
+    spine family counts + official-node digests intact (sdaw-chem-U2 61
+    9e557b025f9fc614 / ial-fp1-18 42 34244d581a24be0e); 12 section rows +
+    29 topic rows all SME_REFERENCE verbatim; per-row CORPUS note+set
+    counts pinned through the resolution law; sdaw-chem-U2 ALL 29 notes
+    resolve (0 sets — the set law blanket vacuous); ial-fp1-18 ALL 25
+    notes + 9 sets resolve; ial-fp1's drift set pinned exactly (the
+    second NON-EMPTY DRIFT_BY_COURSE since T28 after T32's);
+    sdaw-chem-U2 drift set EMPTY; deep links resolve; official
+    tree.topics carries zero SME codes; prior 69 fixture blocks
+    byte-preserved (asserted by the builder)
+  - wave8 PASS (post-double-rotation: accounting-17-financial-statements +
+    as-english-gp-21 + eng-lang-a-16-paper-2 all 0-hit); wave6 PASS;
+    wave1 + wave7 + cosmetics1 PASS; wire_r0 PASS (2,574 placed / 0
+    unplaced — byte-identical to the tranche-3..33 records)
+  - LESSON #3 applied (the prebuild chain BEFORE push): verify_corpus_23a
+    PASSED + flashcard core-sync manifest matches [igcse-chemistry-19] +
+    validate_cie_bundles PASS 106 rows + validate_gradeb_bundle clean +
+    verify_subject_identity PASS 106/106 — no CI-hub surprise
+  - the FULL CI-verify reproduction run BEFORE push: bun test apps/api
+    packages -> 0 fail (3,663 tests / 45,060 expects) — no pin events;
+    bundle-seed + cie-phase4-roster re-ran standalone: 79 tests, 0 fail
+  - typecheck CI-parity reproduction: bun x turbo run typecheck rc=0
+  - hub lib battery: the 6 standing fails of record at the pristine base
+    (the #1041 window's set) — zero contact with this lane's files
+  - PRE-EXISTING DEBTS DISCLOSED NOT TOUCHED (zero contact with this lane's
+    files): the 6 standing lib reds above; the standing credential rotation
+    reminder (FIFTY-SIXTH filing)
+  effect_of_record:
+  - the queue pair's /revision-notes selectors now mirror SaveMyExams' own
+    Revision-Notes organization verbatim with corpus-true counts; the
+    loose-notes cards empty (54 formerly-loose notes now have rows)
+  - fleet-wide 98 layered courses / 9,042 resolved / user-facing loose 64;
+    next-tranche queue re-measured at the lane tree (see receipt)

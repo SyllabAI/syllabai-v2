@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -284,6 +284,24 @@
           "explanation": "Sources emit; they do not absorb into inactivity.",
           "misconception": "absorption myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the source’s activity is decreasing",
+            "the source is absorbing radiation",
+            "the GM tube is failing",
+            "background radiation is rising"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the source’s activity is decreasing"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -319,6 +337,24 @@
           "correct": false,
           "explanation": "Fluctuation is expected physics, not fault.",
           "misconception": "fault myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "that the GM tube is faulty",
+            "that activity increases with time",
+            "that radioactive decay is a random process",
+            "that the source is contaminated"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "that radioactive decay is a random process"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -356,6 +392,24 @@
           "explanation": "The decaying population shrinks one nucleus at a time.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the nuclei get too heavy to decay",
+            "the emitted radiation removes energy from the source",
+            "one fewer unstable nucleus remains to decay later",
+            "the detector counts fewer because it moves away"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "one fewer unstable nucleus remains to decay later"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -392,6 +446,24 @@
           "explanation": "Nothing suggests a subtraction error.",
           "misconception": "method myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a roughly steady activity with random fluctuation",
+            "the activity is doubling each minute",
+            "background was subtracted twice",
+            "the detector is broken"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a roughly steady activity with random fluctuation"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -427,6 +499,27 @@
           "correct": false,
           "explanation": "Activity cannot rise in an isolated source.",
           "misconception": "direction error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a downward-sloping, wobbly curve",
+                    "downward-sloping, wobbly curve"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

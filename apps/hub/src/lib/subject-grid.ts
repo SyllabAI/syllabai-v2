@@ -3,7 +3,10 @@
  * review 2026-11-04 — the "mobile 2-2-1 subject-grid orphan" nit).
  *
  * The dashboard's subject grid is
- *   `grid gap-4 sm:grid-cols-2 2xl:grid-cols-3`
+ *   `grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-3`
+ *   (the base `grid-cols-1` — added 2026-11-13, visual audit V-1 — gives
+ *   the <sm band an explicit shrinkable minmax(0,1fr) column so the
+ *   truncate rows' nowrap min-content cannot widen the implicit track)
  * holding N subject cards plus ONE trailing "Got another course?" tile.
  * The trailing tile is the grid's terminator, so its span must adapt to
  * the row it lands in — otherwise some counts read broken:

@@ -260,8 +260,11 @@ export function LocalClassWorkspace({
               <Users className="size-3" aria-hidden />
               Class workspace
             </Badge>
+            {/* V-7 (visual audit): "browser-local container" is implementation
+                vocabulary shown to teachers — the same honesty in teacher
+                nouns. */}
             <Badge variant="secondary" className="text-2xs font-normal">
-              browser-local container
+              Saved on this device
             </Badge>
           </span>
         }
@@ -372,15 +375,16 @@ export function LocalClassWorkspace({
                 <span className="flex size-9 items-center justify-center rounded-md bg-primary/10">
                   <MapIcon className="size-4 text-primary" aria-hidden />
                 </span>
+                {/* V-7 (visual audit): the card badge speaks teacher nouns. */}
                 <Badge variant="outline" className="text-2xs font-normal">
-                  browser-local
+                  On this device
                 </Badge>
               </div>
               <h3 className="mt-3 text-sm font-semibold">Geography progress</h3>
               <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
                 Every subject&apos;s spec tree — topic by subtopic — with the notes, exam
                 questions and flashcards behind each one, and the honest gaps. Cohort mastery is
-                the core heatmap&apos;s surface.
+                the Class insights heatmap&apos;s surface.
               </p>
               <Button asChild size="sm" variant="outline" className="mt-3 gap-1.5">
                 <Link href={`/teacher/classes/${cls.id}/geography`}>
@@ -557,9 +561,12 @@ export function LocalClassWorkspace({
         <div className="flex items-start gap-2 rounded-md border border-dashed bg-muted/40 p-3 text-xs leading-relaxed text-muted-foreground">
           <Database className="mt-0.5 size-3.5 shrink-0" aria-hidden />
           <span>
-            This class container lives in this browser, like the student&apos;s subject roster — it
-            is not visible to students or other teachers. Enrolled-student rosters, announcements
-            and live cohort analytics are core surfaces:{" "}
+            {/* V-7 (visual audit): the explainer keeps its full honesty about
+                data locality but drops the internal nouns ("container",
+                "core surfaces") for teacher nouns. */}
+            This class is saved only on this device, like the student&apos;s subject roster —
+            it is not visible to students or other teachers. Enrolled-student rosters,
+            announcements and live cohort analytics live in the shared teacher console:{" "}
             <Link href="/teacher/classes" className="font-medium text-foreground underline underline-offset-2">
               Classes
             </Link>{" "}

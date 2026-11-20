@@ -23,9 +23,18 @@ import { usePathname } from "next/navigation";
 import { useSyncExternalStore } from "react";
 
 export function signInHref(pathname: string, search: string): string {
-  const next = search ? `${pathname}?${search}` : pathname;
-  const params = new URLSearchParams({ next });
-  return `/login?${params.toString()}`;
+  // V-8 (visual audit): on /login itself the header link must NOT serialise
+  // the page's own ?next into another next. Observed live: /login carrying
+  // ?next=%2Fcourses… rendered the header link as
+  // /login?next=%2Flogin%3F%3Fnext%3D… — a nested, double-"?" self-reference
+  // (the audit's original /login?next=%2Flogin finding, compounded). A bare
+  // /login lets nextDestination() fall through to the role home.
+  const onLogin = pathname === "/login" || pathname.startsWith("/login/");
+  const next = onLogin ? "" : search ? `${pathname}?${search}` : pathname;
+  const params = new URLSearchParams();
+  if (next) params.set("next", next);
+  const qs = params.toString();
+  return qs ? `/login?${qs}` : "/login";
 }
 
 function subscribe(onChange: () => void) {

@@ -137,6 +137,23 @@ export interface InkStrokeShape {
   widthFrac: number;
   /** Normalized 0..1 [x,y] points (page-box fractions, clamped). */
   points: Array<[number, number]>;
+  /**
+   * T-MG-INK-11 run-001 (the stylus lane): the per-point stylus pressure,
+   * PRESENT ONLY FOR PEN STROKES (mouse/touch commits carry none — their
+   * strokes render at the plain widthFrac, byte-identical to every shape
+   * already in the wild). Index-aligned with `points`, each value the raw
+   * PointerEvent pressure (0..1; the Pointer Events spec's mouse default
+   * 0.5 maps through pressureWidthMul to exactly 1.0 — the backward-compat
+   * anchor). ADDITIVE under the grammar laws (the mtext/tombstone
+   * precedent): the container id stays syllabai-ink/1 (the bump is
+   * forbidden), an OLD client's parse picks its known fields and strips
+   * this — those strokes degrade to constant width, never a throw, never
+   * a dropped shape. The parse law is defensive both ways: a pressures
+   * array that is not index-aligned with points (or carries a non-finite
+   * / out-of-range value) is DROPPED AT PARSE — the stroke's points stay
+   * honest, the width falls back to the plain law.
+   */
+  pressures?: number[];
 }
 
 export interface InkTextShape {
@@ -248,7 +265,24 @@ export function parseShape(v: unknown): InkShape | null {
       if (typeof x !== "number" || typeof y !== "number") return null;
       points.push([clamp01(x), clamp01(y)]);
     }
-    return { id: s.id, kind: "stroke", page, color: s.color, widthFrac: s.widthFrac, points };
+    // T-MG-INK-11 run-001: the pressure channel — present only when it is
+    // VALID (index-aligned with points, every value finite 0..1); any
+    // violation drops the channel and keeps the stroke (the honest-parse
+    // law: the points survive, the width falls back to the plain law).
+    const shape: InkStrokeShape = { id: s.id, kind: "stroke", page, color: s.color, widthFrac: s.widthFrac, points };
+    if (Array.isArray(s.pressures) && s.pressures.length === points.length) {
+      const pressures: number[] = [];
+      let ok = true;
+      for (const p of s.pressures) {
+        if (typeof p !== "number" || !Number.isFinite(p) || p < 0 || p > 1) {
+          ok = false;
+          break;
+        }
+        pressures.push(p);
+      }
+      if (ok) shape.pressures = pressures;
+    }
+    return shape;
   }
   if (s.kind === "text") {
     if (!isColor(s.color)) return null;

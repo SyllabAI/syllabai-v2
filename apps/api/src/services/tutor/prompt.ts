@@ -17,6 +17,9 @@ import { MAX_TURN_CHARS, ROLE_ASSISTANT, isAssistantTurn, type ConversationTurn 
 import type { EvidenceItem } from "./evidence";
 import { QUIZ_STEM_BOUND, type QuizScaffold } from "./quiz-scaffold";
 import type { MarkContext } from "./mark-context";
+import type { AimBrief } from "./context";
+import type { ExamContextBrief } from "./exam-calendar";
+import type { CommandWordClassification } from "./command-word";
 
 // ── refusal texts (KaRagService.java :48-83, byte-verbatim) ─────────────────
 
@@ -105,7 +108,30 @@ export const PROMPT_REGISTRY_KEY = "tutor-grounded";
  *  stonewalled a mid-chat topic pivot with no way forward for the
  *  learner, and the turn recorded refused=false (evidence present but
  *  wrong — the analytics gap the refusal-truth patch closes). */
-export const PROMPT_VERSION = "17";
+export const PROMPT_VERSION = "20";
+/** v20 (T-TUTOR-AIM-P3 run-003, DC10 §7.9): the EXAM CALENDAR law — the
+ *  operator's §13.3 gate release (trace 1a1f41f5679f5ec5 "proceed"): the
+ *  learner's DECLARED exam sitting for the scoped course rides prompt
+ *  assembly as the EXAM CONTEXT block (metadata only, §13.2 — the window
+ *  dates, the series code/label, the URGENCY band computed by the
+ *  deterministic bands of record), the v20 law weights answer EMPHASIS by
+ *  the calendar, and the §7.8 directive's planned count tightens at
+ *  NEAR/IN_WINDOW (the spacing arm). The v19 AIM law text is
+ *  BYTE-UNCHANGED; an ask without an EXAM CONTEXT block renders nothing
+ *  and is answered exactly as before (the empty-context byte-stability
+ *  law, test-pinned).
+ *  v19 (T-TUTOR-AIM-P2, DC10 §7.5): the AIM law — when the user message
+ *  carries the deterministic AIM block (computed from the learner's own
+ *  record), open with the correction it names, compress what it marks
+ *  PROVEN to one line, bias examples toward the strong areas it lists.
+ *  Aim shapes selection and emphasis only; sourcing, citations, the
+ *  refusal shape law and the two-tier disclosure law are untouched, and
+ *  an ask with no AIM block is answered exactly as before (the
+ *  empty-context byte-stability law). The command-word DETECTION is now
+ *  pinned ask-side (§7.3 refinement) — the v18 shapes are byte-unchanged.
+ *  Prior bumps: v11 spec-is-a-map quiz law (run-014); v12 QUIZ SCAFFOLD
+ *  serving rule (run-015); v17 refusal shape law (T-TUTOR-PIVOT-1); v18
+ *  voice + command-word shape laws + §13.1 budget lint (T-TUTOR-AIM-P1). */
 export function promptIdentity(): string {
   return `${PROMPT_REGISTRY_KEY}/v${PROMPT_VERSION}`;
 }
@@ -151,6 +177,63 @@ const REFUSAL_SHAPE_LAW = `- Refusal shape. When the SOURCES cannot answer the Q
   topic pivot is often best served by a fresh ask. Never refuse a part
   the SOURCES do cover, and never open a refusal with any other
   apology wording.`;
+
+// ── v18 voice + command-word shape laws (T-TUTOR-AIM-P1, DC10 §7.2/§7.3) ────
+
+/** DC10 §7.2 voice law: no praise padding, no premise-agreement bias — the
+ *  correction comes first and plainly. The register law is presentation
+ *  only: it never touches sourcing (everything stays cited) or the
+ *  refusal/disclosure laws. */
+const VOICE_LAW = `- Voice. Open with the substance — never with praise or pleasantries
+  ("great question", "good thinking"): no padding before or after the
+  answer. If the QUESTION rests on a false premise, correct the premise
+  plainly first, then answer what remains; never open by agreeing with
+  a wrong premise to be kind.`;
+
+/** DC10 §7.3 command-word / mark-scheme shape law: the answer takes the
+ *  shape the exam's own command word is marked for. Presentation only —
+ *  every claim still comes from the SOURCES with its citation, and the
+ *  two-tier disclosure law still governs WHAT may be stated (at tier 1
+ *  the shape names technique and the shape of a good answer, never
+ *  awardable marking points). */
+const COMMAND_WORD_SHAPE_LAW = `- Command-word shape. When the QUESTION carries an exam command
+  word, answer in the shape that word is marked for: "state"/"give"/
+  "name" — the answer alone, one line, no reasoning; "describe" — the
+  pattern, not the reasons; "explain" — the because/therefore chain,
+  every step cited; "calculate" — the full working with units;
+  "compare" — both sides on the same dimension; "evaluate" — both
+  sides plus an explicit judgement. The shape governs presentation
+  only: every claim still comes from the SOURCES with its citation,
+  and the two-tier disclosure law still governs what may be stated.`;
+
+/** DC10 §7.5 aim law (v19): how to consume the deterministic AIM block.
+ *  Presentation/emphasis only — the aim selects and orders what the SOURCES
+ *  already back; it never introduces a claim class, and its absence (the
+ *  empty-context ask) leaves the answer path byte-unchanged. */
+const AIM_LAW = `- AIM. When the user message carries an AIM block, it was computed
+  from this learner's own record for THIS question. Open with the
+  correction it names (plainly, per the voice law) before anything
+  else; compress what it marks PROVEN to at most one line — never
+  re-derive it; pick examples from the strong areas it lists when the
+  answer needs an example. The aim shapes selection and emphasis only:
+  every claim still comes from the SOURCES with its citation, and an
+  ask without an AIM block is answered exactly as before.`;
+
+/** DC10 §7.9 exam-calendar law (v20, run-003): how to consume the
+ *  deterministic EXAM CONTEXT block. Presentation/emphasis only — the
+ *  calendar reorders and re-weights what the SOURCES already back; it
+ *  never introduces a claim class, never touches the disclosure or
+ *  refusal laws, and its absence leaves the answer path byte-unchanged. */
+const EXAM_CALENDAR_LAW = `- Exam calendar. When the user message carries an EXAM CONTEXT
+  block, it states this learner's own declared sitting for the course and
+  its URGENCY band. Weight emphasis by the calendar: at NEAR or
+  IN_WINDOW lead with exam discipline — apply the command-word shapes,
+  rehearse mark-scheme literacy, frame practice as timed preparation; at
+  FAR favour the foundations the SOURCES cite. The calendar shapes
+  emphasis and ordering only: every claim still comes from the SOURCES
+  with its citation, the two-tier disclosure law and the refusal shape
+  law are untouched, and an ask without an EXAM CONTEXT block is
+  answered exactly as before.`;
 
 // ── fence codes (v6 prompt-injection defence, :77-97 + :449-465) ────────────
 
@@ -212,6 +295,10 @@ Rules:
 - If the SOURCES are insufficient to answer safely, say exactly what is
   missing and stop. Never fill gaps from general knowledge.
 ${REFUSAL_SHAPE_LAW}
+${VOICE_LAW}
+${COMMAND_WORD_SHAPE_LAW}
+${AIM_LAW}
+${EXAM_CALENDAR_LAW}
 - When the QUESTION names a specific exam-paper question and the SOURCES
   carry its question text and/or mark scheme, answer part by part in the
   paper's own order and label each part exactly as the paper labels it
@@ -317,6 +404,22 @@ export interface PromptContext {
    *  the submitted answer inside the fence pair — it is the learner's
    *  data). null = no mark state (the ordinary grounded ask). */
   markContext?: MarkContext | null;
+  /** T-TUTOR-AIM-P2 (DC10 §7.5): the deterministic aim — OUR scaffolding
+   *  (computed from the learner's own record + KG catalog node ids/titles,
+   *  outside the fences like INTERVENTION PLAN). null = no aim — NOTHING
+   *  renders (the empty-context byte-stability law). */
+  aim?: AimBrief | null;
+  /** T-TUTOR-AIM-P2 (DC10 §7.3): the ask-side command-word pin — OUR
+   *  deterministic classification of the fenced question. null = no pin —
+   *  nothing renders. */
+  commandWord?: CommandWordClassification | null;
+  /** T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the deterministic exam-calendar
+   *  brief — OUR scaffolding (computed from the learner's DECLARED exam
+   *  target for the scoped course; the §11 injection law keeps free text
+   *  out — dates, the series code/label, the band). null = no declared
+   *  target / unscoped / window ended — NOTHING renders (the empty-context
+   *  byte-stability law). */
+  exam?: ExamContextBrief | null;
 }
 
 /** Paper evidence renders to the larger bound (:368-376). */
@@ -425,6 +528,17 @@ export function userPrompt(
   }
   // the learner's raw question is data, not instructions (H2) — fenced
   sb.push(`QUESTION:\n${open}${query.trim()}${close}\n\n`);
+  // T-TUTOR-AIM-P2 (DC10 §7.3): the deterministic command-word pin — ONE
+  // line of OUR scaffolding (the classifier's verdict on the question above;
+  // outside the fences like the pin label). Absent ⇒ nothing renders — the
+  // composed prompt keeps the pre-DC10 bytes (byte-stability).
+  if (context.commandWord != null) {
+    sb.push(
+      `COMMAND WORD OF RECORD: ${context.commandWord.family} — the question opens with ` +
+        `"${context.commandWord.word}"; apply the matching answer shape from the ` +
+        `system prompt.\n\n`,
+    );
+  }
   sb.push(`LEARNER CONTEXT:\n${context.learnerBrief}\n\n`);
   // s140 episodic memory: omitted entirely when the learner has no history
   // on the matched topics (or on the CLA surface)
@@ -527,6 +641,69 @@ export function userPrompt(
   sb.push(`INTERVENTION PLAN:\n${plan.type} — ${plan.rationale}\n`);
   for (const action of plan.actions) {
     sb.push(`- ${action}\n`);
+  }
+  // T-TUTOR-AIM-P2 (DC10 §7.5): the deterministic AIM block — unfenced
+  // (OUR scaffolding computed from the learner's own record + KG catalog
+  // node ids/titles; the §11 injection law keeps free-text readings out).
+  // Rendered ONLY when the aim has something to aim: an empty-context ask
+  // renders NOTHING here — the composed prompt keeps the pre-DC10 bytes
+  // (the empty-context byte-stability law, test-pinned). The decay-due
+  // flag is §7.8's (P3) input and renders nothing in P2.
+  const aim = context.aim;
+  if (aim != null) {
+    sb.push(`AIM (computed from this learner's own record for THIS question):\n`);
+    if (aim.correction != null) {
+      sb.push(
+        `- CORRECTION-FIRST: the learner carries the active misconception ` +
+          `"${aim.correction.title}" on this topic — open by correcting it ` +
+          `plainly (per the voice law), then answer the question.\n`,
+      );
+    }
+    if (aim.provenPrerequisites.length > 0) {
+      sb.push(
+        `- PROVEN (do NOT re-derive; at most one acknowledging line): ` +
+          aim.provenPrerequisites.map((p) => `"${p.title}"`).join(", ") +
+          `\n`,
+      );
+    }
+    if (aim.strongAreas.length > 0) {
+      sb.push(
+        `- EXAMPLES: bias any example toward the learner's proven-strong ` +
+          `adjacent areas: ` +
+          aim.strongAreas.map((s) => `"${s.title}"`).join(", ") +
+          `\n`,
+      );
+    }
+    sb.push(`\n`);
+  }
+  // T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the deterministic exam-calendar
+  // block — unfenced (OUR scaffolding computed from the learner's DECLARED
+  // exam target for the scoped course; metadata only, §13.2/§11 — the
+  // window dates, the series code/label, the URGENCY band; never learner
+  // free text). Rendered ONLY when a live declared target matched: an ask
+  // without one renders NOTHING here — the composed prompt keeps the
+  // pre-run bytes (the empty-context byte-stability law, test-pinned).
+  const exam = context.exam;
+  if (exam != null) {
+    sb.push(`EXAM CONTEXT (the learner's declared exam target for this course):\n`);
+    sb.push(
+      `- SITTING: ${exam.seriesCode} — ${exam.seriesLabel}; window ` +
+        `${exam.windowStart} to ${exam.windowEnd}\n`,
+    );
+    // the CALENDAR line is urgency-aware (deterministic strings per band):
+    // an open window says so plainly instead of a negative countdown
+    if (exam.urgency === "IN_WINDOW") {
+      sb.push(
+        `- CALENDAR: the sitting window is open now — it closes in ` +
+          `${exam.daysToWindowEnd} day(s)\n`,
+      );
+    } else {
+      sb.push(
+        `- CALENDAR: the window opens in ${exam.daysToWindowStart} day(s) ` +
+          `and closes in ${exam.daysToWindowEnd}\n`,
+      );
+    }
+    sb.push(`- URGENCY: ${exam.urgency}\n\n`);
   }
   sb.push("\nSOURCES (cite these as [n]):\n");
   let rendered = 0;

@@ -1,0 +1,212 @@
+version: 1
+task:
+  id: T-TUTOR-AIM-P3
+  title: "DC10 Phase 3 — served-evidence ledger (§7.7) + tutor→drill loop (§7.8) + calibration surfaces (§7.9), one changeset run-001"
+  owner: "Super Z (zai-web session web-b30b2f0b-5100-49db-a722-e5370b2ed7d5, chat e55037d4-6fd0-4a2e-94b0-dc777c61929f, dispatch trace 1a1ed4c8e69c96a9)"
+  status: "IN_REVIEW — PR of record opened; receipts attached; the CI-green merge is the operator's standing order of record (the #1061 review+merge precedent)"
+  priority: P1
+  band: T-TUTOR-AIM (DC10 — keep the grounding, add the aim)
+  deps: ["T-TUTOR-AIM-P1 (merged #1061, tutor-grounded/v18)", "T-TUTOR-AIM-P2 (merged #1068, tutor-grounded/v19 + migration 0029)"]
+  execution_record: >
+    Plan of record: docs/DC10-TUTOR-AIMED-ANSWERING-PLAN.md §6 P3 (§7.7/§7.8/
+    §7.9) + §13.2/§13.3. This run implements the P3 scope the operator named
+    — "served-evidence ledger + tutor→drill loop + calibration surfaces" —
+    exactly as phased; the exam-date-awareness half of §7.9 is PARKED (not
+    named by the operator; the prompt-assembly bump it would require is a
+    §13.3-separate decision).
+    §7.7 THE LEDGER: migration 0030 (raw SQL per the 0007/0027/0029
+    disclosure law) adds tutor_served_evidence — the plan's sketch of record
+    verbatim (spec_node_id TEXT: tutor-surface rows carry the KG node id,
+    the drill/mock_mark surfaces carry (course, code) addresses; chunk_id
+    nullable — corrections may not map to a chunk; session_id + turn_id NOT
+    NULL — the ledger is SESSION-SCOPED, a sessionless ask persists nothing;
+    the two CHECK vocabularies; the plan's own (learner_id, spec_node_id,
+    served_at) index + a turn anchor). The write is a DETERMINISTIC
+    PROJECTION (projectServedEvidence, pure, zero LLM, zero extraction):
+    citations key on KG node ids (KG-grounded items) or the item's
+    associated topics (chunk-backed items, chunk_id riding); corrections /
+    prereq_recaps / example targets come from the P2 aim; dedupe by
+    (spec_node_id, chunk_id, kind). The route appends AFTER the §22 session
+    append fixes the assistant turn id (sessionStore.append now returns
+    assistantSeq — additive shape); fire-and-forget (the append-guard
+    class); anonymous previews and sessionless asks write NOTHING
+    (account-only). RETENTION FIXED AT BUILD TIME (the §12 open question 4):
+    180 days — the learner-model's staleness tau of record — with
+    purgeExpiredServedEvidence unit-pinned; the NIGHTLY WIRING of the purge
+    is the DISCLOSED RESIDUAL (the nightly band is a heavily pinned
+    transaction; the cron hook rides the next window band).
+    §7.8 THE LOOP: selectDrillDirectiveBasis (pure, M3 — the decision rides
+    the SAME pendingReviews read P2 already holds: the PENDING
+    review_schedules rows ∩ matched topics; zero new reads, zero LLM) → the
+    route MINTS the claimable directive after the append (directiveIdOf —
+    the deterministic domain-prefixed SHA-256 of (learner, session, turn);
+    stable under re-render, learner-bound) → insertDrillDirective lands the
+    row BEFORE the wire moves → the done frame / answer view carry the
+    directive METADATA ONLY (§13.2: node ids/codes/titles, the planned
+    count, the course scope, the §22 turnId — never learner free text).
+    THE CLAIM (POST /tutor/drill-directives/claim) is EXACTLY-ONCE under
+    TWO INDEPENDENT STATE GUARDS: (1) the server-issued row must exist and
+    be learner-owned (the id recomputes from the caller's OWN ids — the id
+    never travels from the client); (2) the claimed_at CAS (update ... where
+    claimed_at is null returning) — a re-render / double-tap / racing
+    client answers already_claimed with the SAME artefact. The draws are
+    created by THE F-182 SERVE PATH ITSELF (drawForLearner, the F-185 model
+    reading — the decay law's pick) at the ROW'S OWN course + targets (never
+    the caller's); a claim that scheduled nothing is NOT a claim (the
+    compensating release re-opens the CAS — retryable). The hub renders the
+    tonight-chip (Add N practice items for tonight?) and flips it to the
+    claimed copy from the response's ACTUAL count; the relay proxies the
+    claim (cookie→Bearer, the /api/ai posture). THE TEACH SILLYAI HANDOFF
+    (§7.8): rides when a misconception correction landed (the aim's
+    correction — independent of decay), metadata only, the tap pre-fills
+    the composer (the P2 probe-chip pattern — nothing is sent until the
+    learner sends); the predict→teach→check cadence home.
+    §7.9 THE CALIBRATION SURFACES (consume-later, per-learner): GET
+    /tutor/calibration — the deterministic read-out over the P2 confidence
+    log + THIS ledger + the graded drill evidence (the S1 graded
+    discipline): the ask-pairing law (same session, inside the pairing
+    window), the outcome law (graded parts at the paired nodes' codes within
+    14 days; correct = majority of the part's marks; nearest-preceding
+    attribution), the §7.4 GATES RENDER HONESTLY (gathering under the 15
+    covered-ask floor; no_signal when the sure-vs-guessing gap stays under
+    10 points — stay log-only; ok renders the bands in the plan's own words).
+    Rule 1's per-learner law holds everywhere (the learner's OWN rows,
+    never population stats); rule 3 is untouched (the ANSWER path never
+    learns the confidence influenced anything). The hub surfaces it as the
+    CalibrationCard on the dashboard (a per-learner section, renders nothing
+    on transport failure, zero free text on the wire — bands + numbers).
+    FOLD DISCIPLINE (the P2 review-fix precedent): BOTH 0030 tables folded
+    into ALL THREE schema-of-record planes (schema.ts declarations + the
+    checked-in 0000_snapshot.json + the rebaseline pin) — verify PASS, 0
+    drifts, the pin moved deliberately: 105/977/139/103/189.
+    GATES: bun x turbo run typecheck rc=0 (5/5 surfaces); FULL API suite
+    3037 pass / 13 skip / 0 fail (43,535 expects, 173 files) — the P2
+    baseline 2979 + the 58 new pins; new pins: served-evidence 14/14 (the
+    projection laws + the append-guard shape + the retention sweep),
+    drill-directive 17/17 (the deterministic rule + the id mint + the two
+    guards + the metadata law), calibration 16/16 (the pairing + outcome
+    laws + all three §7.4 gate statuses + the reader's per-learner scoping),
+    drill-claim-routes 8/8 (the dormant 503 posture + the authz shell + the
+    closed body + the guards through the wire + the release-on-empty),
+    rebaseline 33/33 (the folded planes); hub tsc clean; hub tutor battery
+    green. The v19 prompt registry UNTOUCHED (no bump this run — the aim
+    block renders nothing new; the byte-stability pins hold green inside
+    the full suite). NO risk-tier path; .github/** and golden/** untouched;
+    ZERO new LLM calls (every P3 surface is deterministic).
+    Deviations disclosed: (1) exam-date awareness PARKED (not in the
+    operator's named scope; the §13.3 gate taxonomy keeps its prompt-assembly
+    bump a separate decision); (2) the ledger's surface enum admits
+    probe/drill/mock_mark rows by schema but THIS changeset's writer covers
+    tutor_answer only — the other writers ride those surfaces' own builds
+    (the forward-compatible enum the plan itself specifies); (3) the
+    retention purge ships unit-pinned with the nightly wiring as the
+    disclosed residual; (4) the calibration outcome join matches drill
+    evidence by CODE (the (course, code) address space is code-keyed; the
+    cross-course code collision is a disclosed residual of that address
+    space, not a new weakness); (5) the directive's decay-due basis is the
+    held pendingReviews read (the M3 law's own boundary) — the F184 decay
+    law picks the CLAIM's items via the drill serve path's F-185 reading,
+    so the OFFER decision and the ITEM selection each ride their own
+    already-built law; (6) the CLA surface carries no ledger/directive/
+    calibration in P3 (the tutor chat ships first — the P2 disclosure's
+    posture continues).
+run_002_execution_record: >
+  The run-001 disclosed residual CLOSED on operator trace 1a1f2737f3f80841
+  "proceed" (2026-11-19): the nightly wiring of the §7.7 retention sweep.
+  runNightlyDispatch (services/cron/nightly-decay.ts, the RUN-002 ADDENDUM)
+  composes the T-MIG-126 window law UNTOUCHED + purgeExpiredServedEvidence
+  (180 days, the staleness tau of record) riding AFTER the window
+  transaction's COMMIT — the placement law (degrade-never-block): never
+  inside (a purge failure there would poison Postgres transaction state —
+  block or silent rollback, both forbidden); after, the sweep is idempotent
+  housekeeping, guarded (a throw logs under [served-evidence-purge] and
+  degrades to servedEvidencePurged = null — the window result rides
+  UNTOUCHED), riding BOTH outcomes (ok AND already-run). THE COUNT LAW: the
+  sweep reports the HONEST count via the data-modifying CTE (WITH deleted
+  AS (DELETE ... RETURNING 1) SELECT count(*)::int) — the createSql adapter
+  surfaces rows only (the Neon rowCount + the postgres.js .count are
+  dropped at the adapter boundary; the bare DELETE of record was a
+  dishonest 0 through that seam forever); the T-MIG-126 real-counts law
+  applied to the sweep. THE WIRE LAW: the response shape byte-identical
+  (status + ledgerRow — the hub seam forwards exactly that; the count
+  discloses via the deployment log line, the §4 watch posture). The auth
+  law unchanged. GATES: typecheck 5/5; FULL API suite 3043 pass / 13 skip /
+  0 fail (43,565 expects, 174 files — the run-001 baseline + 6 new pins,
+  zero regressions); test/cron 41/41 byte-green; ZERO migration, ZERO hub
+  files, ZERO LLM calls, v19 UNTOUCHED. Deviations disclosed: the sweep
+  rides every authenticated dispatch incl. re-hits (idempotence is the
+  exactly-once substitute); the count lives in logs only; no
+  served_at-leading index (the nightly scan is bounded by the
+  tutor_answer-only growth envelope — a migration-0031 decision of its
+  own); no DB contact (the zero-DB mock posture of record).
+run_003_execution_record: >
+  DC10 §7.9 exam-date awareness — the §13.3 gate released on operator trace
+  1a1f41f5679f5ec5 "proceed" (2026-11-19): the sitting date rides prompt
+  assembly so pendingReview spacing and answer emphasis weight the calendar.
+  THE READ (the M3 EXTENSION of record, the P2 documented precedent): the
+  learner's DECLARED exam targets join the ask path — the canonical
+  ExamTargetReader seam composed into the tutor learner-model port (ONE
+  indexed enrolments read + ONE batched series read; anonymous askers read
+  NOTHING, account-only). THE MATCH (pure, exam-calendar.ts): the ask's
+  curriculum code → the SERVED registry's slug of record
+  (apps/hub/content/courses.json through the served content-plane seam —
+  the hub's OWN mapping, never a duplicate) → the declared target for THAT
+  course; a code claimed by MORE THAN ONE course is AMBIGUOUS and refuses
+  (the V53 posture verbatim — the REAL registry carries 11 such collisions,
+  e.g. 9701-2025-2027 for the AS/A-level chemistry pair; binding a sibling
+  course's sitting would be a guessed exam date). THE BANDS (fixed at build
+  time, the §12 open-question-4 precedent): IN_WINDOW = the window is open;
+  NEAR = opens within 21 calendar days; FAR = beyond; an ENDED window
+  weighs NOTHING. THE EMPHASIS ARM: the v20 bump (registry tutor-grounded,
+  byte-equality law) adds the EXAM CALENDAR law bullet + the EXAM CONTEXT
+  block (unfenced, metadata only — window dates, series code/label, the
+  band; §13.2/§11 — never learner free text), rendered ONLY when a live
+  declared target matched; every ask without one renders NOTHING — the
+  composed prompt keeps the pre-run bytes (the empty-context byte-stability
+  law, test-pinned at the prompt level AND the pipeline level). THE SPACING
+  ARM: the §7.8 directive's planned count doubles (×2, the build-time
+  constant of record) at NEAR/IN_WINDOW — the tonight-loop tightens as the
+  calendar closes; the CLAIM's actual scheduled count stays the F-182/F-185
+  draw law's own (the run-001 chip law governs plan-vs-actual). THE CLA
+  SURFACE: carries NO exam context (the disclosed residual posture — the
+  null keeps its prompt bytes where they were; the v20 law bullet is inert
+  without a block). GATES: turbo typecheck 5/5 rc=0; FULL API suite 3074
+  pass / 13 skip / 0 fail (43,654 expects, 175 files — the run-002 baseline
+  3043 + 31 new pins, ZERO regressions); new battery exam-calendar 31/31
+  (bands, the brief, the bridge incl. the real-registry ambiguity pin, the
+  spacing arm, the prompt byte-stability, the pipeline composition incl.
+  the anonymous account-only law, the port seam composition); tutor battery
+  463/463 + cla 237/237 green; the §13.1 budget lint green (132 non-blank
+  lines ≤ the 160 headroom pin — the v20 law costs 12). Deviations
+  disclosed: the M3 extension is the documented second extension (the plan
+  §7.9 sentence itself orders the sitting date into assembly — the carrier
+  is TWO bounded indexed reads, only for account askers with the dep wired);
+  the nightly scheduler's insert spacing stays BYTE-UNTOUCHED (the frozen
+  NightlyDecayJob port law — the plan's words put the calendar "into prompt
+  assembly", not into the cron pass); the registry bridge reads the SERVED
+  content plane (the bundleBank seam precedent) and degrades to the honest
+  empty on any miss; ZERO migration, ZERO hub files, ZERO wire change, ZERO
+  LLM calls; the v19 identity pins moved to v20 deliberately (5 spots, the
+  bump's own version comment records).
+  RUN-004 (the post-close stress verification of record, 2026-11-20,
+  operator trace 1a1f492be0421fc1 — "Stress test. Check if everything is
+  working properly."): ZERO code paths — receipt + worklog + task card
+  only. Executed at main 94c037f80 (the #1125 merge moment), re-verified
+  at the lane head: turbo typecheck 6/6 rc=0 (the editor-gates surface
+  joined via ADR-044); FULL API suite 3105 pass / 13 skip / 0 fail
+  (43,767 expects, 177 files — the run-003 baseline 3074 + the calc/
+  editor lanes' 31, ZERO regressions); test/tutor 463/463; test/cla
+  237/237; test/cron 25/25 (the run-002 purge wiring green); the DC10
+  spot pins served-evidence + drill-directive + calibration 52/52 incl.
+  the §13.2 metadata-law pin. THE NO-EXAM-DATE POSTURES (the operator's
+  named concern) PINNED GREEN at five spots in exam-calendar.test.ts —
+  no target / anonymous / unscoped → the honest null; no declared target
+  → the honest empty (pipeline byte-stability); the ONE-read short-
+  circuit; the REAL-registry ambiguity 9701-2025-2027 → null; the
+  unmapped-code honest empty: a learner who never declares a target gets
+  the PRE-run-003 answer bytes. CI at the tip: hub / verify / law-readback
+  SUCCESS, coordination skipped (by design). Disclosed: hub unit battery
+  not re-run locally (typecheck + the CI hub lane cover it); production
+  runtime stays watch-only (the nightly [served-evidence-purge] log line;
+  the §10 windows open on their 2–4-week clocks). Receipt:
+  .syllabai/receipts/T-TUTOR-AIM-P3/run-004.json.

@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 18,
+  "rowsApproved": 32,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 18,
+    "rowsApproved": 32,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -86,7 +86,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 245,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -101,7 +101,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 189,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -116,7 +116,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 148,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -131,7 +131,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); matched to the UK specs by topic — the US curriculum differs in places",
    "durationS": 226,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -146,7 +146,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 195,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -161,7 +161,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 219,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -176,7 +176,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 237,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -191,7 +191,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 195,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -206,7 +206,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 283,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -221,7 +221,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 253,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -236,7 +236,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); matched to the UK specs by topic — the US curriculum differs in places",
    "durationS": 542,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -251,7 +251,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 195,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -266,7 +266,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 279,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -281,7 +281,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 200,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -296,12 +296,166 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 266,
    "guestVisible": null,
    "subelementOfPrimary": false,
    "oembedAuthor": "Freesciencelessons",
    "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "5ag3oKa-OXs",
+   "title": "Investigating The Limiting Factors That Affect The Rate Of Photosynthesis | IGCSE and GCSE Biology",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=5ag3oKa-OXs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MnhsGiHTMjU",
+   "title": "Animal, Plant, Fungi & Bacteria Cells | GCSE/IGCSE Biology | AQA, Edexcel, CIE, OCR",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=MnhsGiHTMjU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VkImrlXib4I",
+   "title": "HIV (AIDS) | A Level and IB Biology",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=VkImrlXib4I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "W9x6h8pKNAw",
+   "title": "Digestion & The Digestive System | Edexcel IGCSE Human Biology",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=W9x6h8pKNAw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XrTzkSfaJBI",
+   "title": "Bacteria, Fungi and Viruses | 9-1 GCSE and IGCSE Biology | AQA, Edexcel, CIE, OCR, WJEC",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=XrTzkSfaJBI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "_xrzyF4uVbk",
+   "title": "White Blood Cells & Platelets | Edexcel IGCSE Human Biology",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=_xrzyF4uVbk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bZ7zhiI9dXU",
+   "title": "Aerobic Vs Anaerobic Respiration | A level & IB Biology | Science with Hazel",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=bZ7zhiI9dXU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "h4ytXam_IGQ",
+   "title": "Structure of the Small Intestine & Villus | A Level & IB Biology",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=h4ytXam_IGQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "m37LKRHga0c",
+   "title": "Arteries, Veins, and Capillaries | A Level & IB Biology",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=m37LKRHga0c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "q0Ochhgoa0Y",
+   "title": "Functions Of Life | A Level & SL IB Biology",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=q0Ochhgoa0Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uy30twXyqRk",
+   "title": "Aerobic & Anaerobic Respiration | 9-1 GCSE and IGCSE Biology | AQA, Edexcel, CIE, OCR, WJEC",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=uy30twXyqRk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VAWxAaABkJA",
+   "title": "Biology Y-10 Diffusion,Osmosis Active Transport CIE",
+   "provider": "belal-sir-chem-bio",
+   "watchUrl": "https://www.youtube.com/watch?v=VAWxAaABkJA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Chemistry & Biology @ Belal Sir (mixed register: Edexcel IGCSE chemistry/biology + CIE 0620; the AQA-only remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CfTHov56q4s",
+   "title": "IGCSE Further Pure Maths May 2026 Paper 1 | Q6 Graphing Exponential Functions | Elevare",
+   "provider": "team-elevare",
+   "watchUrl": "https://www.youtube.com/watch?v=CfTHov56q4s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Team Elevare (Edexcel IAL WBI13/WPH13 unit summaries + IGCSE modular chemistry 4WCH1/4WCH2 + 4MB1/4MA1/4BI1/4CH1/4SD0 paper walkthroughs; the IAL IT/econ (WIT/WEC) remainder skipped — no spine courses) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VlC_OKtK3Gw",
+   "title": "A level | biology | Edexcel | Topic 1A | carbohydrates | lipids | proteins |",
+   "provider": "chem-bio-math-revision-hub",
+   "watchUrl": "https://www.youtube.com/watch?v=VlC_OKtK3Gw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Chemistry, Biology, and Math revision Hub (Edexcel IAL sciences in the 'A level | subject | Unit N | session | Pearson Edexcel' pipe format — the P14 Assil unit-paper anchor law extended to the pipe register; disclosed P17 family) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
@@ -347,6 +501,26 @@
    }
   },
   {
+   "video": "MnhsGiHTMjU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.2 'describe the common features shown by eukaryotic organisms: ' via token(s) ['animal', 'cells', 'fungi'] (df 20); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "K5zFxfbmC1M",
    "lessonRef": null,
    "lessonUrl": null,
@@ -355,6 +529,46 @@
    ],
    "confidence": "low",
    "evidence": "title 'GCSE Biology Revision \"Measles and HIV\"' -> 1.4 'understand the term pathogen and know that pat' via distinctive token(s) hiv (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "VkImrlXib4I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.4 'understand the term pathogen and know that pathogens may inc' via token(s) ['aids', 'hiv'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "XrTzkSfaJBI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.4 'understand the term pathogen and know that pathogens may inc' via token(s) ['bacteria', 'fungi', 'viruses'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -387,6 +601,184 @@
    }
   },
   {
+   "video": "q0Ochhgoa0Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1",
+    "2.10",
+    "2.11",
+    "2.12",
+    "2.13",
+    "2.15",
+    "2.16",
+    "2.17",
+    "2.18",
+    "2.19",
+    "2.2",
+    "2.20",
+    "2.21",
+    "2.22",
+    "2.23",
+    "2.24",
+    "2.25",
+    "2.26",
+    "2.27",
+    "2.28",
+    "2.29",
+    "2.3",
+    "2.30",
+    "2.31",
+    "2.32",
+    "2.34",
+    "2.35",
+    "2.36",
+    "2.37",
+    "2.38",
+    "2.39",
+    "2.4",
+    "2.46",
+    "2.47",
+    "2.48",
+    "2.49",
+    "2.50",
+    "2.7",
+    "2.8",
+    "2.9",
+    "3.1",
+    "3.10",
+    "3.11",
+    "3.12",
+    "3.15",
+    "3.16",
+    "3.17",
+    "3.18",
+    "3.19",
+    "3.2",
+    "3.20",
+    "3.21",
+    "3.3",
+    "3.30",
+    "3.31",
+    "3.32",
+    "3.33",
+    "3.34",
+    "3.35",
+    "3.36",
+    "3.37",
+    "3.38",
+    "3.39",
+    "3.4",
+    "3.40",
+    "3.41",
+    "3.42",
+    "3.43",
+    "3.44",
+    "3.9"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Structure and functions in living organisms' via topic-unique token(s) ['functions'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "CfTHov56q4s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1",
+    "2.10",
+    "2.11",
+    "2.12",
+    "2.13",
+    "2.15",
+    "2.16",
+    "2.17",
+    "2.18",
+    "2.19",
+    "2.2",
+    "2.20",
+    "2.21",
+    "2.22",
+    "2.23",
+    "2.24",
+    "2.25",
+    "2.26",
+    "2.27",
+    "2.28",
+    "2.29",
+    "2.3",
+    "2.30",
+    "2.31",
+    "2.32",
+    "2.34",
+    "2.35",
+    "2.36",
+    "2.37",
+    "2.38",
+    "2.39",
+    "2.4",
+    "2.46",
+    "2.47",
+    "2.48",
+    "2.49",
+    "2.50",
+    "2.7",
+    "2.8",
+    "2.9",
+    "3.1",
+    "3.10",
+    "3.11",
+    "3.12",
+    "3.15",
+    "3.16",
+    "3.17",
+    "3.18",
+    "3.19",
+    "3.2",
+    "3.20",
+    "3.21",
+    "3.3",
+    "3.30",
+    "3.31",
+    "3.32",
+    "3.33",
+    "3.34",
+    "3.35",
+    "3.36",
+    "3.37",
+    "3.38",
+    "3.39",
+    "3.4",
+    "3.40",
+    "3.41",
+    "3.42",
+    "3.43",
+    "3.44",
+    "3.9"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Structure and functions in living organisms' via topic-unique token(s) ['functions'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "1Dx7LDwINLU",
    "lessonRef": null,
    "lessonUrl": null,
@@ -395,6 +787,26 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Biomolecules' = elements/structure of carbohydrates, proteins, lipids (2.7); per-molecule element lists title-only; US channel (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "VlC_OKtK3Gw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.7"
+   ],
+   "confidence": "low",
+   "evidence": "title names 2.7 'identify the chemical elements present in carbohydrates, pro' via token(s) ['carbohydrates', 'lipids', 'proteins'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -427,6 +839,26 @@
    }
   },
   {
+   "video": "VAWxAaABkJA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.15"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.15 'understand the processes of diffusion, osmosis and active tr' via token(s) ['active', 'diffusion', 'osmosis', 'transport'] (df 6); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "rJtlaTSL8ps",
    "lessonRef": null,
    "lessonUrl": null,
@@ -435,6 +867,26 @@
    ],
    "confidence": "medium",
    "evidence": "title 'GCSE Biology Revision \"Surface Area to Volume Ratio\"' -> 2.16 'understand how factors affect the rate of move' via distinctive token(s) area, ratio, surface, volume (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "5ag3oKa-OXs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.16"
+   ],
+   "confidence": "low",
+   "evidence": "title names 2.16 'understand how factors affect the rate of movement of substa' via token(s) ['affect', 'factors', 'rate'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -528,6 +980,86 @@
    }
   },
   {
+   "video": "W9x6h8pKNAw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.29"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.29 'understand the role of digestive enzymes, including the dige' via token(s) ['digestion', 'digestive'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "h4ytXam_IGQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.32"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.32 'understand how the small intestine is adapted for absorption' via token(s) ['intestine', 'small', 'structure', 'villus'] (df 21); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "bZ7zhiI9dXU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.36"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.36 'describe the differences between aerobic and anaerobic respi' via token(s) ['aerobic', 'anaerobic', 'respiration'] (df 10); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "uy30twXyqRk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.36"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.36 'describe the differences between aerobic and anaerobic respi' via token(s) ['aerobic', 'anaerobic', 'respiration'] (df 10); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "UrTchvRUMW0",
    "lessonRef": null,
    "lessonUrl": null,
@@ -557,6 +1089,46 @@
    ],
    "confidence": "low",
    "evidence": "title 'GCSE Biology Revision \"Exercise\"' -> 2.66 'explain how the heart rate changes during exer' via distinctive token(s) exercise; 2.50 'practical: investigate breathing in humans, in' via distinctive token(s) exercise (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "_xrzyF4uVbk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.59 'describe the composition of the blood: red blood cells, whit' via token(s) ['blood', 'cells', 'platelets', 'white'] (df 20); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "m37LKRHga0c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.18"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.68 'understand how the structure of arteries, veins and capillar' via token(s) ['arteries', 'capillaries', 'veins'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -671,16 +1243,16 @@
  ],
  "coverage": {
   "specPointsTotal": 74,
-  "specPointsMapped": 16,
-  "specPointsUnmapped": 58,
-  "videosTotal": 18,
-  "videosMapped": 18,
+  "specPointsMapped": 72,
+  "specPointsUnmapped": 2,
+  "videosTotal": 32,
+  "videosMapped": 32,
   "videosUnmapped": 0,
-  "mappingRows": 18,
+  "mappingRows": 32,
   "byConfidence": {
    "high": 0,
-   "medium": 5,
-   "low": 13
+   "medium": 15,
+   "low": 17
   }
  },
  "inputs": {
@@ -703,5 +1275,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-12T20:09:49.917Z"
+ "generatedUtc": "2026-11-20T10:53:23.578Z"
 }

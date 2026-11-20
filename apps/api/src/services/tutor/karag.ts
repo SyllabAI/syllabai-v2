@@ -40,6 +40,13 @@ import {
 } from "./context";
 import { resolveCitations, type Citation } from "./citations";
 import { ArgumentError, TutorGenerationError } from "./errors";
+import { projectServedEvidence, type ServedEvidenceRow } from "./served-evidence";
+import { matchExamTarget } from "./exam-calendar";
+import type { CourseExamTargetView } from "@syllabai/contracts";
+import {
+  selectDrillDirectiveBasis,
+  type DrillDirectiveBasis,
+} from "./drill-directive";
 import {
   fenceClose,
   fenceOpen,
@@ -72,6 +79,7 @@ import {
   MarkConformanceStreamSanitizer,
   type ConformanceReport,
 } from "./mark-conformance";
+import { selectProbe, type ProbeOffer } from "./probe";
 import {
   StreamSanitizer,
   sanitizeAnswer,
@@ -246,6 +254,14 @@ export interface TutorAnsweredEvent {
   /** DC-5: the marked-part turn's conformance report (null on tier-1
    *  turns and refusals — the lint only activates on tier-2 turns). */
   conformance?: ConformanceReport | null;
+  /** T-TUTOR-AIM-P2 (DC10 §7.4): the learner's self-reported confidence
+   *  ("sure" | "think_so" | "guessing"), logged raw on the ask event —
+   *  LOG-FIRST (the capture-only phase): absent/null when the learner
+   *  tapped nothing (no server-side default — a no-tap is NOT a guessing;
+   *  the confidence law's consumption rules gate on weeks of pure logging
+   *  before anything consumes it). Anonymous previews carry null (the
+   *  account-only law). */
+  confidence?: "sure" | "think_so" | "guessing" | null;
 }
 export type TelemetrySink = (event: TutorAnsweredEvent) => void;
 
@@ -264,6 +280,13 @@ export interface LearnerModelPort {
     learnerId: string,
     nodeIds: string[],
   ): Promise<ReviewSchedulePendingRow[]>;
+  /** T-TUTOR-AIM-P3 run-003 (DC10 §7.9) — the M3 EXTENSION of record (the
+   *  P2 precedent, documented in the receipt): the learner's DECLARED exam
+   *  targets (enrolments ∩ exam_series, the canonical ExamTargetReader
+   *  seam). OPTIONAL for call-site compatibility — a port predating this
+   *  band degrades to the no-exam-context ask honestly (the empty-context
+   *  byte-stability law); absent = never a fabricated date. */
+  examTargets?(learnerId: string): Promise<CourseExamTargetView[]>;
 }
 
 // ── PreparedAsk (:399-408) ──────────────────────────────────────────────────
@@ -322,6 +345,13 @@ export interface KaragDeps {
    *  matched topic codes yield a non-empty boost set, TEXTBOOK evidence
    *  whose chunk spec_codes intersect fuses at the anchor tier (1.0). */
   specBoostIndex?: SpecBoostIndex | null;
+  /** T-TUTOR-AIM-P3 run-003 (DC10 §7.9) — the served-registry bridge
+   *  (OPTIONAL — absent = the ask carries no exam context honestly, the
+   *  degrade-never-block posture): the ask's curriculum code → the course
+   *  slug of record (apps/hub/content/courses.json — the hub's OWN mapping,
+   *  never a duplicate). Production wires buildCourseSlugOf(); tests inject
+   *  their own or omit. */
+  courseSlugOf?: (curriculumCode: string) => string | null;
 }
 
 /**
@@ -662,6 +692,19 @@ export type TutorStreamEvent =
       topics: Array<{ code: string; title: string; matchScore: number }>;
       /** run-013: honest truncation disclosure (token-cap finish) */
       truncated: boolean;
+      /** T-TUTOR-AIM-P2 (DC10 §7.6): the single optional probe offer —
+       *  after the full answer, offer-not-claim (§13.2 metadata only);
+       *  null when no adjacent prerequisite carries an active gap signal
+       *  and on every refusal (a refusal offers nothing). */
+      probe: ProbeOffer | null;
+      /** T-TUTOR-AIM-P3 (DC10 §7.7): the served-evidence LEDGER projection —
+       *  the route appends these after the §22 append; empty on refusals.
+       *  INTERNAL carrier (not wire). */
+      servedEvidence: ServedEvidenceRow[];
+      /** T-TUTOR-AIM-P3 (DC10 §7.8): the directive's DECISION half — the
+       *  route mints the id + persists after the §22 append; null on every
+       *  refusal and when nothing decayed. */
+      drillBasis: DrillDirectiveBasis | null;
     };
 
 function matchedTopicIds(knowledge: KnowledgeContext): string[] {
@@ -690,13 +733,27 @@ export interface AskResult {
    *  discloses it; the text itself is delivered verbatim */
   truncated: boolean;
   latencyMs: number;
+  /** T-TUTOR-AIM-P2 (DC10 §7.6): the single optional probe offer — AFTER
+   *  the full answer, offer-not-claim (§13.2: metadata only), null when no
+   *  adjacent prerequisite carries an active gap signal (most asks) and on
+   *  every refusal (a refusal offers nothing). */
+  probe: ProbeOffer | null;
+  /** T-TUTOR-AIM-P3 (DC10 §7.7): the served-evidence LEDGER projection —
+   *  the deterministic rows the route appends to tutor_served_evidence
+   *  after the §22 append fixes the turn id. INTERNAL carrier (not wire —
+   *  the route strips it from the JSON body); empty on every refusal. */
+  servedEvidence: ServedEvidenceRow[];
+  /** T-TUTOR-AIM-P3 (DC10 §7.8): the drill directive's DECISION half —
+   *  turn-free; the route mints the id + persists the claimable row after
+   *  the §22 append. Null on every refusal and when nothing decayed. */
+  drillBasis: DrillDirectiveBasis | null;
 }
 
 async function assembleContext(
   deps: KaragDeps,
   prep: PreparedAsk,
   learnerId: string | null,
-): Promise<TutorContext> {
+): Promise<{ context: TutorContext; probe: ProbeOffer | null; drillBasis: DrillDirectiveBasis | null }> {
   const learnerModel = deps.learnerModel;
   const states: SkillState[] =
     learnerId == null || learnerModel == null ? [] : await learnerModel.skillStates(learnerId);
@@ -715,7 +772,24 @@ async function assembleContext(
     learnerId == null || learnerModel == null
       ? []
       : await learnerModel.pendingReviews(learnerId, nodeIds);
-  return assembleTutorContext({
+  // T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the exam-calendar read — the M3
+  // EXTENSION of record (the P2 precedent, documented in the receipt): the
+  // learner's DECLARED exam targets join the ask path (ONE indexed
+  // enrolments read + ONE batched series read; anonymous askers read
+  // NOTHING, the account-only law). The match is PURE: the ask's curriculum
+  // code → the served registry's slug of record (deps.courseSlugOf — absent
+  // dep = no exam context honestly) → the target for THAT course. No
+  // declared target / no mapping / unscoped ask = the honest empty — the
+  // prompt renders nothing (the byte-stability law).
+  const examTarget: CourseExamTargetView | null =
+    learnerId == null || learnerModel == null || learnerModel.examTargets == null
+      ? null
+      : matchExamTarget(
+          await learnerModel.examTargets(learnerId),
+          (code) => deps.courseSlugOf?.(code) ?? null,
+          prep.scopeCode,
+        );
+  const context = assembleTutorContext({
     knowledge: prep.knowledge,
     evidence: prep.evidence,
     learnerId,
@@ -729,8 +803,35 @@ async function assembleContext(
     markContext: prep.markContext,
     disclosureTier: prep.disclosureTier,
     courseCode: prep.scopeCode,
+    // T-TUTOR-AIM-P2 (DC10 §7.3): the ask-side command-word pin rides the
+    // ONE assembly (deterministic — no read, no LLM)
+    query: prep.query,
+    // T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the prematched exam target rides
+    // the ONE assembly (pure brief computation — no read, no LLM)
+    examTarget,
     now: deps.clock.now(),
   });
+  // T-TUTOR-AIM-P2 (DC10 §7.6): the single optional probe — deterministic
+  // selection over the SAME read set (M3: no new read), offer-not-claim
+  // (§13.2: metadata only, claims nothing until the learner's tap)
+  const probe = selectProbe(prep.knowledge, states, readings);
+  // T-TUTOR-AIM-P3 (DC10 §7.8): the drill-loop directive's DECISION half —
+  // the decay-due matched topics from the SAME pendingReviews read (M3:
+  // no new read, no LLM), the turn-free basis the route mints into a
+  // claimable directive after the §22 append fixes the turn id.
+  // RUN-003 (DC10 §7.9, the SPACING arm): when the declared sitting is
+  // NEAR or IN_WINDOW the planned count tightens (×2, the build-time
+  // constant of record) — the pendingReview loop's spacing weights the
+  // calendar; FAR and every no-calendar ask keep the base law byte-identical.
+  const examUrgency = context.exam?.urgency ?? null;
+  const drillBasis = selectDrillDirectiveBasis(
+    context.aim,
+    prep.knowledge.topics,
+    pending.map((r) => r.nodeId),
+    prep.courseRef ?? null,
+    examUrgency === "NEAR" || examUrgency === "IN_WINDOW" ? examUrgency : null,
+  );
+  return { context, probe, drillBasis };
 }
 
 /** The blocking ask (:194-248). */
@@ -742,6 +843,9 @@ export async function karagAsk(
   sessionId: string | null,
   courseRef: string | null,
   paperPinId: string | null = null,
+  // T-TUTOR-AIM-P2 (DC10 §7.4): the learner's raw confidence selection —
+  // log-first, no server-side default (absent = null = no-tap, NOT guessing)
+  confidence: "sure" | "think_so" | "guessing" | null = null,
 ): Promise<AskResult> {
   const startedAt = Date.now();
   const prep = await prepare(deps, learnerId, question, history, courseRef, paperPinId);
@@ -750,6 +854,14 @@ export async function karagAsk(
 
   let generated: GeneratedAnswer;
   let interventionType: string | null = null;
+  // T-TUTOR-AIM-P2 (DC10 §7.6): the probe offer — null on every refusal
+  // (a refusal offers nothing), selected by assembleContext on the served path
+  let probe: ProbeOffer | null = null;
+  // T-TUTOR-AIM-P3 (DC10 §7.7/§7.8): the ledger projection + the directive
+  // basis — empty/null on every refusal, computed on the served path
+  let servedEvidence: ServedEvidenceRow[] = [];
+  let drillBasis: DrillDirectiveBasis | null = null;
+  let context: TutorContext | null = null;
   if (refused) {
     if (prep.unresolvedCourseRef) {
       generated = {
@@ -774,7 +886,10 @@ export async function karagAsk(
       };
     }
   } else {
-    const context = await assembleContext(deps, prep, learnerId);
+    const assembled = await assembleContext(deps, prep, learnerId);
+    context = assembled.context;
+    probe = assembled.probe;
+    drillBasis = assembled.drillBasis;
     interventionType =
       context.interventionPlan?.type == null ? null : context.interventionPlan.type;
     generated = await deps.generator.generate(prep.query, prep.turns, context);
@@ -801,6 +916,19 @@ export async function karagAsk(
   const citations = resolveCitations(prep.evidence);
   const latencyMs = (Date.now() - startedAt) / 1000.0;
 
+  // T-TUTOR-AIM-P3 (DC10 §7.7/§7.8) — the refusal-truth posture: a
+  // MODEL-worded refusal delivered the citations but not the aimed answer
+  // (the learner received a refusal), so the ledger keeps the citation
+  // observations only and the directive basis dies with the refused aim —
+  // a refusal schedules nothing. The deterministic classes carry empty/null
+  // already (nothing was assembled for them).
+  if (modelWordedRefusal) {
+    servedEvidence = projectServedEvidence(prep.evidence, null);
+    drillBasis = null;
+  } else if (!refused) {
+    servedEvidence = projectServedEvidence(prep.evidence, context?.aim ?? null);
+  }
+
   // the TutorAnsweredEvent publishes exactly once, on completion, with full
   // parity fields (:228-237); refusals publish eagerly with the deterministic
   // provider identity (:316-319)
@@ -821,6 +949,8 @@ export async function karagAsk(
     provider: generated.provider,
     // DC-5: the marked-part turn's conformance report (null on tier-1)
     conformance: generated.conformance ?? null,
+    // T-TUTOR-AIM-P2 (DC10 §7.4): the raw self-reported confidence
+    confidence,
   });
 
   return {
@@ -833,6 +963,11 @@ export async function karagAsk(
     refused: refusedFinal,
     truncated: isTruncationFinish(generated.finishReason),
     latencyMs,
+    probe,
+    // T-TUTOR-AIM-P3 (DC10 §7.7/§7.8): the ledger projection + the
+    // directive decision — the route owns the post-append persistence
+    servedEvidence,
+    drillBasis,
   };
 }
 
@@ -850,6 +985,9 @@ export async function* karagAskStream(
   sessionId: string | null,
   courseRef: string | null,
   paperPinId: string | null = null,
+  // T-TUTOR-AIM-P2 (DC10 §7.4): the learner's raw confidence selection —
+  // log-first, no server-side default (absent = null = no-tap, NOT guessing)
+  confidence: "sure" | "think_so" | "guessing" | null = null,
 ): AsyncGenerator<TutorStreamEvent> {
   const startedAt = Date.now();
   const prep = await prepare(deps, learnerId, question, history, courseRef, paperPinId);
@@ -887,6 +1025,8 @@ export async function* karagAskStream(
       historyTurns: prep.turns.length,
       sessionId,
       provider,
+      // T-TUTOR-AIM-P2 (DC10 §7.4): a refusal still logs the tap (log-first)
+      confidence,
     });
     yield { kind: "citations", citations, sufficient: false };
     yield { kind: "meta", provider, model: null, refused: true, evidenceCount: 0 };
@@ -901,13 +1041,21 @@ export async function* karagAskStream(
       latencyMs,
       topics,
       truncated: false,
+      // a refusal offers nothing (§7.6) and schedules nothing (§7.8);
+      // the ledger records nothing for a deterministic refusal
+      probe: null,
+      servedEvidence: [],
+      drillBasis: null,
     };
     return;
   }
 
-  const context = await assembleContext(deps, prep, learnerId);
+  const assembled = await assembleContext(deps, prep, learnerId);
+  const context = assembled.context;
   const interventionType =
     context.interventionPlan?.type == null ? null : context.interventionPlan.type;
+  // T-TUTOR-AIM-P2 (DC10 §7.6): the probe rides the terminal event, AFTER
+  // the full answer (offer-not-claim — §13.2 metadata only)
 
   // generation: the first delta carries the Meta event (identity commits
   // with the first token); every delta flows sanitized in order (:340-354)
@@ -981,6 +1129,8 @@ export async function* karagAskStream(
     historyTurns: prep.turns.length,
     sessionId,
     provider,
+    // T-TUTOR-AIM-P2 (DC10 §7.4): the raw self-reported confidence
+    confidence,
   });
   yield {
     kind: "completed",
@@ -992,6 +1142,18 @@ export async function* karagAskStream(
     latencyMs,
     topics,
     truncated: isTruncationFinish(lastFinishReason),
+    // T-TUTOR-AIM-P2 (DC10 §7.6): the probe offer rides the terminal event,
+    // after the full answer; a model-worded refusal offers nothing
+    probe: modelRefused ? null : assembled.probe,
+    // T-TUTOR-AIM-P3 (DC10 §7.7/§7.8): the refusal-truth posture — a
+    // model-worded refusal delivered the citations but not the aimed
+    // answer: the ledger keeps the citation observations only and the
+    // directive basis dies with the refused aim (a refusal schedules
+    // nothing). The served path's projection + decision otherwise.
+    servedEvidence: modelRefused
+      ? projectServedEvidence(prep.evidence, null)
+      : projectServedEvidence(prep.evidence, assembled.context.aim),
+    drillBasis: modelRefused ? null : assembled.drillBasis,
   };
 }
 

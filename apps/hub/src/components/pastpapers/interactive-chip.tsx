@@ -72,7 +72,7 @@ export function InteractiveChip({
           size="sm"
           variant="ghost"
           className="h-7 gap-1.5 text-xs text-muted-foreground"
-          aria-label={`Interactive version of ${paperRef} — not parsed yet`}
+          aria-label={`Interactive version of ${paperRef} — not ready yet`}
         >
           <Puzzle className="size-3.5" aria-hidden />
           Interactive
@@ -84,14 +84,14 @@ export function InteractiveChip({
           {paperRef} isn&apos;t interactive yet
         </p>
         <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-          Interactive play needs this paper&apos;s questions parsed into the syllabai corpus:
-          PDF → question parsing → validation → the same player you use for topic questions
+          Interactive play works from a question-by-question copy of this paper —
+          the same player you use for topic questions
           (instant MCQ marking, Smart Mark for structured answers).
         </p>
         <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
           {interactiveCount > 0
-            ? `${interactiveCount} paper${interactiveCount === 1 ? " has" : "s have"} interactive reconstructions on this course already — everything else shows this chip until parsing lands.`
-            : "No papers on this course are parsed yet — parsing coverage grows with the corpus."}
+            ? `${interactiveCount} paper${interactiveCount === 1 ? " has" : "s have"} an interactive version on this course already — the rest are on the way.`
+            : "No papers on this course are interactive yet — they're added as they're converted."}
         </p>
       </PopoverContent>
     </Popover>

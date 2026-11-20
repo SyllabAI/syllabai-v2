@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -283,6 +283,24 @@
           "explanation": "Concentration is untouched by the catalyst.",
           "misconception": "factors crossed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "By offering the reaction a different route of lower activation energy",
+            "By heating the reaction mixture",
+            "By increasing the concentration of reactants",
+            "By weakening the products so they form sooner"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "By offering the reaction a different route of lower activation energy"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -318,6 +336,24 @@
           "correct": false,
           "explanation": "The uncatalysed route is untouched; only the new route is lower.",
           "misconception": "barrier myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It disappears entirely",
+            "It doubles, because two routes now compete",
+            "It falls, because the catalyst lowers every barrier",
+            "It stays the same; the catalyst opens a new, lower route alongside it"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It stays the same; the catalyst opens a new, lower route alongside it"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -355,6 +391,24 @@
           "explanation": "Each process pairs with a catalyst suited to it, all working on the same principle.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Reactants consumed by their reactions",
+            "Products of their reactions",
+            "Different catalysts chosen for different industrial processes",
+            "Fuels burned to heat the processes"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Different catalysts chosen for different industrial processes"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -391,6 +445,24 @@
           "explanation": "Product departure is not the rate-determining idea here.",
           "misconception": "invented step"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because particles collide less often but harder",
+            "Because the catalyst collides with the particles",
+            "A greater proportion of collisions now carry enough energy to react",
+            "Because the products leave faster"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A greater proportion of collisions now carry enough energy to react"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -426,6 +498,26 @@
           "correct": false,
           "explanation": "Sugars are respiratory fuels, not catalysts.",
           "misconception": "molecule swapped"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Enzymes"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

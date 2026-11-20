@@ -6,7 +6,22 @@
   "provider": "cognito (Cognito Edu YouTube channel)",
   "label": "igcse-maths-b-16",
   "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY (no high rows); tightened binding rule (title must name the spec's distinctive content); sewage filter applied (promo/announcement/non-teaching uploads excluded)",
-  "enumeratedUtc": "2026-11-10T03:03:19Z"
+  "enumeratedUtc": "2026-11-10T03:03:19Z",
+  "p9": {
+   "provider": "mr-hassaans-maths (Mr Hassaan's Maths Channel — Edexcel IAL + CAIE paper-code walkthrough channel)",
+   "method": "yt-dlp flat channel enumeration 2026-11-13 (3,150 public uploads, 0 overlap with the 1,556-video shipped union); routing: paper-code Tier B + unit-marker/idf Tier A with board-restricted candidates; judgment: class decision tables over every distinctive-candidate row",
+   "enumeratedUtc": "2026-11-13T05:57:42Z"
+  },
+  "p17": {
+   "provider": "Pinnacle Education (Edexcel IGCSE Maths B 4MB1 paper walkthroughs — small pure pool) + Team Elevare (Edexcel IAL WBI13/WPH13 unit summaries + IGCSE modular chemistry 4WCH1/4WCH2 + 4MB1/4MA1/4BI1/4CH1/4SD0 paper walkthroughs; the IAL IT/econ (WIT/WEC) remainder skipped — no spine courses)",
+   "method": "Pinnacle Education (Edexcel IGCSE Maths B 4MB1 paper walkthroughs — small pure pool) flat-enumerated 2026-11-20T04:23:36Z; Team Elevare (Edexcel IAL WBI13/WPH13 unit summaries + IGCSE modular chemistry 4WCH1/4WCH2 + 4MB1/4MA1/4BI1/4CH1/4SD0 paper walkthroughs; the IAL IT/econ (WIT/WEC) remainder skipped — no spine courses) flat-enumerated 2026-11-20T04:23:36Z; routing: machine-checkable Tier B anchors (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors; 0417/4IT1+4IT0 ICT; 4MA1/4WM/4XM maths-A higher/foundation/modular-24 routing; 4MB1; 0606 with the disclosed 4037-dual-branding precedence; 0607; 0452/0455/0680/8291/0460/4GE1+4GE0/0500 shared-code pairs; 4BS1; 9708; 9609; Ed-IGCSE sciences 4CH1/4BI1/4PH1/4SD0 + modular chemistry 4WCH1/4WCH2; IAL WPH/WBI/WCH \"Unit N <session>\" unit-paper anchors + the Pearson-pipe register family) + the P16 Class W set-text predicate for 0475 titles (with the disclosed P17 possessive/hashtag amendment) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-20T04:45:09Z"
+  },
+  "p18": {
+   "provider": "IGCSE & A Level ExamCrack (CIE A-level sciences 9700/9701/9702 papers 1-3 AS / 4-5 A2 + IGCSE 0620/0625/0610 (+ the 5090 dual) paper walkthroughs and predicted papers, 9609 business, 9708 econ, Edexcel 4MA1/4WM/4MB1 maths incl. the 4WM1H modular paper, IAL WPH/WBI/WCH predicted papers, 0580 (+ 4024 dual), 0452 (+ 7707 dual), 0606; the 9709 maths walkthroughs skip per ANCHOR-GRANULARITY section 6 (the P9/P17 precedent); grade-thresholds/timetables/results meta skipped; p15-swept resurfaced with the sentinel disclosure)",
+   "method": "IGCSE & A Level ExamCrack (CIE A-level sciences 9700/9701/9702 papers 1-3 AS / 4-5 A2 + IGCSE 0620/0625/0610 (+ the 5090 dual) paper walkthroughs and predicted papers, 9609 business, 9708 econ, Edexcel 4MA1/4WM/4MB1 maths incl. the 4WM1H modular paper, IAL WPH/WBI/WCH predicted papers, 0580 (+ 4024 dual), 0452 (+ 7707 dual), 0606; the 9709 maths walkthroughs skip per ANCHOR-GRANULARITY section 6 (the P9/P17 precedent); grade-thresholds/timetables/results meta skipped; p15-swept resurfaced with the sentinel disclosure) flat-enumerated 2026-11-20T06:05:00Z; routing: machine-checkable Tier B anchors (CIE IGCSE sciences 0610/0620/0625 session/paper registers incl. the disclosed 5090 dual; 0654 co-ordinated shared-paper anchors; CIE A-level sciences 9700/9701/9702 papers 1-3 AS / 4-5 A2; 0417/4IT1+4IT0 ICT incl. the International-GCSE-ICT register text; 4MA1/4WM/4XM maths-A higher/foundation/modular-24 routing; 4MB1; 0580 papers 2/4 extended vs 1/3 core (the P9/P14 law, code-required); 4PM0/4PM1 Further Pure (the NEW P18 register); 0606 with the disclosed 4037-dual-branding precedence; 0452/0985 (+ the disclosed 7707 dual)/0455 (+ the disclosed 2281 dual)/0680/0460/4BS1/9708/9609/8021 General Paper (the NEW P18 register); IAL WPH/WBI/WCH \"Unit N <session>\" unit-paper anchors + the Pearson-pipe register family) + the P16 Class W set-text predicate for 0475-register titles (with the disclosed P18 suffix-collision ledger) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-20T10:48:03Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P4 (shelf-direct lane, Cognito maths shelf: igcse-maths-b-16)",
@@ -14,7 +29,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Checked every mapping row of the 107-row draft against the igcse-maths-b-16 (4MB1) spine, judging each (video,spec) pair independently — including the umbrella specs (1A, 6A, 7A) and the physics-branded vector rows, which were kept only where the title names the spec's own clause (e.g. 'Find Resultant' for 8H, 'Scalar & Vector Quantities' for 8A). Rejected 1 spec-level binding: 'Similar Shapes' off 6H, where the evidence itself marks proof of similarity 'only supporting'. All other low rows name a clause genuinely in the spec (midpoint→4H coordinates, regular polygons→6C, fraction-of-a-number→1H).",
-  "rowsApproved": 107,
+  "rowsApproved": 134,
   "rowsRejected": 1,
   "rejects": [
    {
@@ -22,6 +37,52 @@
     "video": "8-4KQw8unfY",
     "spec": "6H",
     "reason": "'Similar Shapes' names the similarity domain (6G's 'Similarity: areas and volumes of similar figures' survives on that head topic), but 6H's distinctive frame is 'Prove the similarity of two triangles' — proof work and the SSS/SAS/ASA/RHS-style conditions are not title-evidenced, and the evidence itself concedes proof is 'only supporting'. Ride-along on the 6G binding; rejected at medium."
+   }
+  ],
+  "lanes": [
+   {
+    "lane": "external-channels-p9 (mr-hassaans-maths completion)",
+    "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+    "ruledUtc": "2026-11-13T06:48:16Z",
+    "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
+    "rowsApproved": 8,
+    "rowsRejected": 2,
+    "rejects": [
+     {
+      "video": "4FwUt-THKVA",
+      "reason": "no-binding (routed-but-unmapped): no distinctive token overlap at the tightened bar (df<=3) — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)"
+     },
+     {
+      "video": "Gq_fBDFcV-Y",
+      "reason": "no-binding (routed-but-unmapped): no distinctive token overlap at the tightened bar (df<=3) — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p17 (gap-profile judgment lane: the corrected-code sweep over the fresh post-P15/P16 residual — 4GE1/4IT1/4XM/4WM/4MB1/4CH1/4SD0/4WCH registers where the P15 queries carried the old codes; the Pearson-pipe IAL unit-session family; the 4BS1/9609 business pair; the P16 Class W predicate with the disclosed P17 possessive/hashtag amendment; the honest register calls: wilson-chong 2012 UK GCSE modular 0-bind, nevdoes-econ no-code 3 binds, first-rate/gcse-ready lit = UK GCSE, mathman 9709 §6 skips)",
+    "task": "T-VIDEOMAP-P17 (gap-profile judgment lane: the P17 filing PR #360 pool set admitted by owner order 'run P17 judgment' 2026-11-20; 8,927 pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", pools admitted and judgment ordered 2026-11-20 \"run P17 judgment\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+    "ruledUtc": "2026-11-20T04:45:09Z",
+    "evidenceBasis": "Identity: oEmbed sweep 2,614/2,614 routed videos author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (the P15 registers plus the P17 additions: 4GE1/4IT1/4MB1/4WM/4XM/0607/4BS1/9609/4CH1/4BI1/4PH1/4SD0/4WCH1/4WCH2 + the Pearson-pipe IAL unit register). Class W: the P16 committed predicate with the disclosed P17 amendment for the mr-quakers possessive format. Tier A: the P13/P15 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar. Guidance/promo, O-Level (0606/4037 dual branding disclosed), UK GCSE modular 2012, UK GCSE 1GA0/GCSE-Eng-Lit, IAL IT/econ (no spine), IAL/CIE maths bare walkthroughs (§6) and out-of-spine boards skipped with reasons (6453 ledgered in work/p17/skips.json by class: {'no honest binding at the df<=3 bar': 3910, 'guidance/advice/marketing register': 737, 'O-Level register (no O-Level course in the spine)': 167, 'Edexcel UK GCSE modular maths 2012-era register (1MA0) — out-of-spine register': 415, 'IAL/CIE maths register — bare unit/session walkthroughs skip per ANCHOR-GRANULARITY §6 (P9 precedent)': 338, 'channel promo/meta content (no qualification register)': 16, 'UK GCSE register (1GA0/GCSE Mathematics) — out-of-spine register': 256, 'other honest skips': 90, 'lit register: work not on the 0475 2023-2025 set-text lists': 97, 'lit register: character-study title without a set-text token': 5, 'Edexcel UK A-level business register — out-of-spine board': 20, 'Edexcel IAL IT/economics (WIT/WEC) — no spine courses': 40, 'Edexcel UK-GCSE CS register — no spine course (the spine carries CIE 0478)': 1, 'UK GCSE English Literature register — out-of-spine register': 357, 'NT-board titles re-adjudicated to skip on the final sanity pass': 4}).",
+    "rowsApproved": 18,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p18 (p18-residual-gap judgment lane: the fresh post-P17 residual sweep — 4PM0/4PM1 Further Pure, 8021 General Paper, CIE A-level sciences 9700/9701/9702 paper routing, 0580 paper routing with the generalized spine-code precedence over O-Level duals, the International-GCSE-ICT register text, the P16 Class W predicate with the disclosed P18 suffix-collision ledger; honest register calls: indigo 8021 = tuition marketing 0 binds, no-waffle 0475 = UK GCSE lit with 1 genuine dual-anthology bind, the unit-summary pools bind only at the df<=3 bar)",
+    "task": "T-VIDEOMAP-P18 (gap-profile judgment lane: the P18 filing PR #362 pool set admitted by owner order 'run P18 judgment' 2026-11-20; 5,843 pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+    "ruledUtc": "2026-11-20T10:48:03Z",
+    "evidenceBasis": "Identity: oEmbed sweep 1566/1566 routed videos alive — 1562 author_url channel == channel-of-record via UC id (0 mismatch) + 4 thumbnail-liveness fallbacks disclosed per the P2D law (oembed HTTP 200 all-null payload; identity rides on the channel-of-record upload provenance), 0 bad. Tier B: session/paper codes regex-verified in titles (the P15/P17 registers plus the P18 additions: 4PM0/4PM1 Further Pure, 8021 General Paper, 9700/9701/9702 paper-number routing, 0580 paper-number routing, the International-GCSE-ICT register text). Class W: the P16 committed predicate with the disclosed P18 suffix-collision ledger (\"singh song\" does not bind Szirtes' \"Song\"). Tier A: the P13/P15 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar. Guidance/promo/tuition, meta announcements, the certification register, CIE AS/A Level IT 9626, the O-Level register (the disclosed duals exempt), IAL/CIE maths 9709 (section 6) and out-of-spine boards skipped with reasons (4277 ledgered in work/p18/skips.json by class: {'no honest binding at the df<=3 bar': 2922, 'meta announcement (grade thresholds/timetables/results/celebration)': 62, 'guidance/advice/marketing register': 167, 'O-Level register with no IGCSE spine-code token (the generalized P14 spine-code precedence law; the disclosed 4037/2281/7707/5090 duals exempt)': 185, 'IAL/CIE maths register (9709) — bare walkthroughs skip per ANCHOR-GRANULARITY section 6 (P9 precedent)': 117, 'channel promo/tuition marketing (no qualification register)': 30, 'digital-literacy certification register (IC3/Certiport/MOS) — out-of-spine register': 138, 'CIE AS/A Level IT 9626 / Edexcel IAL IT (WIT) — no spine course': 6, 'lit register: out-of-spine board (AQA/Eduqas/WJEC/Edexcel/GCSE) naming no spine set text': 551, 'lit register: work not on the 0475 2023-2025 set-text lists': 87, 'lit register: character-study title without a set-text token': 2, 'NT-board titles re-adjudicated to skip on the final sanity pass': 10}).",
+    "rowsApproved": 1,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ]
  },
@@ -1737,6 +1798,303 @@
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "6cjf4Yhon0w",
+   "title": "IGCSE, (Edexcel), 4MB1, June 2021, Q2, Line & Rotational Symmetry",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=6cjf4Yhon0w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LXpyvhB3f98",
+   "title": "IGCSE, (Edexcel), 4MB2, January 2022, Q9, 3D Trigonometry & Bearings",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=LXpyvhB3f98",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UuZii0rg5Cc",
+   "title": "Q7cd S2017 Paper41   Equations of Parallel and Perpendicular Lines",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=UuZii0rg5Cc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "boNaGfPIEV8",
+   "title": "IGCSE Text Book, Rayner, Chapter 7, Graphs, Differentiation, Ex18, page 269, Q9, Gradients of Curves",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=boNaGfPIEV8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "e-kC82c-kOk",
+   "title": "Q5bi M 2017 Paper 42   Algebraic Fractions",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=e-kC82c-kOk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jQkPgqeQqRs",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.5 Directed Numbers and Indices, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=jQkPgqeQqRs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oo_wdlnH25I",
+   "title": "0580 F M 19 Q10 Simultaneous Equations, Variation, Inequalities",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=oo_wdlnH25I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tfJR6UnCyRA",
+   "title": "IGCSE STYLE Cosine Rule, Sine Rule, 3 Figure Bearings Medium",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=tfJR6UnCyRA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3CnZ5mdMFB0",
+   "title": "IGCSE Further Pure Maths May 2026 Paper 1 | Q8 3D Geometry: Pyramids & Angles | Elevare",
+   "provider": "team-elevare",
+   "watchUrl": "https://www.youtube.com/watch?v=3CnZ5mdMFB0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Team Elevare (Edexcel IAL WBI13/WPH13 unit summaries + IGCSE modular chemistry 4WCH1/4WCH2 + 4MB1/4MA1/4BI1/4CH1/4SD0 paper walkthroughs; the IAL IT/econ (WIT/WEC) remainder skipped — no spine courses) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3xrxqFShcTw",
+   "title": "IGCSE Further Pure Maths Oct 2025 Paper 1 | Q9 Rates of Change | Elevare",
+   "provider": "team-elevare",
+   "watchUrl": "https://www.youtube.com/watch?v=3xrxqFShcTw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Team Elevare (Edexcel IAL WBI13/WPH13 unit summaries + IGCSE modular chemistry 4WCH1/4WCH2 + 4MB1/4MA1/4BI1/4CH1/4SD0 paper walkthroughs; the IAL IT/econ (WIT/WEC) remainder skipped — no spine courses) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "448-cVA4PhU",
+   "title": "IGCSE Further Pure Maths Oct 2025 Paper 1 | Q11 Trigonometry | Elevare",
+   "provider": "team-elevare",
+   "watchUrl": "https://www.youtube.com/watch?v=448-cVA4PhU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Team Elevare (Edexcel IAL WBI13/WPH13 unit summaries + IGCSE modular chemistry 4WCH1/4WCH2 + 4MB1/4MA1/4BI1/4CH1/4SD0 paper walkthroughs; the IAL IT/econ (WIT/WEC) remainder skipped — no spine courses) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "86sJHNUEpqw",
+   "title": "IGCSE Further Pure Maths Oct 2025 Paper 1 | Q2 Completing the Square | Elevare",
+   "provider": "team-elevare",
+   "watchUrl": "https://www.youtube.com/watch?v=86sJHNUEpqw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Team Elevare (Edexcel IAL WBI13/WPH13 unit summaries + IGCSE modular chemistry 4WCH1/4WCH2 + 4MB1/4MA1/4BI1/4CH1/4SD0 paper walkthroughs; the IAL IT/econ (WIT/WEC) remainder skipped — no spine courses) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "T-ll1VYgIcY",
+   "title": "Solve This MAY JUNE 2024 Maths B Exam Paper With Me! | Edexcel IGCSE 4MB1/02 Past Paper Walkthrough",
+   "provider": "pinnacle-education",
+   "watchUrl": "https://www.youtube.com/watch?v=T-ll1VYgIcY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Pinnacle Education (Edexcel IGCSE Maths B 4MB1 paper walkthroughs — small pure pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VA3vN5syPHc",
+   "title": "Solve These MAY JUNE 2024 Maths B Questions With Me! | Edexcel IGCSE 4MB1/01R Past Paper Walkthrough",
+   "provider": "pinnacle-education",
+   "watchUrl": "https://www.youtube.com/watch?v=VA3vN5syPHc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Pinnacle Education (Edexcel IGCSE Maths B 4MB1 paper walkthroughs — small pure pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VifqIgX62CE",
+   "title": "Solve These MAY JUNE 2025 Maths B Questions with Me! | Edexcel IGCSE 4MB1/01 Past Paper Walkthrough",
+   "provider": "pinnacle-education",
+   "watchUrl": "https://www.youtube.com/watch?v=VifqIgX62CE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Pinnacle Education (Edexcel IGCSE Maths B 4MB1 paper walkthroughs — small pure pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Z4wcn9ZOgnY",
+   "title": "Solve This MAY JUNE 2024 Maths B Exam Paper With Me! | Edexcel IGCSE 4MB1/01 Past Paper Walkthrough",
+   "provider": "pinnacle-education",
+   "watchUrl": "https://www.youtube.com/watch?v=Z4wcn9ZOgnY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Pinnacle Education (Edexcel IGCSE Maths B 4MB1 paper walkthroughs — small pure pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "aBv0QJaqjqk",
+   "title": "Solve This MAY JUNE 2025 Maths B Exam Paper with Me! | Edexcel IGCSE 4MB1/02 Past Paper Walkthrough",
+   "provider": "pinnacle-education",
+   "watchUrl": "https://www.youtube.com/watch?v=aBv0QJaqjqk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Pinnacle Education (Edexcel IGCSE Maths B 4MB1 paper walkthroughs — small pure pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "aKoNqQRCu4o",
+   "title": "IGCSE Further Pure Maths Oct 2025 Paper 1 | Q3 Sine & Cosine Rule | Elevare",
+   "provider": "team-elevare",
+   "watchUrl": "https://www.youtube.com/watch?v=aKoNqQRCu4o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Team Elevare (Edexcel IAL WBI13/WPH13 unit summaries + IGCSE modular chemistry 4WCH1/4WCH2 + 4MB1/4MA1/4BI1/4CH1/4SD0 paper walkthroughs; the IAL IT/econ (WIT/WEC) remainder skipped — no spine courses) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fye6o-BZyfk",
+   "title": "Solve This NOV 2023 Maths B Exam Paper With Me! | Edexcel IGCSE 4MB1/02 Past Paper Walkthrough",
+   "provider": "pinnacle-education",
+   "watchUrl": "https://www.youtube.com/watch?v=fye6o-BZyfk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Pinnacle Education (Edexcel IGCSE Maths B 4MB1 paper walkthroughs — small pure pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hVLJp-aBymc",
+   "title": "IGCSE Further Pure Maths Oct 2025 Paper 1 | Q10 Coordinate Geometry | Elevare",
+   "provider": "team-elevare",
+   "watchUrl": "https://www.youtube.com/watch?v=hVLJp-aBymc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Team Elevare (Edexcel IAL WBI13/WPH13 unit summaries + IGCSE modular chemistry 4WCH1/4WCH2 + 4MB1/4MA1/4BI1/4CH1/4SD0 paper walkthroughs; the IAL IT/econ (WIT/WEC) remainder skipped — no spine courses) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nAaYV9L6SBg",
+   "title": "Solve This NOV 2024 Maths B Exam Paper With Me! | Edexcel IGCSE 4MB1/02 Past Paper Walkthrough",
+   "provider": "pinnacle-education",
+   "watchUrl": "https://www.youtube.com/watch?v=nAaYV9L6SBg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Pinnacle Education (Edexcel IGCSE Maths B 4MB1 paper walkthroughs — small pure pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qeB2_1k1x3M",
+   "title": "Solve This NOV 2024 Maths B Exam Paper With Me! | Edexcel IGCSE 4MB1/01 Past Paper Walkthrough",
+   "provider": "pinnacle-education",
+   "watchUrl": "https://www.youtube.com/watch?v=qeB2_1k1x3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Pinnacle Education (Edexcel IGCSE Maths B 4MB1 paper walkthroughs — small pure pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tOs1tuRHZJE",
+   "title": "Solve This NOV 2023 Maths B Exam Paper With Me! | Edexcel IGCSE 4MB1/01 Past Paper Walkthrough",
+   "provider": "pinnacle-education",
+   "watchUrl": "https://www.youtube.com/watch?v=tOs1tuRHZJE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Pinnacle Education (Edexcel IGCSE Maths B 4MB1 paper walkthroughs — small pure pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vV6ItT6nHnQ",
+   "title": "Solve These MAY JUNE 2024 Maths B Questions With Me! | Edexcel IGCSE 4MB1/02R Past Paper Walkthrough",
+   "provider": "pinnacle-education",
+   "watchUrl": "https://www.youtube.com/watch?v=vV6ItT6nHnQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Pinnacle Education (Edexcel IGCSE Maths B 4MB1 paper walkthroughs — small pure pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wHHtfdY9NJQ",
+   "title": "IGCSE Further Pure Maths May 2026 Paper 1 | Q1 Completing the Square & Quadratics | Elevare",
+   "provider": "team-elevare",
+   "watchUrl": "https://www.youtube.com/watch?v=wHHtfdY9NJQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Team Elevare (Edexcel IAL WBI13/WPH13 unit summaries + IGCSE modular chemistry 4WCH1/4WCH2 + 4MB1/4MA1/4BI1/4CH1/4SD0 paper walkthroughs; the IAL IT/econ (WIT/WEC) remainder skipped — no spine courses) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "waB-QzCcqIs",
+   "title": "IGCSE Further Pure Maths May 2026 Paper 1 | Q5 Factor Theorem & Polynomial Curves | Elevare",
+   "provider": "team-elevare",
+   "watchUrl": "https://www.youtube.com/watch?v=waB-QzCcqIs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Team Elevare (Edexcel IAL WBI13/WPH13 unit summaries + IGCSE modular chemistry 4WCH1/4WCH2 + 4MB1/4MA1/4BI1/4CH1/4SD0 paper walkthroughs; the IAL IT/econ (WIT/WEC) remainder skipped — no spine courses) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wiEH-oQxDps",
+   "title": "IGCSE Edexcel Maths B Paper 1 (4MB1/01) | FULL Solution | May/June 2025 🔥 Fast & Clear Explanations",
+   "provider": "igcse-a-level-examcrack",
+   "watchUrl": "https://www.youtube.com/watch?v=wiEH-oQxDps",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE & A Level ExamCrack (CIE A-level sciences 9700/9701/9702 papers 1-3 AS / 4-5 A2 + IGCSE 0620/0625/0610 (+ the 5090 dual) paper walkthroughs and predicted papers, 9609 business, 9708 econ, Edexcel 4MA1/4WM/4MB1 maths incl. the 4WM1H modular paper, IAL WPH/WBI/WCH predicted papers, 0580 (+ 4024 dual), 0452 (+ 7707 dual), 0606; the 9709 maths walkthroughs skip per ANCHOR-GRANULARITY section 6 (the P9/P17 precedent); grade-thresholds/timetables/results meta skipped; p15-swept resurfaced with the sentinel disclosure) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
@@ -3359,20 +3717,528 @@
    "boardMismatch": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
    "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-b-16"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "LXpyvhB3f98",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"IGCSE, (Edexcel), 4MB2, January 2022, Q9, 3D Trigonometry & Bearings\"; paper code 4MB in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-b-16"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "6cjf4Yhon0w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"IGCSE, (Edexcel), 4MB1, June 2021, Q2, Line & Rotational Symmetry\"; paper code 4MB in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "jQkPgqeQqRs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1C 'Indices, powers and roots' via distinctive token(s) ['indice', 'number'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "boNaGfPIEV8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4K"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4K 'The gradients of graphs above by drawing' via distinctive token(s) ['gradient', 'graph'] (df 2); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "oo_wdlnH25I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3I"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3I 'Solve simultaneous equations in two unknowns, one equati' via distinctive token(s) ['equation', 'simultaneou'] (df 2); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "tfJR6UnCyRA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 9D 'Bearings' via distinctive token(s) ['bearing'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "e-kC82c-kOk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3F"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3F 'The manipulation of simple algebraic fractions, the deno' via distinctive token(s) ['algebraic', 'fraction'] (df 2); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "UuZii0rg5Cc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6N"
+   ],
+   "confidence": "low",
+   "evidence": "title names 6N 'Constructions of bisector of an angle and of perpendicul' via distinctive token(s) ['line', 'perpendicular'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-b-16"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "aBv0QJaqjqk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z",
+   "evidence": "title: \"Solve This MAY JUNE 2025 Maths B Exam Paper with Me! | Edexcel IGCSE 4MB1/02 Past Paper Walkthrough\"; Edexcel IGCSE Maths B 4MB1 paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-b-16"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "VifqIgX62CE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z",
+   "evidence": "title: \"Solve These MAY JUNE 2025 Maths B Questions with Me! | Edexcel IGCSE 4MB1/01 Past Paper Walkthrough\"; Edexcel IGCSE Maths B 4MB1 paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-b-16"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "nAaYV9L6SBg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z",
+   "evidence": "title: \"Solve This NOV 2024 Maths B Exam Paper With Me! | Edexcel IGCSE 4MB1/02 Past Paper Walkthrough\"; Edexcel IGCSE Maths B 4MB1 paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-b-16"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "qeB2_1k1x3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z",
+   "evidence": "title: \"Solve This NOV 2024 Maths B Exam Paper With Me! | Edexcel IGCSE 4MB1/01 Past Paper Walkthrough\"; Edexcel IGCSE Maths B 4MB1 paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-b-16"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "T-ll1VYgIcY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z",
+   "evidence": "title: \"Solve This MAY JUNE 2024 Maths B Exam Paper With Me! | Edexcel IGCSE 4MB1/02 Past Paper Walkthrough\"; Edexcel IGCSE Maths B 4MB1 paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-b-16"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Z4wcn9ZOgnY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z",
+   "evidence": "title: \"Solve This MAY JUNE 2024 Maths B Exam Paper With Me! | Edexcel IGCSE 4MB1/01 Past Paper Walkthrough\"; Edexcel IGCSE Maths B 4MB1 paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-b-16"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "fye6o-BZyfk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z",
+   "evidence": "title: \"Solve This NOV 2023 Maths B Exam Paper With Me! | Edexcel IGCSE 4MB1/02 Past Paper Walkthrough\"; Edexcel IGCSE Maths B 4MB1 paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-b-16"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "tOs1tuRHZJE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z",
+   "evidence": "title: \"Solve This NOV 2023 Maths B Exam Paper With Me! | Edexcel IGCSE 4MB1/01 Past Paper Walkthrough\"; Edexcel IGCSE Maths B 4MB1 paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-b-16"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "vV6ItT6nHnQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z",
+   "evidence": "title: \"Solve These MAY JUNE 2024 Maths B Questions With Me! | Edexcel IGCSE 4MB1/02R Past Paper Walkthrough\"; Edexcel IGCSE Maths B 4MB1 paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-b-16"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "VA3vN5syPHc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z",
+   "evidence": "title: \"Solve These MAY JUNE 2024 Maths B Questions With Me! | Edexcel IGCSE 4MB1/01R Past Paper Walkthrough\"; Edexcel IGCSE Maths B 4MB1 paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "3CnZ5mdMFB0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6A",
+    "6B",
+    "6C",
+    "6D",
+    "6E",
+    "6F",
+    "6G",
+    "6H",
+    "6I",
+    "6J",
+    "6K",
+    "6L",
+    "6M",
+    "6N"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z"
+  },
+  {
+   "video": "waB-QzCcqIs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3D 'Use of the factor theorem' via token(s) ['factor', 'theorem'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z"
+  },
+  {
+   "video": "wHHtfdY9NJQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3A",
+    "3B",
+    "3C",
+    "3D",
+    "3E",
+    "3F",
+    "3G",
+    "3H",
+    "3I",
+    "3J",
+    "3K",
+    "3L"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Algebra' via topic-unique token(s) ['completing', 'square'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z"
+  },
+  {
+   "video": "448-cVA4PhU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9A",
+    "9B",
+    "9C",
+    "9D"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Trigonometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z"
+  },
+  {
+   "video": "hVLJp-aBymc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6A",
+    "6B",
+    "6C",
+    "6D",
+    "6E",
+    "6F",
+    "6G",
+    "6H",
+    "6I",
+    "6J",
+    "6K",
+    "6L",
+    "6M",
+    "6N"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z"
+  },
+  {
+   "video": "3xrxqFShcTw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4M"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4M 'Determination of gradients, rates of change, maxima and mini' via token(s) ['change', 'rates'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z"
+  },
+  {
+   "video": "aKoNqQRCu4o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 9A 'Use of sine, cosine and tangent of angles up to 180°' via token(s) ['cosine', 'sine'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z"
+  },
+  {
+   "video": "86sJHNUEpqw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3A",
+    "3B",
+    "3C",
+    "3D",
+    "3E",
+    "3F",
+    "3G",
+    "3H",
+    "3I",
+    "3J",
+    "3K",
+    "3L"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Algebra' via topic-unique token(s) ['completing', 'square'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P17 profile authorized 2026-11-20 \"P17 profile\", judgment admitted 2026-11-20 \"run P17 judgment\")",
+   "reviewedUtc": "2026-11-20T04:45:09Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-b-16"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "wiEH-oQxDps",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P18 profile authorized 2026-11-20 \"P18 profile\", pools admitted and judgment ordered 2026-11-20 \"run P18 judgment\")",
+   "reviewedUtc": "2026-11-20T10:48:03Z",
+   "evidence": "title: \"IGCSE Edexcel Maths B Paper 1 (4MB1/01) | FULL Solution | May/June 2025 🔥 Fast & Clear Explanations\"; Edexcel IGCSE maths paper anchor (4MA1/4WM/4MB1) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   }
  ],
  "coverage": {
   "specPointsTotal": 98,
-  "specPointsMapped": 40,
-  "specPointsUnmapped": 58,
-  "videosTotal": 107,
-  "videosMapped": 107,
+  "specPointsMapped": 54,
+  "specPointsUnmapped": 44,
+  "videosTotal": 134,
+  "videosMapped": 134,
   "videosUnmapped": 0,
-  "mappingRows": 107,
+  "mappingRows": 134,
   "byConfidence": {
-   "high": 0,
-   "medium": 98,
-   "low": 9
+   "high": 13,
+   "medium": 106,
+   "low": 15
   }
  },
  "inputs": {
@@ -3385,7 +4251,25 @@
    "path": "Videos/drafts/igcse-maths-b-16/video-map.draft.external.json",
    "task": "T-VIDEOMAP-P4 (shelf-direct lane, Cognito maths shelf: igcse-maths-b-16)",
    "reviewAppliedUtc": "2026-11-11T14:41:20Z"
+  },
+  "p9": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-maths-b-16/video-map.draft.external-p9.json",
+   "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
+   "reviewAppliedUtc": "2026-11-13T06:48:16Z"
+  },
+  "p17": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-maths-b-16/video-map.draft.external-p17.json",
+   "task": "T-VIDEOMAP-P17 (gap-profile judgment lane: the P17 filing PR #360 pool set admitted by owner order 'run P17 judgment' 2026-11-20; 8,927 pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-20T04:45:09Z"
+  },
+  "p18": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-maths-b-16/video-map.draft.external-p18.json",
+   "task": "T-VIDEOMAP-P18 (gap-profile judgment lane: the P18 filing PR #362 pool set admitted by owner order 'run P18 judgment' 2026-11-20; 5,843 pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-20T10:48:03Z"
   }
  },
- "generatedUtc": "2026-11-12T20:09:49.693Z"
+ "generatedUtc": "2026-11-20T10:53:23.298Z"
 }

@@ -105,13 +105,12 @@ export function PracticeClient({ topics }: Props) {
             Practice
           </span>
         }
-        description="Real exam-question parts with in-browser attempt telemetry (confidence, self-doubt). Marks self-assess against the mark scheme — the illustrative mastery overlay updates from that, exactly as the governed pipeline would from server-marked evidence."
+        description="Answer real exam questions in your browser — self-mark against the scheme, with an illustrative mastery overlay."
       />
 
       <SimulatedBanner>
-        Attempt results update an <strong>illustrative</strong> mastery overlay in this browser
-        session. Your account record is never touched — the same attempt payload targets the
-        real marked-attempts pipeline.
+        Attempts here update an <strong>illustrative</strong> mastery overlay in this browser.
+        Nothing is written to your account.
       </SimulatedBanner>
 
       <div className="grid gap-4 lg:grid-cols-[1fr_280px]">

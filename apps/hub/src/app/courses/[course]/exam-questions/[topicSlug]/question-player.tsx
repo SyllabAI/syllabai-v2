@@ -7,7 +7,7 @@
  *     scroll) and "One at a time" (one question per view — the number grid
  *     and a Previous/Next footer navigate, the grid ring is the truth);
  *     the choice persists locally (localStorage) across visits;
- *   - per-question toolbar: Full screen, Save (bookmark), difficulty chip;
+ *   - per-question toolbar: Full screen, Bookmark, difficulty chip;
  *   - MCQs are ANSWERABLE (SME parity — live SME markup verified 2026-09-18):
  *     the answer UI is always "Choose your answer" letter buttons → Submit
  *     answer → instant marking (green/red) → "Why this is the answer"
@@ -415,36 +415,6 @@ export function QuestionPlayer({
     return () => io.disconnect();
   }, [visible, single]);
 
-  /** the question the floating button will anchor — the active one when it
-   *  can anchor (verified join), else the nearest that can; null = no
-   *  question on this page is anchorable, so no floating button at all */
-  const claAnchorIdx = useMemo(() => {
-    if (visible.length === 0) return null;
-    const canAnchor = (i: number) =>
-      !!visible[i] && bridge.kind === "ready" && !!bridge.data.questions[visible[i].id];
-    const a = viewIdx ?? 0;
-    if (canAnchor(a)) return a;
-    for (let d = 1; d < visible.length; d++) {
-      if (canAnchor(a + d)) return a + d;
-      if (canAnchor(a - d)) return a - d;
-    }
-    return null;
-  }, [viewIdx, visible, bridge]);
-
-  /** the floating button's disclosure — when the question in view cannot
-   *  anchor, the button opens for the nearest anchorable one. In single
-   *  mode the click ALSO swaps the card to that question (openCla pins
-   *  activeIdx and the single-mode viewIdx follows it), so the disclosure
-   *  names the swap explicitly (T-QVIEW-AUDIT-BCD-1 batch D, the nuance
-   *  disclosed at T-QVIEW-MODES-1); "all" keeps the compact parenthetical
-   *  (the discrepancy there is transient — the scroll-spy re-ties it). */
-  const claAnchorDisclosure =
-    claAnchorIdx !== null && viewIdx !== null && viewIdx !== claAnchorIdx
-      ? single
-        ? ` — question ${qLabel(viewIdx)} in view has no assistant link yet, so this opens question ${qLabel(claAnchorIdx)} instead`
-        : ` (question ${qLabel(viewIdx)} is not anchored for the assistant yet)`
-      : "";
-
   return (
     <div className="space-y-5">
       {/* 4CH1 bridge status — one honest line, never a blocker */}
@@ -586,11 +556,11 @@ export function QuestionPlayer({
                   >
                     {progress.saved[q.id] ? (
                       <>
-                        <BookmarkCheck className="size-3.5 text-primary" aria-hidden /> Saved
+                        <BookmarkCheck className="size-3.5 text-primary" aria-hidden /> Bookmarked
                       </>
                     ) : (
                       <>
-                        <Bookmark className="size-3.5" aria-hidden /> Save
+                        <Bookmark className="size-3.5" aria-hidden /> Bookmark
                       </>
                     )}
                   </Button>
@@ -658,44 +628,15 @@ export function QuestionPlayer({
         </nav>
       )}
 
-      {/* the FLOATING CLA entry (Revision Notes parity — operator 2026-09-29,
-          trace 1a0ec14f2f7e3581). One page holds MANY questions, so the
-          button CARRIES its anchor: the chip names the question that will
-          open (the active card, join-gated to the nearest anchorable one),
-          and the title says so too. Hidden while the panel is open (SME
-          hides their chat button when the widget is open), absent when no
-          question on the page can anchor. The per-part lightbulbs remain
-          the precision path; the per-card header button is retired. */}
-      {claAnchorIdx !== null && claFor === null && (
-        <Button
-          size="sm"
-          // audit 2026-10-30 (motion review): entrance fade+zoom from 0.95 —
-          // a fixed-position control must not pop from nothing. The Q-chip
-          // label swap itself stays INSTANT: it re-fires on every anchor
-          // change while scrolling (IntersectionObserver), and animating a
-          // high-frequency swap would breach frequency-appropriateness.
-          // T-QVIEW-AUDIT-BCD-1 batch D (CLA-button clearance): in single
-          // mode the button rides above the pagination footer band
-          // (bottom-24) instead of overlapping the footer's Next control.
-          className={cn(
-            "fixed right-6 z-40 h-12 gap-2 rounded-full px-5 shadow-lg animate-in fade-in-0 zoom-in-95 duration-200 ease-out",
-            single ? "bottom-24" : "bottom-6",
-          )}
-          aria-haspopup="dialog"
-          aria-label={`Ask the contextual assistant about question ${qLabel(claAnchorIdx)}${claAnchorDisclosure}`}
-          title={`Ask CLA about question ${qLabel(claAnchorIdx)}${claAnchorDisclosure}`}
-          onClick={() => openCla(visible[claAnchorIdx], claAnchorIdx, null)}
-        >
-          <Sparkles className="size-4" aria-hidden />
-          Ask CLA
-          <span
-            className="rounded-full bg-primary-foreground/15 px-2 py-0.5 text-2xs font-semibold tabular-nums"
-            aria-hidden
-          >
-            Q{qLabel(claAnchorIdx)}
-          </span>
-        </Button>
-      )}
+      {/* Task 38 §6.4 (UX-5, 2026-11-20): the floating CLA entry (Revision
+          Notes parity — operator trace 1a0ec14f2f7e3581) is retired in
+          favour of the per-question "Ask CLA" entry inside QuestionBody.
+          Rationale: a fixed element ALWAYS intersects content while the
+          student is reading (at 390px it covered the submit-panel advisory;
+          at 1280px it grazed the panel corner — the only High finding),
+          and the inline entry anchors to its own card precisely instead of
+          guessing the active one through the scroll-spy. The per-part
+          lightbulbs remain the precision path. */}
 
       {/* full-screen question */}
       <Dialog open={!!fullFor} onOpenChange={(o) => !o && setFullFor(null)}>
@@ -791,7 +732,7 @@ function BridgeBanner({ status }: { status: AttemptBridgeStatus }) {
     return (
       <div className="rounded-lg border border-success/25 bg-success/5 px-4 py-2.5 text-xs leading-relaxed">
         <span className="inline-flex items-center gap-1.5 font-medium text-success">
-          <CheckCircle2 className="size-3.5" aria-hidden /> Live · SyllabAI core
+          <CheckCircle2 className="size-3.5" aria-hidden /> Connected
         </span>{" "}
         <span className="text-muted-foreground">
           answers in this set are recorded to your real learner model — Smart Mark,
@@ -881,15 +822,34 @@ function QuestionBody({
   const coreJoin: BridgeQuestion | null =
     bridge.kind === "ready" ? (bridge.data.questions[question.id] ?? null) : null;
   const coreLive = bridge.kind === "ready" && coreJoin !== null;
-  // T-QBANK-AILANE-DEDUP-1: the per-box lane badge renders only when it is
-  // the SOLE liveness signifier on the card. When the core marking flow
-  // owns the question (same gate as the flow below), its header "live"
-  // badge is the one liveness statement — a per-box "live draft" badge on
-  // every structured part repeated that fact N+1 times on one card.
-  const coreFlowActive = coreLive && coreJoin !== null && coreJoin.structured.length > 0;
+  // T-QBANK-AILANE-DEDUP-1 + Task 38 §6.2 (UX-3/UX-5 copy law): the per-box
+  // lane badge renders only in the legacy (simulated) lane. In the core
+  // flow the BridgeBanner is the single liveness statement — per-box "live
+  // draft" chips repeated that fact N+1 times and leaked status vocabulary
+  // (uppercase LIVE) into the learner path.
 
   return (
     <div className="space-y-4" data-question-block={question.id}>
+      {/* Task 38 §6.4 (UX-5): the per-question CLA entry rides INSIDE the
+          card — a fixed floating trigger always intersects content on some
+          viewport (the 390px audit caught it over the submit advisory),
+          while this entry can never overlap anything and anchors to its own
+          question precisely (no nearest-anchorable guessing). Join-gated:
+          the overlay only renders when the question has a verified join. */}
+      {coreJoin && (
+        <div className="flex justify-end">
+          <Button
+            size="sm"
+            variant="ghost"
+            className="h-8 gap-1.5 px-2 text-xs"
+            onClick={onAskCla}
+            aria-haspopup="dialog"
+            title="Ask CLA — scaffolded help with this question, never the answer"
+          >
+            <Sparkles className="size-3.5 text-primary" aria-hidden /> Ask CLA
+          </Button>
+        </div>
+      )}
       {question.parts.map((p, idx) => {
         // the printed part label ("(a)", "(a)(i)") — derived fail-closed from
         // the official id slug / SME questionPart (lib/part-label). null =
@@ -925,7 +885,7 @@ function QuestionBody({
             labelChip={labelChip}
             partLabel={labelChip ?? (question.parts.length > 1 ? String.fromCharCode(97 + idx) : null)}
             coreLive={coreLive}
-            showLaneBadge={!coreFlowActive}
+            showLaneBadge={!coreLive}
             onAskClaPart={coreJoin ? () => onAskClaPart(p.id) : undefined}
           />
         );
@@ -1288,7 +1248,7 @@ function TypedAnswerWorkspace({
     } catch {
       setMark({
         kind: "error",
-        message: `Network error while marking — ${SELF_MARK_POINTER}`,
+        message: "Network error while marking — try again in a moment.",
       });
     }
   };
@@ -1316,14 +1276,8 @@ function TypedAnswerWorkspace({
         statusSlot={
           <>
             {showLaneBadge && (
-              <Badge
-                variant="outline"
-                className={cn(
-                  "px-1 text-2xs uppercase",
-                  coreLive ? "border-success/30 text-success" : "text-muted-foreground",
-                )}
-              >
-                {coreLive ? "live draft" : "simulated"}
+              <Badge variant="outline" className="px-1 text-2xs text-muted-foreground">
+                simulated
               </Badge>
             )}
             {text.length > 0 && (
@@ -1356,7 +1310,11 @@ function TypedAnswerWorkspace({
         }
       />
       <div className="mt-2 flex flex-wrap items-center gap-2">
-        {aiAvailable !== false ? (
+        {/* UX-2 (Task 38 §6.1): in the core flow the CoreMarkingFlow panel
+            below owns the marking story — the legacy lane renders NOTHING
+            here, so the card never shows "AI marking is unavailable" right
+            above a live AI-draft button. */}
+        {coreLive ? null : aiAvailable !== false ? (
           <Button size="sm" variant="outline" disabled={!canMark} onClick={runMark} className="gap-1.5 text-xs">
             {mark.kind === "loading" ? (
               <Loader2 className="size-3.5 animate-spin" aria-hidden />
@@ -1454,14 +1412,11 @@ function TypedAnswerWorkspace({
 
 // ── MCQ part — answerable, marked instantly (SME, research figure 24) ───
 
-// T-QVIEW-AUDIT-BCD-1 batch D (answer-wording unification): ONE tail for
-// the AI-unavailable fallback, single-sourced — the render sites (legacy
-// error, network error, the probed-off static line, the core advisory
-// lane) previously spelled the self-mark pointer three ways. "How did you
-// do?" is the exact footer box label, in every lane (the box renders for
-// structured questions in both the local and the core lane).
-const SELF_MARK_POINTER = 'use “How did you do?” to self-mark instead.';
-const AI_MARK_UNAVAILABLE = `AI marking is unavailable right now — ${SELF_MARK_POINTER}`;
+// T-QVIEW-AUDIT-BCD-1 batch D unified the AI-unavailable fallback tails.
+// Task 38 §6.1/UX-7 (2026-11-20) supersedes the self-mark pointer: a
+// pre-submit status line must never name a control by its post-mark role —
+// the footer "How did you do?" box speaks for itself once it is on screen.
+const AI_MARK_UNAVAILABLE = "AI marking is unavailable right now.";
 
 function hasUsableChoices(part: ExamQuestion["parts"][number]): boolean {
   const c = part.choices;
@@ -1719,10 +1674,9 @@ function McqPart({
           </p>
           {letterOnly && !optionsVisible && (
             <div className="rounded-md border border-warn/30 bg-warn/10 px-3 py-2 text-xs leading-relaxed text-warn-ink">
-              The option artwork for this question (diagrams on the source site) was not captured
-              by the authorized import — the demo never fabricates content. Refer to your past
-              paper, or use <span className="font-medium">Question help</span> to work through it
-              with the tutor. The answer key is attested, so you can still commit an answer below.
+              Diagrams didn&apos;t come through for this question — check your
+              past paper, or use <span className="font-medium">Question help</span>.
+              Answers still mark as normal.
             </div>
           )}
           {keyedText || multiWithText ? (
@@ -1996,7 +1950,7 @@ function markFlowError(e: unknown): string {
   }
   return aiAskErrorMessage(
     e,
-    "The backend marking pipeline is unavailable right now — your answers are saved locally; try again in a moment.",
+    "Smart Mark isn't available right now — your answers are saved here; try again in a moment.",
   );
 }
 
@@ -2099,7 +2053,7 @@ function CoreMarkingFlow({
             ...prev,
             [t.hubPartId]: {
               kind: "failed",
-              message: poll.snapshot?.error?.message ?? "The marking pipeline could not complete this mark.",
+              message: poll.snapshot?.error?.message ?? "Smart Mark couldn't complete this mark.",
             },
           }));
         } else if (poll.status === "lost") {
@@ -2202,12 +2156,9 @@ function CoreMarkingFlow({
     <div className="rounded-lg border border-primary/30 bg-primary/[0.03] p-3">
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <Sparkles className="size-3.5 text-primary" aria-hidden />
-        <span className="text-xs font-medium">Submit for marking — SyllabAI core</span>
-        <Badge variant="outline" className="border-success/30 px-1 text-2xs uppercase text-success">
-          live
-        </Badge>
+        <span className="text-xs font-medium">Submit for marking</span>
         <span className="text-2xs text-muted-foreground">
-          your written answers go to your real learner account
+          Submitting saves your answer to your account.
         </span>
       </div>
 
@@ -2235,7 +2186,7 @@ function CoreMarkingFlow({
           </Button>
           <span className="text-2xs text-muted-foreground">
             {hasAnyText
-              ? "then Smart Mark marks every part against the mark scheme"
+              ? "Each part is checked against the mark scheme."
               : "type an answer above first"}
           </span>
         </div>
@@ -2266,7 +2217,7 @@ function CoreMarkingFlow({
               )}
             </Button>
             <span className="text-2xs text-muted-foreground">
-              advisory — writes no attempt; marks each typed part against its mark scheme
+              Checks your draft against the mark scheme — nothing is recorded until you submit.
             </span>
           </div>
           {Object.entries(advisory).map(([hubPartId, state]) => {
@@ -2403,7 +2354,7 @@ function CoreMarkingFlow({
             )}
           </Button>
           <span className="text-2xs text-muted-foreground">
-            AI marks each part through the marking pipeline; marks drive your mastery
+            AI marks each part; the marks feed your mastery
           </span>
         </div>
       )}
@@ -2417,7 +2368,7 @@ function CoreMarkingFlow({
             <span className="text-2xs text-muted-foreground">
               {anyAuthoritative
                 ? "authoritative marks — they feed your mastery and review schedule"
-                : "indicative marks — the pipeline's κ release gate hasn't certified this batch yet, so treat them as AI-suggested and check against the scheme"}
+                : "indicative marks — a final check on this batch is still pending, so treat them as a first pass and check against the mark scheme"}
             </span>
             {!applied && !progress.selfScores[question.id] && (
               <Button

@@ -60,12 +60,47 @@ interface TopicGroup {
  * the P2F course shelf, topic-area blocks and the subject shelf. Chips run
  * source → duration → kind/unit scope → confidence → board; the evidence
  * line stays verbatim. Unknown videos (data drift) render nothing.
+ *
+ * Body-size law (FALLBACK_BODY_TOO_LARGE, wave-9): a row renders FULL markup
+ * (badges + evidence) at its anchor spec point and a compact title +
+ * confidence/board line everywhere else it maps — see anchorByVideo in the
+ * page. Nothing is hidden; badges and evidence render once, where anchored.
  */
-function VideoRowItem({ map, row }: { map: VideoMapData; row: VideoMapRow }) {
+function VideoRowItem({
+  map,
+  row,
+  compact = false,
+}: {
+  map: VideoMapData;
+  row: VideoMapRow;
+  compact?: boolean;
+}) {
   const video = map.videoById.get(row.video);
   if (!video) return null;
   const href = videoHref(video, row);
   const title = video.title ?? video.id;
+  if (compact) {
+    return (
+      <li className="rounded-md border bg-background/60 px-2.5 py-1.5">
+        {href ? (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium underline-offset-4 hover:underline"
+          >
+            {title}
+          </a>
+        ) : (
+          <span className="text-sm font-medium">{title}</span>
+        )}
+        <span className="ml-2 text-2xs text-muted-foreground">
+          {row.confidence ?? "unrated"} match
+          {row.boardMismatch ? " · different board" : ""}
+        </span>
+      </li>
+    );
+  }
   const kind = anchorKindLabel(row.kind);
   const unit = formatUnitScope(row.unitScope);
   return (
@@ -103,21 +138,21 @@ function VideoRowItem({ map, row }: { map: VideoMapData; row: VideoMapRow }) {
         )}
         {row.confidence && (
           <Badge variant="outline" className="text-2xs">
-            {row.confidence}-confidence match
+            {row.confidence} match
           </Badge>
         )}
         {row.boardMismatch && (
           <Badge variant="outline" className="text-2xs">
-            different-board source
+            different board
           </Badge>
         )}
       </div>
       {row.boardMismatch && video.boardNote && (
         <p className="mt-1 text-xs text-muted-foreground">{video.boardNote}</p>
       )}
-      {row.evidence && (
+      {row.evidence && row.confidence !== "high" && (
         <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-          Evidence (title-only): {row.evidence}
+          {row.evidence}
         </p>
       )}
     </li>
@@ -259,11 +294,11 @@ export default async function VideosPage({
           meta={meta}
           title={`${board}${meta.level} ${meta.label} — Videos`}
           crumb="Videos"
-          description="The video lane is enabled for this course, but no owner-reviewed video map is committed yet."
+          description="Videos for this course are on the way."
         />
         <div className="mt-6 rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">
-          No videos published for this course yet. When the reviewed mapping lands
-          in content/video-map/, it appears here spec point by spec point.
+          No videos published for this course yet — new ones are added topic by
+          topic as they&apos;re reviewed.
         </div>
       </div>
     );
@@ -274,6 +309,25 @@ export default async function VideosPage({
     bundle?.curriculum ?? (hub.viaProvider ? await getDataProvider().curriculum() : null);
   const topics = groupByTopics(map, curriculum);
   const c = map.coverage;
+
+  // Body-size law (FALLBACK_BODY_TOO_LARGE, wave-9): a mapping renders its
+  // FULL row (badges + evidence) at its anchor spec point — the first
+  // mapped code that exists on the spine — and a compact title + chip row
+  // at every other point it maps to. Each row stays reachable from every
+  // point it maps to; badges and evidence render once, where the match is
+  // anchored. Keeps the prerendered ISR bodies bounded as maps grow
+  // (chemistry-25 alone was 9,430 row×point pairs → a 55 MB body).
+  const spineCodes = new Set(
+    (curriculum?.nodes ?? [])
+      .filter((n) => n.family === "SPEC_POINT")
+      .map((n) => n.code),
+  );
+  const anchorByVideo = new Map<VideoMapRow, string>();
+  for (const m of map.mappings) {
+    const specs = m.specs ?? [];
+    const anchor = specs.find((code) => spineCodes.has(code)) ?? specs[0];
+    if (anchor && !anchorByVideo.has(m)) anchorByVideo.set(m, anchor);
+  }
 
   // P2F anchor rows (granularity spec §7): course rows → the "Past papers
   // & walkthroughs" shelf; topic/subtopic rows → the matching topic
@@ -336,39 +390,26 @@ export default async function VideosPage({
         meta={meta}
         title={`${board}${meta.level} ${meta.label} — Videos`}
         crumb="Videos"
-        description={`Owner-reviewed video lessons mapped to this specification point by point (${c.specPointsMapped} of ${c.specPointsTotal} spec points covered by ${c.videosMapped} videos).`}
+        description={`Video lessons for this course, topic by topic (${c.specPointsMapped} of ${c.specPointsTotal} spec points have videos, drawn from ${c.videosMapped} lessons).`}
       />
 
       <div className="mt-6 flex flex-wrap items-center gap-2">
-        <Badge
-          variant="outline"
-          className="border-muted-foreground/30 text-2xs text-muted-foreground"
-        >
-          Owner-reviewed{map.qual ? ` · ${map.qual}` : ""}
-        </Badge>
         <Badge variant="secondary" className="text-2xs">
           {c.specPointsMapped}/{c.specPointsTotal} spec points
         </Badge>
         <Badge variant="secondary" className="text-2xs">
-          {c.videosMapped} videos · {c.mappingRows} mappings
+          {c.videosMapped} videos
         </Badge>
-        {c.byConfidence && (
-          <Badge variant="secondary" className="text-2xs">
-            {c.byConfidence.high} high · {c.byConfidence.medium} medium ·{" "}
-            {c.byConfidence.low} low
-          </Badge>
-        )}
         {anchorBadge && (
           <Badge variant="secondary" className="text-2xs">
             {anchorBadge}
           </Badge>
         )}
         <p className="w-full max-w-3xl text-xs leading-relaxed text-muted-foreground">
-          Matches are title-only: the confidence chip says how directly the video
-          title names the spec point&apos;s content — watch before relying on a medium
-          or low match. Rows marked &ldquo;different-board&rdquo; come from channels
-          aligned to another exam board (the board note says how). Links open the
-          source channel or lesson page; nothing here records progress.
+          Matches are title-based — the chip says how close the fit is, so skim
+          a medium/low match before relying on it. &ldquo;Different board&rdquo; rows
+          come from another exam board&apos;s channel. Watching here doesn&apos;t
+          affect your progress.
         </p>
       </div>
 
@@ -383,10 +424,8 @@ export default async function VideosPage({
             </span>
           </div>
           <p className="mt-1 max-w-3xl text-xs leading-relaxed text-muted-foreground">
-            Whole-paper walkthroughs anchored to the course — typically full papers
-            whose Edexcel paper code is stated in the title. They sit outside the
-            spec-point coverage: they teach the paper, not a single point, so they
-            never inflate the numbers above.
+            Full-paper walkthroughs — they teach the paper, not one spec point,
+            so they don&apos;t count toward the coverage totals above.
           </p>
           <ul className="mt-3 space-y-2">
             {courseRows.map((row) => (
@@ -416,7 +455,7 @@ export default async function VideosPage({
                   </Badge>
                   <span className="text-xs text-muted-foreground">
                     {topicRows.length} revision {topicRows.length === 1 ? "video" : "videos"}{" "}
-                    for this topic — zero spec-point weight
+                    for this topic — general revision, not tied to one spec point
                   </span>
                 </div>
                 <ul className="mt-2 space-y-2">
@@ -429,7 +468,7 @@ export default async function VideosPage({
 
             {topic.points.length === 0 ? (
               <p className="mt-2 text-xs text-muted-foreground">
-                No spec points in this topic have mapped videos yet.
+                No videos for this topic&apos;s spec points yet.
               </p>
             ) : (
               <div className="mt-3 space-y-4">
@@ -447,7 +486,12 @@ export default async function VideosPage({
                     </div>
                     <ul className="mt-2 space-y-2">
                       {point.rows.map((row) => (
-                        <VideoRowItem key={row.video} map={map} row={row} />
+                        <VideoRowItem
+                          key={row.video}
+                          map={map}
+                          row={row}
+                          compact={anchorByVideo.get(row) !== point.code}
+                        />
                       ))}
                     </ul>
                   </div>
@@ -458,7 +502,7 @@ export default async function VideosPage({
             {topic.covered < topic.total && topic.points.length > 0 && (
               <p className="mt-2 text-xs text-muted-foreground">
                 {topic.total - topic.covered} of {topic.total} spec points in this
-                topic have no mapped video yet — the honest gap stays visible.
+                topic have no video yet.
               </p>
             )}
           </section>
@@ -469,8 +513,7 @@ export default async function VideosPage({
           <section aria-label="Topic videos outside the spine render">
             <h2 className="text-base font-semibold tracking-tight">Topic videos</h2>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Anchored to topic areas that don&apos;t resolve in this spine render —
-              listed flat rather than dropped.
+              General topic videos that sit outside the sections above.
             </p>
             <ul className="mt-3 space-y-2">
               {topicAreaFlat.map((row) => (
@@ -484,8 +527,8 @@ export default async function VideosPage({
           <section aria-label="Subject-wide videos">
             <h2 className="text-base font-semibold tracking-tight">Subject-wide</h2>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Board-agnostic technique and skills videos that apply across the
-              whole subject — zero spec-point weight.
+              Technique and skills videos that aren't tied to one exam board — they apply
+              across the whole subject, not to any single spec point.
             </p>
             <ul className="mt-3 space-y-2">
               {buckets.subject.map((row) => (

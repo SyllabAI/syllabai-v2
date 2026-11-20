@@ -1,0 +1,86 @@
+{
+ "receipt": "run-040-merge-record-ride",
+ "family": "RN-DEBRIS-11",
+ "run": "run-040",
+ "kind": "the run-039 merge record ride receipts — the standing ride-along law's obligatory next unit (the run-039 merge record rides THIS run's receipts: entry A in both worklogs, the run-039-merge-record-ride.json merged block); zero content bytes",
+ "operatorOrder": "run-040 filing (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, trace 1a1f9040c6257545, 2026-11-20)",
+ "generatedUtc": "2026-11-20",
+ "baseTip": "fd6e63c00895d7b9b5c1ea8134f057088e4f1792",
+ "mergedRecordRode": {
+  "pr": 1148,
+  "sha": "c6e8e276d5134dcd23b20019fda27bc5c9cd1f5a",
+  "mergedAt": "2026-11-20T10:49:33Z",
+  "mergeMethod": "merge (2-parent, no squash)",
+  "shaPinnedTo": "84a2957f15d4a288c6b0079e4fd773261dbee8a0",
+  "parents": [
+   "74b19a4108b02f9062076fd6c6f2fd7d8df0782e",
+   "84a2957f15d4a288c6b0079e4fd773261dbee8a0"
+  ],
+  "verified": "API pulls/1148 merged=true + merge_commit_sha == sha; parents API-verified (2, first == the merge-time tip 74b19a41 — the base moved between filing and PUT (the filing base 11626b11 advanced — the concurrent landing 74b19a41, the 11626b11..74b19a41 advance 2 commits / 3 changed paths, topped by Merge pull request #1147 from SyllabAI/t-mg-calc/calc2-quartile-erratum-fix) and the branch merged origin/main into itself as 84a2957f (round 1 — clean auto-merge, zero conflict blocks; the run-023 union law not triggered) before the PUT — landed by the merging session of record and byte-verified against the law before the PUT); the sha verified an ancestor of the live main tip post-merge (ls-remote + API + git fetch — tip 15895824 at the of-record re-verification, the concurrent-landing class informational (main advanced 2 commits post-merge — PR #1151, 2 paths, zero overlap with the declared 7), re-verified in the run-040 pre-filing verification of record)"
+ },
+ "landedStateVerification": {
+  "method": "re-derived read-only from the committed tree at the base tip via git show, with the OF-RECORD census logic (the rn27_apply.py shapes: multi-id over the flashcards file specPointIds; null-code over specPointCode; coded/unmapped over the map items dict; pops over the declaredUnresolved sid lists); G8 dump law json.dumps(indent=1, ensure_ascii=False) newline-terminated",
+  "census": {
+   "multiIdCards": 257,
+   "nullCodeCards": 60,
+   "codedMapItems": 876,
+   "unmappedTrueItems": 469
+  },
+  "matchesRun027CensusOfRecord": true,
+  "sidPopulations": {
+   "spcpt_3hpC7gNs8YZ6t7kd": 16,
+   "spcpt_rGVN6hJn6Mb9z2nR": 17,
+   "spcpt_7JRKzsBqqdfPqf5t": 6
+  },
+  "a1": {
+   "items": 14,
+   "declarationsRetained": true,
+   "unmappedKeys": 0,
+   "viaSids": [
+    "spcpt_3hpC7gNs8YZ6t7kd",
+    "spcpt_rGVN6hJn6Mb9z2nR"
+   ]
+  },
+  "aggregatesOfRecord": {
+   "contentCoverage": {
+    "flashcards": {
+     "coded": 499,
+     "total": 905,
+     "unmapped": 406,
+     "viaSubtopicScope": 0
+    },
+    "notes": {
+     "coded": 77,
+     "total": 97,
+     "unmapped": 20,
+     "viaSubtopicScope": 4
+    },
+    "questionParts": {
+     "coded": 272,
+     "total": 343,
+     "unmapped": 71,
+     "viaSubtopicScope": 0
+    }
+   },
+   "spcptUnmappedCount": 66
+  },
+  "driftVerification": {
+   "questionParts": "items-of-truth coded 285 vs the aggregate 272 == exactly the 13 A1 q-parts (the run-027 apply) — carried over of record",
+   "notes": "items-of-truth coded 78 vs the aggregate 77 == exactly the A1 note rn_KGhttHj9fT889Bm2 (the run-027 apply) — carried over of record",
+   "flashcards": "per the of-record disclosure: stale by the 14 run-024 card codings (the aggregate's coded definition is the compile.ts algorithm of record; not recomputed here)",
+   "spcptUnmapped": "the 2 run-025-resolved sids spcpt_3hpC7gNs8YZ6t7kd + spcpt_rGVN6hJn6Mb9z2nR still listed (verified at the base tip)",
+   "curriculumPlane": "the tenth content-plane file (curriculum.json) moved on main of record post-run-032 via the other-lane append-only landing 0ec5a6f9 (T-SME-SEL-W9-14 run-001, +76 SME_REFERENCE nodes across courses; the CS-23 course plane 62945 -> 86590 B) — zero bytes from this lane, disclosed; NO further drift since: the tip bytes still == the landing of record and byte-identical vs the run-033 base ad716b0d AND vs the run-034 filing base 23ca5924 AND vs the run-035 filing base 1544165e AND vs the run-035 merge-time base 4caa6570 AND vs the run-036 filing base 94c037f8 AND vs the run-036 merge-time base 4a8e7c9e AND vs the run-037 filing base fe32ffb9 AND vs the run-037 merge-time base 466f23e3 AND vs the run-038 filing base cb0f9c3f AND vs the run-038 merge-time base 118cbd35 AND vs the run-039 filing base 11626b11 AND vs the run-039 merge-time base 74b19a41 (re-asserted at build time); the map/flashcards/census/A1/G8 gates re-derived UNAFFECTED at the base tip",
+   "disposition": "the run-024/025/027/028/029/030/031/032/033/034/035/036/037/038/039 zero-collateral precedent stands (build-time aggregates untouched, CI-green of record, disclosed); remediation desk-re-ruleable in a later run — NOT remediated in this receipts run (zero content bytes)",
+   "carriedOverBy": "blob-identity: 9 of the 10 content-plane files (the map + the flashcards + the course questions/notes planes, curriculum.json EXCLUDED) byte-identical vs 74768c11 and vs the run-029 base d46e3ff4 and vs the run-030 base a558f9ad and vs the run-031 base 9b389dd7 and vs the run-032 base 2e119201 and vs the run-033 base ad716b0d and vs the run-034 filing base 23ca5924 and vs the run-035 filing base 1544165e and vs the run-035 merge-time base 4caa6570 and vs the run-036 filing base 94c037f8 and vs the run-036 merge-time base 4a8e7c9e and vs the run-037 filing base fe32ffb9 and vs the run-037 merge-time base 466f23e3 and vs the run-038 filing base cb0f9c3f and vs the run-038 merge-time base 118cbd35 and vs the run-039 filing base 11626b11 and vs the run-039 merge-time base 74b19a41 (asserted at build time); curriculum.json moved on main of record post-run-032 (the other-lane landing — the curriculumPlane disclosure above)"
+  }
+ },
+ "boundaries": "zero content bytes — no map/spine/registry/curriculum plane touched; the content map byte-identical vs the base tip (gate G5) + the flashcards byte-identical vs the base tip (gate G5b); scope == exactly the 7 declared paths",
+ "artifacts": [
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-040/scripts/rn40_gates.py",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-040/gates_r0.json",
+  ".syllabai/receipts/RN-DEBRIS-11/run-040-merge-record-ride.json",
+  ".syllabai/receipts/RN-DEBRIS-11/run-040-postReview.json"
+ ],
+ "standingReminder": "the PAT remains exposed from chat transmission and MUST be revoked/rotated (the thirty-sixth filing of the standing reminder)",
+ "mergePlan": "author does not self-merge — PR for the R0 desk (the filing-time mergePlan law; the desk orders self-merge separately per the run-021/022/023/024/025/026/027/028/029/030/031/032/033/034/035/036/037/038/039 precedents); no force-push; fetch-first race-guard at push"
+}

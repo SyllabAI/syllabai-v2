@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -289,6 +289,24 @@
           "explanation": "Slow earthing is precisely what prevents sparks.",
           "misconception": "inversion slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a wire warms gently",
+            "a large voltage drives current across an air gap",
+            "current flows steadily through metal",
+            "charge flows to earth slowly"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a large voltage drives current across an air gap"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -324,6 +342,24 @@
           "correct": true,
           "explanation": "The rubbing of the liquid insulator on the pipe transfers charge to the fuel.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "friction between the fuel and the pipe",
+            "magnetism in the pump",
+            "the fuel's weight",
+            "the pipe's colour"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "friction between the fuel and the pipe"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -361,6 +397,26 @@
           "explanation": "Plastic is an insulator.",
           "misconception": "material slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "copper wire"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -397,6 +453,24 @@
           "explanation": "Insulating would trap the charge.",
           "misconception": "inversion slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "slowing the pump",
+            "carrying charge safely to Earth",
+            "insulating the tank",
+            "cooling the fuel"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "carrying charge safely to Earth"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -432,6 +506,24 @@
           "correct": false,
           "explanation": "Paint is not the risk.",
           "misconception": "irrelevant hazard"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "battery drain",
+            "fire or explosion from a spark",
+            "frost damage",
+            "paint peeling"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "fire or explosion from a spark"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Carbon content alone does not make a fuel; the heat release on burning does.",
           "misconception": "composition test misused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Any liquid that can be poured into an engine",
+            "A substance that releases heat energy when it burns",
+            "A substance that absorbs heat as it reacts",
+            "Any substance containing carbon"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A substance that releases heat energy when it burns"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Wood is not a fossil fuel; it is recent plant material.",
           "misconception": "wood misclassified"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Coal, oil and natural gas",
+            "Wood, oil and bitumen",
+            "Peat, hydrogen and oil",
+            "Coal, ethanol and natural gas"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Coal, oil and natural gas"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,26 @@
           "explanation": "CO appears only when oxygen is limited; complete burning goes all the way to CO2.",
           "misconception": "incomplete products used"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Carbon dioxide and water"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +209,36 @@
           "explanation": "Three carbon atoms in propane must all appear as three CO2 molecules on the right.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "2",
+              "text": "5"
+            },
+            {
+              "id": "4",
+              "text": "3"
+            },
+            {
+              "id": "1",
+              "text": "1"
+            },
+            {
+              "id": "3",
+              "text": "8"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "4",
+            "2",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -188,6 +274,24 @@
           "correct": false,
           "explanation": "The sulfur comes with the fuel from the ground, not from the air afterwards.",
           "misconception": "air blamed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because engines manufacture sulfur during use",
+            "Because sulfur is added deliberately during refining",
+            "Because sulfur dissolves out of the air into the fuel",
+            "Because sulfur impurities are present in the fuel sources themselves"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because sulfur impurities are present in the fuel sources themselves"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

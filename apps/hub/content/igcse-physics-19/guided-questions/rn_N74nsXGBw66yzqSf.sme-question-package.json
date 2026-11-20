@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -287,6 +287,27 @@
           "explanation": "Wrong perpendiculars bias every angle measured from them.",
           "misconception": "error denial"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a systematic error",
+                    "systematic error"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -322,6 +343,24 @@
           "correct": true,
           "explanation": "The set square makes the normals genuinely ninety degrees.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "repeating more trials only",
+            "using a higher-resolution protractor",
+            "using a set square to draw the perpendicular lines",
+            "wearing gloves"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "using a set square to draw the perpendicular lines"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -359,6 +398,24 @@
           "explanation": "Resolution is a measurement limit, not a control issue.",
           "misconception": "category confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a safety risk",
+            "a random error in reading the angles",
+            "a systematic error",
+            "a control failure"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a random error in reading the angles"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -395,6 +452,24 @@
           "explanation": "This fix targets random placement scatter.",
           "misconception": "category swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "to eliminate systematic error",
+            "to increase the beam width",
+            "to reduce random error from inaccurately placed points",
+            "to make the diagram prettier"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "to reduce random error from inaccurately placed points"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -430,6 +505,24 @@
           "correct": true,
           "explanation": "That is the stated response if the hot lamp surface burns skin.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "standing in front of the ray box",
+            "looking into the light to check it works",
+            "adding water near the equipment",
+            "running any burn under cold water for at least five minutes"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "running any burn under cold water for at least five minutes"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Noble gases have full shells but no charge; charge, not fullness, makes the ion.",
           "misconception": "full shell equated with charge"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "An atom or group of atoms that carries an electric charge",
+            "Any atom with a full outer shell",
+            "An atom with extra neutrons",
+            "An atom that has gained or lost protons"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "An atom or group of atoms that carries an electric charge"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "The proton count never changes during ion forming.",
           "misconception": "proton balancing invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "To balance the protons in the nucleus",
+            "To become electrically neutral",
+            "To reach a full outer shell of electrons",
+            "To turn into a noble gas element"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "To reach a full outer shell of electrons"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,26 @@
           "explanation": "Helium holds only 2 electrons; sodium's ion keeps two full shells beneath.",
           "misconception": "smallest noble gas chosen"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Neon"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "The note states the rule without exceptions: metals lose, non-metals gain.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "All metals lose electrons; all non-metals gain them",
+            "Metals gain and non-metals lose",
+            "Both lose electrons at the same time",
+            "Only some metals take part"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "All metals lose electrons; all non-metals gain them"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "Protons fix the element, not the ion's charge; electrons decide the charge.",
           "misconception": "protons blamed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The charge equals the outer-shell total",
+            "The charge is always 1, whatever moves",
+            "The charge equals the proton count",
+            "The charge equals the number of electrons gained or lost"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The charge equals the number of electrons gained or lost"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -291,6 +383,24 @@
           "explanation": "Protons never transfer between atoms; only electrons move when ions form.",
           "misconception": "protons assumed mobile"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A neutral atom with a full outer shell",
+            "A negative ion with more electrons than protons",
+            "A positive ion with more protons than electrons",
+            "An atom that has gained protons"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A negative ion with more electrons than protons"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -326,6 +436,24 @@
           "correct": false,
           "explanation": "That is the non-metal route; metals sit on the losing side.",
           "misconception": "metal and non-metal roles reversed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They share electrons with non-metals",
+            "They gain electrons and become negative ions",
+            "They stay neutral because metals are stable",
+            "They lose electrons and become positive ions"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "They lose electrons and become positive ions"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -363,6 +491,26 @@
           "explanation": "Each lost electron adds one positive unit: two electrons lost, so 2+.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "2+"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -399,6 +547,26 @@
           "explanation": "The gained electron changes the balance; the ion cannot stay neutral.",
           "misconception": "gain dismissed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "1-"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -434,6 +602,24 @@
           "correct": false,
           "explanation": "Filling the shell needs one electron, not seven; the last shell is one short.",
           "misconception": "gap size miscounted"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It loses 1 electron and becomes Cl+",
+            "It gains 1 electron and becomes Cl-",
+            "It loses its whole outer shell",
+            "It gains 7 electrons"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It gains 1 electron and becomes Cl-"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

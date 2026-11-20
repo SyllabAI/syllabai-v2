@@ -6,7 +6,12 @@
   "provider": "inherited (multi (freesciencelessons / doodlescience / amoeba-sisters / cognito channel-only))",
   "label": "cie-igcse-science-co-ordinated-sciences-double-award-23-physics",
   "method": "deterministic spec-title-containment inheritance (>= 0.55, min 3 informative tokens) of the owner-approved external-lane rows of cie-igcse-physics-23; map: Videos/drafts/_p4/inheritance-map.json; no new LLM mapping decisions",
-  "enumeratedUtc": "2026-11-01T01:04:15Z"
+  "enumeratedUtc": "2026-11-01T01:04:15Z",
+  "p15": {
+   "provider": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs)",
+   "method": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) flat-enumerated 2026-11-19T14:37:11Z; routing: machine-checkable Tier B anchors (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences of the family per the P13 shared-unit precedent; 0417/4IT0 ICT; 4MA1 maths-A higher/foundation/modular-24 units; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH Unit-N session anchors per the P14 Assil law analog; 9708) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-19T14:52:13Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P4 (inheritance lane)",
@@ -14,7 +19,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 173,
+  "rowsApproved": 225,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +30,18 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 173,
+    "rowsApproved": 218,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p15 (discovery judgment lane: chem bio by Hosni — the sweep's densest find over the two biggest residual gaps, 0610 x342 + WBI x213; CAIE made easier + Learn Today IGCSE + Science and Stuff for the 0610/0620/0625/0654/0653 registers; Nicos Paphitis 0417 x121; Mark Harrison Ed-IGCSE ICT/CS x93 + 0417 x58; The Math Pad 4MA1 x197 + Libra Maths 4MA1 x127 + 0606 x63; Gilbert Phoon + Shawn Hew 0606/0620; Doctor No Does Science WPH x74 — the P14 Assil law analog; Taughtly 0500 x69; Dr. Maria Emam 0680 x55 + Everything E.M. 0680 x13; GEO-HACKS 0460 x37; Keen Mindz 0452 x64 at 100% register; Learn Economics with Anjuli 0455 + 9708; Belal Sir Ed-IGCSE chem/bio + 0620 with the AQA remainder skipped)",
+    "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane; judgment run 2026-11-18",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+    "ruledUtc": "2026-11-19T14:52:13Z",
+    "evidenceBasis": "Identity: oEmbed sweep 1,365/1,365 routed videos author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences; 0417/4IT0 ICT; 4MA1 higher/foundation/modular-24 routing; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH \"Unit N <session>\" unit-paper anchors per the P14 Assil law analog; 9708). Tier A: the P13/P14 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar. Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB), the Edexcel UK-GCSE CS register and the no-binding remainder skipped with reasons (3983 ledgered in work/p15/skips.json by class: {'no honest binding at the df<=3 bar': 3401, 'guidance/advice/marketing register': 478, 'out-of-spine board register (AQA/OCR/IB/...)': 89, 'NT-board titles re-adjudicated to skip on the final sanity pass': 15}); 243 lit-0475 titles RESERVED pending the owner decision (work/p15/reserved.json).",
+    "rowsApproved": 7,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -2691,9 +2707,651 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "DoodleScience",
    "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "fULDzxmSpg4",
+   "title": "IGCSE Physics 0625 notes Topic 4: Right hand grip rule",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=fULDzxmSpg4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "54S0pxWasSw",
+   "title": "What is Pressure.IGCSE.0625",
+   "provider": "mega-lecture",
+   "watchUrl": "https://www.youtube.com/watch?v=54S0pxWasSw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DFizQfXPffI",
+   "title": "Gradient of a Graph – Straight Lines & Curves | IGCSE Physics 0625 & GCSE | Lecture 12",
+   "provider": "mega-lecture",
+   "watchUrl": "https://www.youtube.com/watch?v=DFizQfXPffI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Mvxzsx66o6E",
+   "title": "Introduction to Pressure | IGCSE Physics 0625 & GCSE | Lecture 35",
+   "provider": "mega-lecture",
+   "watchUrl": "https://www.youtube.com/watch?v=Mvxzsx66o6E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "TWrknrdWMFA",
+   "title": "Mass and Weight | IGCSE Physics 0625 & GCSE | Lecture 23",
+   "provider": "mega-lecture",
+   "watchUrl": "https://www.youtube.com/watch?v=TWrknrdWMFA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WeGbJKKqjIk",
+   "title": "Scalar and Vector Quantities | IGCSE Physics 0625 & GCSE | Lecture 8",
+   "provider": "mega-lecture",
+   "watchUrl": "https://www.youtube.com/watch?v=WeGbJKKqjIk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wa-2sYGRcsY",
+   "title": "Simple Pendulum – Measuring the Time Period | IGCSE Physics 0625 & GCSE | Lecture 7",
+   "provider": "mega-lecture",
+   "watchUrl": "https://www.youtube.com/watch?v=wa-2sYGRcsY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3CBeTopYA1E",
+   "title": "Stars & The Universe IGCSE Physics",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=3CBeTopYA1E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WGl6lNVe4XY",
+   "title": "IGCSE Physics 0625 | Unit 1 - Physical Quantities & Measurement Techniques",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=WGl6lNVe4XY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZKzKg-9Tpxs",
+   "title": "Base Units, Homogenous Eqn, Scalar/Vector, Vector/ Closed Triangle |Part 1 ",
+   "provider": "caie-made-easier",
+   "watchUrl": "https://www.youtube.com/watch?v=ZKzKg-9Tpxs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "CAIE made easier (CIE IGCSE sciences trio register: 0610/0620/0625 session papers + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gSdFcNkwVCE",
+   "title": "0625 IGCSE PHYSICS | All of Chapter 4: Electricity & Magnetism Questions",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=gSdFcNkwVCE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uZGCSnNY3Jk",
+   "title": "IGCSE PHYSICS ELECTROMAGNETISM PART-2 | Transformers, AC Generators and DC Motors",
+   "provider": "caie-made-easier",
+   "watchUrl": "https://www.youtube.com/watch?v=uZGCSnNY3Jk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "CAIE made easier (CIE IGCSE sciences trio register: 0610/0620/0625 session papers + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "285MhXxdHhs",
+   "title": "Radioactivity Lecture",
+   "provider": "a2z-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=285MhXxdHhs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "A2Z Physics (Edexcel IAL physics unit register + CIE 0625; the AQA-heavy remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "5GS5r3riY9I",
+   "title": "Mass VS Weight",
+   "provider": "a2z-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=5GS5r3riY9I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "A2Z Physics (Edexcel IAL physics unit register + CIE 0625; the AQA-heavy remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "A9KyHXgegBc",
+   "title": "White and Black Balloon VS Laser #physics #physicsconcept #experiment #scienceexperiment",
+   "provider": "a2z-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=A9KyHXgegBc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "A2Z Physics (Edexcel IAL physics unit register + CIE 0625; the AQA-heavy remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "J4rCOweMSf0",
+   "title": "Radioactivity",
+   "provider": "a2z-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=J4rCOweMSf0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "A2Z Physics (Edexcel IAL physics unit register + CIE 0625; the AQA-heavy remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JR6l4Pb_-TI",
+   "title": "Pressure",
+   "provider": "a2z-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=JR6l4Pb_-TI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "A2Z Physics (Edexcel IAL physics unit register + CIE 0625; the AQA-heavy remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LuIW1lOOJDg",
+   "title": "Radioactivity",
+   "provider": "a2z-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=LuIW1lOOJDg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "A2Z Physics (Edexcel IAL physics unit register + CIE 0625; the AQA-heavy remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RfMjFkq6_RE",
+   "title": "Chemistry 0620 Cambridge IGCSE | Terminology Error: Atoms, Ions or Molecules?",
+   "provider": "fundoo-tutor",
+   "watchUrl": "https://www.youtube.com/watch?v=RfMjFkq6_RE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Fundoo Tutor IGCSE Grade 9 and 10 (Cambridge IGCSE 0610/0455/0625/0620 misconception/error-analysis rows in the 'subject | code | error-class | detail' pipe format) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "W6uKgPkbN8o",
+   "title": "Radioactivity",
+   "provider": "a2z-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=W6uKgPkbN8o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "A2Z Physics (Edexcel IAL physics unit register + CIE 0625; the AQA-heavy remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WhYCNxXw4SA",
+   "title": "Radioactivity Lecture 1",
+   "provider": "a2z-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=WhYCNxXw4SA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "A2Z Physics (Edexcel IAL physics unit register + CIE 0625; the AQA-heavy remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yPhYpwGDUzc",
+   "title": "Radioactivity - Dating and safety",
+   "provider": "a2z-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=yPhYpwGDUzc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "A2Z Physics (Edexcel IAL physics unit register + CIE 0625; the AQA-heavy remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0ULxDwsxY6U",
+   "title": "IGCSE Physics Topic 1.1: Physical Quantities & Measurement Techniques",
+   "provider": "brian-kemp",
+   "watchUrl": "https://www.youtube.com/watch?v=0ULxDwsxY6U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Brian Kemp (multi-cluster: CIE 9708 A-level + 0455 IGCSE economics with N.M section markers, 0460 geography, 4MA1 maths, 0610/0620/0625 sciences, 0654 co-ordinated, 0580 maths per the P9/P14 paper-number law; p15-swept resurfaced with the sentinel disclosure; bare 'IGCSE Maths' titles without a syllabus code skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0Vdq9uLIuWc",
+   "title": "📘 *Class 9 Math - Exercise 1.3 Complete Solution | Irrational Numbers Explained with Examples*",
+   "provider": "igcse-a-level-examcrack",
+   "watchUrl": "https://www.youtube.com/watch?v=0Vdq9uLIuWc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE & A Level ExamCrack (CIE A-level sciences 9700/9701/9702 papers 1-3 AS / 4-5 A2 + IGCSE 0620/0625/0610 (+ the 5090 dual) paper walkthroughs and predicted papers, 9609 business, 9708 econ, Edexcel 4MA1/4WM/4MB1 maths incl. the 4WM1H modular paper, IAL WPH/WBI/WCH predicted papers, 0580 (+ 4024 dual), 0452 (+ 7707 dual), 0606; the 9709 maths walkthroughs skip per ANCHOR-GRANULARITY section 6 (the P9/P17 precedent); grade-thresholds/timetables/results meta skipped; p15-swept resurfaced with the sentinel disclosure) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "59xthdMrhRQ",
+   "title": "1.4 Density Igcse Physics Revision Part 1",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=59xthdMrhRQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BrhZ2Dc8sF8",
+   "title": "1.2.3 Market segmentation GCSE Business Studies",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=BrhZ2Dc8sF8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GKzFY9RSWBs",
+   "title": "Factors affecting choice of suppliers",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=GKzFY9RSWBs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HLk2U-D2gXI",
+   "title": "1.4.4 Business plans GCSE Business Studies",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=HLk2U-D2gXI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Hd_8WRwyWNA",
+   "title": "2.3.4 Consequences of energy transfer IGCSE Physics",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=Hd_8WRwyWNA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JgaJGvfMjO4",
+   "title": "IGCSE Physics - 1.7 Energy Work and Power",
+   "provider": "brian-kemp",
+   "watchUrl": "https://www.youtube.com/watch?v=JgaJGvfMjO4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Brian Kemp (multi-cluster: CIE 9708 A-level + 0455 IGCSE economics with N.M section markers, 0460 geography, 4MA1 maths, 0610/0620/0625 sciences, 0654 co-ordinated, 0580 maths per the P9/P14 paper-number law; p15-swept resurfaced with the sentinel disclosure; bare 'IGCSE Maths' titles without a syllabus code skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KZkbEqWWxeM",
+   "title": "1.5 Forces Igcse Physics Revision Part 1",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=KZkbEqWWxeM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NbTRsQCGyME",
+   "title": "1.5 Forces Igcse Physics Revision Part 2",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=NbTRsQCGyME",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "S05i9GjvnPw",
+   "title": "1.4 Density Igcse Physics Revision Part 2",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=S05i9GjvnPw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "U42lsd73pV4",
+   "title": "IGCSE Physics - 1.8 Pressure",
+   "provider": "brian-kemp",
+   "watchUrl": "https://www.youtube.com/watch?v=U42lsd73pV4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Brian Kemp (multi-cluster: CIE 9708 A-level + 0455 IGCSE economics with N.M section markers, 0460 geography, 4MA1 maths, 0610/0620/0625 sciences, 0654 co-ordinated, 0580 maths per the P9/P14 paper-number law; p15-swept resurfaced with the sentinel disclosure; bare 'IGCSE Maths' titles without a syllabus code skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Xr-KeqtRadg",
+   "title": "2.2.3 Thermal capacity (heat capacity) IGCSE Physics",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=Xr-KeqtRadg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "a5KFtmouLw0",
+   "title": "1.3.4 Sources of business finance GCSE Business Studies",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=a5KFtmouLw0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bzCJ9Jtle_c",
+   "title": "1.7 Energy, Work and Power Igcse Physics",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=bzCJ9Jtle_c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dwaHycT8FNo",
+   "title": "1.8 Pressure IGCSE Physics Part 2",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=dwaHycT8FNo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "iGwx_UMUf7Y",
+   "title": "1.5.2 Turning Effect of Force Igcse Physics",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=iGwx_UMUf7Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "iRoXUFXtl4s",
+   "title": "The Business of War: How Defense Companies Make Billions",
+   "provider": "brian-kemp",
+   "watchUrl": "https://www.youtube.com/watch?v=iRoXUFXtl4s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Brian Kemp (multi-cluster: CIE 9708 A-level + 0455 IGCSE economics with N.M section markers, 0460 geography, 4MA1 maths, 0610/0620/0625 sciences, 0654 co-ordinated, 0580 maths per the P9/P14 paper-number law; p15-swept resurfaced with the sentinel disclosure; bare 'IGCSE Maths' titles without a syllabus code skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "m03PqIVXkkk",
+   "title": "1.4.2 Business location GCSE Business Studies",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=m03PqIVXkkk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "mVY1GzNsQl0",
+   "title": "3.4 Marketing strategy IGCSE Business Studies",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=mVY1GzNsQl0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nsV461YIr6c",
+   "title": "1.4 Types of Business Organisations IGCSE Business Studies",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=nsV461YIr6c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "urqb9TJA2NI",
+   "title": "4.4 Location Decisions IGCSE Business Studies",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=urqb9TJA2NI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zsopVCKw1HU",
+   "title": "1.8 Pressure IGCSE Physics",
+   "provider": "sense-business-studies",
+   "watchUrl": "https://www.youtube.com/watch?v=zsopVCKw1HU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Sense Business Studies (multi-subject IGCSE topic library — business/economics/accounting/biology/physics/chemistry topic lectures across the spine courses; the 'IGCSE ... TIPS' subset skipped honestly as guidance) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "70uWhIkjZSo",
+   "title": "Co-ordinated Sciences Paper 6 - Summer 2018 - IGCSE (CIE 0654) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=70uWhIkjZSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9mfkYh7miRk",
+   "title": "Co-ordinated Sciences Paper 4 - Summer 2018 - IGCSE (CIE 0654) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=9mfkYh7miRk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "AEynjMPS0Y0",
+   "title": "Moments review part 2 - Using perpendicular distance to the pivot",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=AEynjMPS0Y0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "cUdW4GLZtGE",
+   "title": "Co-ordinated Sciences Paper 2 - Summer 2018 - IGCSE (CIE 0654) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=cUdW4GLZtGE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ozGDaYfOvWI",
+   "title": "Easily remember the frequency and wavelength orders of visible light",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=ozGDaYfOvWI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pvSL3uMDwdQ",
+   "title": "Co-ordinated Sciences Paper 1 - Summer 2018 - IGCSE (CIE 0654) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=pvSL3uMDwdQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xKGJn_AsNvc",
+   "title": "Co-ordinated Sciences Paper 3 - Summer 2018 - IGCSE (CIE 0654) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=xKGJn_AsNvc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
+  {
+   "video": "WGl6lNVe4XY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.1.1",
+    "P1.1.2",
+    "P1.1.3",
+    "P1.1.4",
+    "P1.1.5",
+    "P1.1.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Physical quantities and measurement techniques' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "0ULxDwsxY6U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.1.1",
+    "P1.1.2",
+    "P1.1.3",
+    "P1.1.4",
+    "P1.1.5",
+    "P1.1.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Physical quantities and measurement techniques' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "wa-2sYGRcsY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.1.3 '\u0007Determine an average value for a small distance and for a s' via token(s) ['measuring', 'pendulum', 'period', 'time'] (df 22); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
   {
    "video": "silFXR2kG7E",
    "lessonRef": null,
@@ -2703,6 +3361,46 @@
    ],
    "confidence": "medium",
    "evidence": "title names scalars and vectors (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "WeGbJKKqjIk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.1.4 '\u0007Understand that a scalar quantity has magnitude (size) only' via token(s) ['scalar', 'vector'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ZKzKg-9Tpxs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.1.4 '\u0007Understand that a scalar quantity has magnitude (size) only' via token(s) ['scalar', 'vector'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2809,6 +3507,27 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Measuring Speed from a Curved Distance-Time Graph' names the d-t graph interpretation of 1.2.4/1.2.5 (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "DFizQfXPffI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.2.11",
+    "P1.2.6"
+   ],
+   "confidence": "low",
+   "evidence": "title names 1.2.6 '\u0007Calculate speed from the gradient of a straight- line secti' via token(s) ['gradient', 'graph', 'straight'] (df 6); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2961,6 +3680,78 @@
    }
   },
   {
+   "video": "TWrknrdWMFA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.3.1",
+    "P1.3.2",
+    "P1.3.3",
+    "P1.3.4",
+    "P1.3.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Mass and weight' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "5GS5r3riY9I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.3.1",
+    "P1.3.2",
+    "P1.3.3",
+    "P1.3.4",
+    "P1.3.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Mass and weight' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "0Vdq9uLIuWc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.3.1",
+    "P1.3.2",
+    "P1.3.3",
+    "P1.3.4",
+    "P1.3.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 1.3 'Mass and weight' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "hSzEdvFEVq8",
    "lessonRef": null,
    "lessonUrl": null,
@@ -3024,6 +3815,72 @@
    }
   },
   {
+   "video": "S05i9GjvnPw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.4.1",
+    "P1.4.2",
+    "P1.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 1.4 'Density' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "59xthdMrhRQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.4.1",
+    "P1.4.2",
+    "P1.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 1.4 'Density' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "nsV461YIr6c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.4.1",
+    "P1.4.2",
+    "P1.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 1.4 'Density' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "HLDrvfTNbaE",
    "lessonRef": null,
    "lessonUrl": null,
@@ -3052,6 +3909,64 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Density of a Concrete Block' names the density-determination content of 1.4.2 (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "NbTRsQCGyME",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.5.1",
+    "P1.5.10",
+    "P1.5.2",
+    "P1.5.3",
+    "P1.5.4",
+    "P1.5.5",
+    "P1.5.6",
+    "P1.5.7",
+    "P1.5.8",
+    "P1.5.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 1.5 'Forces' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "KZkbEqWWxeM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.5.1",
+    "P1.5.10",
+    "P1.5.2",
+    "P1.5.3",
+    "P1.5.4",
+    "P1.5.5",
+    "P1.5.6",
+    "P1.5.7",
+    "P1.5.8",
+    "P1.5.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 1.5 'Forces' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3385,6 +4300,56 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Energy Stores' names the energy-storage spec 1.7.1 and the store-to-store transfer of 1.7.2 (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "JgaJGvfMjO4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.6.1",
+    "P1.6.1b",
+    "P1.6.2",
+    "P1.6.3",
+    "P1.6.4",
+    "P1.6.7"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 1.7 'Energy, work and power' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "bzCJ9Jtle_c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.6.1",
+    "P1.6.1b",
+    "P1.6.2",
+    "P1.6.3",
+    "P1.6.4",
+    "P1.6.7"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 1.7 'Energy, work and power' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -4005,6 +4970,132 @@
    }
   },
   {
+   "video": "Mvxzsx66o6E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.7.1",
+    "P1.7.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Pressure' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "54S0pxWasSw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.7.1",
+    "P1.7.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Pressure' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "JR6l4Pb_-TI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.7.1",
+    "P1.7.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Pressure' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "U42lsd73pV4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.7.1",
+    "P1.7.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 1.8 'Pressure' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "dwaHycT8FNo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.7.1",
+    "P1.7.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 1.8 'Pressure' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "zsopVCKw1HU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.7.1",
+    "P1.7.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 1.8 'Pressure' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "4Vn07qFWcO0",
    "lessonRef": null,
    "lessonUrl": null,
@@ -4148,6 +5239,26 @@
    }
   },
   {
+   "video": "RfMjFkq6_RE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P2.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.1.6 '\u0007Know that the forces and distances between particles (atoms' via token(s) ['atoms', 'ions', 'molecules'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "zsb4ZEQLFxQ",
    "lessonRef": null,
    "lessonUrl": null,
@@ -4176,6 +5287,100 @@
    ],
    "confidence": "low",
    "evidence": "title 'Cooling of Buildings' partially names the evaporation-causes-cooling spec 2.2.5 (cooling context — partial, disclosed); the 5.2.2 greenhouse bind is nonsense adjacency (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "gSdFcNkwVCE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P2.3.1",
+    "P4.1.1",
+    "P4.1.2",
+    "P4.1.5",
+    "P4.1.6",
+    "P4.2.1",
+    "P4.2.1a",
+    "P4.2.1d",
+    "P4.2.2",
+    "P4.2.2a",
+    "P4.2.2c",
+    "P4.2.2d",
+    "P4.2.3a",
+    "P4.2.3b",
+    "P4.2.3c",
+    "P4.2.4",
+    "P4.2.4b",
+    "P4.2.4c",
+    "P4.2.5",
+    "P4.2.6",
+    "P4.2.7",
+    "P4.3.1",
+    "P4.3.1a",
+    "P4.3.2",
+    "P4.3.2a",
+    "P4.3.3",
+    "P4.3.4",
+    "P4.3.5",
+    "P4.3.6",
+    "P4.3.7",
+    "P4.3.8",
+    "P4.4.1",
+    "P4.4.2",
+    "P4.4.4",
+    "P4.5.1",
+    "P4.5.1a",
+    "P4.5.1b",
+    "P4.5.1c",
+    "P4.5.1d",
+    "P4.5.1e",
+    "P4.5.2",
+    "P4.5.2a",
+    "P4.5.2b",
+    "P4.5.2c",
+    "P4.5.2d",
+    "P4.5.2e",
+    "P4.5.3",
+    "P4.5.4",
+    "P4.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Electricity and magnetism' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "m03PqIVXkkk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P2.3.1",
+    "P4.2.1",
+    "P4.2.2",
+    "P4.2.4",
+    "P4.2.5",
+    "P4.2.6",
+    "P4.2.7"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 4.2 'Electrical quantities' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -4310,6 +5515,52 @@
    }
   },
   {
+   "video": "Xr-KeqtRadg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P2.3.2a",
+    "P2.3.2b",
+    "P2.3.4",
+    "P2.3.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 2.3 'Transfer of thermal energy' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "BrhZ2Dc8sF8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P2.3.2a",
+    "P2.3.2b",
+    "P2.3.4",
+    "P2.3.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 2.3 'Transfer of thermal energy' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "PsHANcj1dgQ",
    "lessonRef": null,
    "lessonUrl": null,
@@ -4338,6 +5589,26 @@
    ],
    "confidence": "low",
    "evidence": "title 'Black Body Radiation' partially names the surface-colour emission/absorption spec 2.3.3 (black surfaces — genuine partial, disclosed); the 3.3.4 EM-harm bind is nonsense adjacency (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "A9KyHXgegBc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P2.3.2b"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.3.3 '\u0007Describe the effect of surface colour (black or white) and ' via token(s) ['black', 'white'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -4822,6 +6093,27 @@
    }
   },
   {
+   "video": "fULDzxmSpg4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P3.3.1",
+    "P3.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.3.3 '\u0007Describe typical uses of the different regions of the e' via token(s) ['note'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "T1YY5r-Yvec",
    "lessonRef": null,
    "lessonUrl": null,
@@ -4830,6 +6122,87 @@
    ],
    "confidence": "low",
    "evidence": "title names EM wave speed; the same-high-speed-in-vacuum clause only partially evidenced (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Hd_8WRwyWNA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P3.4.1",
+    "P3.4.10",
+    "P3.4.2",
+    "P3.4.3",
+    "P3.4.4",
+    "P3.4.5",
+    "P3.4.6",
+    "P3.4.7"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 3.4 'Sound' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "a5KFtmouLw0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P3.4.1",
+    "P3.4.10",
+    "P3.4.2",
+    "P3.4.3",
+    "P3.4.4",
+    "P3.4.5",
+    "P3.4.6",
+    "P3.4.7"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 3.4 'Sound' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "mVY1GzNsQl0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P3.4.1",
+    "P3.4.10",
+    "P3.4.2",
+    "P3.4.3",
+    "P3.4.4",
+    "P3.4.5",
+    "P3.4.6",
+    "P3.4.7"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 3.4 'Sound' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -5573,6 +6946,26 @@
    }
   },
   {
+   "video": "uZGCSnNY3Jk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P4.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.3.1 '\u0007Draw and interpret circuit diagrams containing cells, batte' via token(s) ['generators', 'motors', 'transformers'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "oHIm47NVZA0",
    "lessonRef": null,
    "lessonUrl": null,
@@ -5782,6 +7175,48 @@
    }
   },
   {
+   "video": "HLk2U-D2gXI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P4.4.2",
+    "P4.4.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 4.4 'Electrical safety' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "urqb9TJA2NI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P4.4.2",
+    "P4.4.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 4.4 'Electrical safety' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "mcvH4JU2stM",
    "lessonRef": null,
    "lessonUrl": null,
@@ -5871,6 +7306,26 @@
    ],
    "confidence": "medium",
    "evidence": "title 'How Transformers Work' = simple transformer construction with soft iron core for voltage transformation (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "GKzFY9RSWBs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P4.5.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.5.3 '\u0007State the factors affecting the magnitude of an induced e.m' via token(s) ['affecting', 'factors'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -6012,6 +7467,167 @@
    ],
    "confidence": "medium",
    "evidence": "title 'GCSE Physics Revision \"Alpha-Scattering and the Nuclear Model\"' -> 5.1.3a '\u0007Describe how the scattering of alpha (α) part' via distinctive token(s) alpha, scattering; 5.2.2a '\u0007Identify alpha ( α ), beta ( β ) and gamma ( ' via distinctive token(s) alpha (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "yPhYpwGDUzc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P5.2.1",
+    "P5.2.2",
+    "P5.2.3",
+    "P5.2.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Radioactivity' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "LuIW1lOOJDg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P5.2.1",
+    "P5.2.2",
+    "P5.2.3",
+    "P5.2.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Radioactivity' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "J4rCOweMSf0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P5.2.1",
+    "P5.2.2",
+    "P5.2.3",
+    "P5.2.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Radioactivity' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "W6uKgPkbN8o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P5.2.1",
+    "P5.2.2",
+    "P5.2.3",
+    "P5.2.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Radioactivity' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "WhYCNxXw4SA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P5.2.1",
+    "P5.2.2",
+    "P5.2.3",
+    "P5.2.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Radioactivity' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "285MhXxdHhs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P5.2.1",
+    "P5.2.2",
+    "P5.2.3",
+    "P5.2.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Radioactivity' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "iGwx_UMUf7Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P5.2.1",
+    "P5.2.2",
+    "P5.2.3",
+    "P5.2.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 5.2 'Radioactivity' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -6173,6 +7789,27 @@
    }
   },
   {
+   "video": "iRoXUFXtl4s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P6.2.1",
+    "P6.2.1b"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.2.1a 'State that: stars Milky Way much further away from the Earth' via token(s) ['billions', 'make'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "V69KZun35K8",
    "lessonRef": null,
    "lessonUrl": null,
@@ -6182,6 +7819,29 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Life Cycle of Stars | How Stars are Formed & Destroyed' = star formation to destruction is the stellar life cycle (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "3CBeTopYA1E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P6.2.1a",
+    "P6.2.2a",
+    "P6.2.5",
+    "P6.2.8"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Stars and the Universe' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -6233,20 +7893,145 @@
     "threshold": 0.55,
     "map": "Videos/drafts/_p4/inheritance-map.json"
    }
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-science-co-ordinated-sciences-double-award-23-physics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "9mfkYh7miRk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Co-ordinated Sciences Paper 4 - Summer 2018 - IGCSE (CIE 0654) Exam Practice\"; 0654 co-ordinated sciences session/paper anchor — shared-paper binding to all three sciences (disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-science-co-ordinated-sciences-double-award-23-physics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "70uWhIkjZSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Co-ordinated Sciences Paper 6 - Summer 2018 - IGCSE (CIE 0654) Exam Practice\"; 0654 co-ordinated sciences session/paper anchor — shared-paper binding to all three sciences (disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-science-co-ordinated-sciences-double-award-23-physics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "xKGJn_AsNvc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Co-ordinated Sciences Paper 3 - Summer 2018 - IGCSE (CIE 0654) Exam Practice\"; 0654 co-ordinated sciences session/paper anchor — shared-paper binding to all three sciences (disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-science-co-ordinated-sciences-double-award-23-physics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "cUdW4GLZtGE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Co-ordinated Sciences Paper 2 - Summer 2018 - IGCSE (CIE 0654) Exam Practice\"; 0654 co-ordinated sciences session/paper anchor — shared-paper binding to all three sciences (disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-science-co-ordinated-sciences-double-award-23-physics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "pvSL3uMDwdQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Co-ordinated Sciences Paper 1 - Summer 2018 - IGCSE (CIE 0654) Exam Practice\"; 0654 co-ordinated sciences session/paper anchor — shared-paper binding to all three sciences (disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "ozGDaYfOvWI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P3.2.2c"
+   ],
+   "confidence": "low",
+   "evidence": "title names P3.2.2c 'Know the seven colours (red, orange, yellow, green, blue, in' via token(s) ['frequency', 'visible', 'wavelength'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "AEynjMPS0Y0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.5.2a"
+   ],
+   "confidence": "medium",
+   "evidence": "title names P1.5.2a 'Define the moment of a force as moment = force × perpendicul' via token(s) ['distance', 'perpendicular', 'pivot'] (df 16); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 221,
-  "specPointsMapped": 114,
-  "specPointsUnmapped": 107,
-  "videosTotal": 173,
-  "videosMapped": 173,
+  "specPointsMapped": 157,
+  "specPointsUnmapped": 64,
+  "videosTotal": 225,
+  "videosMapped": 225,
   "videosUnmapped": 0,
-  "mappingRows": 173,
+  "mappingRows": 225,
   "byConfidence": {
-   "high": 0,
-   "medium": 131,
-   "low": 42
+   "high": 5,
+   "medium": 141,
+   "low": 79
   }
  },
  "inputs": {
@@ -6268,7 +8053,13 @@
     "Videos/drafts/cie-igcse-physics-23/video-map.draft.external-p2e.json"
    ],
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
+  },
+  "p15": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-science-co-ordinated-sciences-double-award-23-physics/video-map.draft.external-p15.json",
+   "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-19T14:52:13Z"
   }
  },
- "generatedUtc": "2026-11-12T20:09:49.851Z"
+ "generatedUtc": "2026-11-20T10:53:23.732Z"
 }

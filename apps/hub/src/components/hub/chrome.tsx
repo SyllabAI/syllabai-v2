@@ -14,17 +14,35 @@ export interface Crumb {
 }
 
 export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: string }) {
+  // V-11 completion (visual audit): nowrap on the labels (kept from the
+  // first pass) stops mid-compound breaks, but the trail still flex-wraps
+  // BETWEEN whole items — and greedy line packing then strands crumbs:
+  // measured live at 390px on /courses/cie-igcse-science-co-ordinated-
+  // sciences-double-award-23-biology, the trail rendered THREE lines
+  // (Home / Cambridge International | / IGCSE | / Co-ordinated Sciences…)
+  // with 128px of line 1 still free. One scrollable line instead: the
+  // current-page label is capped (the page's own h1 carries the full
+  // title right beneath), so no crumb ever sits orphaned mid-trail.
   return (
-    <nav aria-label="Breadcrumb" className={cn("flex flex-wrap items-center gap-1 text-xs", className)}>
+    <nav
+      aria-label="Breadcrumb"
+      className={cn("flex flex-nowrap items-center gap-1 overflow-x-auto text-xs", className)}
+    >
       <Link
         href="/"
-        className="-ml-1 inline-flex min-h-9 min-w-9 items-center justify-center gap-1 rounded-md px-1 py-2 text-muted-foreground transition-colors hover:text-foreground"
+        className="-ml-1 inline-flex min-h-9 min-w-9 shrink-0 items-center justify-center gap-1 rounded-md px-1 py-2 text-muted-foreground transition-colors hover:text-foreground"
       >
         <Home className="size-4" aria-hidden />
         <span className="sr-only sm:not-sr-only">Home</span>
       </Link>
       {items.map((c, i) => (
-        <span key={`${c.label}-${i}`} className="inline-flex items-center gap-1">
+        <span
+          key={`${c.label}-${i}`}
+          className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap"
+        >
+          {/* visual audit V-11: labels never break mid-compound ("Chemistry —
+              A–Level" used to orphan-wrap under the home icon); the trail
+              now scrolls as one line instead of wrapping between items */}
           {/* /80: /50 measured 1.96:1 (P3-13) — decorative but needlessly faint */}
           <span aria-hidden className="text-muted-foreground/80">/</span>
           {c.href && i < items.length - 1 ? (
@@ -35,7 +53,13 @@ export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: 
               {c.label}
             </Link>
           ) : (
-            <span className={i === items.length - 1 ? "font-medium text-foreground" : "text-muted-foreground"}>
+            <span
+              className={
+                i === items.length - 1
+                  ? "max-w-[45vw] truncate font-medium text-foreground"
+                  : "text-muted-foreground"
+              }
+            >
               {/* T-UGM-RENDER-2: the current-page crumb carries resource titles
                   whose $…$ math leaked raw on 235/628 UGM pages (fresh sweep
                   2026-10-29, residual R1). MathText is a server component and a

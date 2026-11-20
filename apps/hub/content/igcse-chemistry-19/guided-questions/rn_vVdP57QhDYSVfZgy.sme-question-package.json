@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Adding colour is the opposite of the cleaning step's purpose.",
           "misconception": "opposite effect claimed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "To make the wire conduct electricity",
+            "To cool the wire down",
+            "To remove ions that would contaminate the flame colour",
+            "To add sodium colour to the flame"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "To remove ions that would contaminate the flame colour"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "A yellow glow would mean sodium contamination, so the loop is not clean.",
           "misconception": "sodium contamination imagined"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "No colour change"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,26 @@
           "explanation": "Copper would colour the flame blue-green itself and ruin the reading.",
           "misconception": "reactive wires chosen"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Nichrome or platinum"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +211,24 @@
           "explanation": "The method places the loaded loop at the edge of the hot blue flame.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Under the barrel of the burner",
+            "In the yellow safety flame",
+            "At the edge of the blue flame",
+            "Above the flame entirely"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "At the edge of the blue flame"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +264,24 @@
           "correct": false,
           "explanation": "Every ion present contributes, which is the problem being avoided.",
           "misconception": "false exclusivity"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Both colours appear separately in bands",
+            "The stronger ion destroys the other",
+            "Nothing, only one ion can colour a flame",
+            "Their colours mix and can mask each other"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Their colours mix and can mask each other"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -284,6 +378,26 @@
           "explanation": "Lithium gives red, not lilac.",
           "misconception": "red-lilac swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "K+"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -319,6 +433,26 @@
           "correct": false,
           "explanation": "Copper(II) gives blue-green, not orange-red.",
           "misconception": "blue-green swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Ca2+"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -356,6 +490,26 @@
           "explanation": "Copper(II) ions colour the flame blue-green.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Cu2+"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -392,6 +546,26 @@
           "explanation": "Potassium's lilac is nowhere near orange.",
           "misconception": "lilac confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Calcium ions"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -427,6 +601,24 @@
           "correct": false,
           "explanation": "The cooler luminous flame is avoided, but the reason given for the blue flame is the strong heating it supplies.",
           "misconception": "contamination concern misplaced"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Blue flames burn cooler, protecting the sample",
+            "The yellow flame adds its own colour",
+            "The sample needs strong heating for the colour to show",
+            "Colours only exist in blue light"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The sample needs strong heating for the colour to show"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

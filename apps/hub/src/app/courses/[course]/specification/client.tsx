@@ -326,8 +326,8 @@ export function SpecificationExplorer({ topics, totalPoints, legend }: Props) {
       {chipsSeen === 0 ? (
         <Card>
           <CardContent className="p-6 text-sm text-muted-foreground">
-            Paper/unit applicability has not been derived for this course yet — the
-            statements below are the parsed specification, as printed.
+            No paper/unit/tier filters for this course — every statement below
+            is from the official specification.
           </CardContent>
         </Card>
       ) : (
@@ -357,11 +357,7 @@ export function SpecificationExplorer({ topics, totalPoints, legend }: Props) {
             {tierOptions.length === 1 &&
               renderLocked("lk-tier", <GraduationCap className="size-3.5" aria-hidden />, "Tier", tierOptions[0].value)}
             <p className="text-xs leading-relaxed text-muted-foreground sm:col-span-3">
-              Assessment homes come from the parsed Pearson specification (content
-              summaries &amp; assessment overviews). Hover a chip for the printed rule.
-              Filters appear only where the qualification has that structure — a
-              linear IGCSE has no unit scope, and only Maths A splits Foundation /
-              Higher tiers.
+              Chips show where each statement is examined — hover one for the exact rule.
             </p>
           </CardContent>
         </Card>
@@ -409,7 +405,7 @@ export function SpecificationExplorer({ topics, totalPoints, legend }: Props) {
                               {p.statement.items ? (
                                 <div className="min-w-0 flex-1 text-sm leading-relaxed">
                                   {p.statement.lead && <p>{p.statement.lead}</p>}
-                                  <ul className="ml-4 mt-1 list-disc space-y-1 marker:text-muted-foreground/60">
+                                  <ul className="ml-4 mt-1 list-disc space-y-1 marker:text-muted-foreground">
                                     {p.statement.items.map((lines, i) => (
                                       <li key={i}>
                                         {lines.map((line, j) =>
@@ -459,7 +455,7 @@ export function SpecificationExplorer({ topics, totalPoints, legend }: Props) {
       {filterActive && visible === 0 && (
         <Card>
           <CardContent className="p-6 text-sm text-muted-foreground">
-            No specification statements match this scope combination.
+            Nothing matches this filter.
           </CardContent>
         </Card>
       )}

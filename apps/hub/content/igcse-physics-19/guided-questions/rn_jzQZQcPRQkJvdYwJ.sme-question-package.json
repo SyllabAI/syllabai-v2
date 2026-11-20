@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Nothing is stored; the moment describes the turning action of an applied force.",
           "misconception": "storage myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A force stored inside an object",
+            "The speed at which an object spins",
+            "The amount of matter packed into an object",
+            "The turning effect a force produces about a pivot"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The turning effect a force produces about a pivot"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "A downward force can turn an object either way, depending on where it acts.",
           "misconception": "direction slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A planet's orbit around the Sun",
+            "The swing of a pendulum",
+            "Any force pointing downwards",
+            "The hands of a clock"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The hands of a clock"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "The tap head rotates about its spindle — a standard moment example.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Sliding a box along the floor",
+            "A picture hanging still on a wall",
+            "Squeezing a sponge between your palms",
+            "Twisting a tap on and off"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Twisting a tap on and off"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,24 @@
           "explanation": "The pivot is fixed — that is what makes the rotation well defined.",
           "misconception": "pivot drift"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The object slides away without any turning",
+            "The object stays exactly balanced",
+            "The pivot moves across to meet the force",
+            "The object rotates about the pivot"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The object rotates about the pivot"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +260,27 @@
           "correct": false,
           "explanation": "The handle carries the push; it is not the fixed turning point.",
           "misconception": "irrelevance"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The hinge",
+                    "hinge"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

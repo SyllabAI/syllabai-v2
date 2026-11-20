@@ -16,10 +16,21 @@ import { useMemo, useState } from "react";
 
 import type { RailBlock } from "@/lib/books-rail";
 
-import { CheckResetButtons, VerdictChip, WidgetCard, type Verdict } from "../check-shared";
+import { CheckResetButtons, echoCap, VerdictChip, WidgetCard, type InteractionVerdictListener, type Verdict } from "../check-shared";
 import { verdictFor, type EqVerdict } from "@/lib/books-chem";
 
-export function EqBuilderBlock({ block }: { block: RailBlock }) {
+export function EqBuilderBlock({
+  block,
+  embedded = false,
+  onVerdict,
+}: {
+  block: RailBlock;
+  /** P2 interaction bridge (guided check slots): see sort-match-block. The
+   *  atom/charge/state verdict lines stay visible here — they are the
+   *  chemistry teaching value; only the overall chip is dropped. */
+  embedded?: boolean;
+  onVerdict?: InteractionVerdictListener;
+}) {
   const c = block.content;
   const target = typeof c.target === "string" ? c.target : null;
   const tokens = Array.isArray(c.tokens)
@@ -70,16 +81,21 @@ export function EqBuilderBlock({ block }: { block: RailBlock }) {
   const check = () => {
     const v = verdictFor(equation, target);
     setVerdict(v);
+    let overall: Verdict;
+    let detail: string | null;
     if (v.matchesTarget && v.atoms.balanced && v.charges.balanced) {
-      setOverall("correct");
-      setDetail(null);
+      overall = "correct";
+      detail = null;
     } else if (v.parsed) {
-      setOverall("wrong");
-      setDetail(v.matchesTarget ? null : "does not match the target equation");
+      overall = "wrong";
+      detail = v.matchesTarget ? null : "does not match the target equation";
     } else {
-      setOverall("wrong");
-      setDetail("the assembly does not parse — check the species tokens");
+      overall = "wrong";
+      detail = "the assembly does not parse — check the species tokens";
     }
+    setOverall(overall);
+    setDetail(detail);
+    onVerdict?.({ verdict: overall, detail, echo: equation || null });
   };
 
   const reset = () => {
@@ -88,21 +104,22 @@ export function EqBuilderBlock({ block }: { block: RailBlock }) {
     setVerdict(null);
     setOverall("unchecked");
     setDetail(null);
+    onVerdict?.({ verdict: "unchecked", detail: null, echo: null });
   };
 
   return (
-    <WidgetCard ord={block.ord} typeLabel="Build the equation" prompt={prompt} accent>
+    <WidgetCard ord={block.ord} typeLabel="Build the equation" prompt={prompt} accent hideMeta={embedded}>
       {/* the assembly strip */}
       <div className="rounded-md border bg-muted/40 p-2">
         <div className="flex flex-wrap items-center gap-1" aria-label={`Equation so far: ${equation || "empty"}`} role="status">
           {assembled.map((t, i) => (
-            <span key={`l${i}`} className="rounded bg-background px-1.5 py-0.5 font-mono text-xs">{t}</span>
+            <span key={`l${i}`} className="rounded-sm bg-background px-1.5 py-0.5 font-mono text-xs">{t}</span>
           ))}
           {(assembled.length > 0 || rhs.length > 0) && (
             <span className="px-1 font-mono text-xs text-muted-foreground">{arrow === "⇌" ? "⇌" : "→"}</span>
           )}
           {rhs.map((t, i) => (
-            <span key={`r${i}`} className="rounded bg-background px-1.5 py-0.5 font-mono text-xs">{t}</span>
+            <span key={`r${i}`} className="rounded-sm bg-background px-1.5 py-0.5 font-mono text-xs">{t}</span>
           ))}
           {assembled.length === 0 && rhs.length === 0 && (
             <span className="text-xs text-muted-foreground">tap tokens below to assemble…</span>
@@ -116,19 +133,19 @@ export function EqBuilderBlock({ block }: { block: RailBlock }) {
               type="button"
               onClick={() => setSide(s)}
               aria-pressed={side === s}
-              className={`rounded border px-1.5 py-0.5 text-2xs ${side === s ? "border-primary bg-primary/10" : "border-border"}`}
+              className={`rounded-sm border px-1.5 py-0.5 text-2xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring ${side === s ? "border-primary bg-primary/10" : "border-border"}`}
             >
               {s === "lhs" ? "left" : "right"}
             </button>
           ))}
           <span className="flex-1" />
           {assembled.length > 0 && (
-            <button type="button" onClick={() => popLast("lhs")} className="rounded border px-1.5 py-0.5 text-2xs" aria-label="Remove last token on the left">
+            <button type="button" onClick={() => popLast("lhs")} className="rounded-sm border px-1.5 py-0.5 text-2xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring" aria-label="Remove last token on the left">
               ⌫ left
             </button>
           )}
           {rhs.length > 0 && (
-            <button type="button" onClick={() => popLast("rhs")} className="rounded border px-1.5 py-0.5 text-2xs" aria-label="Remove last token on the right">
+            <button type="button" onClick={() => popLast("rhs")} className="rounded-sm border px-1.5 py-0.5 text-2xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring" aria-label="Remove last token on the right">
               ⌫ right
             </button>
           )}
@@ -145,7 +162,7 @@ export function EqBuilderBlock({ block }: { block: RailBlock }) {
               onClick={() => push(t)}
               disabled={exhausted}
               aria-label={`Add ${t} to the ${side === "lhs" ? "left" : "right"} side`}
-              className={`rounded-md border px-2 py-1 font-mono text-xs ${exhausted ? "border-border opacity-40" : "border-border bg-background hover:border-primary"}`}
+              className={`rounded-md border px-2 py-1 font-mono text-xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none ${exhausted ? "border-border opacity-40" : "border-border bg-background hover:border-primary"}`}
             >
               {t}
             </button>
@@ -162,12 +179,14 @@ export function EqBuilderBlock({ block }: { block: RailBlock }) {
             label="state symbols"
             detail={verdict.states.complete ? "every species carries a state" : `${verdict.states.missing} species missing (s)/(l)/(g)/(aq)`}
           />
-          <VerdictLine ok={verdict.matchesTarget} label="matches the target" detail={verdict.matchesTarget ? "this is the equation of record" : ""} />
+          <VerdictLine ok={verdict.matchesTarget} label="matches the target" detail={verdict.matchesTarget ? "this is the target equation" : ""} />
         </div>
       )}
-      <div className="mt-1.5">
-        <VerdictChip verdict={overall} detail={detail} />
-      </div>
+      {!embedded && (
+        <div className="mt-1.5">
+          <VerdictChip verdict={overall} detail={detail} />
+        </div>
+      )}
     </WidgetCard>
   );
 }

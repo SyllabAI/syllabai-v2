@@ -52,16 +52,27 @@
  * byte-for-byte ("Learner state: no prior evidence…", the EXPLANATION plan,
  * a null memory digest).
  *
- * SUBSTRATE HONESTY (T-MIG-124 run-001 census): skill_states and
- * misconception_states have live v2 writers (services/learner-model/
- * model-update.ts via the assessment-evidence path) — the brief and the
- * policy's misconception precedence go LIVE on wiring. struggle_inferences,
- * tutor_topic_engagements and review_schedules have NO v2 writers yet —
- * their reads stay honest-empty until those bands land (the engagement
- * recorder — this band's Phase 2 — supplies tutor_topic_engagements).
+ * SUBSTRATE HONESTY (T-MIG-124 run-001 census; re-derived live by the
+ * T-TUTOR-AIM-P5 run-001 loop-closure verification at HEAD — every table
+ * below has a v2 writer of record, see
+ * .syllabai/receipts/T-TUTOR-AIM-P5/run-001-loop-verify.json):
+ * skill_states and misconception_states (services/learner-model/
+ * model-update.ts via the assessment-evidence path AND the T-MIG-137
+ * graded-evidence seam — every marked attempt writes learner state);
+ * struggle_inferences (services/learner-model/struggle-inference.ts,
+ * T-MIG-131 — the @Order(100) phase after the model write);
+ * tutor_topic_engagements (services/learner/engagement-recorder.ts,
+ * T-MIG-124 Phase 2 — wired as the telemetry sink on routes/tutor.ts and
+ * routes/cla.ts); review_schedules (services/cron/review-scheduler.ts,
+ * T-MIG-126 — the nightly-decay window law, routes/cron.ts). The
+ * honest-empty degradation law is unchanged: EMPTY tables still read as
+ * the empty lists ("Learner state: no prior evidence…", the EXPLANATION
+ * plan, a null memory digest) — the writers feed the reads, never the
+ * reverse.
  */
 
 import { skillStatesByRecency, misconceptionStatesByProbability } from "../learner/state";
+import { examTargetsFor } from "../learner-model/exam-target-reader";
 import { relaxedToPrior, TUTOR_BDT_PAPER_DEFAULTS } from "./context";
 import type {
   SkillState,
@@ -73,6 +84,7 @@ import type {
 import type { LearnerModelPort } from "./karag";
 import type { Clock } from "./session-store";
 import type { SqlFn } from "./sql";
+import type { CourseExamTargetView } from "@syllabai/contracts";
 
 export function buildSqlLearnerModel(sql: SqlFn, clock: Clock): LearnerModelPort {
   return {
@@ -152,6 +164,25 @@ export function buildSqlLearnerModel(sql: SqlFn, clock: Clock): LearnerModelPort
         where learner_id = ${learnerId} and status = ${"PENDING"} and node_id = any(${ids})
       `;
       return rows.map((r) => ({ nodeId: String(r.node_id) }));
+    },
+
+    async examTargets(learnerId: string): Promise<CourseExamTargetView[]> {
+      // T-TUTOR-AIM-P3 run-003 (DC10 §7.9) — the M3 EXTENSION of record (the
+      // P2 precedent, documented): the exam-target read joins the ask path —
+      // ONE indexed enrolments read + ONE batched series read per ask, ONLY
+      // for account askers (the caller guards learnerId == null — anonymous
+      // previews read NOTHING). Composes the CANONICAL ExamTargetReader seam
+      // (the 043 consolidation law — no SQL copy): the countdown derives on
+      // that read against this port's clock (ADR-031). The adapter wraps the
+      // session-store Clock into the seam's SubmitClock shape (examTargetsFor
+      // calls now() only — the newId leg is never exercised here).
+      return examTargetsFor(
+        {
+          sql,
+          clock: { newId: () => crypto.randomUUID(), now: () => clock.now() },
+        },
+        learnerId,
+      );
     },
   };
 }

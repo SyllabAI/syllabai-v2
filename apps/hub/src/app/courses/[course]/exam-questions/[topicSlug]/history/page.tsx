@@ -47,8 +47,8 @@ export default async function QuestionSetHistoryPage({
           />
           <PageHeader
             title={`Edit history — ${set.name}`}
-            eyebrow="Corpus of record"
-            description={`${boardOf(meta)} ${meta.level} ${meta.label} · ${set.questions.length} questions · ${totalMarks} marks · read-only git provenance from syllabai-resources`}
+            eyebrow="Question bank history"
+            description={`${boardOf(meta)} ${meta.level} ${meta.label} · ${set.questions.length} questions · ${totalMarks} marks · read-only edit history`}
             actions={<ExamCodePill code={meta.code} />}
           />
           <QuestionHistoryPanel

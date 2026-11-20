@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "These metals are not part of the always-soluble rule.",
           "misconception": "unrelated metals guessed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Sodium, potassium and ammonium"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "No nitrate exceptions exist in the table of record.",
           "misconception": "invented exceptions"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "None; all nitrates are soluble",
+            "It depends on the temperature",
+            "Three; the heavy-metal nitrates are insoluble",
+            "One; silver nitrate is insoluble"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "None; all nitrates are soluble"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Both are soluble, belonging to the always-soluble trio.",
           "misconception": "soluble members mislabelled"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Ammonium chloride and copper chloride",
+            "Silver chloride and lead(II) chloride",
+            "Sodium chloride and potassium chloride",
+            "Barium chloride and calcium chloride"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Silver chloride and lead(II) chloride"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "These three are the sulfate exceptions of record.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Barium sulfate, calcium sulfate and lead(II) sulfate",
+            "Silver sulfate only",
+            "Sodium sulfate and potassium sulfate",
+            "All sulfates are insoluble"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Barium sulfate, calcium sulfate and lead(II) sulfate"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "Acid strength is a separate idea from salt solubility.",
           "misconception": "topics merged"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "To measure the strength of the acid used",
+            "To choose the most appropriate preparation method for a required salt",
+            "To decide the colour of the salt",
+            "To work out the formula of the salt"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "To choose the most appropriate preparation method for a required salt"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

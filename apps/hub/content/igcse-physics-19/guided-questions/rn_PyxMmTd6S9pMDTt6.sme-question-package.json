@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "That is the parallel-pair value, not the series one.",
           "misconception": "parallel slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "10 Ω"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "Direction comes from the supply and never depends on the resistor count.",
           "misconception": "direction myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "raises the total resistance"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,26 @@
           "explanation": "That combines the values in the wrong direction entirely.",
           "misconception": "operation slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "20 Ω"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +213,24 @@
           "explanation": "Voltage shares add; they never multiply.",
           "misconception": "operation slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "always split equally",
+            "multiply together to give the supply voltage",
+            "are each equal to the supply voltage",
+            "add up to the supply voltage"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "add up to the supply voltage"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +266,26 @@
           "correct": true,
           "explanation": "One loop means one current: every component carries the full 2 A.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "2 A through each"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -289,6 +387,24 @@
           "explanation": "Parallel means multiple loops by definition.",
           "misconception": "topology myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the total resistance exceeds every branch's resistance",
+            "the current is the same in every branch",
+            "each branch receives the same voltage",
+            "the branches share one single loop"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "each branch receives the same voltage"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -324,6 +440,24 @@
           "correct": false,
           "explanation": "One break opens the whole series loop.",
           "misconception": "parallel property"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "removing one component leaves the rest working",
+            "the voltage is the same across every component",
+            "their resistances add up to one total",
+            "the current splits between components"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "their resistances add up to one total"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -361,6 +495,26 @@
           "explanation": "Multiplying the resistances has no meaning here.",
           "misconception": "multiply slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "less than 4 Ω"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -397,6 +551,27 @@
           "explanation": "The loop still conducts; only its size changes.",
           "misconception": "extreme myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a smaller current",
+                    "smaller current"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -432,6 +607,24 @@
           "correct": false,
           "explanation": "Both halves are swapped.",
           "misconception": "rule swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "series — current splits; parallel — current the same everywhere",
+            "parallel — resistances add",
+            "series — resistances add; parallel — voltage the same across branches",
+            "series — voltage the same everywhere"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "series — resistances add; parallel — voltage the same across branches"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

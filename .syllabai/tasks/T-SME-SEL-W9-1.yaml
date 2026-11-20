@@ -1,0 +1,90 @@
+version: 1
+task:
+  id: T-SME-SEL-W9-1
+  title: 'SME picker layer wave 9, tranche 1 — the Revision-Notes picker mirror
+    for the CIE IGCSE maths family (the W7 closeout recommendation build:
+    "append SME_REFERENCE section rows + topic rows mirroring the live
+    /revision-notes/ picker ... and place notes by their carried
+    sectionSlug/topicSlug — an smeRowOfNote beside smeRowOfQuestionSet ...
+    slice by family, worst tails first") (operator order: "wave-9 build
+    tranche")'
+  owner: Super Z (zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6,
+    chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-SME-SEL (the SME selector band — wave 9 after the merged W1-W8
+    waves #867/#878/#886/#890/#907/#932/#942/#949/#952/#970)
+  wave: sme-selector
+  deps: [T-SME-SEL-W1-1, T-SME-SEL-W2-1, T-SME-SEL-W3-1, T-SME-SEL-COSM-1,
+    T-SME-SEL-W4-1, T-SME-SEL-W5-1, T-SME-SEL-W6-1, T-SME-SEL-W7-1,
+    T-SME-SEL-W8-1]
+  scope:
+    allowed:
+    - apps/hub/content/cie-igcse-maths-25-extended/curriculum.json (+66
+      SME_REFERENCE nodes append-only: 10 section rows + 56 topic rows,
+      verbatim from the live Revision-Notes picker fetch 2026-11-13;
+      removal round-trip asserted byte-identical)
+    - apps/hub/content/cie-igcse-maths-25-core/curriculum.json (+55: 10+45)
+    - apps/hub/content/cie-igcse-maths-international-maths-23-extended/
+      curriculum.json (+65: 10+55)
+    - apps/hub/content/cie-igcse-maths-international-maths-23-core/
+      curriculum.json (+55: 10+45)
+    - apps/hub/scripts/verify_sme_wave9.ts +
+      apps/hub/scripts/sme-wave9-fixtures.json (NEW gate, live-derived)
+    - apps/hub/scripts/w9_sme_census.ts (READ-ONLY census companion — the
+      smeRowOfNote-dimension twin of the W7 closeout's
+      rn_selector_census.ts)
+    - .syllabai/tasks/T-SME-SEL-W9-1.yaml + .syllabai/receipts/
+      T-SME-SEL-W9-1/run-001.md + both worklogs (append-only)
+    forbidden:
+    - notes.json / questions.json (content untouched; homes are runtime via
+      smeRowOfNote / smeRowOfQuestionSet by the carried slugs)
+    - the official 0580/0607 spines (260/175/247/176 official nodes
+      byte-untouched — family counts + per-node digest pinned in the
+      fixtures and asserted by the gate)
+    - any set home, question content, note content, flashcard
+    - src/ (the wave is ZERO-CODE: the W8 mirror law already renders
+      smeSections generically on both selectors; the appends alone light
+      them up)
+  evidence:
+  - baseline of record (rn_selector_census.ts + w9_sme_census.ts at main
+    ca4f2266): 106 note-bearing courses / 9,151 notes; the W8 mirror
+    resolves 2,077; 6,974 user-facing loose on the 79 no-layer courses
+    (2,670 official-spine loose on 59 of them; the 20 with-layer courses'
+    official-spine loose tails are already mirrored by W8)
+  - tranche selection: worst official-spine loose tails by family — the CIE
+    IGCSE maths quartet (ext-25 147, intl-ext-23 145, intl-core-23 108,
+    core-25 107 of 2,670) = 645 notes / 199 sets, one coherent family
+  - live Revision-Notes picker fetches 2026-11-13 (polite curl,
+    __NEXT_DATA__): ext-25 10 sections/56 topics/189 subtopics; core-25
+    10/45/139; intl-ext-23 10/55/178; intl-core-23 10/45/138 — reproduces
+    the W7 closeout's live-tree numbers for ext-25 exactly (10/56/189)
+  - bijection audit of record (scripts/w9_live_audit.py): 0 note slugs
+    missing, 0 set slugs missing, 0 title mismatches (corpus set names ==
+    live RN topic names), 0 note sectionSlug mismatches, 0 duplicate topic
+    slugs per course — the single-match law needs no smeSectionSlug
+    disambiguation (still carried, the wave-7 uniform law)
+  verification:
+  - bun apps/hub/scripts/verify_sme_wave9.ts PASS (4 courses: spine family
+    counts + official-node digests intact; 40 section rows + 201 topic rows
+    all SME_REFERENCE; per-row CORPUS note+set counts pinned; all 645 notes
+    resolve via smeRowOfNote; all 199 sets resolve via smeRowOfQuestionSet;
+    drift rows exactly the documented set-1-fl pair on the 0580 courses,
+    none on 0607; deep links resolve; official tree.topics carries zero SME
+    codes)
+  - wave1-5+7-8 + cosmetics1 gates PASS; wire_r0 PASS (90/2,574/43,232,
+    2,574 placed / 0 unplaced, gen-row homes 14)
+  - tsc --noEmit clean; prebuild chain PASS (corpus 23a, flashcard-sync,
+    cie bundles, gradeb, subject-identity 106/106)
+  - KNOWN PRE-EXISTING main debt, disclosed NOT fixed here (zero contact
+    with this lane's files): verify_sme_wave6 2 failures "spec points 34
+    != 36" — RN-DEBRIS-11 run-023 (47f835c8, post-#970) removed 2 spec
+    points from each pure-1 course without re-pinning the wave-6 SPINE
+    constants (36 at c88df552 -> 34 at ca4f2266, verified by git show).
+    Same class as the #953 debt #970 cleared; needs its own disclosed
+    pin-refresh (W6-1 run-003)
+  - hub lib tests 1,017 pass / 9 fail / 2 errors — fail set disclosed and
+    baselined against pristine ca4f2266 (detached checkout, identical fail
+    set; video-map review law + P2F anchors + corpus-at-rest census +
+    requestPartRegrade + the T-UGM-RENDER-1 standing katex red — all other
+    lanes' surfaces, none corpus-spec related)

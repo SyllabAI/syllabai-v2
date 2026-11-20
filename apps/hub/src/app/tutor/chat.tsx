@@ -47,7 +47,7 @@ import { api, getToken } from "@/lib/api";
 import { useIdentity } from "@/lib/identity";
 import { toast } from "@/hooks/use-toast";
 import type { TutorSessionSummary, TutorSessionTurnView } from "@/lib/types";
-import { Composer, QUESTION_CAP } from "./composer";
+import { Composer, QUESTION_CAP, type ConfidenceValue } from "./composer";
 import { MessageItem } from "./message-item";
 import { SidebarBrand, ThreadSidebar } from "./thread-sidebar";
 import type { Thread, Turn, TurnBand } from "./threads";
@@ -273,6 +273,10 @@ export function TutorChat({
   const identity = useIdentity();
 
   const [input, setInput] = useState("");
+  // T-TUTOR-AIM-P2 (DC10 §7.4): the per-ask confidence capture — NO default
+  // (null = the ask sends no field; the server never infers one), reset to
+  // null after every send (the capture is per-ask, never sticky)
+  const [confidence, setConfidence] = useState<ConfidenceValue | null>(null);
   const [streamingId, setStreamingId] = useState<string | null>(null);
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
   const [atBottom, setAtBottom] = useState(true);
@@ -371,7 +375,7 @@ export function TutorChat({
 
   // ── the grounded turn ───────────────────────────────────────────────
   const ask = useCallback(
-    async (threadId: string, question: string) => {
+    async (threadId: string, question: string, askConfidence?: ConfidenceValue | null) => {
       const trimmed = question.trim();
       if (!trimmed) return;
 
@@ -384,6 +388,9 @@ export function TutorChat({
         { role: "assistant", content: "", at: Date.now() },
       ]);
       setInput("");
+      // T-TUTOR-AIM-P2 (DC10 §7.4): the capture is per-ask — the next ask
+      // starts with nothing selected (no sticky default, ever)
+      setConfidence(null);
       setAtBottom(true);
       requestAnimationFrame(() => scrollToBottom(false));
 
@@ -429,6 +436,10 @@ export function TutorChat({
             // fail-closed and refuses cross-course asks deterministically
             ...(courseRef ? { courseRef } : {}),
             ...(activePaperId ? { paperId: activePaperId } : {}),
+            // T-TUTOR-AIM-P2 (DC10 §7.4): the confidence capture rides ONLY
+            // when the learner tapped one — absent = no-tap (the NO-DEFAULT
+            // law; the server must never see an inferred value)
+            ...(askConfidence ? { confidence: askConfidence } : {}),
           }),
           signal: controller.signal,
         });
@@ -484,6 +495,11 @@ export function TutorChat({
               message?: string;
               band?: TurnBand;
               truncated?: boolean;
+              // T-TUTOR-AIM-P2 (DC10 §7.6): the probe offer on the done frame
+              probe?: { nodeId: string; title: string };
+              // T-TUTOR-AIM-P3 (DC10 §7.8): the drill directive on the done
+              // frame (offer-not-claim, §13.2 — metadata only)
+              drillDirective?: import("./threads").TutorDrillDirectiveWire;
             };
             try {
               data = JSON.parse(dataLine);
@@ -513,6 +529,15 @@ export function TutorChat({
               // run-013: the upstream's honest truncation disclosure rides
               // the terminal event — surface it on the turn
               if (data.truncated === true) patchTurn({ truncated: true });
+              // T-TUTOR-AIM-P2 (DC10 §7.6): the single optional probe offer
+              // rides the terminal event when the ask earned one (offer-
+              // not-claim, §13.2) — it renders AFTER the full answer
+              if (data.probe) patchTurn({ probe: data.probe });
+              // T-TUTOR-AIM-P3 (DC10 §7.8): the drill-loop scheduling
+              // directive rides the terminal event when the ask earned one
+              // (offer-not-claim, §13.2 — metadata only; the claim is
+              // exactly-once server-side, the chip only ever SHOWS the offer)
+              if (data.drillDirective) patchTurn({ drillDirective: data.drillDirective });
             }
           }
         }
@@ -673,7 +698,7 @@ export function TutorChat({
     // the first controller (Stop goes blind) and both streams patch the same
     // last message, interleaving output (audit 2026-10-02, P1-2)
     if (streamingId === thread.id) return;
-    void ask(thread.id, q);
+    void ask(thread.id, q, confidence);
   };
 
   /** Drop everything from the assistant turn onward and re-ask its question. */
@@ -717,6 +742,35 @@ export function TutorChat({
       messages[idx] = { ...cur, feedback: cur.feedback === v ? null : v };
       return { ...t, messages };
     });
+  };
+
+  /** T-TUTOR-AIM-P3 (DC10 §7.8 + §13.2): the tonight-chip's tap — the claim.
+   *  The claim is exactly-once SERVER-SIDE (the two guards: the server-issued
+   *  directive row + the claimed_at CAS); this handler only DELIVERS the tap
+   *  and records the outcome locally so the chip renders its claimed state
+   *  (a re-render cannot double-schedule — a racing client answers
+   *  already_claimed with the SAME artefact). The body is the §22 identity
+   *  pair only; the directive id never travels from the client. */
+  const claimDrillSet = async (threadId: string, turnId: number) => {
+    const thread = getThreads().find((t) => t.id === threadId);
+    const sessionId = thread?.sessionId;
+    if (!sessionId) return; // sessionless ask — no claimable directive exists
+    try {
+      const res = await fetch("/api/tutor/drill-directives/claim", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId, turnId }),
+      });
+      if (!res.ok) return; // 404/409/503: the honest degrade — the chip stays as-is
+      const data = (await res.json()) as { status: string; scheduledCount: number };
+      patchLastMessage(threadId, (m) => ({
+        ...m,
+        drillClaim: { scheduledCount: data.scheduledCount },
+      }));
+    } catch {
+      // transport failure — the chip stays unclaimed; the server's
+      // exactly-once guarantee makes a later retry safe
+    }
   };
 
   /** Per-scope clear (the rail's "Clear all conversations"): this tutor's
@@ -858,13 +912,14 @@ export function TutorChat({
               </p>
               <ul className="mt-2 space-y-2 leading-relaxed text-muted-foreground">
                 <li>
-                  <strong className="text-foreground">Grounded answers.</strong> Every reply is
-                  retrieved from the corpus and carries numbered citations that deep-link to the
+                  <strong className="text-foreground">Cited answers.</strong> Every reply comes
+                  from your course material and carries numbered citations that deep-link to the
                   notes, spec points and worked solutions behind it.
                 </li>
                 <li>
-                  <strong className="text-foreground">Honest refusals.</strong> When the evidence is
-                  thin it says so instead of guessing — accuracy before confidence.
+                  <strong className="text-foreground">Says so when unsure.</strong> When the
+                  material doesn't support an answer it says that instead of guessing — accuracy
+                  before confidence.
                 </li>
                 <li>
                   <strong className="text-foreground">Coverage.</strong>{" "}
@@ -933,6 +988,25 @@ export function TutorChat({
                     onEditResend={(text) => editResend(i, text)}
                     onFeedback={(v) => setFeedback(i, v)}
                     courseSlug={activeThread?.courseSlug ?? null}
+                    onProbeTap={(p) =>
+                      // T-TUTOR-AIM-P2 (DC10 §7.6): the offer's explicit
+                      // opt-in — pre-fill the composer; nothing is sent
+                      // until the learner presses send themselves
+                      setInput(`Quick check me on ${p.title}.`)
+                    }
+                    onDrillClaim={(turnId) => {
+                      // T-TUTOR-AIM-P3 (DC10 §7.8): the tonight-chip's
+                      // claim — exactly-once server-side; the chip's local
+                      // state renders the outcome
+                      void claimDrillSet(activeThread?.id ?? "", turnId);
+                    }}
+                    onTeachTap={(p) => {
+                      // T-TUTOR-AIM-P3 (DC10 §7.8): the Teach SillyAI
+                      // handoff — the predict→teach→check cadence; the tap
+                      // pre-fills the composer (the P2 probe-chip pattern —
+                      // nothing is sent until the learner sends)
+                      setInput(`Let me teach back "${p.title}" — check whether my explanation is right.`)
+                    }}
                   />
                 ))}
                 {/* run-012 chat-parity band (trace 1a14af4dde23b471): the
@@ -1001,6 +1075,8 @@ export function TutorChat({
               onChange={setInput}
               busy={busyHere}
               maxLen={maxLen}
+              confidence={confidence}
+              onConfidenceChange={setConfidence}
               subjectLabel={
                 courseLabel
                   ? `${courseLabel}${courseRef ? ` · ${courseRef.split("-")[0]}` : ""}`

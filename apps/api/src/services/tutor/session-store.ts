@@ -326,7 +326,10 @@ export function buildTutorSessionStore(sql: SqlFn, clock: Clock) {
      * assistant content is bound AND citation-marker-stripped (:268-269 —
      * a stored transcript renders as the learner-visible prose).
      */
-    async append(learnerId: string, exchange: AppendRequest): Promise<void> {
+    async append(
+      learnerId: string,
+      exchange: AppendRequest,
+    ): Promise<{ assistantSeq: number }> {
       const session = await owned(learnerId, exchange.sessionId);
       const now = clock.now();
       let courseRef = session.course_ref;
@@ -368,6 +371,12 @@ export function buildTutorSessionStore(sql: SqlFn, clock: Clock) {
         set last_active_at = ${at}
         where id = ${session.id}
           and (last_active_at is null or last_active_at < ${at})`;
+      // T-TUTOR-AIM-P3 (DC10 §7.7/§7.8): the assistant turn's seq rides the
+      // append's return — the ledger rows and the drill directive key on
+      // THIS turn (the schema of record's session-scoped identity), and the
+      // append is the only place the seq is ever allocated. Additive shape:
+      // callers that ignore the return keep compiling unchanged.
+      return { assistantSeq: nextSeq + 1 };
     },
   };
 }

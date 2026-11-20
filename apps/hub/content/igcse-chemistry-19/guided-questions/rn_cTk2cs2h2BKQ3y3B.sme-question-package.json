@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Solubility is a mass per fixed mass, not a percentage.",
           "misconception": "percentage form substituted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "In grams of solute per litre of solution",
+            "In grams of solute per 100 grams of solvent",
+            "In grams of solute per 100 grams of solution",
+            "As a percentage of the solvent used"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "In grams of solute per 100 grams of solvent"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,27 @@
           "correct": false,
           "explanation": "Only a few salts are nearly flat; the general rule is a rise.",
           "misconception": "flat trend overgeneralised"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "It increases",
+                    "increases"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +156,24 @@
           "explanation": "The trend runs the opposite way for gases.",
           "misconception": "solid trend copied onto gases"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The gas escapes because the liquid expands when warm",
+            "Gas solubility does not depend on temperature",
+            "Gases become less soluble as temperature rises",
+            "Gases become more soluble as temperature rises"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Gases become less soluble as temperature rises"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "Higher pressure pushes more gas into solution.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The gas becomes less soluble",
+            "The gas becomes more soluble",
+            "Pressure changes nothing for gases",
+            "Pressure only affects solids"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The gas becomes more soluble"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,27 @@
           "correct": false,
           "explanation": "Dilution describes adding more solvent, which is not what happened here.",
           "misconception": "dilution confused with saturation"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "A saturated solution",
+                    "saturated solution"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

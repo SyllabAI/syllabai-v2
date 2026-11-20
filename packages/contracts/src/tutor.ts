@@ -58,6 +58,11 @@ export const tutorAskRequestSchema = z.object({
   // identity, and only VALIDATED in-scope papers pin. Absent = the
   // unpinned ask (behavior unchanged).
   paperId: z.string().uuid().optional(),
+  // T-TUTOR-AIM-P2 (DC10 §7.4): the learner's raw self-reported confidence
+  // — three buttons, NO default: the field is OPTIONAL and the server
+  // applies NO default (absent = null downstream; a no-tap is never
+  // recorded as a guessing — the log-first law logs only real taps).
+  confidence: z.enum(["sure", "think_so", "guessing"]).optional(),
 });
 export type TutorAskRequest = z.infer<typeof tutorAskRequestSchema>;
 
@@ -90,6 +95,98 @@ export const tutorTopicMatchSchema = z.object({
 });
 export type TutorTopicMatch = z.infer<typeof tutorTopicMatchSchema>;
 
+// ── T-TUTOR-AIM-P2 (DC10 §7.6): the single optional probe offer ─────────────
+
+/** Offer-not-claim (DC10 §13.2): the offer carries METADATA ONLY — the gap
+ *  node's id and its corpus title (KG data, the same class as the topics[]
+ *  titles already on the wire) — never learner-derived free text, and it
+ *  claims/consumes nothing until the learner's explicit tap. Optional on
+ *  both the answer view and the done frame; absent = no offer (most asks). */
+export const tutorProbeOfferSchema = z.object({
+  nodeId: z.string().uuid(),
+  title: z.string(),
+});
+export type TutorProbeOffer = z.infer<typeof tutorProbeOfferSchema>;
+
+// ── T-TUTOR-AIM-P3 (DC10 §7.8): the tutor→drill loop's scheduling directive ─
+
+/** Offer-not-claim (DC10 §13.2): the directive is METADATA ONLY — the
+ *  decay-due node ids/codes/titles (KG catalog data, the same class as the
+ *  topics[] payloads already on the wire), the planned count and the ask's
+ *  course scope — never learner-derived free text, and it claims/consumes
+ *  NOTHING until the learner's explicit tap. The claim (POST
+ *  /drill-directives/claim) is guarded twice server-side (the server-issued
+ *  directive row + the claimed_at CAS) so a re-render cannot
+ *  double-schedule. Optional on both the answer view and the done frame;
+ *  absent = no directive (most asks, every sessionless ask, every refusal). */
+export const tutorDrillDirectiveNodeSchema = z.object({
+  nodeId: z.string().uuid(),
+  code: z.string(),
+  title: z.string(),
+});
+export type TutorDrillDirectiveNode = z.infer<typeof tutorDrillDirectiveNodeSchema>;
+
+export const tutorDrillDirectiveSchema = z.object({
+  directiveId: z.string(),
+  // the §22 assistant turn this directive keys on — the claim's identity
+  // pair ({sessionId, turnId}) recomputes the id server-side (guard 1: a
+  // directive the server never issued is not claimable)
+  turnId: z.number().int().positive(),
+  nodes: z.array(tutorDrillDirectiveNodeSchema),
+  courseRef: z.string().nullable(),
+  plannedCount: z.number().int().nonnegative(),
+  // the Teach SillyAI handoff (§7.8): set when a misconception correction
+  // landed — the node the learner could teach back. Metadata only.
+  teachHandoff: z
+    .object({ nodeId: z.string().uuid(), title: z.string() })
+    .nullable(),
+});
+export type TutorDrillDirective = z.infer<typeof tutorDrillDirectiveSchema>;
+
+export const tutorDrillClaimRequestSchema = z.object({
+  sessionId: z.string().uuid(),
+  turnId: z.number().int().positive(),
+});
+export type TutorDrillClaimRequest = z.infer<typeof tutorDrillClaimRequestSchema>;
+
+export const tutorDrillClaimResponseSchema = z.object({
+  status: z.enum(["claimed", "already_claimed"]),
+  // the ACTUAL scheduled part count (the chip's confirmation copy reads
+  // THIS — the planned count is the ask-time estimate)
+  scheduledCount: z.number().int().nonnegative(),
+});
+export type TutorDrillClaimResponse = z.infer<typeof tutorDrillClaimResponseSchema>;
+
+// ── T-TUTOR-AIM-P3 (DC10 §7.9): the calibration read-out (consume-later) ────
+
+/** The §7.4 gates of record, surfaced honestly: `gathering` (under the
+ *  ~15-response normalisation floor, rule 1), `no_signal` (the
+ *  sure-vs-guessing gap under the ~10-point noise floor, rule 5 — stay
+ *  log-only) and `ok` (the read-out's actual numbers). Per-learner ONLY
+ *  (rule 1: deviation from the learner's OWN baseline, never population
+ *  stats); zero free text; pure deterministic arithmetic — no AI class, no
+ *  disclosure burden beyond the honest status itself. */
+export const tutorCalibrationBandSchema = z.object({
+  confidence: z.enum(["sure", "think_so", "guessing"]),
+  // outcome-covered asks attributed to this band
+  asks: z.number().int().nonnegative(),
+  // graded drill parts attributed to this band
+  parts: z.number().int().nonnegative(),
+  // correctness share over those parts (0..1; null when parts = 0)
+  accuracy: z.number().min(0).max(1).nullable(),
+});
+export type TutorCalibrationBand = z.infer<typeof tutorCalibrationBandSchema>;
+
+export const tutorCalibrationSchema = z.object({
+  status: z.enum(["gathering", "no_signal", "ok"]),
+  bands: z.array(tutorCalibrationBandSchema),
+  asksCovered: z.number().int().nonnegative(),
+  asksLogged: z.number().int().nonnegative(),
+  outcomeWindowDays: z.number().int(),
+  generatedAt: z.string(),
+});
+export type TutorCalibration = z.infer<typeof tutorCalibrationSchema>;
+
 export const tutorAnswerViewSchema = z.object({
   // the tutor's answer text ([n] markers reference citations)
   answer: z.string(),
@@ -107,6 +204,16 @@ export const tutorAnswerViewSchema = z.object({
   // verbatim — the flag is presentation truth, never surgery.
   truncated: z.boolean(),
   latencyMs: z.number(),
+  // T-TUTOR-AIM-P2 (DC10 §7.6): the single optional probe offer, AFTER the
+  // full answer (offer-not-claim, §13.2). Absent on older upstreams and on
+  // every refusal (a refusal offers nothing) — the hub reads probe only
+  // when present.
+  probe: tutorProbeOfferSchema.nullable().optional(),
+  // T-TUTOR-AIM-P3 (DC10 §7.8): the drill-loop scheduling directive, AFTER
+  // the full answer (offer-not-claim, §13.2 — metadata only). Absent on
+  // older upstreams, on every sessionless ask (no turn of record to key
+  // the claimable row on), when nothing decayed and on every refusal.
+  drillDirective: tutorDrillDirectiveSchema.nullable().optional(),
 });
 export type TutorAnswerView = z.infer<typeof tutorAnswerViewSchema>;
 
@@ -187,6 +294,15 @@ export const tutorStreamDoneEventSchema = z.object({
   // knowable when meta commits with the first delta). Absent on older
   // upstreams — the hub reads data.truncated === true only.
   truncated: z.boolean().optional(),
+  // T-TUTOR-AIM-P2 (DC10 §7.6): the probe offer rides the terminal event
+  // when the ask earned one (offer-not-claim, §13.2 — metadata only);
+  // absent on older upstreams and on every refusal.
+  probe: tutorProbeOfferSchema.optional(),
+  // T-TUTOR-AIM-P3 (DC10 §7.8): the drill-loop scheduling directive rides
+  // the terminal event when the ask earned one (offer-not-claim, §13.2 —
+  // metadata only); absent otherwise. The relay forwards the done frame
+  // verbatim — core's shapes ARE the browser contract.
+  drillDirective: tutorDrillDirectiveSchema.optional(),
 });
 
 export const tutorStreamErrorEventSchema = z.object({

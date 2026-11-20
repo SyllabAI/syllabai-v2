@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Amplitude sets loudness, not pitch.",
           "misconception": "quantity swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "its frequency of vibration"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "Guitar strings sit inside the audible range.",
           "misconception": "absurd limit"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it becomes louder",
+            "it becomes inaudible",
+            "it becomes higher in pitch",
+            "it becomes lower in pitch"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it becomes higher in pitch"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Wider spacing means fewer cycles per second, so LOWER pitch.",
           "misconception": "inverted relation"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the taller trace",
+            "the wider peak-to-peak spacing",
+            "the brighter line",
+            "more complete waves across the same width"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "more complete waves across the same width"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "Doubling the frequency raises the note by one octave, and 512 = 2 × 256.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the 512 Hz fork is louder",
+            "the 256 Hz fork sounds higher",
+            "the 512 Hz fork sounds one octave above the 256 Hz fork",
+            "both forks sound identical"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the 512 Hz fork sounds one octave above the 256 Hz fork"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,36 @@
           "correct": false,
           "explanation": "An octave doubles the frequency; 330 is not a doubling.",
           "misconception": "arithmetic slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "440 Hz"
+            },
+            {
+              "id": "3",
+              "text": "110 Hz"
+            },
+            {
+              "id": "4",
+              "text": "330 Hz"
+            },
+            {
+              "id": "2",
+              "text": "220 Hz"
+            }
+          ],
+          "correctOrder": [
+            "3",
+            "2",
+            "4",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -286,6 +390,27 @@
           "explanation": "A drum remains far below 20 000 Hz.",
           "misconception": "absurd limit"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "it becomes louder",
+                    "becomes louder"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -321,6 +446,24 @@
           "correct": false,
           "explanation": "Both boundaries are ten times too small.",
           "misconception": "magnitude error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "200 Hz to 200 000 Hz",
+            "2 Hz to 2000 Hz",
+            "20 Hz to 2 000 000 Hz",
+            "20 Hz to 20 000 Hz"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "20 Hz to 20 000 Hz"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -358,6 +501,24 @@
           "explanation": "45 000 Hz exceeds 20 000 Hz, so it is ultrasound.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "audible, because 45 000 Hz is below 20 000 Hz",
+            "infrasound, because bats are small",
+            "audible, because bats are loud",
+            "ultrasound, because 45 000 Hz is above the human upper limit"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "ultrasound, because 45 000 Hz is above the human upper limit"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -394,6 +555,24 @@
           "explanation": "16 Hz is below the range, not above.",
           "misconception": "concept mix-up"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "at the centre of the audible range",
+            "infrasound, because it lies below 20 Hz",
+            "audible, because earthquakes are loud",
+            "ultrasound"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "infrasound, because it lies below 20 Hz"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -429,6 +608,24 @@
           "correct": false,
           "explanation": "The dog’s limit of 45 000 Hz covers 25 000 Hz.",
           "misconception": "concept mix-up"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "both hear it",
+            "the human does not hear it but the dog may",
+            "neither hears it",
+            "the human may hear it and the dog does not"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the human does not hear it but the dog may"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

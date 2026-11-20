@@ -1,0 +1,49 @@
+version: 1
+task:
+  id: T-LAW-ENFORCE-1
+  title: "Ship the §8 read-back integrity job + the §2 coordination guard + the T-CIFIX correction-of-record (risk tier)"
+  owner: "zai-web session (trace 1a1d545c404c9a2d)"
+  status: DONE
+  priority: P1
+  wave: 0
+  deps: []
+  execution_record: >
+    Operator directive 2026-11-13 (zai-web trace 1a1d545c404c9a2d):
+    "Implement read-back job + amend T-CIFIX + PR conflict check".
+    Byte-level disposition of record: BOTH ci.yml (line 9) and
+    census-guard.yml (line 13) carry the clean literal 'branches: [main]'
+    (blob hexdump 202020206272616e636865733a205b6d61696e5d) — T-CIFIX is
+    confirmed INVALID and the trigger lines were deliberately NOT touched.
+    The "corrupted literal" was a substring-scan artifact ('ain]' matches
+    inside '[main]') amplified by terminal rendering; it had propagated
+    into the §8 rationale and the T-LAW-AMEND-1 card — this task withdraws
+    the claim in the law text itself (correction-of-record) and ships the
+    machine that settles gate-literal disputes mechanically: the §8
+    read-back integrity job (previously 0/34 workflows had it). Also ships
+    the §2 claim-protocol guard (one open PR per task id; the #993/#999
+    same-task collision class). Validation: assertions 20/20 PASS on the
+    as-landed tree; synthetic-corruption mirror FAILS (teeth proof);
+    coordination guard dry-run vs all live open PRs PASS. Post-merge:
+    ruleset 27179683 required checks extended to verify + hub +
+    law-readback + coordination; run-id citation addendum via the
+    receipts-only fast path; worklog entry re-filed there per the
+    T-COPYFIX-001→#967 precedent (append-race avoidance).
+base:
+  repo: "syllabai-v2 @ a8748f6dd67a at claim time"
+basis: >
+  Operator directive 2026-11-13 trace 1a1d545c404c9a2d (zai-web):
+  "Implement read-back job + amend T-CIFIX + PR conflict check".
+  Risk-tier approval of record: the same directive (scope includes
+  .github/** and the law document).
+scope:
+  allowed:
+    - ".github/workflows/law-readback.yml"
+    - ".github/scripts/law_readback_assert.py"
+    - ".github/scripts/coordination_guard.py"
+    - "docs/AGENT_COORDINATION.md (§8 rationale correction-of-record only)"
+    - ".syllabai/tasks/T-LAW-ENFORCE-1.yaml"
+    - ".syllabai/receipts/T-LAW-ENFORCE-1/**"
+  forbidden:
+    - ".github/workflows/ci.yml and census-guard.yml (byte-verified clean — trigger lines untouched)"
+    - "packages/**, apps/**, golden/** (lane-owned)"
+    - "ruleset settings (separate post-merge step, documented in the receipt)"

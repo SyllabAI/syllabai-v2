@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "Ribosomes build proteins.",
           "misconception": "function mismatch"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The nucleus",
+                    "nucleus"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,26 @@
           "correct": false,
           "explanation": "Animal cells lack the permanent vacuole.",
           "misconception": "structure misplaced"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Mitochondria"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +158,24 @@
           "explanation": "Cell sap sits in the plant vacuole.",
           "misconception": "plant structure misplaced"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Stores cell sap",
+            "Controls what enters and leaves the cell",
+            "Makes protein",
+            "Absorbs light for photosynthesis"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Controls what enters and leaves the cell"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +212,27 @@
           "explanation": "The note flags structures only visible with electron microscopy.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "An electron microscope",
+                    "electron microscope"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +268,26 @@
           "correct": false,
           "explanation": "The membrane controls traffic, not the reaction bulk.",
           "misconception": "function mismatch"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "In the jelly-like cytoplasm"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -285,6 +385,24 @@
           "explanation": "Mitochondria and ribosomes are shared.",
           "misconception": "shared trait misfiled"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Nucleus, cytoplasm, membrane",
+            "Cell wall, nucleus, chloroplasts",
+            "Cell wall, permanent vacuole, chloroplasts",
+            "Mitochondria, ribosomes, cell wall"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Cell wall, permanent vacuole, chloroplasts"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +438,26 @@
           "correct": false,
           "explanation": "Cytoplasm surrounds the vacuole.",
           "misconception": "content mismatch"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Cell sap"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -357,6 +495,24 @@
           "explanation": "The note states this pressing mechanism.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The sap presses the cytoplasm outward onto the wall",
+            "Because the nucleus pumps water",
+            "Because the wall digests water",
+            "Because chloroplasts store water"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The sap presses the cytoplasm outward onto the wall"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +549,24 @@
           "explanation": "Chloroplasts are eukaryotic plant structures.",
           "misconception": "kingdom error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "In leaf and stem cells",
+            "In every plant cell including roots",
+            "Only in prokaryotes",
+            "In animal muscle cells"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "In leaf and stem cells"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +602,24 @@
           "correct": false,
           "explanation": "Bacteria lack the enclosed nucleus.",
           "misconception": "kingdom error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A bacterium, because chloroplasts are missing",
+            "A fungus, because of the wall",
+            "An animal cell, because chloroplasts are missing",
+            "A plant cell from tissue without photosynthetic role, such as a root"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A plant cell from tissue without photosynthetic role, such as a root"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

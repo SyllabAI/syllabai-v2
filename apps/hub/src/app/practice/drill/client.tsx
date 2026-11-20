@@ -42,7 +42,7 @@ import {
 } from "@/lib/drill";
 
 const ZERO_STAKES_NOTE =
-  "Zero stakes by construction: drills never touch your gradebook, progress rings or recommendations — only the drill's own practice log.";
+  "Zero stakes: drills never touch your progress rings, recommendations or marks — only the drill's own practice log.";
 
 function topicGroupOf(code: string): string {
   // "4CH1-1.25" -> topic "1"; "4CH1-2.33C" -> "2"
@@ -220,8 +220,8 @@ export function DrillClient({ course }: { course: string }) {
         <Card>
           <CardContent className="space-y-3 pt-4">
             <p className="text-sm text-muted-foreground">
-              The drill surface did not answer. It ships only where the spec-tagging census of record
-              exists, and it fails closed rather than serve an unpinned bank.
+              The drill didn't load. Drills run only from a checked question bank
+              for your course.
             </p>
             <Button variant="outline" onClick={() => void loadAddresses()}>
               <RefreshCw className="size-4" aria-hidden /> Try again
@@ -360,9 +360,9 @@ export function DrillClient({ course }: { course: string }) {
                   </span>
                 </p>
                 {revealed.markScheme ? (
-                  <div className="space-y-2 rounded-md border bg-muted/30 p-3" aria-label="Mark scheme of record">
+                  <div className="space-y-2 rounded-md border bg-muted/30 p-3" aria-label="Mark scheme">
                     <p className="text-2xs font-medium uppercase tracking-wide text-muted-foreground">
-                      Mark scheme — the examiner&apos;s points of record ({revealed.markScheme.marksTotal}{" "}
+                      Mark scheme — the examiner&apos;s points ({revealed.markScheme.marksTotal}{" "}
                       {revealed.markScheme.marksTotal === 1 ? "mark" : "marks"})
                     </p>
                     <ul className="space-y-2">
@@ -473,9 +473,8 @@ export function DrillClient({ course }: { course: string }) {
       {summary && (
         <p className="text-sm text-muted-foreground">
           <span className="font-medium text-foreground">{summary.drillable}</span> of{" "}
-          {summary.specPointAddresses} spec points are drillable today ({summary.covered} carry parts,{" "}
-          {summary.thin} are still thin, {summary.uncovered} await content). Every address below holds at
-          least five anchored parts — the fail-closed floor.
+          {summary.specPointAddresses} spec points are drillable today ({summary.covered} have questions,{" "}
+          {summary.thin} have only a few, {summary.uncovered} are on the way).
         </p>
       )}
       <div className="space-y-4">
@@ -492,7 +491,7 @@ export function DrillClient({ course }: { course: string }) {
                   disabled={submitting}
                   onClick={() => void beginDraw(a.code)}
                   className="rounded-md border px-2.5 py-1.5 text-xs transition-colors hover:bg-muted/50 disabled:opacity-50"
-                  title={`${a.combined} anchored parts (official ${a.official} · topic ${a.topic})`}
+                  title={`${a.combined} questions (${a.official} official · ${a.topic} topic)`}
                 >
                   <span className="font-mono font-medium">{a.code}</span>
                   <span className="ml-1.5 text-muted-foreground">{a.combined}</span>
@@ -520,7 +519,7 @@ function DrillHeading() {
           Spec-point drill
         </span>
       }
-      description="Five random parts at one syllabus address, drawn from the tagged corpus of record. Answer, reveal the solution instantly, retake forever — the strength-test habit, zero stakes."
+      description="Five random questions on one spec point, drawn from the question bank. Answer, reveal the solution instantly, retake forever — the strength-test habit, zero stakes."
     />
   );
 }

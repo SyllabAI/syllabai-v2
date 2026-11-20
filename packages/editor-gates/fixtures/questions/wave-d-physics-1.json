@@ -1,0 +1,35 @@
+{
+  "question": {
+    "id": "qstn_fixture_physics_w1_001",
+    "order": 1,
+    "difficulty": "medium",
+    "style": "structured",
+    "totalMarks": 6,
+    "parts": [
+      {
+        "id": "qstnprt_fixture_physics_w1_001a",
+        "order": 0,
+        "questionType": "structured",
+        "marks": 2,
+        "commandWord": "State",
+        "specPointIds": ["spcpt_fixture_w1_1"],
+        "specPointCodes": ["1.1"],
+        "problemMd": "State **Newton's third law** in terms of the forces $F_{AB}$ and $F_{BA}$ acting between two bodies $A$ and $B$.",
+        "solutionMd": "The forces are **equal in magnitude** and **opposite in direction**: $F_{AB} = -F_{BA}$, acting on different bodies.",
+        "choices": null
+      },
+      {
+        "id": "qstnprt_fixture_physics_w1_001b",
+        "order": 1,
+        "questionType": "structured",
+        "marks": 4,
+        "commandWord": "Explain",
+        "specPointIds": ["spcpt_fixture_w1_2"],
+        "specPointCodes": ["1.2"],
+        "problemMd": "A book rests on a table. Explain why the normal force on the book and the weight of the book are **not** a Newton's-third-law pair, even though they are equal in magnitude.",
+        "solutionMd": "They act on the **same body** (the book), whereas a third-law pair must act on different bodies. The third-law partner of the weight is the gravitational pull the book exerts on the Earth; the partner of the normal force is the downward push of the book on the table.",
+        "choices": null
+      }
+    ]
+  }
+}

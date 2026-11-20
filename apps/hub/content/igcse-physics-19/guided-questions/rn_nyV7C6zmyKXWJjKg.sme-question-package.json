@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -285,6 +285,24 @@
           "explanation": "Forces act at a distance too; contact is not required for an effect.",
           "misconception": "contact-only misconception"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A change of the Sun's shape",
+            "A change of direction of travel",
+            "No effect, because nothing touched the comet",
+            "A change of shape of the comet"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A change of direction of travel"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +338,24 @@
           "correct": false,
           "explanation": "The wheel-surface reaction supports the rider; it is not the slowing mechanism.",
           "misconception": "catalogue mix-up"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Reaction; a change of shape",
+            "Friction; a change of speed",
+            "Tension; a change of direction",
+            "Thrust; a change of speed"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Friction; a change of speed"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +393,26 @@
           "explanation": "Staying in place says nothing about deformation; the shape clearly changed.",
           "misconception": "motion-equals-effect error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Change of shape"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -393,6 +449,24 @@
           "explanation": "Nothing here deforms the airframe; the motion's pace is what changes.",
           "misconception": "effect substitution"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Slow down, because drag always wins",
+            "Change shape, because engines deform aircraft",
+            "Speed up, because the resultant acts along the motion",
+            "Hold a steady speed, because the forces are horizontal"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Speed up, because the resultant acts along the motion"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +502,26 @@
           "correct": false,
           "explanation": "Weight is itself a force, not an effect a force produces.",
           "misconception": "category confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Speed, direction, shape"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

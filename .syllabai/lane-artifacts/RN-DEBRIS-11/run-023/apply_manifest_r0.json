@@ -1,0 +1,638 @@
+{
+ "artifact": "rn11-run-023-apply-manifest-r0",
+ "generatedUtc": "2026-11-13",
+ "operatorOrder": "run-023 (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, trace 1a1d343a03eb5c35, 2026-11-13)",
+ "rulingBasis": "the run-022 filing's lane-recommended combination (D3=1/D4=1/D5=1/D6b=1) executed on the desk's bare order under the run-019->020/021 precedent; every judgment class per the filing's own pre-delegated disclosed rules; the desk's veto surface is the PR review",
+ "courses": [
+  {
+   "slug": "cie-igcse-computer-science-23",
+   "removedCodes": [
+    "6.3.4a",
+    "6.3.5",
+    "6.3.6",
+    "6.3.7",
+    "6.3.8",
+    "6.3.9",
+    "6.3.1a",
+    "6.3.2a",
+    "6.3.3a",
+    "6.3.4"
+   ],
+   "recode": {
+    "from": "8.1.1a",
+    "to": "8.1.4f",
+    "after": "8.1.4",
+    "title": "Understand and use arithmetic, logical and Boolean operators",
+    "titleSource": "run-017 census subRows[8.1.4f]"
+   },
+   "orderBumps": [
+    {
+     "code": "10.1",
+     "from": 110,
+     "to": 100
+    },
+    {
+     "code": "10.2",
+     "from": 111,
+     "to": 101
+    },
+    {
+     "code": "10.3a",
+     "from": 112,
+     "to": 102
+    },
+    {
+     "code": "10.3b",
+     "from": 113,
+     "to": 103
+    },
+    {
+     "code": "10.3c",
+     "from": 114,
+     "to": 104
+    },
+    {
+     "code": "6.3.2",
+     "from": 67,
+     "to": 66
+    },
+    {
+     "code": "6.3.3",
+     "from": 69,
+     "to": 67
+    },
+    {
+     "code": "7.1",
+     "from": 78,
+     "to": 68
+    },
+    {
+     "code": "7.2a",
+     "from": 79,
+     "to": 69
+    },
+    {
+     "code": "7.2b",
+     "from": 80,
+     "to": 70
+    },
+    {
+     "code": "7.2c",
+     "from": 81,
+     "to": 71
+    },
+    {
+     "code": "7.3",
+     "from": 82,
+     "to": 72
+    },
+    {
+     "code": "7.4",
+     "from": 83,
+     "to": 73
+    },
+    {
+     "code": "7.5a",
+     "from": 84,
+     "to": 74
+    },
+    {
+     "code": "7.5b",
+     "from": 85,
+     "to": 75
+    },
+    {
+     "code": "7.6",
+     "from": 86,
+     "to": 76
+    },
+    {
+     "code": "7.7",
+     "from": 87,
+     "to": 77
+    },
+    {
+     "code": "7.8",
+     "from": 88,
+     "to": 78
+    },
+    {
+     "code": "7.9",
+     "from": 89,
+     "to": 79
+    },
+    {
+     "code": "8.1.1",
+     "from": 90,
+     "to": 80
+    },
+    {
+     "code": "8.1.2",
+     "from": 92,
+     "to": 81
+    },
+    {
+     "code": "8.1.3",
+     "from": 93,
+     "to": 82
+    },
+    {
+     "code": "8.1.4",
+     "from": 94,
+     "to": 83
+    },
+    {
+     "code": "8.1.5",
+     "from": 95,
+     "to": 85
+    },
+    {
+     "code": "8.1.6a",
+     "from": 96,
+     "to": 86
+    },
+    {
+     "code": "8.1.6b",
+     "from": 97,
+     "to": 87
+    },
+    {
+     "code": "8.1.6c",
+     "from": 98,
+     "to": 88
+    },
+    {
+     "code": "8.1.7",
+     "from": 99,
+     "to": 89
+    },
+    {
+     "code": "8.1.8",
+     "from": 100,
+     "to": 90
+    },
+    {
+     "code": "8.2.1",
+     "from": 101,
+     "to": 91
+    },
+    {
+     "code": "8.2.2",
+     "from": 102,
+     "to": 92
+    },
+    {
+     "code": "8.2.3",
+     "from": 103,
+     "to": 93
+    },
+    {
+     "code": "8.3.1",
+     "from": 104,
+     "to": 94
+    },
+    {
+     "code": "8.3.2",
+     "from": 105,
+     "to": 95
+    },
+    {
+     "code": "9.1",
+     "from": 106,
+     "to": 96
+    },
+    {
+     "code": "9.2",
+     "from": 107,
+     "to": 97
+    },
+    {
+     "code": "9.3",
+     "from": 108,
+     "to": 98
+    },
+    {
+     "code": "9.4",
+     "from": 109,
+     "to": 99
+    }
+   ],
+   "manifest": {
+    "specPoints": {
+     "from": 114,
+     "to": 104
+    }
+   },
+   "prereqReanchors": {
+    "C47-CON-OPERATORS": [
+     "8.1.1a",
+     "8.1.4f"
+    ],
+    "C47-CON-VALIDATION-TYPES": [
+     "6.3.5",
+     "7.5a"
+    ],
+    "C47-CON-TEST-DATA": [
+     "6.3.6",
+     "7.6"
+    ],
+    "C47-CON-TRACE-TABLE": [
+     "6.3.7",
+     "7.7"
+    ],
+    "C47-CON-ERROR-IDENTIFICATION": [
+     "6.3.8",
+     "7.8"
+    ],
+    "C47-CON-ALGORITHM-WRITE-AMEND": [
+     "6.3.9",
+     "7.9"
+    ],
+    "C47-CON-FLOWCHART-SYMBOLS": [
+     "6.3.1a",
+     "7.9"
+    ],
+    "C47-CON-LOGIC-GATE-SYMBOLS": [
+     "6.3.2a",
+     "10.1"
+    ],
+    "C47-CON-PSEUDOCODE-FORMAT": [
+     "6.3.3a",
+     "7.9"
+    ]
+   },
+   "kg": {
+    "from": [
+     146,
+     239,
+     114
+    ],
+    "to": [
+     136,
+     225,
+     104
+    ]
+   },
+   "sha256": {
+    "curriculum": {
+     "pre": "346e8c9932ba91823e20502b985e1c379f8d344ef1830571b91d951aa953c4ba",
+     "post": "f49d24b4bce0051e8f8e8f26712a3dcc41fda6f0e05d3c992b3e5e4b88a8c4af"
+    },
+    "spine": {
+     "pre": "27ec2d2aea0f27324b8f1bc883b62c85ada7e81d322d5ad06f58824d3de66d5d",
+     "post": "8288b16c2e39a400cbc65d96a600fd1d2df2a4a32045bf524eb76b18cbc72d94"
+    },
+    "kg": {
+     "pre": "1d71b61cd5c9fe9319f6058d64ee1627c996fca596d549edfe8886016eff59e7",
+     "post": "2599f4cb8c07eaa6d3fcc2dd83df6b9a7f790d6e9fef50756184a1c656145fdb"
+    },
+    "manifest": {
+     "pre": "e74b2fdb01e435e6bc3d7437975941ee5a0a2d55a822015027132b644267baf3",
+     "post": "b1cb48232a0fca111d8978f455a814249e9f193f0b445b783f94031e4a0e28fe"
+    }
+   }
+  },
+  {
+   "slug": "cie-a-level-maths-20-pure-1",
+   "removedCodes": [
+    "1.3.1a",
+    "1.3.2a"
+   ],
+   "recode": null,
+   "orderBumps": [
+    {
+     "code": "1.3.2",
+     "from": 13,
+     "to": 12
+    },
+    {
+     "code": "1.3.3",
+     "from": 15,
+     "to": 13
+    },
+    {
+     "code": "1.3.4",
+     "from": 16,
+     "to": 14
+    },
+    {
+     "code": "1.3.5",
+     "from": 17,
+     "to": 15
+    },
+    {
+     "code": "1.4.1",
+     "from": 18,
+     "to": 16
+    },
+    {
+     "code": "1.4.1a",
+     "from": 19,
+     "to": 17
+    },
+    {
+     "code": "1.5.1",
+     "from": 20,
+     "to": 18
+    },
+    {
+     "code": "1.5.2",
+     "from": 21,
+     "to": 19
+    },
+    {
+     "code": "1.5.3",
+     "from": 22,
+     "to": 20
+    },
+    {
+     "code": "1.5.4",
+     "from": 23,
+     "to": 21
+    },
+    {
+     "code": "1.5.5",
+     "from": 24,
+     "to": 22
+    },
+    {
+     "code": "1.6.1",
+     "from": 25,
+     "to": 23
+    },
+    {
+     "code": "1.6.2",
+     "from": 26,
+     "to": 24
+    },
+    {
+     "code": "1.6.3",
+     "from": 27,
+     "to": 25
+    },
+    {
+     "code": "1.6.4",
+     "from": 28,
+     "to": 26
+    },
+    {
+     "code": "1.7.1",
+     "from": 29,
+     "to": 27
+    },
+    {
+     "code": "1.7.2",
+     "from": 30,
+     "to": 28
+    },
+    {
+     "code": "1.7.3",
+     "from": 31,
+     "to": 29
+    },
+    {
+     "code": "1.7.4",
+     "from": 32,
+     "to": 30
+    },
+    {
+     "code": "1.8.1",
+     "from": 33,
+     "to": 31
+    },
+    {
+     "code": "1.8.2",
+     "from": 34,
+     "to": 32
+    },
+    {
+     "code": "1.8.3",
+     "from": 35,
+     "to": 33
+    },
+    {
+     "code": "1.8.4",
+     "from": 36,
+     "to": 34
+    }
+   ],
+   "manifest": {
+    "specPoints": {
+     "from": 36,
+     "to": 34
+    }
+   },
+   "prereqReanchors": {
+    "MAP1-CON-LINE-EQUATION": [
+     "1.3.1a",
+     "1.3.1"
+    ],
+    "MAP1-CON-CIRCLE-EQUATION": [
+     "1.3.2a",
+     "1.3.3"
+    ]
+   },
+   "kg": {
+    "from": [
+     46,
+     91,
+     36
+    ],
+    "to": [
+     44,
+     86,
+     34
+    ]
+   },
+   "sha256": {
+    "curriculum": {
+     "pre": "537164e1a572f82ae1c382a6ee8588cfd81cfef8d1903915789bf34faf001fbe",
+     "post": "829506a80acd3d2bc57b467e93325ac9cdd02313aea6f88910b8c055f38ebc47"
+    },
+    "spine": {
+     "pre": "aa02cc06b3f8844aad9cda05fb637b50d6d02737f0bdeb1bd445fdf097826f4a",
+     "post": "1866d7c43f4c35b2130d4688416da6c59f1ec53f22481b00b5833d37be319169"
+    },
+    "kg": {
+     "pre": "997494248c8ce83c1cf07896c2e1622debc1074fa908cdfedf5428fedb87cec8",
+     "post": "acd08b87835d06d92e7b9f6f9aab4a55c025f72cc83944c51de1b5e34cda5b79"
+    },
+    "manifest": {
+     "pre": "eb0bd87e5c9b18f393ec633fb15938b8e7930b6c657ac524c0861b22c7af2fe4",
+     "post": "76c6746572dd4161bb3b1d905058cdf82b5b8b8b43c5b49aa729614a8d2ec5d6"
+    }
+   }
+  },
+  {
+   "slug": "cie-as-maths-20-pure-1",
+   "removedCodes": [
+    "1.3.1a",
+    "1.3.2a"
+   ],
+   "recode": null,
+   "orderBumps": [
+    {
+     "code": "1.3.2",
+     "from": 13,
+     "to": 12
+    },
+    {
+     "code": "1.3.3",
+     "from": 15,
+     "to": 13
+    },
+    {
+     "code": "1.3.4",
+     "from": 16,
+     "to": 14
+    },
+    {
+     "code": "1.3.5",
+     "from": 17,
+     "to": 15
+    },
+    {
+     "code": "1.4.1",
+     "from": 18,
+     "to": 16
+    },
+    {
+     "code": "1.4.1a",
+     "from": 19,
+     "to": 17
+    },
+    {
+     "code": "1.5.1",
+     "from": 20,
+     "to": 18
+    },
+    {
+     "code": "1.5.2",
+     "from": 21,
+     "to": 19
+    },
+    {
+     "code": "1.5.3",
+     "from": 22,
+     "to": 20
+    },
+    {
+     "code": "1.5.4",
+     "from": 23,
+     "to": 21
+    },
+    {
+     "code": "1.5.5",
+     "from": 24,
+     "to": 22
+    },
+    {
+     "code": "1.6.1",
+     "from": 25,
+     "to": 23
+    },
+    {
+     "code": "1.6.2",
+     "from": 26,
+     "to": 24
+    },
+    {
+     "code": "1.6.3",
+     "from": 27,
+     "to": 25
+    },
+    {
+     "code": "1.6.4",
+     "from": 28,
+     "to": 26
+    },
+    {
+     "code": "1.7.1",
+     "from": 29,
+     "to": 27
+    },
+    {
+     "code": "1.7.2",
+     "from": 30,
+     "to": 28
+    },
+    {
+     "code": "1.7.3",
+     "from": 31,
+     "to": 29
+    },
+    {
+     "code": "1.7.4",
+     "from": 32,
+     "to": 30
+    },
+    {
+     "code": "1.8.1",
+     "from": 33,
+     "to": 31
+    },
+    {
+     "code": "1.8.2",
+     "from": 34,
+     "to": 32
+    },
+    {
+     "code": "1.8.3",
+     "from": 35,
+     "to": 33
+    },
+    {
+     "code": "1.8.4",
+     "from": 36,
+     "to": 34
+    }
+   ],
+   "manifest": {
+    "specPoints": {
+     "from": 36,
+     "to": 34
+    }
+   },
+   "prereqReanchors": {
+    "MAP1-CON-LINE-EQUATION": [
+     "1.3.1a",
+     "1.3.1"
+    ],
+    "MAP1-CON-CIRCLE-EQUATION": [
+     "1.3.2a",
+     "1.3.3"
+    ]
+   },
+   "kg": {
+    "from": [
+     46,
+     91,
+     36
+    ],
+    "to": [
+     44,
+     86,
+     34
+    ]
+   },
+   "sha256": {
+    "curriculum": {
+     "pre": "2a6fdaf2afa23ee7b14cbbb511aa0d314cf0d7411f3f35ac3e9eaa70ccf9b00a",
+     "post": "7238611cca35c6386c6211572bc9a8183da74f0e8d38e6e0ed5f779ca8dedd6c"
+    },
+    "spine": {
+     "pre": "86db637cc3514d7cb03d3ccf0eac1205a46e20ce436d28d1c7d8f593297c771a",
+     "post": "97c681be9b01e9c11883e7925829d5c8a31d99253fcdb36bf181941859c132d3"
+    },
+    "kg": {
+     "pre": "8007efbc3b12a747b7833a7a406638f439cf29b61e42675fdb0db686b758bd05",
+     "post": "b986c2cfc2ff1ccb17cdd5cf664ce7bd9a29a131f99b6edc463a0c7cf799ea5d"
+    },
+    "manifest": {
+     "pre": "cc3043e7d9b878ba1dd46efeecf1cd9910d14c533e9c4725c0de14b26b643a13",
+     "post": "09c404b27c85dcb75295e2453f92f4a04fe1a3e055223b1fcb4f7766b12d93aa"
+    }
+   }
+  }
+ ]
+}

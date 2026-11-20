@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "A vacuum offers no boundary to reflect at.",
           "misconception": "context invention"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "along the boundary between two materials",
+            "from a less dense material towards a denser one",
+            "through a vacuum",
+            "from a denser material towards a less dense one"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "from a denser material towards a less dense one"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "A 90° incidence angle grazes the boundary and never enters the second material.",
           "misconception": "angle confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "less than the critical angle",
+            "greater than the critical angle",
+            "equal to the critical angle",
+            "exactly 90°"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "greater than the critical angle"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "Nothing reacts; the glass only guides the light.",
           "misconception": "mechanism invention"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "sound echoes returning to the source",
+            "electrical conduction along copper wires",
+            "chemical reactions inside the glass",
+            "total internal reflection at every bounce"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "total internal reflection at every bounce"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,24 @@
           "explanation": "Right-angled prisms have flat faces; no lensing happens.",
           "misconception": "equipment confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "splitting it into colours at each face",
+            "absorbing and re-emitting it downwards",
+            "lensing it through a curved surface",
+            "total internal reflection at each prism's back face"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "total internal reflection at each prism's back face"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +260,26 @@
           "correct": false,
           "explanation": "Dispersion is a refraction effect; here refraction has stopped.",
           "misconception": "effect swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "totally internally reflected"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -284,6 +376,24 @@
           "explanation": "Light never stops; it refracts or reflects.",
           "misconception": "outcome invention"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "into the second material at 45° to the normal",
+            "back along the incident path",
+            "nowhere — the light stops moving",
+            "along the boundary at exactly 90° to the normal"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "along the boundary at exactly 90° to the normal"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -319,6 +429,26 @@
           "correct": false,
           "explanation": "The refracted ray stays on the far side of the normal until reflection replaces it.",
           "misconception": "geometry confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "grow towards 90°"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -356,6 +486,26 @@
           "explanation": "Splitting needs refraction; past the critical angle refraction has stopped.",
           "misconception": "effect swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "mirror"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -392,6 +542,36 @@
           "explanation": "At the critical angle the refracted ray skims along the boundary at exactly 90° to the normal.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "90°"
+            },
+            {
+              "id": "1",
+              "text": "25°"
+            },
+            {
+              "id": "2",
+              "text": "45°"
+            },
+            {
+              "id": "3",
+              "text": "60°"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -427,6 +607,24 @@
           "correct": false,
           "explanation": "The reflected ray obeys the reflection law, matching the 70° incidence angle.",
           "misconception": "geometry confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "travels along the boundary",
+            "totally internally reflects inside the glass",
+            "bends back towards the normal",
+            "refracts into the liquid away from the normal"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "totally internally reflects inside the glass"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

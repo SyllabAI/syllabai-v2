@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "That describes spoil or tailings; an ore is the metal-rich rock before extraction.",
           "misconception": "ore and mining waste swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Any rock found deep underground",
+            "The waste rock left after a metal is removed",
+            "A rock containing enough metal to make extraction worthwhile",
+            "A pure metal nugget dug from the ground"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A rock containing enough metal to make extraction worthwhile"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Blast furnaces run hot; the chemical meaning of reduction has nothing to do with cooling.",
           "misconception": "everyday sense of reduce applied"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because the amount of metal gets smaller",
+            "Because electrons are gained by oxygen",
+            "Because oxygen is removed from the metal compound",
+            "Because the furnace temperature is lowered"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because oxygen is removed from the metal compound"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,26 @@
           "explanation": "Aluminium's ore is bauxite, which contains aluminium oxide.",
           "misconception": "the two named ores swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Iron"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "These are exactly the three processes listed for extraction, chosen according to the metal's reactivity.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Mining, crushing and sorting",
+            "Electrolysis, a blast furnace, or reaction with a more reactive material",
+            "Filtration, distillation and crystallisation",
+            "Dissolving, filtering and evaporating"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Electrolysis, a blast furnace, or reaction with a more reactive material"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "Neither the metal nor the compound type matches; bauxite is aluminium oxide.",
           "misconception": "guessing without ore knowledge"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Copper, occurring as its sulfate",
+            "Aluminium, occurring as its oxide",
+            "Iron, occurring as its carbonate",
+            "Aluminium, occurring as the free metal"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Aluminium, occurring as its oxide"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -299,6 +391,26 @@
           "explanation": "These are among the most reactive metals and exist only in compounds.",
           "misconception": "most-reactive metals treated as native"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Gold and platinum"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -334,6 +446,24 @@
           "correct": false,
           "explanation": "Density plays no part in compound formation; reactivity does.",
           "misconception": "physical property given a chemical role"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The crust is too cold for them to react",
+            "They are too dense to form compounds",
+            "They are chemically stable, so other substances rarely react with them",
+            "They were only discovered after ores were used up"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "They are chemically stable, so other substances rarely react with them"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -371,6 +501,24 @@
           "explanation": "Only the more reactive metal can take oxygen away from the compound of a less reactive one.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "M and N have equal reactivity",
+            "M is more reactive than N",
+            "M is less reactive than N",
+            "N is above hydrogen in the reactivity series"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "M is more reactive than N"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -407,6 +555,24 @@
           "explanation": "Density may help panning but it is not why no chemical extraction is required.",
           "misconception": "physical separation confused with chemical extraction"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because gold melts at room temperature",
+            "It already exists as the element, so there is no compound to break down",
+            "Because gold is too valuable to process industrially",
+            "Because gold is lighter than the rock around it"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It already exists as the element, so there is no compound to break down"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -442,6 +608,24 @@
           "correct": false,
           "explanation": "Many transition metals, such as iron and copper, are extracted from ores.",
           "misconception": "blanket claim about a metal family"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The most reactive metals, which refuse to form compounds",
+            "The transition metals, which are always native",
+            "No exceptions exist; every metal needs extraction",
+            "The unreactive metals, often found as the uncombined element"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The unreactive metals, often found as the uncombined element"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

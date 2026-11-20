@@ -126,7 +126,10 @@ function ActionRow({ action, rank }: { action: DashboardAction; rank: number }) 
               {action.courseLabel} · {action.courseLevel}
             </Badge>
           </div>
-          <p className="mt-1 truncate text-sm font-medium" title={action.title}>
+          {/* V-3 (visual audit 2026-11-13): the panel has vertical room —
+              titles clamp to two lines instead of clipping mid-word; the
+              existing title attr stays as the hover floor. */}
+          <p className="mt-1 line-clamp-2 text-sm font-medium" title={action.title}>
             {action.title}
           </p>
           <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{action.detail}</p>
@@ -245,7 +248,7 @@ export function NextBestActionsCard({ courses }: { courses: CourseMeta[] }) {
   const provenance = coreReplacedResolved
     ? localCourses.length > 0
       ? `Ranked from your account's progress (${resolvedSubject}); your other courses from this device's activity.`
-      : "Ranked from your account's progress — the same read model the workbench consumes."
+      : "Ranked from your account's progress."
     : "Ranked from this device's study activity — marks, mastery and the review schedule.";
 
   const bridgeFailed =

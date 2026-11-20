@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Particles always carry some vibration above absolute zero.",
           "misconception": "motion-less slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "they vibrate about fixed positions",
+            "they slide past one another freely",
+            "they stay completely still at all temperatures",
+            "they fly around at high speed in all directions"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "they vibrate about fixed positions"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,27 @@
           "correct": false,
           "explanation": "Regular packing belongs to the solid lattice only.",
           "misconception": "state confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a fixed volume",
+                    "fixed volume"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +156,24 @@
           "explanation": "Liquids keep a fixed volume; only gases fill the space available.",
           "misconception": "gas bleed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "its particles shrink so the liquid collapses",
+            "its particles expand to fill the whole container",
+            "its particles are locked in place so gravity pulls the whole block down",
+            "its particles can move past one another while staying in contact"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "its particles can move past one another while staying in contact"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "Both states are close-packed; melting costs little volume for most substances.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "particle spacing is identical in all three states",
+            "particles touch in both states, with a liquid only slightly less dense",
+            "liquid particles are far apart like a gas",
+            "solid particles have big gaps that lock them apart"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "particles touch in both states, with a liquid only slightly less dense"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,24 @@
           "correct": false,
           "explanation": "Same substance, different state — the arrangement and motion did change.",
           "misconception": "identity confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "they kept touching but gained the ability to slide past each other",
+            "they became smaller and packed tighter",
+            "nothing changed because the substance is still water",
+            "they moved far apart and fly independently"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "they kept touching but gained the ability to slide past each other"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

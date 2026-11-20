@@ -122,7 +122,7 @@ export function NumStepperBlock({ block }: { block: RailBlock }) {
               {locked ? null : (
                 <div className="mt-1 flex flex-wrap items-center gap-1.5">
                   <input
-                    className="w-32 rounded-md border border-border bg-background px-2 py-1 text-xs"
+                    className="w-32 rounded-md border border-border bg-background px-2 py-1 text-xs outline-none transition-[border-color,box-shadow] duration-(--motion-duration-fast) ease-motion focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
                     value={inputs[i] ?? ""}
                     onChange={(e) => setStep(i, e.target.value)}
                     onKeyDown={(e) => {
@@ -142,7 +142,7 @@ export function NumStepperBlock({ block }: { block: RailBlock }) {
                   {s.hint && (
                     <button
                       type="button"
-                      className="text-xs text-muted-foreground underline decoration-dotted"
+                      className="text-xs text-muted-foreground underline decoration-dotted outline-none transition-[color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
                       onClick={() => setRevealed((m) => m.map((x, j) => (j === i ? true : x)))}
                     >
                       hint

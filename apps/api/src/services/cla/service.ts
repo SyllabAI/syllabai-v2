@@ -1172,6 +1172,19 @@ export function buildClaService(deps: ClaServiceDeps) {
           // tier and the evidence gate agree by construction (the spec's
           // consistency requirement, docs/DC2-V14-SUPERSESSION-PLAN.md §4.1)
           disclosureTier: schemePointEvidenceAllowed(context, mode) ? 2 : 1,
+          // T-TUTOR-AIM-P2: the CLA surface carries NO aim and NO command-word
+          // pin in P2 (the disclosed residual — aim/composition lands on the
+          // tutor surface first; both nulls keep this surface's prompt bytes
+          // exactly where they were, the byte-stability law)
+          aim: null,
+          commandWord: null,
+          // T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the CLA surface carries NO
+          // exam context either (the same disclosed residual posture — the
+          // exam-calendar plane lands on the tutor surface first); the null
+          // keeps this surface's prompt bytes exactly where they were (the
+          // byte-stability law — the v20 law bullet is inert without an
+          // EXAM CONTEXT block).
+          exam: null,
         };
         generated = await deps.generator.generate(question.trim(), [], tutorContext);
       }

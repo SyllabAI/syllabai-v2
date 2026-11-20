@@ -16,6 +16,7 @@ import {
   sessionLabel,
   specTitle,
 } from "@/lib/pastpapers-shared";
+import { fmtCount } from "@/lib/format";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import officialLinksJson from "@/data/pastpapers-official-links.json";
@@ -100,7 +101,7 @@ export default async function SpecArchivePage({
         }
         actions={
           <Badge variant="secondary" className="font-medium">
-            {papers.length} papers · {sessions.length} session{sessions.length === 1 ? "" : "s"}
+            {fmtCount(papers.length)} papers · {fmtCount(sessions.length)} session{sessions.length === 1 ? "" : "s"}
           </Badge>
         }
       />
@@ -120,7 +121,7 @@ export default async function SpecArchivePage({
               href={official.url}
               target="_blank"
               rel="noreferrer noopener"
-              title={`Official Pearson past-papers page (verified HTTP ${official.httpStatus}, retrieved ${OFFICIAL.meta.retrievedAt}) — use it for sessions missing from this archive`}
+              title={`Pearson's own past-papers page — use it for papers missing from this library`}
             >
               Official source
               <ExternalLink className="size-3" aria-hidden />
@@ -151,7 +152,7 @@ export default async function SpecArchivePage({
               {sessionLabel(sessionId)}
               {/* t-ui-polish run-002 — the MG session header carries its
                   size; same recipe as the course archive. */}
-              <span className="font-normal text-muted-foreground/60"> · {group.length}</span>
+              <span className="font-normal text-muted-foreground"> · {fmtCount(group.length)}</span>
             </h2>
             <ul className="overflow-hidden rounded-xl border">
               {group.map((p) => (

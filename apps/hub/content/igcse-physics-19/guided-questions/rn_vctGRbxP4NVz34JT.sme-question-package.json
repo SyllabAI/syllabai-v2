@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -522,6 +522,24 @@
           "explanation": "Both draw the same input.",
           "misconception": "part swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a smaller input arrow",
+            "a narrower waste arrow and a wider useful arrow",
+            "no waste arrow at all",
+            "a wider waste arrow"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a narrower waste arrow and a wider useful arrow"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -557,6 +575,36 @@
           "correct": true,
           "explanation": "Wasted = 500 - 120 = 380 J.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "120 J"
+            },
+            {
+              "id": "3",
+              "text": "620 J"
+            },
+            {
+              "id": "2",
+              "text": "500 J"
+            },
+            {
+              "id": "4",
+              "text": "380 J"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "4",
+            "2",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -594,6 +642,26 @@
           "explanation": "That is the waste percentage (380/500), not the efficiency.",
           "misconception": "useful-wasted swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "24%"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -630,6 +698,24 @@
           "explanation": "Energy does not flow back up the supply.",
           "misconception": "absurd limit"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "returns to the mains",
+            "bends away as heat because the bulb wastes most of its energy",
+            "continues straight as useful light",
+            "is stored in the glass"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "bends away as heat because the bulb wastes most of its energy"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -665,6 +751,24 @@
           "correct": false,
           "explanation": "That ratios the two wrong quantities.",
           "misconception": "method error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "efficiency = wasted / useful × 100",
+            "wasted = input − useful, then efficiency = useful / input × 100",
+            "wasted = input + useful, then efficiency = wasted / input",
+            "efficiency = input / useful × 100"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "wasted = input − useful, then efficiency = useful / input × 100"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

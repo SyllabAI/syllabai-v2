@@ -96,7 +96,7 @@ export default async function TutorPage({
           </span>
           <h1 className="mt-3 text-base font-semibold">The tutor isn&apos;t available yet</h1>
           <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-            The tutor answers only from a course&apos;s own validated material, and no
+            The tutor answers only from a course&apos;s own checked material, and no
             course has one connected yet. Once your course&apos;s tutor is live, it
             opens from here and from the course&apos;s hub.
           </p>
@@ -116,7 +116,7 @@ export default async function TutorPage({
         Pick a course for your tutor session
       </h1>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-        The tutor answers only from one course&apos;s own validated material — it never
+        The tutor answers only from one course&apos;s own checked material — it never
         blends courses — so a session needs to know which course you&apos;re asking about.
       </p>
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -132,7 +132,7 @@ export default async function TutorPage({
               </CardHeader>
               <CardContent>
                 <CardDescription className="leading-relaxed">
-                  Grounded tutor — every answer cites the spec points it draws on.
+                  The tutor shows its sources — every answer cites the spec points it draws on.
                 </CardDescription>
               </CardContent>
             </Card>

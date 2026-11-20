@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "That is touch's stimulus.",
           "misconception": "sense swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Light"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "The sclera is the protective outer wall.",
           "misconception": "structure swapped"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "In the retina"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,27 @@
           "explanation": "That serves hearing.",
           "misconception": "nerve swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The optic nerve",
+                    "optic nerve"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +214,24 @@
           "explanation": "Receptor organs detect their stimulus and start impulses.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It contains receptor cells that convert light into electrical impulses",
+            "It produces hormones",
+            "It is white and round",
+            "It stores light for later use"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It contains receptor cells that convert light into electrical impulses"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +267,24 @@
           "correct": false,
           "explanation": "The sclera is the outer wall; impulses go via the optic nerve.",
           "misconception": "role misassigned"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Optic nerve — carries impulses between eye and brain",
+            "Sclera — transmits impulses",
+            "Conjunctiva — focuses light",
+            "Cornea — detects colour"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Optic nerve — carries impulses between eye and brain"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -283,6 +380,27 @@
           "explanation": "The fovea handles detail vision, not refraction.",
           "misconception": "role swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The cornea",
+                    "cornea"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -318,6 +436,24 @@
           "correct": false,
           "explanation": "That is the ciliary muscle's task.",
           "misconception": "role swapped"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Changes the shape of the lens",
+            "Lubricates the eyelids",
+            "Controls how much light enters the pupil",
+            "Carries impulses to the brain"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Controls how much light enters the pupil"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -355,6 +491,24 @@
           "explanation": "Dense cones at the fovea give detail and colour.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The suspensory ligaments",
+            "The blind spot",
+            "The sclera",
+            "The fovea, with its densely packed cones"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The fovea, with its densely packed cones"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -391,6 +545,27 @@
           "explanation": "The pupil admits light.",
           "misconception": "structure swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The sclera",
+                    "sclera"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -426,6 +601,24 @@
           "correct": false,
           "explanation": "The fovea is packed with cones.",
           "misconception": "region inverted"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "In the cornea's centre",
+            "Across the whole retina",
+            "At the blind spot, where the optic nerve leaves",
+            "At the fovea"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "At the blind spot, where the optic nerve leaves"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

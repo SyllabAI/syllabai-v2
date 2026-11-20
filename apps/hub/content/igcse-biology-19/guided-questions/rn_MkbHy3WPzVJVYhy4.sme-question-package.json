@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -285,6 +285,24 @@
           "explanation": "Heat denatures and slows or stops digestion.",
           "misconception": "direction inverted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The run at the enzyme's optimum temperature",
+            "The coldest run",
+            "The hottest run",
+            "All runs tie"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The run at the enzyme's optimum temperature"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +338,24 @@
           "correct": false,
           "explanation": "Iodine volume does not fix drift.",
           "misconception": "irrelevant fix"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Using water baths set to each temperature, with solutions pre-warmed",
+            "Shaking the tubes more often",
+            "Using a darker spotting tile",
+            "Adding more iodine to each well"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Using water baths set to each temperature, with solutions pre-warmed"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +393,24 @@
           "explanation": "The colorimeter replaces eye judgement with measurement.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "An objective measurement of colour intensity to detect the endpoint",
+            "A record of the room's humidity",
+            "Extra amylase when the reaction slows",
+            "A way to raise the temperature"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "An objective measurement of colour intensity to detect the endpoint"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +447,26 @@
           "explanation": "S is the controlled variables.",
           "misconception": "letter mismatch"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "R"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -428,6 +502,24 @@
           "correct": false,
           "explanation": "Baths prevent drift; they do not denature.",
           "misconception": "effect invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Colour judgement — the enzyme digests faster",
+            "Water baths — they cause denaturation",
+            "Colorimeter — it removes the need for amylase",
+            "Temperature drift — the true temperature behind a rate is uncertain"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Temperature drift — the true temperature behind a rate is uncertain"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

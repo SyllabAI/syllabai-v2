@@ -108,7 +108,7 @@ export default async function GuidedLessonsIndexPage({
           </section>
         ))}
         {unmapped.length > 0 && (
-          <section aria-label="Not yet anchored to a spec point">
+          <section aria-label="Not tied to a spec point">
             <h2 className="text-[15px] font-semibold leading-snug">{looseAnchorCopy(slug).title}</h2>
             <p className="text-xs text-muted-foreground">{unmapped.length} guided lesson set{unmapped.length === 1 ? "" : "s"}</p>
             <div className="mt-2 grid gap-1.5 sm:grid-cols-2">{unmapped.map(({ entry, note }) => renderRow(entry, note))}</div>

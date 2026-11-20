@@ -199,3 +199,45 @@ describe("the CONTEXTUAL_ASSISTANT telemetry sink", () => {
     expect(sql.queries.length).toBe(0);
   });
 });
+
+// ── T-TUTOR-AIM-P2 (DC10 §7.4): the confidence log (log-first, capture-only) ─
+
+describe("the confidence log (DC10 §7.4 — the FREE_TUTOR sink's second append)", () => {
+  test("a selecting ask appends ONE tutor_ask_confidence row with the raw value", async () => {
+    const sql = fakeSql();
+    tutorEngagementTelemetrySink(sql, clock)(
+      tutorEvent({ confidence: "guessing", sessionId: "cc000000-0000-4000-8000-000000000001" }),
+    );
+    await new Promise((r) => setTimeout(r, 0));
+    const conf = sql.queries.find((q) => q.text.includes("insert into tutor_ask_confidence"));
+    expect(conf).toBeDefined();
+    expect(conf!.text).toContain("learner_id, session_id, confidence, created_at");
+    expect(conf!.params).toContain("guessing");
+    expect(conf!.params).toContain("cc000000-0000-4000-8000-000000000001");
+    // and the engagement rows still land (the two appends are independent)
+    expect(sql.queries.filter((q) => q.text.includes("tutor_topic_engagements")).length).toBe(2);
+  });
+
+  test("a NO-TAP ask logs NOTHING (the absence of a row IS the null — never a default)", async () => {
+    const sql = fakeSql();
+    tutorEngagementTelemetrySink(sql, clock)(tutorEvent({ confidence: null }));
+    tutorEngagementTelemetrySink(sql, clock)(tutorEvent({})); // absent = null
+    await new Promise((r) => setTimeout(r, 0));
+    expect(sql.queries.some((q) => q.text.includes("tutor_ask_confidence"))).toBe(false);
+  });
+
+  test("anonymous previews log NOTHING (the account-only law)", async () => {
+    const sql = fakeSql();
+    tutorEngagementTelemetrySink(sql, clock)(tutorEvent({ learnerId: null, confidence: "sure" }));
+    await new Promise((r) => setTimeout(r, 0));
+    expect(sql.queries.some((q) => q.text.includes("tutor_ask_confidence"))).toBe(false);
+  });
+
+  test("the confidence append is under the same guard: a failure never reaches the ask", async () => {
+    const boom = (async () => {
+      throw new Error("db down");
+    }) as unknown as SqlFn;
+    expect(() => tutorEngagementTelemetrySink(boom, clock)(tutorEvent({ confidence: "sure" }))).not.toThrow();
+    await new Promise((r) => setTimeout(r, 0));
+  });
+});

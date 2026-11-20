@@ -1,0 +1,55 @@
+version: 1
+task:
+  id: T-TUTOR-AIM-P2
+  title: "DC10 Phase 2 — confidence capture (§7.4, log-first) + aimed answering (§7.5) + single optional probe (§7.6) + the §7.3 classifier refinement, one changeset run-001"
+  owner: "Super Z (zai-web session web-b30b2f0b-5100-49db-a722-e5370b2ed7d5, chat e55037d4-6fd0-4a2e-94b0-dc777c61929f, dispatch trace 1a1ea412609f6f91)"
+  status: "IN_REVIEW — PR of record opened; receipts attached; author does not self-merge this run (the operator's go is the next word)"
+  priority: P1
+  band: T-TUTOR-AIM (DC10 — keep the grounding, add the aim)
+  deps: ["T-TUTOR-AIM-P1 (merged #1061, tutor-grounded/v18)"]
+  execution_record: >
+    Plan of record: docs/DC10-TUTOR-AIMED-ANSWERING-PLAN.md §6 P2 (§7.4/§7.5/
+    §7.6) + §13.1/§13.2. This run implements the P2 scope exactly as phased.
+    §7.4 confidence capture ONLY (log-first): three buttons (sure/think_so/
+    guessing), NO default — the wire field is optional and the server
+    applies NO default (a no-tap ask logs NOTHING: the absence of a row IS
+    the null); the raw selection rides the TutorAnsweredEvent on BOTH ask
+    paths and the FREE_TUTOR sink appends one row per selecting ask over the
+    NEW tutor_ask_confidence table (migration 0029, raw SQL per the 0007
+    disclosure law); anonymous previews log nothing (account-only); a
+    refusal still logs the tap; NOTHING reads the table yet (rule 4 gates
+    consumption on weeks of pure logging). §7.5 aimed answering: the aim is
+    computed INSIDE assembleTutorContext from the reads that call already
+    holds (M3 preserved — zero new reads, zero LLM): the strongest active
+    misconception on a matched topic (catalog node id + title, the §11
+    injection law), proven prerequisites (mastery >= AIM_PROVEN_MASTERY
+    0.70) compressed to one line, proven-strong depth-1 adjacent areas as
+    the example-bias targets, the decay-due flag computed for the §7.8 hook
+    (P3 renders nothing from it). The v19 prompt bump (registry
+    tutor-grounded) adds the AIM law; the aim renders as ONE unfenced block
+    ONLY when it has something to aim. §7.3 refinement: the ask-side
+    deterministic command-word classifier (command-word.ts, pure) —
+    precision-first (the question must OPEN with one of the six exam
+    command words), rendered as one COMMAND WORD OF RECORD line when it
+    pins, NOTHING otherwise. §7.6 the single optional probe: selectProbe
+    (pure) picks at most ONE depth-1 prerequisite carrying an active gap
+    signal (weak practiced skill state OR an active attached misconception),
+    offer-not-claim per §13.2 — metadata only (node id + corpus title) on
+    AskResult.probe and the stream done frame, null on every refusal; the
+    hub chip pre-fills the composer on tap (nothing is sent until the
+    learner sends). Empty-context byte-stability is test-pinned BOTH at the
+    prompt level (userPrompt empty-tables === the pre-P2 call shape,
+    byte-identical) and at the pipeline level (no AIM, no pin, no probe).
+    Gates: apps/api tsc --noEmit clean; FULL suite 2979 pass / 13 skip /
+    0 fail; hub tsc clean, hub battery no new fails vs the standing-flaky
+    baseline; budget lint 3/3 (v19 chemistry 122 / general 120 non-blank
+    lines, headroom pin intact). NO risk-tier path touched; the two-tier
+    disclosure law, sourcing, citations and the refusal shape law are
+    byte-unchanged (the v18 laws are still in the prompt and pinned).
+    Deviations disclosed: (1) the CLA surface carries NO confidence capture
+    and NO aim in P2 — the tutor chat ships first (context.ts's CLA literal
+    carries explicit nulls); (2) the probe's tap pre-fills the composer
+    rather than serving an inline bank question — the inline deterministic
+    probe is the P3 refinement with the drill loop; (3) the books rail ask
+    (api/books/tutor) does not forward confidence — the rail composes its
+    own question envelope.

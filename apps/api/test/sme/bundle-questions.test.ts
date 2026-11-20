@@ -94,12 +94,12 @@ describe("T-MIG-135b the real bundles through the shim + the frozen gates", () =
     expect(pkg.corpusVersion).toContain("syllabai.sme-exam-questions/1.1");
     // 2ece53b re-import carried no option-bearing parts; the 4MB1 OCR-repair
     // wave re-introduced four option-bearing maths-a parts (options 0 -> 4)
-    expect(pkg.counts).toEqual({ questions: 2692, parts: 3538, options: 4, sets: 58, unmapped: 9, badSum: 0, dupOrder: 2, crossSetRefCollision: 0 }); // CONSUME-3: the counter of record rides every census (0 here — the bundle's codes are unchanged)
+    expect(pkg.counts).toEqual({ questions: 2692, parts: 3538, options: 4, sets: 58, unmapped: 9, serveUnmappedSpec: 0, badSum: 0, dupOrder: 2, crossSetRefCollision: 0 }); // CONSUME-3: the counter of record rides every census (0 here — the bundle's codes are unchanged)
   });
 
   test("the foundation bundle builds at the exact manifest numbers", () => {
     const pkg = buildFoundation();
-    expect(pkg.counts).toEqual({ questions: 274, parts: 430, options: 0, sets: 45, unmapped: 1, badSum: 0, dupOrder: 0, crossSetRefCollision: 0 }); // CONSUME-3 counter
+    expect(pkg.counts).toEqual({ questions: 274, parts: 430, options: 0, sets: 45, unmapped: 1, serveUnmappedSpec: 0, badSum: 0, dupOrder: 0, crossSetRefCollision: 0 }); // CONSUME-3 counter
   });
 
   test("the chemistry-19 bundle builds at the ADR-037 wave-12 census numbers with the per-paper official namespace (run-004 + wave 12)", () => {
@@ -111,7 +111,7 @@ describe("T-MIG-135b the real bundles through the shim + the frozen gates", () =
     // normalization fixes the 2020-01 R prose; unmapped 1 -> 2: the corpus-level
     // anchor-law counter now spans the R slices' one honestly-unmapped question
     // plus the documented 2019-06 1C terminal case)
-    expect(pkg.counts).toEqual({ questions: 999, parts: 4007, options: 1480, sets: 82, unmapped: 2, badSum: 0, dupOrder: 0, crossSetRefCollision: 0 }); // CONSUME-3 counter
+    expect(pkg.counts).toEqual({ questions: 999, parts: 4007, options: 1480, sets: 82, unmapped: 2, serveUnmappedSpec: 0, badSum: 0, dupOrder: 0, crossSetRefCollision: 0 }); // CONSUME-3 counter
     const refs = (pkg.questions ?? []).map((q) => q.externalRef as string);
     // the package-global namespace is injective — the exact gate that
     // refused the pre-fix bundle (run-003: duplicate externalRef

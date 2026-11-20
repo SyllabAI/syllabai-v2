@@ -243,9 +243,9 @@ export function StrengthsPanel({ course }: { course: string }) {
         <p>{data.semantics.bands}</p>
         <p>{data.semantics.queue}</p>
         <p className="mt-1">
-          Computed {formatRelative(data.generatedAt)} for this read — {data.summary.bars} of{" "}
-          {data.summary.drillableAddresses} drillable spec points carry bars. ADR-031: the decayed values
-          are computed at read and never stored.
+          Computed {formatRelative(data.generatedAt)} — {data.summary.bars} of{" "}
+          {data.summary.drillableAddresses} drillable spec points carry bars. Decayed values
+          are recomputed each time and never stored.
         </p>
       </div>
     </div>

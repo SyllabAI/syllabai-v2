@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Validation · Teacher workspace",
   description:
-    "AI-content validation queue (Phase 2): teacher verdicts on AI-authored model solutions before they count — demo-truth on real corpus items.",
+    "AI-content checks: teacher verdicts on AI-written model solutions before they count — demo data on real course content.",
 };
 
 export default async function ValidationPage({

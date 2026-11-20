@@ -236,7 +236,7 @@ export function VerdictChipView({ chip }: { chip: VerdictChip }) {
             {chip.coveredObjectiveIds.length === 1 ? "objective" : "objectives"} covered
           </span>
         )}
-        <span className="ml-1.5 text-muted-foreground/60">— details</span>
+        <span className="ml-1.5 text-muted-foreground">— details</span>
       </summary>
       <div className="mt-1.5 space-y-1 border-t border-border/50 pt-1.5 leading-relaxed text-muted-foreground">
         <p>{chip.feedbackLine}</p>

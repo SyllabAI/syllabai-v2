@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "That powder tests for water, not for metal cations.",
           "misconception": "water-test reagent intrudes"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A few drops of sodium hydroxide solution",
+            "A few drops of dilute acid",
+            "Anhydrous copper(II) sulfate",
+            "A glowing splint"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A few drops of sodium hydroxide solution"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "That is copper(II)'s colour.",
           "misconception": "Cu2+ colour swapped in"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Pale green"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,26 @@
           "explanation": "Iron(II) gives pale green.",
           "misconception": "green-blue swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Copper(II)"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +211,24 @@
           "explanation": "Both are the source's stated explanations for a blank result.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The hydroxide may be soluble, or too few ions are present",
+            "The cation must be ammonium",
+            "The test was performed wrongly",
+            "The solution is definitely pure water"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The hydroxide may be soluble, or too few ions are present"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +264,24 @@
           "correct": false,
           "explanation": "The shade is the identity of the compound, not a concentration readout.",
           "misconception": "concentration fiction"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Examiners are specific about the shade for the copper(II) mark",
+            "Light blue means the solution is warm",
+            "The shade shows the concentration",
+            "Blue is reserved for iron(III)"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Examiners are specific about the shade for the copper(II) mark"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -282,6 +376,24 @@
           "explanation": "Acid would protonate any ammonia made and stop the test working.",
           "misconception": "reagent swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Add sodium hydroxide and warm the mixture",
+            "Add sodium hydroxide in the dark",
+            "Add sodium hydroxide and cool the mixture",
+            "Add acid and warm"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Add sodium hydroxide and warm the mixture"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -317,6 +429,26 @@
           "correct": false,
           "explanation": "Hydrogen is the metal-acid gas, not this one.",
           "misconception": "metal-acid gas confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Ammonia"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -354,6 +486,24 @@
           "explanation": "That is ammonia's identifying result, linking back to the gas tests.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It gives a squeaky pop",
+            "It turns damp red litmus paper blue",
+            "It bleaches damp blue litmus paper",
+            "It turns limewater cloudy"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It turns damp red litmus paper blue"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -390,6 +540,24 @@
           "explanation": "No hydrogen gas forms; the partner is the hydroxide ion making water.",
           "misconception": "hydrogen invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "NH4+ + OH- gives NH4OH",
+            "NH4+ gives NH3 and H2",
+            "NH3 + H2O gives NH4+ + OH-",
+            "NH4+ + OH- gives NH3 and H2O"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "NH4+ + OH- gives NH3 and H2O"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -425,6 +593,24 @@
           "correct": false,
           "explanation": "Nothing points to a different cation; faintness is about amount, not identity.",
           "misconception": "cation swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Negative, because cloudiness is never enough",
+            "Positive for copper(II) instead",
+            "Invalid, the test must be repeated with acid",
+            "Still positive, small amounts give slight effects"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Still positive, small amounts give slight effects"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

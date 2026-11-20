@@ -10,7 +10,7 @@ import { useState } from "react";
 
 import type { RailBlock } from "@/lib/books-rail";
 
-import { CheckResetButtons, VerdictChip, WidgetCard, type Verdict } from "../check-shared";
+import { CheckResetButtons, echoCap, VerdictChip, WidgetCard, type InteractionVerdictListener, type Verdict } from "../check-shared";
 import { matchesAny } from "@/lib/books-chem";
 
 interface FillCell {
@@ -23,7 +23,16 @@ interface FillRow {
   cells: FillCell[];
 }
 
-export function TableFillBlock({ block }: { block: RailBlock }) {
+export function TableFillBlock({
+  block,
+  embedded = false,
+  onVerdict,
+}: {
+  block: RailBlock;
+  /** P2 interaction bridge (guided check slots): see sort-match-block. */
+  embedded?: boolean;
+  onVerdict?: InteractionVerdictListener;
+}) {
   const c = block.content;
   const columns = Array.isArray(c.columns) ? (c.columns as unknown[]).filter((x): x is string => typeof x === "string") : [];
   const rows = Array.isArray(c.rows)
@@ -66,8 +75,15 @@ export function TableFillBlock({ block }: { block: RailBlock }) {
       return ok;
     }));
     setChecked(nextChecked);
-    setVerdict(right === total ? "correct" : right === 0 ? "wrong" : "partial");
-    setDetail(right === total ? null : `${right}/${total} cells correct`);
+    const verdict: Verdict = right === total ? "correct" : right === 0 ? "wrong" : "partial";
+    const detail = right === total ? null : `${right}/${total} cells correct`;
+    setVerdict(verdict);
+    setDetail(detail);
+    onVerdict?.({
+      verdict,
+      detail,
+      echo: echoCap(rows.map((r, ri) => r.cells.map((_, ci) => inputs[ri]?.[ci] ?? "").join(" | ")).join(" | ")),
+    });
   };
 
   const reset = () => {
@@ -75,10 +91,11 @@ export function TableFillBlock({ block }: { block: RailBlock }) {
     setChecked(rows.map((r) => r.cells.map(() => false)));
     setVerdict("unchecked");
     setDetail(null);
+    onVerdict?.({ verdict: "unchecked", detail: null, echo: null });
   };
 
   const inputCls = (ri: number, ci: number) =>
-    `w-full rounded-md border bg-background px-2 py-1 text-xs ${
+    `w-full rounded-md border bg-background px-2 py-1 text-xs outline-none transition-[border-color,box-shadow] duration-(--motion-duration-fast) ease-motion focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] ${
       checked[ri]?.[ci]
         ? matchesAny(inputs[ri]?.[ci] ?? "", rows[ri]!.cells[ci]!.accepts)
           ? "border-emerald-400 dark:border-emerald-700"
@@ -87,7 +104,7 @@ export function TableFillBlock({ block }: { block: RailBlock }) {
     }`;
 
   return (
-    <WidgetCard ord={block.ord} typeLabel="Fill the table" prompt={prompt}>
+    <WidgetCard ord={block.ord} typeLabel="Fill the table" prompt={prompt} hideMeta={embedded}>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse text-xs">
           <thead>
@@ -125,9 +142,11 @@ export function TableFillBlock({ block }: { block: RailBlock }) {
         </table>
       </div>
       <CheckResetButtons onCheck={check} onReset={reset} />
-      <div className="mt-1.5">
-        <VerdictChip verdict={verdict} detail={detail} />
-      </div>
+      {!embedded && (
+        <div className="mt-1.5">
+          <VerdictChip verdict={verdict} detail={detail} />
+        </div>
+      )}
     </WidgetCard>
   );
 }

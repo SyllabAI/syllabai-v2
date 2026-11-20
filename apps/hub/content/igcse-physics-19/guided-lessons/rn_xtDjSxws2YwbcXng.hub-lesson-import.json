@@ -149,7 +149,7 @@
         "specRefs": [
           "7.10"
         ],
-        "opening": "Honest counting subtracts the surroundings: measure the background with no source, then subtract it from every source reading to get the corrected count rate. Artificial sources — medicine, waste, fallout, accidents — add to the natural baseline but repeatable technique keeps them out of your data.",
+        "opening": "Honest counting subtracts the surroundings: measure background with no source, then subtract it from every source reading to get the corrected count rate. Artificial sources — medicine, waste, fallout, accidents — add to the natural baseline but repeatable technique keeps them out of your data.",
         "keyPoints": [
           "Measure the background count rate with no source present.",
           "The corrected count rate is the source reading minus the background reading.",
@@ -164,7 +164,7 @@
             "examPointer": "Show the subtraction line explicitly — \"corrected count rate\" answers without the arithmetic can drop a mark."
           },
           "medium": {
-            "restatement": "Because decay is random, a single-minute window is noisy; averaging repeats or extending the interval shrinks the uncertainty on both the background and the source measurements, so the corrected rate inherits the smaller error. Artificial contributions rarely vary over a session, which is what makes subtraction valid.",
+            "restatement": "Because decay is random, a single-minute window is noisy; averaging repeats or extending the interval shrinks uncertainty on both background and source measurements, so the corrected rate inherits the smaller error. Artificial contributions rarely vary over a session, making subtraction valid.",
             "analogy": "Taring a kitchen scale: the bowl’s weight is constant during the bake, so subtracting it once is fair — provided nobody swaps the bowl mid-recipe.",
             "examPointer": "If a question offers \"repeat and average\" as an accuracy improvement, take it — it is the stock answer here."
           }

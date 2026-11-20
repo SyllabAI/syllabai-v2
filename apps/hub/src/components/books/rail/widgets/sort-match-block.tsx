@@ -13,7 +13,7 @@ import { useMemo, useState } from "react";
 
 import type { RailBlock } from "@/lib/books-rail";
 
-import { CheckResetButtons, LiveHint, VerdictChip, WidgetCard, type Verdict } from "../check-shared";
+import { CheckResetButtons, echoCap, LiveHint, VerdictChip, WidgetCard, type InteractionVerdictListener, type Verdict } from "../check-shared";
 
 interface SortItem {
   id: string;
@@ -24,7 +24,19 @@ interface SortTarget {
   text: string;
 }
 
-export function SortMatchBlock({ block }: { block: RailBlock }) {
+export function SortMatchBlock({
+  block,
+  embedded = false,
+  onVerdict,
+}: {
+  block: RailBlock;
+  /** P2 interaction bridge: guided check slots mount the widget embedded —
+   *  same practice UI, the verdict chip dropped (the flow renders the
+   *  verdict of record) and the settle reported upward. Absent = the
+   *  books-rail behavior, byte-identical. */
+  embedded?: boolean;
+  onVerdict?: InteractionVerdictListener;
+}) {
   const c = block.content;
   const rawItems = Array.isArray(c.items) ? c.items : [];
   const items: SortItem[] = rawItems
@@ -66,12 +78,26 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
   const check = () => {
     if (isMatch) {
       const wrong = items.filter((i) => assign[i.id] !== solution![i.id]).length;
-      setVerdict(wrong === 0 ? "correct" : wrong === items.length ? "wrong" : "partial");
-      setDetail(wrong === 0 ? null : `${items.length - wrong}/${items.length} matched`);
+      const verdict: Verdict = wrong === 0 ? "correct" : wrong === items.length ? "wrong" : "partial";
+      const detail = wrong === 0 ? null : `${items.length - wrong}/${items.length} matched`;
+      setVerdict(verdict);
+      setDetail(detail);
+      onVerdict?.({
+        verdict,
+        detail,
+        echo: echoCap(items.map((i) => `${i.text} → ${targetById.get(assign[i.id])?.text ?? "?"}`).join("; ")),
+      });
     } else {
       const wrong = order.filter((id, i) => correctOrder![i] !== id).length;
-      setVerdict(wrong === 0 ? "correct" : "wrong");
-      setDetail(wrong === 0 ? null : "order differs from the mark-scheme order");
+      const verdict: Verdict = wrong === 0 ? "correct" : "wrong";
+      const detail = wrong === 0 ? null : "order differs from the mark-scheme order";
+      setVerdict(verdict);
+      setDetail(detail);
+      onVerdict?.({
+        verdict,
+        detail,
+        echo: echoCap(order.map((id) => byId.get(id)?.text ?? "").join(" → ")),
+      });
     }
   };
 
@@ -81,10 +107,11 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
     setSelectedItem(null);
     setVerdict("unchecked");
     setDetail(null);
+    onVerdict?.({ verdict: "unchecked", detail: null, echo: null });
   };
 
   return (
-    <WidgetCard ord={block.ord} typeLabel={isMatch ? "Sort & match" : "Put in order"} prompt={prompt}>
+    <WidgetCard ord={block.ord} typeLabel={isMatch ? "Sort & match" : "Put in order"} prompt={prompt} hideMeta={embedded}>
       <LiveHint text={selectedItem ? `Selected ${byId.get(selectedItem)?.text ?? ""}` : ""} />
       {isMatch ? (
         <div className="space-y-1.5">
@@ -93,7 +120,7 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
               <button
                 type="button"
                 onClick={() => setSelectedItem(item.id === selectedItem ? null : item.id)}
-                className={`rounded-md border px-2 py-1 text-left text-xs ${
+                className={`rounded-md border px-2 py-1 text-left text-xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:border-primary focus-visible:ring-2 focus-visible:ring-ring ${
                   selectedItem === item.id ? "border-primary bg-primary/10" : "border-border bg-background"
                 }`}
                 aria-pressed={selectedItem === item.id}
@@ -117,7 +144,7 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
                 <button
                   key={t.id}
                   type="button"
-                  className="rounded-md border border-dashed px-2 py-1 text-xs hover:bg-muted"
+                  className="rounded-md border border-dashed px-2 py-1 text-xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring"
                   onClick={() => {
                     if (selectedItem != null) {
                       setAssign((a) => ({ ...a, [selectedItem]: t.id }));
@@ -140,7 +167,7 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
               <span className="flex-1 rounded-md border px-2 py-1 text-xs">{byId.get(id)?.text}</span>
               <button
                 type="button"
-                className="rounded border px-1.5 text-xs"
+                className="rounded-sm border px-1.5 text-xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-40"
                 onClick={() => move(idx, -1)}
                 disabled={idx === 0}
                 aria-label={`Move ${byId.get(id)?.text ?? "item"} up`}
@@ -149,7 +176,7 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
               </button>
               <button
                 type="button"
-                className="rounded border px-1.5 text-xs"
+                className="rounded-sm border px-1.5 text-xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-40"
                 onClick={() => move(idx, 1)}
                 disabled={idx === order.length - 1}
                 aria-label={`Move ${byId.get(id)?.text ?? "item"} down`}
@@ -161,9 +188,11 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
         </ol>
       )}
       <CheckResetButtons onCheck={check} onReset={reset} />
-      <div className="mt-1.5">
-        <VerdictChip verdict={verdict} detail={detail} />
-      </div>
+      {!embedded && (
+        <div className="mt-1.5">
+          <VerdictChip verdict={verdict} detail={detail} />
+        </div>
+      )}
     </WidgetCard>
   );
 }

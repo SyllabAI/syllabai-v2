@@ -157,16 +157,16 @@ export function QuestionbankIndex({
         <CardContent className="p-6 text-sm text-muted-foreground">
           {paperLabel ? (
             <>
-              No imported question sets are anchored to spec points assessed in{" "}
-              <span className="font-medium text-foreground">{paperLabel}</span> yet — the corpus
-              currently covers other papers for this course.{" "}
+              No question sets cover the spec points tested in{" "}
+              <span className="font-medium text-foreground">{paperLabel}</span> yet — we
+              currently cover other papers for this course.{" "}
               <Link href={`${base}/exam-questions`} className="underline hover:text-foreground">
                 Clear the paper scope
               </Link>
               .
             </>
           ) : (
-            "No question sets imported for this course yet."
+            "No question sets for this course yet."
           )}
         </CardContent>
       </Card>

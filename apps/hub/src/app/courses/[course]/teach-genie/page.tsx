@@ -93,9 +93,9 @@ export default async function TeachGeniePage({
         <div className="mt-6 rounded-lg border border-dashed border-border bg-card px-6 py-10 text-center">
           <h2 className="text-base font-semibold">Teach SillyAI isn&apos;t live for this course yet</h2>
           <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
-            Learn-by-teaching rolls out course by course, grounded in each course&apos;s validated material. When
-            this course&apos;s serving corpus is ready, SillyAI appears here — this page is the honest state, not
-            a stub.
+            Learn-by-teaching rolls out course by course, built on each course&apos;s checked material. When
+            this course&apos;s material is ready, SillyAI appears here — this page shows exactly where
+            things stand.
           </p>
         </div>
       </div>

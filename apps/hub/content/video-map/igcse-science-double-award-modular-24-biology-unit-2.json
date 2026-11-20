@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 28,
+  "rowsApproved": 36,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 28,
+    "rowsApproved": 36,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -146,7 +146,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); matched to the UK specs by topic — the US curriculum differs in places",
    "durationS": 349,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -161,7 +161,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 241,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -176,7 +176,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 224,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -191,7 +191,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 251,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -206,7 +206,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); matched to the UK specs by topic — the US curriculum differs in places",
    "durationS": 443,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -221,7 +221,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 222,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -236,7 +236,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 219,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -251,7 +251,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 279,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -266,7 +266,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 209,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -281,7 +281,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); matched to the UK specs by topic — the US curriculum differs in places",
    "durationS": 464,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -296,7 +296,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 182,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -311,7 +311,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 309,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -326,7 +326,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); matched to the UK specs by topic — the US curriculum differs in places",
    "durationS": 310,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -341,7 +341,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 250,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -356,7 +356,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); matched to the UK specs by topic — the US curriculum differs in places",
    "durationS": 487,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -371,7 +371,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 273,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -386,7 +386,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 292,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -401,7 +401,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); matched to the UK specs by topic — the US curriculum differs in places",
    "durationS": 992,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -416,7 +416,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 184,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -431,7 +431,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 226,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -446,12 +446,100 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
    "durationS": 287,
    "guestVisible": null,
    "subelementOfPrimary": false,
    "oembedAuthor": "Freesciencelessons",
    "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "39YE7hv1D18",
+   "title": "Genotype, Phenotype & Punnett Squares | 9-1 GCSE and IGCSE Biology | AQA, Edexcel, CIE, OCR, WJEC",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=39YE7hv1D18",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "62745-iPhO0",
+   "title": "Female Reproductive System | A Level and IB Biology",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=62745-iPhO0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CmHZeysBoso",
+   "title": "Sex Determination | A LEVEL & IB Biology",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=CmHZeysBoso",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "W7tmWNpW-u0",
+   "title": "Food Chains & Food Webs | A LEVEL & IB BIOLOGY",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=W7tmWNpW-u0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bDQTh92PZec",
+   "title": "Male and Female Reproductive System | 9-1 GCSE and IGCSE Biology | AQA, Edexcel, CIE, OCR, WJEC",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=bDQTh92PZec",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "cgQ695-qbw4",
+   "title": "Male Reproductive System | A Level and IB Biology",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=cgQ695-qbw4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "r2HUxd7hB5w",
+   "title": "The Greenhouse Effect & Global Warming | A LEVEL & IB BIOLOGY",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=r2HUxd7hB5w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nIER0nLmJb4",
+   "title": "Natural Selection | IGCSE Bio Jan 2022 Q.7 | Elevare",
+   "provider": "team-elevare",
+   "watchUrl": "https://www.youtube.com/watch?v=nIER0nLmJb4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Team Elevare (Edexcel IAL WBI13/WPH13 unit summaries + IGCSE modular chemistry 4WCH1/4WCH2 + 4MB1/4MA1/4BI1/4CH1/4SD0 paper walkthroughs; the IAL IT/econ (WIT/WEC) remainder skipped — no spine courses) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
@@ -558,6 +646,66 @@
    }
   },
   {
+   "video": "62745-iPhO0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.8 'understand how the structure of the male and female reproduc' via token(s) ['female', 'reproductive'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "cgQ695-qbw4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.8 'understand how the structure of the male and female reproduc' via token(s) ['male', 'reproductive'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "bDQTh92PZec",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.8 'understand how the structure of the male and female reproduc' via token(s) ['female', 'male', 'reproductive'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "BIf0sIKQm_E",
    "lessonRef": null,
    "lessonUrl": null,
@@ -639,6 +787,26 @@
    }
   },
   {
+   "video": "39YE7hv1D18",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.20"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.20 'understand the meaning of the terms: dominant, recessive, ho' via token(s) ['genotype', 'phenotype'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "wky7R3zYtTQ",
    "lessonRef": null,
    "lessonUrl": null,
@@ -668,6 +836,26 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Inheritance of Sex' = the XX/XY sex-chromosome determination of 3.26 and the genetic-diagram offspring sex of 3.27; clause detail title-only (unverified) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "CmHZeysBoso",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.27"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.27 'describe the determination of the sex of offspring at fertil' via token(s) ['determination', 'sex'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -789,6 +977,26 @@
    ],
    "confidence": "low",
    "evidence": "title 'Natural Selection' names spec 3.38; the 3.7 bind is nonsense adjacency (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "nIER0nLmJb4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.38"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.38 'explain Darwin’s theory of evolution by natural selection' via token(s) ['natural', 'selection'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -923,6 +1131,26 @@
    }
   },
   {
+   "video": "W7tmWNpW-u0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.7 'understand the concepts of food chains, food webs, pyramids ' via token(s) ['chains', 'food', 'webs'] (df 12); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "6utMftGxuaI",
    "lessonRef": null,
    "lessonUrl": null,
@@ -983,6 +1211,26 @@
    }
   },
   {
+   "video": "r2HUxd7hB5w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.15"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.15 'understand how an increase in greenhouse gases results in an' via token(s) ['effect', 'global', 'greenhouse', 'warming'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "nrbJl3R4YJU",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1028,15 +1276,15 @@
  ],
  "coverage": {
   "specPointsTotal": 60,
-  "specPointsMapped": 27,
-  "specPointsUnmapped": 33,
-  "videosTotal": 28,
-  "videosMapped": 28,
+  "specPointsMapped": 28,
+  "specPointsUnmapped": 32,
+  "videosTotal": 36,
+  "videosMapped": 36,
   "videosUnmapped": 0,
-  "mappingRows": 28,
+  "mappingRows": 36,
   "byConfidence": {
    "high": 0,
-   "medium": 16,
+   "medium": 24,
    "low": 12
   }
  },
@@ -1060,5 +1308,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-12T20:09:49.919Z"
+ "generatedUtc": "2026-11-20T10:53:23.581Z"
 }

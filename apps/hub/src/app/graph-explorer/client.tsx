@@ -175,19 +175,13 @@ export function GraphExplorerClient() {
           <PopoverContent align="end" className="w-[min(92vw,26rem)] text-xs leading-relaxed">
             <p className="mb-1 text-sm font-semibold">What is this?</p>
             <p className="mb-2 text-muted-foreground">
-              The OpenHuman knowledge-graph visualizer, hosted byte-faithful from{" "}
-              <span className="font-mono">public/kg/</span>. Builds are unmodified copies of the
-              operator&apos;s prototype (own hand-curated 4CH1 dataset, GRAPH_CONTRACT v1.0); the
-              stats chip is served from the decoupled{" "}
-              <a href={DATA_URL} target="_blank" rel="noreferrer" className="underline underline-offset-2">
-                canonicalKG artifact
-              </a>
-              . This page is the prototype build lab — the product surface is the{" "}
+              A prototype knowledge-graph playground — an exact copy of the original
+              build. This page is the lab where it was put together — the product surface
+              is the{" "}
               <Link href="/knowledge-graph" className="underline underline-offset-2">
                 per-course Knowledge Graph
               </Link>
-              , where every course explores its own exported graph in a data-decoupled fork of
-              v77.
+              , where every course explores its own graph.
             </p>
             <p className="mb-1 text-sm font-semibold">Try</p>
             <ul className="mb-2 list-disc space-y-0.5 pl-4 text-muted-foreground">

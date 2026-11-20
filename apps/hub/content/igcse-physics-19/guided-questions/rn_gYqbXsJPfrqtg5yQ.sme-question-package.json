@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "The response is smooth and repeatable.",
           "misconception": "noise myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "decreases"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "Responding to light is the LDR's whole job.",
           "misconception": "independence myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "high"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,27 @@
           "explanation": "The diode's job is direction control, not sensing.",
           "misconception": "component swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "an LDR",
+                    "LDR"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +214,24 @@
           "explanation": "More light never blocks the current.",
           "misconception": "extreme myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "smaller",
+            "larger, because the resistance has dropped",
+            "unchanged",
+            "zero"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "larger, because the resistance has dropped"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +267,27 @@
           "correct": false,
           "explanation": "A vertical line would mean the temperature reading is impossible.",
           "misconception": "nonsense"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a falling curve",
+                    "falling curve"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -289,6 +389,24 @@
           "explanation": "The indicator reads the circuit's flow, not the cell's reserve.",
           "misconception": "storage myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "voltage only",
+            "a current in the circuit",
+            "resistance",
+            "charge stored in the cell"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a current in the circuit"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -324,6 +442,26 @@
           "correct": true,
           "explanation": "LED stands for light-emitting diode.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "diode"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -361,6 +499,24 @@
           "explanation": "Smoothness of supply has no bearing on the LED's glow.",
           "misconception": "nonsense"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the voltage is too smooth",
+            "it is wired in the reverse direction",
+            "the circuit uses copper wires",
+            "the current is perfectly steady"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it is wired in the reverse direction"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -397,6 +553,26 @@
           "explanation": "Meters are drawn in circles without emission arrows.",
           "misconception": "meter myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "light-emitting"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -432,6 +608,24 @@
           "correct": false,
           "explanation": "Neither the supply nor the switch glows with the current.",
           "misconception": "supply pair"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "an ammeter and a voltmeter",
+            "a lamp and an LED",
+            "an LDR and a thermistor",
+            "a cell and a switch"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a lamp and an LED"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

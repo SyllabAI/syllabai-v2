@@ -71,7 +71,7 @@ export default async function PracticePapersPage({
                     · spans {p.coveredTopics} of {p.totalTopics} topics
                   </span>
                 </span>
-                <ChevronRight className="size-4 shrink-0 text-muted-foreground/60" aria-hidden />
+                <ChevronRight className="size-4 shrink-0 text-muted-foreground" aria-hidden />
               </Link>
             </li>
           ))}

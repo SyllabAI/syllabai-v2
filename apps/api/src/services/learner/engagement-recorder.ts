@@ -18,6 +18,17 @@
  * posture; this recorder is the engagement-row listener, not the research
  * consumer.)
  *
+ * T-TUTOR-AIM-P2 (DC10 §7.4, capture-only): the FREE_TUTOR sink also logs
+ * the learner's raw self-reported confidence ("sure" | "think_so" |
+ * "guessing") when the ask carried one — one append-only row per
+ * selecting ask over tutor_ask_confidence (migration 0029). LOG-FIRST: the
+ * DC10 confidence law's rule 4 gates every consumption on weeks of pure
+ * logging; nothing in v2 reads this table. A no-tap ask logs NOTHING (the
+ * absence of a row IS the null — no server-side default: a no-tap is never
+ * recorded as a guessing); anonymous previews log NOTHING (the account-only
+ * law); the CLA surface carries no confidence capture in P2 (the disclosed
+ * residual — the buttons ship on the tutor chat first).
+ *
  * THE V25 ROW CLASSIFIER (SIGNAL_POLICY_VERSION "tutor-signals/v2", one
  * TYPE per row, precedence-ordered, all deterministic — never LLM-derived):
  *   1. MISCONCEPTION_RELATED — the tutor policy intervened on an active BDT
@@ -141,6 +152,28 @@ async function appendEngagements(sql: SqlFn, clock: Clock, row: EngagementAppend
 }
 
 /**
+ * T-TUTOR-AIM-P2 (DC10 §7.4): the confidence log append — one row per
+ * SELECTING ask (log-first; a no-tap logs nothing — the row's absence is
+ * the null, never a server-side default). Pure append, no read path in v2.
+ */
+async function appendConfidence(
+  sql: SqlFn,
+  clock: Clock,
+  event: TutorAnsweredEvent,
+): Promise<void> {
+  if (event.learnerId == null || event.confidence == null) {
+    return; // anonymous preview, or the learner tapped nothing
+  }
+  await sql`
+    insert into tutor_ask_confidence
+      (id, learner_id, session_id, confidence, created_at)
+    values
+      (${crypto.randomUUID()}, ${event.learnerId}, ${event.sessionId},
+       ${event.confidence}, ${clock.now()})
+  `;
+}
+
+/**
  * The FREE_TUTOR telemetry sink (the frozen onTutorAnswered, order 30):
  * wires into the tutor pipeline's existing TutorAnsweredEvent seam — the
  * sink the composition root previously left as the disclosed no-op. Never
@@ -166,6 +199,11 @@ export function tutorEngagementTelemetrySink(
     }).catch(() => {
       // logged class: a lost engagement row never corrupts the delivered
       // answer (the append guard) — no error text may reach the pipeline
+    });
+    // T-TUTOR-AIM-P2 (DC10 §7.4): the confidence log — the same append-guard
+    // class; a lost log row never corrupts the delivered answer either
+    void appendConfidence(sql, clock, event).catch(() => {
+      // logged class — see the append guard above
     });
   };
 }

@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "That is acid behaviour; bases turn red litmus paper blue instead.",
           "misconception": "acid behaviour assigned to bases"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It turns blue litmus paper red",
+            "It neutralises an acid, forming a salt and water",
+            "It dissolves in water to give hydroxide ions only",
+            "It reacts with a salt to form an acid"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It neutralises an acid, forming a salt and water"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Oxides, hydroxides and carbonates of metals all act as bases, so copper(II) oxide qualifies.",
           "misconception": "base family narrowed to hydroxides"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A base, but not an alkali",
+            "An alkali, because metal oxides are always alkaline",
+            "Neither, because only hydroxides can be bases",
+            "An alkali, because it neutralises acids quickly"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A base, but not an alkali"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "The pH direction has been reversed; acids sit below 7, not above it.",
           "misconception": "pH direction reversed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It is a strong acid",
+            "It is alkaline, so the dissolved substance is an alkali",
+            "It is pure water",
+            "Its pH says nothing about whether it is an alkali"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It is alkaline, so the dissolved substance is an alkali"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,26 @@
           "explanation": "The hydroxide ion is what makes an aqueous solution an alkali, whatever the parent base.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Hydroxide ions"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "Sodium and potassium hydroxide also dissolve freely, so exclusivity is false.",
           "misconception": "solubility exclusivity claimed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It is a compound of nitrogen, not a metal oxide or hydroxide",
+            "It is the only base that dissolves completely in water",
+            "It produces hydrogen ions instead of hydroxide ions in water",
+            "It is the only base that neutralises acids"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It is a compound of nitrogen, not a metal oxide or hydroxide"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -284,6 +376,26 @@
           "explanation": "Potassium is group 1 and forms only 1+ ions, so K2+ is not a real species here.",
           "misconception": "incorrect potassium charge"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "K+ and OH-"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -319,6 +431,26 @@
           "correct": false,
           "explanation": "NH3 is the neutral gas molecule, not an ion in the solution.",
           "misconception": "neutral molecule listed as an ion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "NH4+ and OH-"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -356,6 +488,24 @@
           "explanation": "The gas and the ion are different species, so the names name different things.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Ammonia is an ion and ammonium is a compound",
+            "Ammonium is the unreactive form of ammonia",
+            "They describe different concentrations of the same solution",
+            "Ammonia names the gas NH3 while ammonium names the ion NH4+"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Ammonia names the gas NH3 while ammonium names the ion NH4+"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -392,6 +542,24 @@
           "explanation": "Aqueous ammonia is a counter-example, so the claim is too strong.",
           "misconception": "ammonia solution forgotten"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Both are definitely soluble metal hydroxides",
+            "Neither can contain ammonia",
+            "Both solutions contain hydroxide ions",
+            "Both must be sodium hydroxide"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Both solutions contain hydroxide ions"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -427,6 +595,24 @@
           "correct": false,
           "explanation": "NH3 is the dissolved gas molecule; the ion present is NH4+.",
           "misconception": "gas molecule listed among the ions"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Sodium hydroxide gives Na+ and OH-",
+            "Aqueous ammonia gives NH3 and OH-",
+            "Potassium hydroxide gives K+ and O2-",
+            "Sodium hydroxide gives NaOH2- and H+"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Sodium hydroxide gives Na+ and OH-"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

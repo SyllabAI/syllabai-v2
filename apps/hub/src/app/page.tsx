@@ -74,7 +74,7 @@ export default async function HubPage() {
       href: "/tutor",
       icon: Sparkles,
       title: "Tutor",
-      desc: "A grounded AI tutor — every answer cites the spec points it draws on.",
+      desc: "An AI tutor that shows its working — every answer cites the spec points it draws on.",
     },
     {
       href: "/learner",
@@ -102,8 +102,8 @@ export default async function HubPage() {
           Revise by subject. Master by spec point.
         </h1>
         <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-          Add the subjects you are studying, then revise from spec-anchored notes, practise
-          exam questions by topic and drill flashcards — all mapped to your syllabus.{" "}
+          Add the subjects you are studying, then revise from notes mapped to the spec, practise
+          exam questions by topic and drill flashcards — all organised around your syllabus.{" "}
           <span className="font-medium text-foreground">{courseCount} subjects</span> ready to add.
         </p>
         <div className="flex flex-wrap items-center gap-3 pt-1">
@@ -172,7 +172,7 @@ export default async function HubPage() {
 
       {/* corpus stats — scoped honestly: these are the 4CH1 pilot's numbers
           (UX audit P2-6: they were presented as global totals) */}
-      <section aria-label="Pilot corpus stats" className="space-y-2">
+      <section aria-label="Hub stats" className="space-y-2">
         <h2 className="text-sm font-medium text-muted-foreground">
           Inside the {manifest.curriculum.code} {manifest.curriculum.subject} hub
         </h2>

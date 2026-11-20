@@ -228,7 +228,7 @@ export default async function CourseHubPage({
           icon: Sparkles,
           title: "Course Tutor",
           desc: meta.curriculumCode
-            ? "A chat grounded in this course's specification, revision notes and past papers — every answer cites its sources."
+            ? "A chat built from this course's specification, revision notes and past papers — every answer cites its sources."
             : "Connects once this course's material is ready — the tutor answers from one course's own material at a time.",
           href: meta.curriculumCode ? `/tutor?course=${meta.slug}` : undefined,
           ctaLabel: "Ask the tutor",
@@ -357,7 +357,7 @@ export default async function CourseHubPage({
           title: "Grade Boundaries",
           desc: gradeBoundaries
             ? "Official boundaries for every recent session — the trend graph, boundary tables and a mark-to-grade calculator."
-            : "Official session-by-session grade boundaries with a trend graph and mark-to-grade calculator — landing with the corpus rollout.",
+            : "Official session-by-session grade boundaries with a trend graph and mark-to-grade calculator — coming soon.",
           href: gradeBoundaries ? `${base}/grade-boundaries` : undefined,
           ctaLabel: gradeBoundaries ? "See boundaries" : undefined,
           countLabel: gradeBoundaries
@@ -380,7 +380,7 @@ export default async function CourseHubPage({
           title: "Revision Notes",
           desc: officialTree
             ? "Concise notes for every topic in the official specification."
-            : "Concise notes for every topic — official-spec mapping in progress.",
+            : "Concise notes for every topic — more topics are on the way.",
           href: `${base}/revision-notes`,
           countLabel: `${fmtCount(stats.notes)} note${stats.notes === 1 ? "" : "s"}`,
           ready: stats.notes > 0,
@@ -436,7 +436,7 @@ export default async function CourseHubPage({
               {
                 icon: MonitorPlay,
                 title: "Videos",
-                desc: `Owner-reviewed video lessons mapped to this specification point by point — watch the exact clip a spec point needs. Title-only evidence is disclosed per row.`,
+                desc: `Video lessons for this course, topic by topic — watch the exact clip a spec point needs. Each row shows how closely the video title matches.`,
                 href: `${base}/videos`,
                 countLabel: `${fmtCount(videoMap.coverage.videosMapped)} videos · ${videoMap.coverage.specPointsMapped}/${videoMap.coverage.specPointsTotal} spec points`,
                 ready: true,
@@ -611,7 +611,7 @@ export default async function CourseHubPage({
               Content for this course is on its way
             </CardTitle>
             <CardDescription>
-              This course is registered and its materials are in preparation — the full hub
+              This course's materials are in preparation — the full hub
               switches on here the moment the content lands.
             </CardDescription>
           </CardHeader>

@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Assistant",
   description:
-    "Give the Contextual Learning Assistant a spec topic or an exam question and a mode — answers are grounded in the material and cite their sources.",
+    "Give the Contextual Learning Assistant a spec topic or an exam question and a mode — answers come from the material and cite their sources.",
 };
 
 /**

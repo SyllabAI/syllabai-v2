@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -764,6 +764,24 @@
           "explanation": "Both named uptakes.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Oxygen from the air",
+            "Light energy",
+            "Mucus particles",
+            "Water and mineral ions from the soil"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Water and mineral ions from the soil"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -799,6 +817,24 @@
           "correct": false,
           "explanation": "That is palisade anatomy.",
           "misconception": "anatomy mismatch"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Tight column packing",
+            "Biconcave shape",
+            "Long extensions that increase surface area",
+            "A fatty sheath"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Long extensions that increase surface area"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -836,6 +872,24 @@
           "explanation": "The note names the upper side.",
           "misconception": "location wrong"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "In the root's cortex",
+            "Beneath the upper epidermis, tightly packed",
+            "Floating free in the air spaces",
+            "On the leaf's lower surface only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Beneath the upper epidermis, tightly packed"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -872,6 +926,24 @@
           "explanation": "Vacuoles do that everywhere.",
           "misconception": "function mismatch"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "To grow longer root extensions",
+            "To store more cell sap",
+            "To conduct impulses",
+            "To maximise light capture for photosynthesis"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "To maximise light capture for photosynthesis"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -907,6 +979,26 @@
           "correct": true,
           "explanation": "Palisade cells are packed with them.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Chloroplasts"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

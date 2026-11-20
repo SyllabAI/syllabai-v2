@@ -162,7 +162,125 @@ totalResolved === totalNotes
 // fleet safety: courses WITHOUT an SME layer resolve to null (the notes
 // selector renders exactly as before there)
 {
-  const probes = ["cie-a-level-chemistry-25", "cie-as-maths-20-pure-2", "cie-igcse-english-language-25"];
+  // probe roster of record: cie-a-level-chemistry-25 rotated out at wave-9
+  // tranche 2 (it GAINED its SME layer there — the fleet-safety law only
+  // binds courses still without one); its no-layer AS sibling took the
+  // probe slot. cie-as-chemistry-25 rotated out at tranche 7 (it GAINED
+  // its SME layer there, alongside cie-a-level-business-23); the next
+  // no-layer AS sibling — cie-as-biology-25 (its A-level 9700 sibling
+  // gained the layer at tranche 2) — took the probe slot. cie-as-biology-25
+  // rotated out at tranche 8 (it GAINED its SME layer there, alongside
+  // igcse-physics-19); the next no-layer Pearson-science sibling —
+  // igcse-chemistry-19 (its 4BI1 sibling gained the layer at tranche 5,
+// its 4PH1 sibling at tranche 8) — took the probe slot. igcse-chemistry-19
+// rotated out at tranche 9 (it GAINED its SME layer there, alongside
+// cie-igcse-geography-25); the last no-layer Pearson-science family
+// member — igcse-science-double-award-17-biology (the 4SD0 strand; its
+// 4BI1/4CH1/4PH1 siblings all layered now) — took the probe slot.
+// igcse-science-double-award-17-biology rotated out at tranche 10 (it
+// GAINED its SME layer there, alongside cie-igcse-accounting-25): the
+// Pearson-science family is now EXHAUSTED (4BI1/4CH1/4PH1/4SD0 all
+// layered), so the chain's next no-layer sibling — the queue's rank-3
+// Edexcel-science family member igcse-biology-modular-24-unit-2 (the
+// Pearson modular 2024 strand) — took the probe slot.
+// igcse-biology-modular-24-unit-2 rotated out at tranche 11 (it GAINED its
+// SME layer there, alongside igcse-maths-a-modular-24-higher-unit-1); the
+// modular-24 family continues, so its next no-layer sibling — the SAME
+// subject's unit-1 strand igcse-biology-modular-24-unit-1 — takes the
+// probe slot. Same disclosed pin-refresh class as the wave-6 run-002.
+// cie-igcse-english-language-25 rotated out at tranche 28 (it GAINED its
+// SME layer there, alongside igcse-further-maths-19); the queue's rank-1
+// no-layer course — cie-as-environmental-management-20 (52 loose; the
+// T10 rank-pick precedent) — takes the probe slot. Same disclosed
+// pin-refresh class as the wave-6 run-002.
+// cie-as-environmental-management-20 rotated out at tranche 29 (it GAINED
+// its SME layer there, alongside igcse-science-double-award-modular-24-
+// physics-unit-2); the queue's rank-3 no-layer course — igcse-science-
+// double-award-modular-24-chemistry-unit-1 (51 loose; the rank-1/2
+// courses are layered THIS tranche) — takes the probe slot. NOTE for
+// tranche 30: chem-U1 rotates OUT when IT gains its layer. Same disclosed
+// pin-refresh class as the wave-6 run-002.
+// igcse-science-double-award-modular-24-chemistry-unit-1 rotated out at
+// tranche 30 (it GAINED its SME layer there, alongside igcse-chemistry-
+// modular-24-unit-2); the queue's next rank-3 no-layer course — cie-igcse-
+// english-language-20 (45 loose; the rank-1/2 courses are layered THIS
+// tranche) — takes the probe slot. NOTE for tranche 31: english-language-20
+// rotates OUT when IT gains its layer. Same disclosed pin-refresh class
+// as the wave-6 run-002.
+// cie-igcse-english-language-20 rotated out at tranche 31 (it GAINED its
+// SME layer there, alongside igcse-science-double-award-modular-24-
+// physics-unit-1); the next no-layer course not already on the roster —
+// igcse-accounting-17-introduction-to-bookkeeping-and-accounting (43
+// loose; tied with igcse-biology-modular-24-unit-1, which is ALREADY
+// slot 1 — the census slug-descending tie-break keeps bio-mod-U1 there)
+// — takes the probe slot. NOTE for later tranches: accounting-17-intro
+// rotates OUT when IT gains its layer; as-maths-20-pure-2 (slot 2)
+// likewise when reached. Same disclosed pin-refresh class as the wave-6
+// run-002.
+// tranche 32 is the FIRST DOUBLE ROTATION: BOTH its courses sat on the
+// roster (bio-mod-U1 slot 1, accounting-17-intro slot 3 — the census TIE
+// at 43 loose made them the queue's ranks 1-2). Layering BOTH trips
+// slots 1 AND 3 of the fleet-safety check; the replacements of record
+// (the T10 rank-pick precedent, the not-already-on-the-roster law):
+// slot 1 -> igcse-science-double-award-modular-24-biology-unit-1 (32
+// loose), slot 3 -> igcse-science-double-award-modular-24-chemistry-unit-2
+// (29 loose); cie-as-maths-20-pure-2 (39 loose) is NOT layered this
+// tranche and STAYS at slot 2. NOTE for tranche 33: sdaw-bio-U1 +
+// sdaw-chem-U2 rotate OUT when THEY gain their layers; as-maths-20-pure-2
+// likewise when reached. Same disclosed pin-refresh class as the wave-6
+// run-002.
+// tranche 33 is the SECOND DOUBLE ROTATION: BOTH its courses sat on the
+// roster (cie-as-maths-20-pure-2 slot 2, igcse-science-double-award-
+// modular-24-biology-unit-1 slot 1 — the queue's ranks 1-2 at 39/32
+// loose). Layering BOTH trips slots 1 AND 2 of the fleet-safety check;
+// the replacements of record (the T10 rank-pick precedent, the
+// not-already-on-the-roster law): slot 1 -> ial-further-maths-18-further-
+// pure-1 (25 loose), slot 2 -> cie-as-english-general-paper-21 (22
+// loose); igcse-science-double-award-modular-24-chemistry-unit-2 (29
+// loose) is NOT layered this tranche and STAYS at slot 3. NOTE for
+// tranche 34: sdaw-chem-U2 + ial-fp1-18 are the next queue pair (likely
+// ANOTHER double — slots 3 and the new slot 1); as-english-gp-21
+// likewise when reached. Same disclosed pin-refresh class as the wave-6
+// run-002.
+// tranche 35 is the FOURTH DOUBLE ROTATION: BOTH its courses sat on the
+// roster (cie-as-english-general-paper-21 slot 2, igcse-accounting-17-
+// financial-statements slot 1 — the queue's ranks 1-2 at 22/20 loose).
+// Layering BOTH trips slots 1 AND 2 of the fleet-safety check; the
+// replacements of record (the T10 rank-pick precedent, the
+// not-already-on-the-roster law): slot 1 -> igcse-english-language-a-16-
+// paper-1-non-fiction-texts-and-transactional-writing (10 loose), slot 2
+// -> igcse-english-language-a-16-paper-3-coursework (1 loose);
+// igcse-english-language-a-16-paper-2 (11 loose) is NOT layered this
+// tranche and STAYS at slot 3. NOTE for tranche 36: paper-2 + paper-1
+// are the next queue pair (ANOTHER double — slots 3 and the new slot 1;
+// the roster then shrinks toward its edge case as only paper-3 remains
+// as a replacement candidate); T37 = paper-3 alone (the LAST probe
+// trips; the roster empties and fleet-safety goes trivially green).
+// Same disclosed pin-refresh class as the wave-6 run-002.
+// tranche 36 is the FIFTH DOUBLE ROTATION + THE ROSTER EDGE CASE: BOTH
+// its courses sat on the roster (paper-2 slot 3, paper-1 slot 1 — the
+// queue's ranks 1-2). Layering BOTH trips slots 1 AND 3 — and the ONLY
+// remaining no-layer course in the whole fleet is
+// igcse-english-language-a-16-paper-3-coursework (1 loose), which is
+// ALREADY slot 2 and NOT layered this tranche — the
+// not-already-on-the-roster law yields NO third replacement: THE ROSTER
+// SHRINKS to the single remaining no-layer course. The fleet-safety law
+// (every probe has no SME layer) holds with a 1-probe roster. NOTE for
+// tranche 37: paper-3 is the LAST loose course — layering it trips the
+// final probe and THE ROSTER EMPTIES (fleet-safety trivially green; the
+// wave-9 queue exhausted). Same disclosed pin-refresh class as the
+// wave-6 run-002.
+// tranche 37 is THE FINAL ROTATION — THE ROSTER EMPTIES: paper-3-
+// coursework WAS the roster's sole member; it GAINED its SME layer at
+// tranche 37, trips the final probe, and probes = []. The fleet-safety
+// check iterates an empty array and passes trivially — there is no
+// no-layer course left in the 106-course fleet to probe: EVERY
+// note-bearing course now carries its SME layer and the wave-9 queue is
+// EXHAUSTED (census of record: user-facing loose 0). The roster retires
+// with the queue; any future course additions re-seed it per the T10
+// rank-pick precedent. Same disclosed pin-refresh class as the wave-6
+// run-002.
+  const probes = [];
   for (const course of probes) {
     const dir = new URL(`${course}/`, contentDir);
     if (!existsSync(new URL("curriculum.json", dir))) continue;

@@ -79,7 +79,7 @@ import { useLastOpened, resourceLabel } from "@/lib/last-opened";
 import { useCourseProgress } from "@/lib/progress";
 // UX audit 2026-10-02 #17: the dashboard's sub-1%-decimal formatting is now
 // the shared contract (progress-ring and strengths-panel had rounded to 0%)
-import { formatPercent, percentLabel } from "@/lib/format";
+import { fmtCount, formatPercent, percentLabel } from "@/lib/format";
 // Tier-3 follow-up 5: the trailing tile is the grid's terminator — its
 // span/shape adapt to the row it lands in (the parity law + its tests live
 // in lib/subject-grid.ts).
@@ -96,6 +96,10 @@ import { NextBestActionsCard } from "./next-best-actions-card";
 import { ReviewDueStrip } from "./review-due-strip";
 import { SetWorkCard } from "./set-work-card";
 import { ProgressAttributionCard } from "./progress-attribution-card";
+// T-TUTOR-AIM-P3 (DC10 §7.9): the calibration read-out lives with the tutor
+// surfaces it reads (the tutor chat's own client component folder) — the
+// dashboard renders it as a per-learner section of its own.
+import { CalibrationCard } from "@/app/tutor/calibration-card";
 import { ExamSeriesPicker } from "./exam-series-picker";
 import { AddCourseOverlay } from "./add-course-overlay";
 import type { CourseMeta } from "@/lib/courses";
@@ -124,7 +128,10 @@ function rowValue(value: number | undefined, unit: string) {
   if (value === undefined) return <Skeleton className="h-3 w-10" />;
   return (
     <span className="text-xs font-medium tabular-nums text-foreground">
-      {value} {unit}
+      {/* visual audit V-9: dashboard cards printed raw counts ("2703
+          questions") while course pages comma-group ("1,336 questions") —
+          same fmtCount device as the rest of the site (F-15 law) */}
+      {fmtCount(value)} {unit}
       {value === 1 ? "" : "s"}
     </span>
   );
@@ -218,7 +225,12 @@ function ResourceRow({
     <>
       <span className="flex w-full items-center gap-2.5">
         <Icon className="size-4 shrink-0 text-muted-foreground" aria-hidden />
-        <span className="flex-1 truncate text-sm">{label}</span>
+        <span
+          className="min-w-0 flex-1 line-clamp-2 text-sm"
+          title={label}
+        >
+          {label}
+        </span>
         {value}
         {percent !== undefined && (
           <span
@@ -230,7 +242,7 @@ function ResourceRow({
           </span>
         )}
         <ChevronRight
-          className={`size-4 shrink-0 transition-opacity ${disabled ? "text-muted-foreground/30" : "text-muted-foreground/60"}`}
+          className={`size-4 shrink-0 transition-opacity ${disabled ? "text-muted-foreground/30" : "text-muted-foreground"}`}
           aria-hidden
         />
       </span>
@@ -240,7 +252,7 @@ function ResourceRow({
   const cls =
     "flex flex-col gap-0 rounded-md px-2 py-2 transition-colors " +
     (disabled
-      ? "cursor-not-allowed text-muted-foreground/60"
+      ? "cursor-not-allowed text-muted-foreground"
       : "hover:bg-muted hover:text-foreground");
   return (
     <li>
@@ -408,7 +420,7 @@ function SubjectCard({
             </div>
             {!meta.hasBundle && (
               <p className="text-xs text-muted-foreground">
-                Content import pending — hub not available yet.
+                Content is on its way — nothing is here yet.
               </p>
             )}
           </div>
@@ -616,7 +628,7 @@ export function DashboardClient({
           the hero's one honest number until the account trail loads. */}
       <PageHero
         title="Welcome back 👋"
-        description="Your launchpad for spec-anchored revision — notes, exam questions and flashcards mapped to each of your courses. Your progress syncs to your account across devices; self-marked answers and reading history stay on this device."
+        description="Your launchpad for revision — notes, exam questions and flashcards mapped to each of your courses. Your progress syncs to your account across devices; self-marked answers and reading history stay on this device."
         stats={
           <StatChip
             icon={GraduationCap}
@@ -756,7 +768,14 @@ export function DashboardClient({
             </CardContent>
           </Card>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2 2xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-3">
+            {/* Base band needs an explicit shrinkable column: grid-cols-1 =
+                repeat(1, minmax(0,1fr)). Without it the implicit auto track
+                adopts the cards' nowrap truncate min-content (~394 px at a
+                390 px viewport) and the dashboard side-scrolls 20 px —
+                visual audit V-1, 2026-11-13. The sm/2xl bands are already
+                minmax(0,1fr); the terminator-law spans are sm:/2xl:-prefixed
+                so this base change cannot touch them. */}
             {mySubjects.map((c) => (
               <SubjectCard
                 key={c.slug}
@@ -809,6 +828,15 @@ export function DashboardClient({
           old bare wrapper shipped an empty labelled landmark (UX review
           2026-11-04). ---- */}
       <ProgressAttributionCard courses={mySubjects} />
+
+      {/* ---- T-TUTOR-AIM-P3 (DC10 §7.9): the calibration read-out — the
+          learner's own confidence-vs-outcome curve over the P2 confidence
+          log + the P3 served-evidence ledger. The §7.4 gates render
+          honestly (gathering / no_signal / ok); per-learner only; renders
+          nothing on a transport failure. ---- */}
+      <section aria-label="Confidence calibration">
+        <CalibrationCard />
+      </section>
 
       {/* ---- Next best actions (recommendation output — advice, not facts) ---- */}
       <section aria-label="Next best actions">

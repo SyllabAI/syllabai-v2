@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "Pressure belongs to a different topic.",
           "misconception": "concept mix-up"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the gravitational potential store",
+                    "gravitational potential store"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,26 @@
           "correct": false,
           "explanation": "The described route is mechanical, not electrical.",
           "misconception": "route mismatch"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "mechanical work"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +158,24 @@
           "explanation": "The kinetic store peaks at the bottom of the swing.",
           "misconception": "store swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "gone entirely",
+            "split equally with the surroundings",
+            "fully in the kinetic store",
+            "fully in the gravitational potential store"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "fully in the gravitational potential store"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +212,24 @@
           "explanation": "Stores exchange; the total is invariant.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "energy vanishes once used",
+            "energy multiplies as it moves",
+            "only kinetic energy survives a transfer",
+            "the total energy across all stores stays constant"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the total energy across all stores stays constant"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +265,24 @@
           "correct": false,
           "explanation": "Mass alone prices no transfer.",
           "misconception": "partial-credit slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the distance alone",
+            "the work done, in joules",
+            "the object's mass alone",
+            "the force alone"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the work done, in joules"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -285,6 +380,24 @@
           "explanation": "Mass is never affected by the instruction.",
           "misconception": "absurd limit"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "assume a perfect transfer with no wasted energy",
+            "assume all the energy is dissipated",
+            "assume the object loses mass as it moves",
+            "assume gravity switches off"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "assume a perfect transfer with no wasted energy"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +433,24 @@
           "correct": false,
           "explanation": "With no losses, nothing shortchanges the kinetic store.",
           "misconception": "dissipation slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "smaller than the KE gained",
+            "larger than the KE gained",
+            "unrelated to the KE gained",
+            "exactly equal to the KE gained"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "exactly equal to the KE gained"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +488,24 @@
           "explanation": "Zero leakage makes the store changes identical in size.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "because GPE and KE are the same store",
+            "because joules and newtons are the same unit",
+            "because a perfect transfer wastes nothing, so the amounts match",
+            "because energy always doubles in a transfer"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "because a perfect transfer wastes nothing, so the amounts match"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +542,24 @@
           "explanation": "Real rides move; they just lose some energy.",
           "misconception": "absurd limit"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "slightly lower, because some energy dissipates",
+            "slightly higher, because friction assists",
+            "exactly the same",
+            "zero, because real rides cannot move"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "slightly lower, because some energy dissipates"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +595,36 @@
           "correct": false,
           "explanation": "That drops the field strength factor.",
           "misconception": "arithmetic slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "200 J"
+            },
+            {
+              "id": "4",
+              "text": "50 J"
+            },
+            {
+              "id": "3",
+              "text": "10 J"
+            },
+            {
+              "id": "2",
+              "text": "100 J"
+            }
+          ],
+          "correctOrder": [
+            "3",
+            "4",
+            "2",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },

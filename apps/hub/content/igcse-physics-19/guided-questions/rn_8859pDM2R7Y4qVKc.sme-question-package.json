@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "The field is required, not removed.",
           "misconception": "condition inversion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "only when the field is switched off",
+            "when it moves through a magnetic field",
+            "only when connected to a battery",
+            "whenever it is near a magnet, moving or not"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "when it moves through a magnetic field"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "Nothing changes, so nothing alternates.",
           "misconception": "alternation invention"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "zero"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Either side moving induces; relative change is what counts.",
           "misconception": "actor confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a voltage is induced because the field through the coil changes",
+            "nothing — the coil must move instead",
+            "the coil becomes a permanent magnet",
+            "the magnet loses its strength"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a voltage is induced because the field through the coil changes"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,26 @@
           "explanation": "Induced voltage grows with the speed of cutting.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "doubles"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +264,24 @@
           "correct": false,
           "explanation": "More turns increase the coil's induced voltage.",
           "misconception": "factor inversion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "sweeping through a weaker magnetic field",
+            "using a stronger magnet",
+            "sweeping faster through the same field",
+            "adding more turns to the coil"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "sweeping through a weaker magnetic field"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -284,6 +378,24 @@
           "explanation": "Motion across the lines induces a real voltage.",
           "misconception": "denial claim"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a steady deflection to one side",
+            "rapid random flickering",
+            "a permanent full-scale swing",
+            "zero at all times"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a steady deflection to one side"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -319,6 +431,26 @@
           "correct": false,
           "explanation": "Direction, not size, changes with reversal.",
           "misconception": "magnitude confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "deflects the opposite way"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -356,6 +488,24 @@
           "explanation": "Motion is required for induction here.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "zero — no cutting, no induced voltage",
+            "the same deflection as during the sweep",
+            "a reversed deflection",
+            "a doubled deflection"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "zero — no cutting, no induced voltage"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -392,6 +542,26 @@
           "explanation": "Size tracks the cutting speed.",
           "misconception": "no-change claim"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "grows larger"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -427,6 +597,24 @@
           "correct": false,
           "explanation": "Speed changes size, not direction.",
           "misconception": "factor confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "cleaning the meter glass",
+            "using a longer wire",
+            "swapping the magnet's poles over",
+            "sweeping the wire faster"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "swapping the magnet's poles over"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -523,6 +711,24 @@
           "explanation": "Nothing is stored; induction is immediate.",
           "misconception": "storage myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "every turn adds its own induced voltage",
+            "the coil stores voltage for release later",
+            "the coil's wire is thicker",
+            "single wires cannot induce at all"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "every turn adds its own induced voltage"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -558,6 +764,24 @@
           "correct": true,
           "explanation": "Exit reverses the field change, flipping the polarity.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "larger and the same direction",
+            "doubled",
+            "zero",
+            "the same size but the opposite direction"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the same size but the opposite direction"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -595,6 +819,26 @@
           "explanation": "A steady field through the coil induces nothing.",
           "misconception": "static myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "moving the magnet faster"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -631,6 +875,24 @@
           "explanation": "The field exists — it just is not changing.",
           "misconception": "denial claim"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the coil is too large to induce",
+            "the field through the coil is not changing",
+            "the meter is disconnected",
+            "the magnet has no field"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the field through the coil is not changing"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -666,6 +928,26 @@
           "correct": false,
           "explanation": "More turns induce more, not less.",
           "misconception": "comparison inversion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "five times larger"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

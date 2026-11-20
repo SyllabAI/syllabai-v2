@@ -68,10 +68,10 @@ export default async function SenecaPage({
           {questions.toLocaleString()} exam questions
         </Badge>
         <p className="w-full max-w-3xl text-xs leading-relaxed text-muted-foreground">
-          Imported verbatim from the SyllabAI Seneca harvest; images are served from the repo
-          mirror at /seneca-images. Read-only study material — nothing here records progress or
-          feeds mastery rings. Courses without a Seneca mapping show no Seneca entry in the
-          sidebar at all.
+          Imported as-is from Seneca Learning; images are served from a local mirror.
+          Read-only study material — nothing here is saved to your progress or feeds your
+          mastery rings. Courses without a Seneca mapping show no Seneca entry in the
+          sidebar.
         </p>
       </div>
 

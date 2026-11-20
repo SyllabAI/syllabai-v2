@@ -124,7 +124,7 @@ export async function POST(req: NextRequest) {
 
   if (!coreBaseUrl()) {
     return Response.json(
-      { error: "core_not_configured", detail: "The SyllabAI backend is not configured for this deployment." },
+      { error: "core_not_configured", detail: "The AI tutor isn't available right now — please try again later." },
       { status: 503 },
     );
   }

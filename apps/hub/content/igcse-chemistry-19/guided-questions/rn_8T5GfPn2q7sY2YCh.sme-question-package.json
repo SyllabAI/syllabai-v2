@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Hydrogen is never released by burning an alcohol; the hydrogen ends up in water.",
           "misconception": "element swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Carbon dioxide and water"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "Ethanol is actually quite volatile; safety comes from its clean, odour-free burn.",
           "misconception": "safety misread"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It produces a bright yellow flame that is easy to see",
+            "It burns cleanly, with little smell and a flame that is hard to see",
+            "It evaporates too slowly to catch fire accidentally",
+            "It is the only alcohol that can burn at all"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It burns cleanly, with little smell and a flame that is hard to see"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "No flame or ample oxygen exists in a bottle; burning cannot happen there.",
           "misconception": "route mismatch"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Water evaporating and concentrating the flavour",
+            "Complete combustion inside the bottle",
+            "Airborne bacteria oxidising the ethanol",
+            "Heating with potassium dichromate(VI)"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Airborne bacteria oxidising the ethanol"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,26 @@
           "explanation": "The two-carbon alcohol keeps its two carbons and gains the carboxylic acid group.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Ethanoic acid"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +264,24 @@
           "correct": false,
           "explanation": "The route consumes oxygen; it does not produce it, and water is not an input.",
           "misconception": "reactants and products swapped"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "ethanol + water makes ethanoic acid + oxygen",
+            "ethanol + oxygen makes carbon dioxide + water",
+            "ethanol + oxygen makes ethanoic acid + water",
+            "ethanol makes ethanoic acid with nothing else formed"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "ethanol + oxygen makes ethanoic acid + water"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

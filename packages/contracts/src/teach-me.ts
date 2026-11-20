@@ -324,3 +324,22 @@ export const sessionHistoryItemSchema = z
   })
   .strict();
 export type SessionHistoryItem = z.infer<typeof sessionHistoryItemSchema>;
+
+/**
+ * T-TEACHGENIE-008 — the history envelope. `classroomStudent` is the
+ * enrollment flag of record (EXISTS over class_members — the SAME predicate
+ * the teachermarking reads speak: membership rows are the single source of
+ * truth, un-enrollment is the only revocation, class status plays no part).
+ * It conditions the ratification footnote copy so a learner without a
+ * teacher never reads "your teacher ratifies". Fail-safe direction: callers
+ * render the teacher claim ONLY on an affirmative true — unknown or error
+ * renders the neutral independent copy (a missing sentence is honest, a
+ * false teacher claim is not).
+ */
+export const sessionHistoryResponseSchema = z
+  .object({
+    items: z.array(sessionHistoryItemSchema),
+    classroomStudent: z.boolean(),
+  })
+  .strict();
+export type SessionHistoryResponse = z.infer<typeof sessionHistoryResponseSchema>;

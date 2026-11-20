@@ -1,0 +1,55 @@
+{
+  "task": "T-TEACHGENIE-008",
+  "run": "run-003",
+  "date": "2026-11-13",
+  "operator_order": {
+    "orders": [
+      "remove the footer thing from the bottom (immediately after the UI/UX place-ness review of the Teach SillyAI landing; the bottom footer of the landing = the run-002 conditional AI_SUGGESTED/ratification footnote)"
+    ],
+    "channel": "zai-web",
+    "session": "web-7b4a27df-7d97-438a-849c-05a9c0003aa8",
+    "chat": "0fade780-1ab5-4951-bfd9-13f43e897f40",
+    "trace": "1a1d4efe5abdba11"
+  },
+  "change": {
+    "summary": "the landing's bottom footnote is REMOVED ENTIRELY (both voices): the <p> footer element, the classroomStudent prop + its threading into TeachGenieLanding, the landingEvidenceFootnote helper, and the run-002 landing law-test block all retire. The landing now states NO AI_SUGGESTED / ratification copy at all; the evidence copy lives where the evidence lives — the picker footer + the review screen's evidence lead (both still conditional on the run-001 envelope flag, untouched)",
+    "files": [
+      "apps/hub/src/components/hub/teach-genie/landing.tsx — the footer <p> removed; the classroomStudent prop + doc comment removed from TeachGenieLandingProps + the destructure; the landingEvidenceFootnote import dropped; header comment records run-003",
+      "apps/hub/src/components/hub/teach-genie/teach-genie-client.tsx — the landing's classroomStudent={...} pass dropped (the picker + review passes at the other two render sites stay; the envelope state stays — still consumed by run-001 surfaces)",
+      "apps/hub/src/components/hub/teach-genie/util.ts — landingEvidenceFootnote retired (the 008 copy family returns to picker/review)",
+      "apps/hub/src/components/hub/teach-genie/teach-genie-laws.test.ts — the run-002 landing law test block + import removed",
+      ".syllabai/tasks/T-TEACHGENIE-008.yaml — status: run-003 OPEN; scope lines updated for the removal",
+      ".syllabai/receipts/T-TEACHGENIE-008/run-003.json — this receipt"
+    ],
+    "copy": {
+      "removed_classroom": "What you cover is saved as an AI_SUGGESTED suggestion your teacher can ratify — the end-of-session review is the correction of record, so read it even when everything ticks green.",
+      "removed_independent": "What you cover is saved as an AI_SUGGESTED suggestion — the end-of-session review shows what landed and what to tighten, so read it even when everything ticks green.",
+      "removed_note": "both bytes recorded here verbatim so the record keeps exactly what the product stopped saying; neither line renders anywhere anymore",
+      "still_live": "picker footer + review evidence lead (run-001 conditional copy, byte-identical to the T-TEACHME-001 records, fail-safe direction unchanged)"
+    }
+  },
+  "evidence": {
+    "predicate_of_record": "unchanged: the run-001 envelope flag (EXISTS over class_members — the teachermarking predicate) still drives the picker + review copy; run-003 removes a copy SURFACE, not the predicate",
+    "gates": {
+      "hub_typecheck": "bunx tsc --noEmit (apps/hub) exit 0 — with the workspace deps installed in the authoring sandbox (fresh clone, bun install 989 packages; the pre-install tsc flood is an environment artifact, not a code signal)",
+      "hub_teach_genie_tests": "bun test apps/hub/src/components/hub/teach-genie/ → 10 pass, 0 fail, 45 expects across 2 files (the run-002 landing test block removed with its subject)",
+      "hub_lint": "eslint on the 4 touched files: clean, exit 0",
+      "rebase_recheck": "the fleet raced mid-run (main c848065 → 2fedb31 between commit and push); the fetch-first guard fired, the branch rebased onto 2fedb31 cleanly, and the gates RE-RUN on the rebased tree with identical results: tsc exit 0, 10 pass / 45 expects, eslint clean"
+    },
+    "pins_checked": {
+      "result": "post-removal sweep: rg 'landingEvidenceFootnote|What you cover is saved' over apps/hub/src → ZERO hits (helper, render, strings all gone); the strings survive only as records (run-002 receipt, worklog entry, this receipt's removed-copy disclosure) — records, not pins; no golden or other-test pin on the landing strings (run-002's pin sweep already proved the only test pin was the run-002 law block removed here)"
+    }
+  },
+  "scope_disclosures": [
+    "the landing no longer tells ANY learner (classroom or independent) that sessions are AI_SUGGESTED or that the end-of-session review matters — the classroom-facing 'read the review even when everything ticks green' nudge is gone from the landing; the review screen still carries the evidence lead + 'Spec verdicts of record:' tail at the moment the learner actually reads the review",
+    "run-002's conditional law on the landing is MOOTED, not reverted: the surface no longer exists (a revert would restore the footer; this run removes it)",
+    "the UI/UX place-ness review immediately preceding this order named the landing's persona stage as the hub's one intentional outlier; this run removes its bottom status line but does NOT touch the persona hero, the How-it-works card, or any other landing element",
+    "worklog entry WITHHELD from this PR — re-files post-merge per the T-COPYFIX-001→#967 lane (the #989 pattern)",
+    "bun install used in the authoring sandbox for the gates above; CI is the gate of record on the PR head",
+    "author_merge: false — awaiting operator merge order"
+  ],
+  "reversibility": "revert the PR, or re-add the footer <p> rendering either landingEvidenceFootnote (restored from the run-002 bytes recorded above) or a static line — a one-block restore",
+  "branch": "t-teachgenie-008/run-003",
+  "base": "origin/main c848065 at authoring; REBASED onto main 2fedb31fcd7e14019a139eeff235b98caae7b770 at push (the fetch-first race-guard fired); PR of record opens against main",
+  "author_merge": false
+}

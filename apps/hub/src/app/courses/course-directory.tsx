@@ -224,8 +224,8 @@ function DirectoryCard({
                 queued for import. Papers-only ghosts stay line-free. */}
             {ghost && !statsLine && papers === 0 && !tutorReady && (
               <p className="mt-1.5 text-xs italic text-muted-foreground">
-                No published content yet — the corpus is queued
-                for import.
+                No published content yet — this course is
+                on the way.
               </p>
             )}
             {/* run-002 (UI-2): the badge row is retired for the
@@ -247,16 +247,16 @@ function DirectoryCard({
               <div className="mt-2 flex flex-wrap gap-1.5">
                 {c.status === "pilot" && (
                   <Badge className="rounded-full">
-                    pilot corpus · official spec tree
+                    new · official specification
                   </Badge>
                 )}
                 {ghost && (
                   <Badge
                     variant="outline"
                     className="rounded-full text-muted-foreground"
-                    title="This lane is registered; its full corpus — notes, exam questions, flashcards and the past-paper archive — is queued for import. Nothing is rendered for it yet."
+                    title="This course is on its way — notes, exam questions, flashcards and past papers are still being added. Nothing is here yet."
                   >
-                    import pending
+                    coming soon
                   </Badge>
                 )}
               </div>
@@ -483,12 +483,15 @@ export function CourseDirectory({
             chips at sm+ (they wrap as a stack below sm, exactly as before). */}
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           {/* T-HUB-COURSES-UI-3: w-80 clipped the placeholder's own tail
-              ("…exam code or" — 47 chars do not fit 320px); w-96 carries
-              the full copy at the same toolbar rhythm. */}
+              ("…exam code or" — 47 chars do not fit 320px); w-96 carried
+              the full copy at the same toolbar rhythm. Visual audit V-9:
+              w-full still clips mid-word on phones ("…exam c…"), so the
+              placeholder is now the short form everywhere — the live count
+              survives, the full description lives in the aria-label. */}
           <Input
             value={q}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder={`Search ${courses.length} courses by subject, exam code or board…`}
+            placeholder={`Search ${courses.length} courses…`}
             aria-label="Search courses"
             className="w-full sm:w-96"
           />

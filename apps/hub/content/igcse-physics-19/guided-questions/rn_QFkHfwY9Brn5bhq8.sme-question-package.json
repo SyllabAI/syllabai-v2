@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "A single wire's field is weak; coiling is the construction.",
           "misconception": "shape error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a permanent magnet glued to a wire",
+            "a battery and a plastic rod",
+            "a single straight wire",
+            "a coil of wire carrying a current"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a coil of wire carrying a current"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Cooling is not the core's role.",
           "misconception": "function invention"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the core is induced by the coil's field and strengthens it",
+            "the core stores the electricity for later",
+            "the core keeps the coil cool",
+            "the core makes the electromagnet permanent"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the core is induced by the coil's field and strengthens it"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,26 @@
           "explanation": "A reversed current still runs — the magnet works with swapped poles.",
           "misconception": "state confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "its poles swap ends"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "More turns stack more field contributions.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "reducing the current",
+            "adding more turns to the coil",
+            "unwinding the coil into a straight wire",
+            "removing the iron core"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "adding more turns to the coil"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "The coil geometry is unchanged by switching off.",
           "misconception": "mechanism invention"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the core cools instantly",
+            "the core is magnetically hard and holds its poles",
+            "soft iron loses its induced magnetism as soon as the field goes",
+            "the coil unwinds slightly"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "soft iron loses its induced magnetism as soon as the field goes"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

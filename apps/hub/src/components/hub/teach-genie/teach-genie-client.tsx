@@ -72,6 +72,10 @@ export function TeachGenieClient({ course, courseLabel, noteTree }: TeachGenieCl
   const [ceilingReached, setCeilingReached] = useState(false);
   const [history, setHistory] = useState<SessionHistoryItem[] | null>(null);
   const [preview, setPreview] = useState<TeachGeniePreviewRow[] | null>(null);
+  // T-TEACHGENIE-008 — the enrollment flag of record, set ONLY from the
+  // API's affirmative true; every error/unknown path leaves the neutral
+  // default, so the footnotes can never fabricate a teacher.
+  const [classroomStudent, setClassroomStudent] = useState(false);
 
   /* -- landing data: history + the latest session's first exchanges ------ */
   useEffect(() => {
@@ -81,6 +85,7 @@ export function TeachGenieClient({ course, courseLabel, noteTree }: TeachGenieCl
         const out = await api.teachMeListSessions(course);
         if (cancelled) return;
         setHistory(out.items);
+        setClassroomStudent(out.classroomStudent === true);
         const latest = out.items[0];
         if (latest) {
           const detail = await api.teachMeGetSession(latest.sessionId);
@@ -240,7 +245,10 @@ export function TeachGenieClient({ course, courseLabel, noteTree }: TeachGenieCl
     // refresh the rail + preview so the landing reflects what just happened
     api
       .teachMeListSessions(course)
-      .then((out) => setHistory(out.items))
+      .then((out) => {
+        setHistory(out.items);
+        setClassroomStudent(out.classroomStudent === true);
+      })
       .catch(() => undefined);
     setView({ name: "landing" });
   };
@@ -286,7 +294,14 @@ export function TeachGenieClient({ course, courseLabel, noteTree }: TeachGenieCl
       )}
 
       {view.name === "picker" && (
-        <TeachGeniePicker noteTree={noteTree} courseLabel={courseLabel} busy={busy} onStart={start} onBack={backToLanding} />
+        <TeachGeniePicker
+          noteTree={noteTree}
+          courseLabel={courseLabel}
+          busy={busy}
+          classroomStudent={classroomStudent}
+          onStart={start}
+          onBack={backToLanding}
+        />
       )}
 
       {view.name === "session" && session && (
@@ -316,6 +331,7 @@ export function TeachGenieClient({ course, courseLabel, noteTree }: TeachGenieCl
           transcript={transcript}
           review={review}
           courseLabel={courseLabel}
+          classroomStudent={classroomStudent}
           refresh={refreshDetail}
           onBack={() => setView({ name: "session", showComplete: false })}
         />

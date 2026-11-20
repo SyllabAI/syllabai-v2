@@ -153,7 +153,7 @@ export function CoveragePanel({ course }: { course: string }) {
 
   if (learner.overlay?.bridgeError || !learner.drawer) {
     return (
-      <FailureCard body="The evidence join for this course did not answer, so coverage cannot be attributed honestly. Nothing is fabricated in its place — every point would read “not started”, and that would be a lie of omission." />
+      <FailureCard body="The coverage data for this course did not come back, so nothing is shown rather than guessed — every point would read “not started”, and that would not be honest either." />
     );
   }
 

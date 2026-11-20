@@ -20,6 +20,7 @@ import {
   type GuidedQuestion,
 } from "@/lib/guided-lessons";
 import { figuresForModule, noteLevelFigures } from "@/lib/guided-figures";
+import { guidedStageEnabled } from "@/lib/guided-stage";
 import { GuidedLessonFlow } from "./guided-flow";
 import { GuidedCheckList } from "./guided-check";
 
@@ -76,6 +77,10 @@ export default async function GuidedLessonPage({
   const lesson = imported.lesson;
   const { meta } = hub;
   const base = `/courses/${meta.slug}`;
+  // P0 Restage rollout flag (lib/guided-stage.ts, redesign plan §7): when the
+  // course is on the allowlist the flow renders inside the full-height stage
+  // takeover; otherwise the pre-P0 document layout serves unchanged.
+  const stageUI = guidedStageEnabled(slug);
   // R-2 per-topic deep links (operator trace 1a179e73fc75e881): resolve the
   // note's subtopic through the hub index seam and hand the flow the SAME
   // hrefs the course page and tree expander ship (hub.hrefs): the
@@ -144,13 +149,17 @@ export default async function GuidedLessonPage({
             noteTitle={note.title}
             noteHref={`${base}/revision-notes/${note.noteId}`}
             base={base}
+            course={slug}
             examQuestionsHref={examQuestionsHref}
             flashcardsHref={flashcardsHref}
+            stageUI={stageUI}
           />
 
           {/* no-JS / prefer-scroll fallback — the full authored lesson as a
               plain page (every authored string stays server-rendered) */}
-          <details className="rounded-lg border">
+          {/* the id is the target of the stage header's read-as-page action
+              (guided-flow.tsx): exiting the stage expands and scrolls here */}
+          <details id="guided-read-as-page" className="rounded-lg border">
             <summary className="cursor-pointer px-4 py-3 text-xs font-medium">
               Prefer to read it all at once? Show the full lesson as a page
             </summary>
@@ -185,13 +194,12 @@ export default async function GuidedLessonPage({
           </details>
 
           {/* provenance — the pinned upstream, verbatim from the artifacts */}
-          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 border-t pt-4 text-xs text-muted-foreground">
+          <p
+            className="flex flex-wrap items-center gap-x-2 gap-y-1 border-t pt-4 text-xs text-muted-foreground"
+            title={`note ${imported.source.noteId} · ${index.upstream.repo}@${index.upstream.commit.slice(0, 12)}`}
+          >
             <Pin className="size-3" aria-hidden />
-            <span>
-              Guided content from the SME authoring corpus — note {imported.source.noteId}, pinned
-              at <span className="font-mono">{imported.source.pinnedRef.slice(0, 12)}</span> ·
-              promoted {index.upstream.repo} <span className="font-mono">{index.upstream.commit.slice(0, 12)}</span>
-            </span>
+            <span>Checked against the official specification.</span>
           </p>
 
           <div className="flex flex-wrap gap-3">

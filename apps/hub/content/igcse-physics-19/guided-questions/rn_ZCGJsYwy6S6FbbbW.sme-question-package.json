@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Only one braking leg exists.",
           "misconception": "invented duplication"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Speed and mass",
+            "Two braking distances",
+            "Reaction time and braking force",
+            "Thinking distance and braking distance"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Thinking distance and braking distance"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": true,
           "explanation": "The reaction window is exactly what the thinking distance covers.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Changes gear",
+            "Applies the brakes at maximum force",
+            "Accelerates away from the hazard",
+            "Reacts to the emergency and prepares to stop"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Reacts to the emergency and prepares to stop"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,36 @@
           "explanation": "Ten times too long.",
           "misconception": "value slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "2.5 s"
+            },
+            {
+              "id": "3",
+              "text": "0.25 s"
+            },
+            {
+              "id": "2",
+              "text": "1.0 s"
+            },
+            {
+              "id": "1",
+              "text": "0.05 s"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "3",
+            "2",
+            "4"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -153,6 +219,24 @@
           "explanation": "Lighting is not a reaction-time factor of record.",
           "misconception": "irrelevance"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Fresh air and hydration",
+            "Tiredness, phone distraction, alcohol or drugs",
+            "Brighter headlights",
+            "A quieter engine"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Tiredness, phone distraction, alcohol or drugs"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +272,24 @@
           "correct": false,
           "explanation": "An emergency stop decelerates.",
           "misconception": "scene error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "After the vehicle has stopped",
+            "While the driver is reacting",
+            "During acceleration",
+            "Under the braking force, in metres"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Under the braking force, in metres"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

@@ -1,0 +1,38 @@
+{
+  "task": "T-LESSON-WIDGETS-WS6",
+  "run": "run-001",
+  "date": "2026-11-13",
+  "lane": "WS6 in-lesson widget zones (plan v1.2 lane table — LessonInteractive / BlockRenderer check + glossary + video zones visual pass)",
+  "surface": "apps/hub/src/components/books/rail/widgets/{eq-builder,sort-match,drag-label,num-stepper,table-fill}-block.tsx — the LessonInteractive block-renderer widget set",
+  "base": "main 4cbd95f4 (post #977; zero overlap with the WS6 paths in the advance 1c90e11e..4cbd95f4)",
+  "findings": [
+    "RADIUS: exactly the 7 bare-rounded sites of record from the WS1 disclosure — eq-builder 5 (2 token chips + side-toggle x2 + backspace x2... 2 chips, 1 side toggle class, 2 backspace buttons) and sort-match 2 (the order up/down buttons) — theme-blind stock-4px corners.",
+    "STATES: the WS3-fixed keyboard-invisibility class was still rampant in the widget zones — ZERO focus-visible voices across the widget set (8 files with interactive elements, none with a focus ring); zero hover on the eq-builder side toggles/backspace, sort-match item-select and up/down, drag-label label chips; sort-match up/down and drag-label slots carry disabled state with NO disabled visual voice; the two raw text inputs (num-stepper answer, table-fill cells) had NO focus voice at all.",
+    "MOTION: the WS2 disclosure held census-wide — the widget zones carried ZERO transitions and consumed ZERO motion tokens; every state change (hover, selection, verdict borders) snapped instantly."
+  ],
+  "the_law": [
+    "RADIUS (nested radius law): all 7 bare-rounded sites land themed — chips/backspace/toggles rounded-sm (step-down inside the rounded-md assembly strip / rounded-lg WidgetCard); sort-match arrows rounded-sm; token-bank + select buttons already rounded-md stay. Census after: 0.",
+    "STATES (the WS3 checklist): every interactive element now carries the house voices — buttons/links: outline-none + hover (hover:bg-muted or the widget's border-primary convention) + focus-visible:ring-2 focus-visible:ring-ring; inputs: the ui/input voice focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]; disabled: disabled:pointer-events-none (+ disabled:opacity-40 where no disabled visual existed — sort-match arrows); sort-match/drag-label slots keep their existing conditional voices byte-kept."
+  ],
+  "motion": "Every touched interactive element carries an explicit transition list with the WS2 tokens — transition-[background-color,border-color,box-shadow] / [border-color,box-shadow] / [color,box-shadow] duration-(--motion-duration-fast) ease-motion; the reduced-motion 0ms law is inherited free from the WS2 @media re-point.",
+  "on_voice_before_the_pass": [
+    "check-shared.tsx: CheckResetButtons render through the house Button (themed states+focus+motion); VerdictChip is a display pill (rounded-full, role=status); WidgetCard rounded-lg themed.",
+    "mcq-embed-block: interactive set is ui RadioGroup/Button/Label primitives (themed focus+disabled voices inside the primitives).",
+    "sim-embed / media-embed (the video zone) / callout / figure / prose: display-only, zero interactive elements.",
+    "block-renderer + lesson-interactive wrappers: 0 interactive elements (pure dispatch) — byte-kept."
+  ],
+  "gates": {
+    "bare_rounded_recensus": "0 across the widget set",
+    "typecheck": "tsc --noEmit: 0 errors",
+    "lint": "eslint on the 5 changed files: 0",
+    "lesson_trio": "books-lesson + lesson-blocks-join + books-lesson-links: 24 tests / 42 expects / 0 fail",
+    "full_battery": "1332 pass / 10 fail / 39,164 expects across 95 files (36.0s) — fail set A/B-IDENTICAL to the clean tree at 4cbd95f4 in this shell (pre-existing: question-cla-threads, ink-layer-holder-selfheal, api.v2-surface, paper-marks-regrade, ugm.render)",
+    "tailwind": "@tailwindcss/cli on the real globals.css: the three new arbitrary transition lists emit, ring-ring/50 x5 (the input voices), --tw-duration: var(--motion-duration-fast) chain + .ease-motion all emit at this base"
+  },
+  "disclosures": [
+    "The strength-check-flow 2 sites (the WS2 'WS6-adjacent' disclosure) stay byte-kept: they are the strength flow's own surfaces, not the lesson widget zones; shared-primitive fixes (Button) already reach them.",
+    "The eq-builder token-bank's exhausted voice stays data-driven styling (opacity-40, disclosed); disabled:pointer-events-none added for the hover-artifact law.",
+    "candy/plum's 4 raw [data-slot=button] beziers remain the later-lane dedupe candidate (untouched — the tokens now carry every new site).",
+    "No theme file touched; the WS2 tokens consumed as-is; branch carries code + receipt only (the worklog-withdrawal pattern continues)."
+  ]
+}

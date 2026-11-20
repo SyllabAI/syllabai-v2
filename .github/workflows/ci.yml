@@ -8,6 +8,11 @@ on:
     # pull_request triggers); restored 2026-10-06 run-003 via the API channel
     branches: [main]
   pull_request:
+  # T-GATE-PROTECT-1 (operator directive, zai-web trace 1a1d4c8d1aae1e11):
+  # required for the merge queue (main ruleset 'no-unverified-landings').
+  # Without this trigger, verify+hub never report on merge-queue entries
+  # and every queued merge stalls until the entry times out.
+  merge_group:
   workflow_dispatch:
 
 # T-TURBO-CACHE run-001: id-token:write is required for the OIDC exchange in
@@ -115,3 +120,12 @@ jobs:
       # payload law untouched).
       - name: KG T1 feedback schema + fork contract (T-KG-TRIPWIRE-1)
         run: bun test apps/hub/src/lib/kg-prereq-feedback.test.ts
+
+      # T-GL-STAGE-P3 run-001: the chunking law of record as CI law — the
+      # budgets/mapping module shared by the renderer's arc, the import
+      # runner's G-CHUNK gate and the QA census cannot drift (§5.2/§6/§8).
+      - name: Guided chunking law (T-GL-STAGE-P3)
+        run: bun test apps/hub/src/lib/guided-chunk-law.test.ts
+
+      - name: Guided interactions bridge fail-closed law (T-GL-STAGE-P2)
+        run: bun test apps/hub/src/lib/guided-interactions.test.ts

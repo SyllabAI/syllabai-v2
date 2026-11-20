@@ -54,7 +54,7 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
             {review.strengths.map((s, i) => (
               <li key={i} className="border-l-2 border-emerald-500/50 pl-3 text-sm leading-relaxed">
                 <span className="text-muted-foreground">“{s.quote}”</span>
-                <span className="ml-1.5 text-2xs text-muted-foreground/60">
+                <span className="ml-1.5 text-2xs text-muted-foreground">
                   (your turn {s.messageSeq})
                 </span>
               </li>
@@ -88,7 +88,7 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
         </Section>
       )}
 
-      <Section title="Spec point verdicts">
+      <Section title="Spec point checks">
         <ul className="flex flex-wrap gap-2">
           {review.specPointVerdicts.map((v) => (
             <li
@@ -128,7 +128,7 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
       )}
 
       {review.examAnchors.length > 0 && (
-        <Section title="Where the exam asks this" hint="Real past-paper anchors from this course's serving corpus — never invented.">
+        <Section title="Where the exam asks this" hint="Real past-paper questions from this course — never invented.">
           <ul className="space-y-1.5 text-sm">
             {review.examAnchors.map((a, i) => (
               <li key={i} className="flex flex-wrap items-baseline gap-x-2">
@@ -184,7 +184,7 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
         </Section>
       )}
 
-      <p className="text-center text-2xs text-muted-foreground/60">
+      <p className="text-center text-2xs text-muted-foreground">
         Review generated {new Date(review.generatedAt).toLocaleString()}
       </p>
     </div>

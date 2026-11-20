@@ -6,6 +6,8 @@ import {
   endedLine,
   objectiveDotClass,
   objectiveStatusLabel,
+  pickerEvidenceFootnote,
+  reviewEvidenceLead,
   statusDotClass,
   statusLabel,
   timeAgo,
@@ -45,5 +47,26 @@ describe("teach-genie display laws (T-TEACHGENIE-001; house tokens since -004)",
   it("endedLine: the review divider renders a real timestamp", () => {
     expect(endedLine("2026-10-31T23:24:00Z")).toMatch(/Oct/);
     expect(endedLine("not-a-date")).toBe("");
+  });
+
+  it("T-TEACHGENIE-008 footnotes: the teacher claim renders ONLY for a confirmed classroom student", () => {
+    // classroom: the teacher-checks sentence (student register per T-REGISTER
+    // run-001 — the AI_SUGGESTED enum name is retired from learner copy)
+    expect(pickerEvidenceFootnote(true)).toBe(
+      "Sessions start from AI suggestions — your teacher checks them over before anything counts.",
+    );
+    expect(reviewEvidenceLead(true)).toBe(
+      "AI suggestions — your teacher checks them over before any of this touches your record.",
+    );
+    expect(pickerEvidenceFootnote(true)).not.toContain("AI_SUGGESTED");
+    expect(reviewEvidenceLead(true)).not.toContain("AI_SUGGESTED");
+    // independent: the honest neutral line — no teacher claim, and no
+    // counts-toward-record promise (auto-commit is NOT live)
+    expect(pickerEvidenceFootnote(false)).toBe("Sessions start from AI suggestions.");
+    expect(pickerEvidenceFootnote(false)).not.toContain("teacher");
+    expect(pickerEvidenceFootnote(false)).not.toContain("counts");
+    expect(reviewEvidenceLead(false)).toBe("AI suggestions.");
+    expect(reviewEvidenceLead(false)).not.toContain("teacher");
+    expect(reviewEvidenceLead(false)).not.toContain("record");
   });
 });

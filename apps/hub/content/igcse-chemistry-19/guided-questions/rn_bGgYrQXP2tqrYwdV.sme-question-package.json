@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "The chain is orderly and alternating, not a random blend.",
           "misconception": "order denied"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Two"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "The hydrogens leave inside water, not as hydrogen gas.",
           "misconception": "product misread"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Water"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,24 @@
           "explanation": "A single group could never join two neighbours at once.",
           "misconception": "geometry misread"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Two, one at each end",
+            "None",
+            "One, in the middle",
+            "Four or more"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Two, one at each end"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +211,24 @@
           "explanation": "Every new bond pays for itself with one small water molecule.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "None, both routes share products",
+            "Hydrogen chloride every time",
+            "A water molecule per linkage",
+            "Carbon dioxide"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A water molecule per linkage"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +264,26 @@
           "correct": false,
           "explanation": "Hydrogen bonding may occur between chains but does not build them.",
           "misconception": "force confused with bond"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Ester linkages"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -517,6 +613,26 @@
           "explanation": "Oil-based feedstocks describe ordinary polymers, not the biopolyester family.",
           "misconception": "feedstock crossed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Sugars and plant oils"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -552,6 +668,26 @@
           "correct": true,
           "explanation": "The microbes carry out the synthesis alongside their usual chemistry.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Micro-organisms"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -589,6 +725,24 @@
           "explanation": "Those belong to silicon chemistry, far from polyesters.",
           "misconception": "groups invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Carbonate and carbide groups",
+            "Ester groups only",
+            "Ester, amide and ether groups",
+            "Silane and siloxane groups"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Ester, amide and ether groups"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -625,6 +779,27 @@
           "explanation": "Magnetism plays no part in the distinction.",
           "misconception": "property invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "They are biodegradable",
+                    "are biodegradable"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -660,6 +835,24 @@
           "correct": false,
           "explanation": "Overclaiming drops the qualifier that keeps the statement true.",
           "misconception": "scope widened"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Some polyesters, known as biopolyesters, are biodegradable",
+            "Biopolyesters are addition polymers",
+            "All polyesters are biodegradable",
+            "No polyester is biodegradable"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Some polyesters, known as biopolyesters, are biodegradable"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

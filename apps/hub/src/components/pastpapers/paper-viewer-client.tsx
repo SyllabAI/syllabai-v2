@@ -47,6 +47,8 @@ import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { PdfPane, type PdfPaneHandle } from "@/components/pastpapers/pdf-pane";
 import { InkLayer } from "@/components/pastpapers/ink/InkLayer";
+import { ScientificCalculator } from "@/components/pastpapers/calc/ScientificCalculator";
+import { createGesturePlane, type GesturePlaneRef } from "@/components/pastpapers/ink/gesturePlane";
 import { RegionMarkLayer } from "@/components/pastpapers/region-mark/RegionMarkLayer";
 import { resolvePaperAssetCached } from "@/lib/regions";
 import {
@@ -79,8 +81,6 @@ export interface PaperViewerClientProps {
   sessionLabelStr: string;
   initialDoc: Doc;
   mode: "view" | "mock";
-  /** corpus provenance string for the honesty note */
-  metaGeneratedAt: string;
   /** spec exam code pill (e.g. 4CH1) — shown in the compact toolbar row;
    *  T-COURSE-SPECPILL-2: it links to /courses/[course]/specification */
   examCode?: string;
@@ -104,7 +104,6 @@ export function PaperViewerClient({
   sessionLabelStr,
   initialDoc,
   mode,
-  metaGeneratedAt,
   examCode,
   initialPage,
   initialPageDoc,
@@ -150,9 +149,25 @@ export function PaperViewerClient({
   // (via the pane's text index), labelled "auto-detected", manual fallback.
   const qpPaneRef = useRef<PdfPaneHandle | null>(null);
   const msPaneRef = useRef<PdfPaneHandle | null>(null);
+  // T-MG-INK-13 run-001: the shared gesture plane — the QP pane fills it
+  // with zoomStep (its zoomBy ladder); the ink layer's PaperGestures
+  // coordinator routes two-finger pinch through it. One object, both
+  // consumers (see pdf-pane's gesturePlane prop and InkLayer's).
+  // T-MG-INK-13 run-002 (the live-gate regression): the ref is born from
+  // the POPULATED factory — useRef(undefined) left pdf-pane's bridge
+  // effect returning forever (plane undefined) and draw-armed pinch
+  // silently no-opped in BOTH directions while pan worked. Pinned in
+  // paper-gestures.test.ts (P-e).
+  const qpGesturePlaneHolder = useRef<GesturePlaneRef | null>(null);
+  if (!qpGesturePlaneHolder.current) qpGesturePlaneHolder.current = createGesturePlane();
+  const qpGesturePlane = qpGesturePlaneHolder.current;
   // T-MG-INK-1 run-003: the ink layer's host wrapper (the view-mode QP
   // pane's positioning + observation root; see the composition block).
   const qpInkHostRef = useRef<HTMLDivElement | null>(null);
+  // T-MG-CALC run-001: ONE calculator instance at the viewer level (card
+  // L1) — the panes' strips toggle it; the overlay spans split view and
+  // rides the L7 gesture seam (two-finger relay onto the paper).
+  const [calcOpen, setCalcOpen] = useState(false);
   const [breakState, setBreakState] = useState<BreakState>("loading");
   const [breakSource, setBreakSource] = useState<BreakSource>("manual");
   const [rows, setRows] = useState<BreakRow[]>([]);
@@ -731,10 +746,10 @@ export function PaperViewerClient({
           <Button asChild size="sm" variant="ghost" className="h-8">
             <Link
               href={sourceHref}
-              title="The verbatim parsed text this paper's evidence is served from"
+              title="The paper's own text — read it right here"
             >
               <FileText className="size-4" aria-hidden />
-              Parsed text
+              Paper text
             </Link>
           </Button>
         )}
@@ -744,13 +759,6 @@ export function PaperViewerClient({
           {paper.variantChip ? ` · ${paper.variantChip}` : ""} · {sessionLabelStr}
         </span>
         {examCode && <ExamCodePill code={examCode} href={`/courses/${course}/specification`} className="hidden py-1 text-2xs sm:inline-flex" />}
-        <Badge
-          variant="outline"
-          className="hidden text-2xs md:inline-flex"
-          title={`Auto-matched index — official-source verification in progress · index generated ${metaGeneratedAt.slice(0, 10)}`}
-        >
-          Auto-matched
-        </Badge>
         {/* doc switch — three states on desktop (QP | MS | Split). Gated to
             lg+: the two-pane split grid only exists at lg, so exposing the
             Split tab in the 640–1023px band made it a silent no-op. Below lg
@@ -861,8 +869,11 @@ export function PaperViewerClient({
               fallbackUrl={qpUrl}
               downloadUrl={qpUrl}
               label={`Question paper — ${paper.ref}`}
+              calcOpen={calcOpen}
+              onToggleCalc={() => setCalcOpen((v) => !v)}
               active={doc === "qp" || doc === "split"}
               initialPage={initialPageDoc !== "ms" ? initialPage : undefined}
+              gesturePlane={qpGesturePlane}
               /* s140 audit: the old split-mode "lg:block" OVERRODE the pane's
                  base `flex` at lg → display:block → the flex-1 scroller lost
                  its bounds and grew to the full 25k-px document height (the
@@ -877,6 +888,7 @@ export function PaperViewerClient({
             <InkLayer
               hostRef={qpInkHostRef}
               sourceUrl={paper.qpPath ? corpusRawUrl(paper.qpPath) : null}
+              gesturePlane={qpGesturePlane}
             />
             {/* T-MG-CROPMARK-1 run-002 (plan §3.4): the crop producer's
              * trigger UI — clickable region rects + the 202/poll mark
@@ -896,6 +908,8 @@ export function PaperViewerClient({
             fallbackUrl={msUrl}
             downloadUrl={msUrl}
             label={`Mark scheme — ${paper.ref}`}
+            calcOpen={calcOpen}
+            onToggleCalc={() => setCalcOpen((v) => !v)}
             active={doc === "ms" || doc === "split"}
             initialPage={initialPageDoc === "ms" ? initialPage : undefined}
             className={cn(
@@ -912,6 +926,14 @@ export function PaperViewerClient({
             No PDFs are held for this paper in the archive yet.
           </p>
         )}
+        {/* T-MG-CALC run-001: the ONE calculator overlay — viewer level,
+            spanning split view. Run-003 z-law: calc(55) > pill(50) — the
+            run-001 law (pill > calc) let the mobile QP/MS pill float
+            bottom-center OVER the keypad's bottom row (./+/S⇔D buried).
+            The panes' strips toggle it; the L7 gesture seam (relay) lives
+            on the overlay root itself. Run-002: the pane's populated
+            pinch bridge rides in for SELECT-mode two-finger zoom. */}
+        <ScientificCalculator open={calcOpen} onClose={() => setCalcOpen(false)} gesturePlane={qpGesturePlane} levelHint={course} />
       </div>
     </div>
   );

@@ -50,7 +50,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { AigniteBadge } from "@/components/brand/aignite-badge";
 import { clearIdentity, useEditorCapabilitySync, useIdentity } from "@/lib/identity";
 import { unmirrorRoutingSession } from "@/lib/session-cookie";
 import { roleHome } from "@/lib/role-home";
@@ -197,21 +196,6 @@ export function AppShell({
           main landmark either way. */}
       {!viewerRoute && (
       <>
-      {/* T-BRAND-AIGNITE-101 — buildathon compliance strip: the official
-          "Built For Ostad Presents YUNet AIgnite Buildathon 2026" sticker
-          rides directly above the navbar (the buildathon's "navbar or
-          another prominent area near the top" placement) on every route the
-          header itself renders, at every width — the packed h-14 header row
-          has no slack for a 3.4:1 badge between lg and xl, where the
-          quick-nav joins. Announcement-bar posture: NOT sticky (the header
-          keeps the sticky slot), scrolls away with the page, and the paper
-          viewer keeps its header-stands-down contract. Removal with the
-          task: components/brand/aignite-badge.tsx documents the checklist. */}
-      <aside aria-label="Buildathon badge" className="border-b bg-muted/40 print:hidden">
-        <div className="flex h-11 items-center justify-center px-4">
-          <AigniteBadge className="h-9 w-auto" />
-        </div>
-      </aside>
       <header className="sticky top-0 z-40 border-b bg-background print:hidden">
         <div className="flex h-14 items-center gap-3 px-4 sm:px-6">
           {/* C-5 (frontend-flow audit): the logo means "home". For a
@@ -237,7 +221,7 @@ export function AppShell({
             <DropdownMenuTrigger
               aria-label="Study tools"
               className={cn(
-                "inline-flex h-10 items-center gap-1.5 rounded-md px-3 text-sm font-medium transition-colors",
+                "inline-flex h-10 items-center gap-1.5 rounded-md px-2 sm:px-3 text-sm font-medium transition-colors",
                 "hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               )}
             >
@@ -245,7 +229,13 @@ export function AppShell({
               <span className="hidden sm:inline">Study tools</span>
               <ChevronDown className="size-3.5 text-muted-foreground" aria-hidden />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-64">
+            <DropdownMenuContent align="start" className="w-72">
+              {/* w-72 (V-4, visual audit 2026-11-13): the label + desc rows now
+                  hold one line each — at w-64 the desc squeezed the first three
+                  labels ("Revision / Notes"…) into 2-line wraps while the
+                  desc-less More-tools rows stayed single-line. Both spans are
+                  nowrap below, so the widened menu is what guarantees the
+                  single-line rhythm on every row. */}
               {/* run-014 (audit F8): the in-menu title only where the trigger
                   is icon-only (phones) — at sm+ the trigger already names the
                   menu and the label read as a duplicate. */}
@@ -274,9 +264,9 @@ export function AppShell({
                       )}
                     >
                       <t.icon className="size-4" aria-hidden />
-                      <span className="flex-1">{t.label}</span>
+                      <span className="flex-1 whitespace-nowrap">{t.label}</span>
                       {"desc" in t && t.desc && (
-                        <span className="text-2xs text-muted-foreground">{t.desc}</span>
+                        <span className="whitespace-nowrap text-2xs text-muted-foreground">{t.desc}</span>
                       )}
                       {active && <Check className="size-3.5 text-primary" aria-hidden />}
                     </Link>
@@ -363,19 +353,30 @@ export function AppShell({
 
           {/* SME header parity: persistent primary CTA + session identity
               (core-auth-backed) + dual-theme toggle */}
-          <div className="ml-auto flex items-center gap-1.5">
+          <div className="ml-auto flex min-w-0 items-center gap-1.5">
             <ThemeToggle />
             {identity ? (
               <DropdownMenu>
                 <DropdownMenuTrigger
                   className={cn(
-                    "inline-flex h-8 items-center gap-1.5 rounded-md border px-2.5 text-xs font-medium transition-colors",
+                    "inline-flex h-8 min-w-0 items-center gap-1.5 rounded-md border px-2 sm:px-2.5 text-xs font-medium transition-colors",
                     "hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                   )}
                 >
-                  <User className="size-3.5" aria-hidden />
-                  <span className="max-w-12 truncate sm:max-w-28">{identity.name}</span>
-                  <ChevronDown className="size-3 text-muted-foreground" aria-hidden />
+                  <User className="size-3.5 shrink-0" aria-hidden />
+                  {/* visual audit V-11: max-w-12 clipped even short names to
+                      "HNA 2…" on phones; 24 (96px) fits real names. R-1
+                      (2026-11-14 retest): the widened chip sat in a cluster
+                      whose min-width:auto floors left nothing able to give —
+                      the 390px header row overflowed by 6px. The min-w-0
+                      chain (cluster → this trigger → chip) makes the chip
+                      the row's sole shrinkable member: under real pressure
+                      it ellipsizes (the title floor keeps the full name);
+                      every other width renders exactly as before. */}
+                  <span className="min-w-0 max-w-24 truncate sm:max-w-28" title={identity.name}>
+                    {identity.name}
+                  </span>
+                  <ChevronDown className="size-3 text-muted-foreground hidden sm:block" aria-hidden />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48">
                   <DropdownMenuLabel className="text-xs">

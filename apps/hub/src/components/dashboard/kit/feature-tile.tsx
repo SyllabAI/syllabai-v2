@@ -68,7 +68,7 @@ export function FeatureTile({
       </div>
       {href ? (
         <ChevronRight
-          className="mt-1 size-4 shrink-0 self-center text-muted-foreground/60 transition-transform group-hover:translate-x-0.5"
+          className="mt-1 size-4 shrink-0 self-center text-muted-foreground transition-transform group-hover:translate-x-0.5"
           aria-hidden
         />
       ) : (

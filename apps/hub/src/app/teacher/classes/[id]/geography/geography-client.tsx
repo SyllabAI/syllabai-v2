@@ -244,7 +244,7 @@ function GeographyView({
                               >
                                 <span
                                   className={`min-w-0 text-xs ${
-                                    bare ? "text-muted-foreground/60" : "text-foreground"
+                                    bare ? "text-muted-foreground" : "text-foreground"
                                   }`}
                                 >
                                   <span className="font-mono">{s.label}</span> · {s.title}
@@ -254,7 +254,7 @@ function GeographyView({
                                 </span>
                                 <span className="flex shrink-0 items-center gap-3">
                                   {bare ? (
-                                    <span className="text-2xs uppercase tracking-wide text-muted-foreground/60">
+                                    <span className="text-2xs uppercase tracking-wide text-muted-foreground">
                                       no coverage yet
                                     </span>
                                   ) : null}
@@ -319,15 +319,17 @@ export function ClassGeographyClient({
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
       <Card className="border-dashed">
         <CardContent className="flex flex-col items-start gap-3 p-6">
-          <p className="text-sm font-medium">This is a core class — its geography lives on the core surfaces.</p>
+          {/* V-7 (visual audit): "core class" / "core surfaces" are internal
+              platform nouns — the live/shared split in teacher vocabulary. */}
+          <p className="text-sm font-medium">This is a live class — its geography lives on the shared teacher surfaces.</p>
           <p className="text-sm text-muted-foreground">
-            Core classes have enrolled students and graded evidence, so their map is the class KG
-            heatmap (coverage × understanding over the cohort) with the drill-down to affected
-            learners — not a corpus-coverage list. Open it from the class workspace.
+            Live classes have enrolled students and graded evidence, so their map is the class
+            mastery heatmap (coverage × understanding over the cohort) with the drill-down to
+            affected learners — not a corpus-coverage list. Open it from the class workspace.
           </p>
           <Button asChild size="sm" variant="outline" className="gap-1.5">
             <Link href={`/teacher/classes/${classId}`}>
-              Open the core class workspace
+              Open the class workspace
               <ArrowRight className="size-3.5" aria-hidden />
             </Link>
           </Button>

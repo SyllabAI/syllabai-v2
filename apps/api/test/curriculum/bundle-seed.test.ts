@@ -5,7 +5,10 @@
  *
  *   - the REAL BUNDLE CONTRACT (apps/hub/content/igcse-physics-19/
  *     curriculum.json, the pinned bytes of record): 1 SUBJECT / 8 TOPIC /
- *     30 SUBTOPIC / 195 SPEC_POINT / 233 PART_OF edges; the code mapping
+ *     30 SUBTOPIC / 195 SPEC_POINT / 233 PART_OF edges (the OFFICIAL spine;
+ *     the wave-9 tranche-8 disclosed SME picker layer — 32 SME_REFERENCE
+ *     rows — rides outside the spine and carries its own pins; T-SME-SEL-
+ *     W9-8 run-001); the code mapping
  *     (4PH1 root, 4PH1-S1 UNIT, 4PH1-S1-a TOPIC, 4PH1-1.1 / 4PH1-1.2P
  *     SPEC_POINT spec codes — the T-MIG-139 F.5 §7 gate-G2 CONVERGED
  *     landing, was SUBTOPIC pre-139) + the T-C24 applicability verbatim
@@ -65,12 +68,27 @@ const bundle = JSON.parse(readFileSync(BUNDLE_PATH, "utf8")) as BundleCurriculum
 
 describe("second-subject bundle — the pinned content contract (igcse-physics-19)", () => {
   test("the count contract fail-closes at the exact bundle numbers", () => {
+    // T-SME-SEL-W9-8 tranche-8 disclosed pin-refresh: the wave-9 SME picker
+    // layer appended 32 SME_REFERENCE rows (8 section rows, family TOPIC +
+    // 24 topic rows, family SUBTOPIC) to this bundle's nodes — the OFFICIAL
+    // spine pins below are unchanged and now filter the layer out; the layer
+    // gets its own fail-closed pins. The seed and the code mapping stay
+    // official-only (the service serves VALIDATED nodes; the SME rows are
+    // skipped there — 234 held).
+    const official = bundle.nodes.filter((n) => n.provenanceTier !== "SME_REFERENCE");
     const fams = { SUBJECT: 0, TOPIC: 0, SUBTOPIC: 0, SPEC_POINT: 0 } as Record<string, number>;
-    for (const n of bundle.nodes) fams[n.family] = (fams[n.family] ?? 0) + 1;
+    for (const n of official) fams[n.family] = (fams[n.family] ?? 0) + 1;
     expect(fams.SUBJECT).toBe(1);
     expect(fams.TOPIC).toBe(8);
     expect(fams.SUBTOPIC).toBe(30);
     expect(fams.SPEC_POINT).toBe(195);
+    // the wave-9 tranche-8 disclosed SME layer (T-SME-SEL-W9-8 run-001)
+    const sme = bundle.nodes.filter((n) => n.provenanceTier === "SME_REFERENCE");
+    expect(sme.length).toBe(32);
+    expect(sme.filter((n) => n.family === "TOPIC").length).toBe(8);
+    expect(sme.filter((n) => n.family === "SUBTOPIC").length).toBe(24);
+    expect(new Set(sme.map((n) => n.provenanceTier))).toEqual(new Set(["SME_REFERENCE"]));
+    expect(bundle.nodes.length).toBe(266);
     expect(bundle.edges.length).toBe(233);
     expect(new Set(bundle.edges.map((e) => e.relation))).toEqual(new Set(["PART_OF"]));
     expect(bundle.code).toBe("4PH1");
@@ -456,8 +474,14 @@ const mathsBundle = JSON.parse(readFileSync(MATHS_BUNDLE_PATH, "utf8")) as Bundl
 
 describe("T-MIG-135a maths bundle — the dotted :SUB grammar (igcse-maths-a-18-higher)", () => {
   test("the count contract fail-closes at the exact maths bundle numbers", () => {
+    // ADR-039 wave-9 tranche-3 pin refresh (the wave-6 run-003 class): the
+    // contract pins the OFFICIAL spec structure — SME_REFERENCE picker rows
+    // are excluded here exactly as mapBundleNodes/seedBundleCurriculum
+    // already exclude them (the W1/W2 class-2 law); the SME layer's own
+    // counts stay pinned by verify_sme_wave9's spine digests.
     const fams = { SUBJECT: 0, TOPIC: 0, SUBTOPIC: 0, SPEC_POINT: 0 } as Record<string, number>;
-    for (const n of mathsBundle.nodes) fams[n.family] = (fams[n.family] ?? 0) + 1;
+    for (const n of mathsBundle.nodes.filter((n) => n.provenanceTier !== "SME_REFERENCE"))
+      fams[n.family] = (fams[n.family] ?? 0) + 1;
     expect(fams.SUBJECT).toBe(1);
     expect(fams.TOPIC).toBe(6);
     expect(fams.SUBTOPIC).toBe(39);
@@ -523,10 +547,16 @@ describe("T-MIG-135a maths bundle — the dotted :SUB grammar (igcse-maths-a-18-
   });
 
   test("a SUBTOPIC code carrying neither the letter nor the dotted suffix still refuses", () => {
+    // tranche-3 pin refresh: the substitution targets OFFICIAL SUBTOPIC rows
+    // only — substituting the SME picker rows trips the mapper's earlier
+    // picker-shape guard (a different error) instead of the grammar guard
+    // this pin exists to test.
     const broken: BundleCurriculum = {
       ...mathsBundle,
       nodes: mathsBundle.nodes.map((n) =>
-        n.family === "SUBTOPIC" ? { ...n, code: "igcse-maths-a-T1:SUB" } : n,
+        n.family === "SUBTOPIC" && n.provenanceTier !== "SME_REFERENCE"
+          ? { ...n, code: "igcse-maths-a-T1:SUB" }
+          : n,
       ),
     };
     expect(() => mapBundleNodes(broken, "x")).toThrow(
@@ -552,8 +582,14 @@ const MATHS_B_SOURCE = {
 
 describe("T-MIG-136a maths-b bundle — the placeholder :SUB_ + alnum spec grammar (igcse-maths-b-16)", () => {
   test("the count contract fail-closes at the exact maths-b bundle numbers", () => {
+    // ADR-039 wave-9 tranche-3 pin refresh (the wave-6 run-003 class): the
+    // contract pins the OFFICIAL spec structure — SME_REFERENCE picker rows
+    // are excluded here exactly as mapBundleNodes/seedBundleCurriculum
+    // already exclude them (the W1/W2 class-2 law); the SME layer's own
+    // counts stay pinned by verify_sme_wave9's spine digests.
     const fams = { SUBJECT: 0, TOPIC: 0, SUBTOPIC: 0, SPEC_POINT: 0 } as Record<string, number>;
-    for (const n of mathsBBundle.nodes) fams[n.family] = (fams[n.family] ?? 0) + 1;
+    for (const n of mathsBBundle.nodes.filter((n) => n.provenanceTier !== "SME_REFERENCE"))
+      fams[n.family] = (fams[n.family] ?? 0) + 1;
     expect(fams.SUBJECT).toBe(1);
     expect(fams.TOPIC).toBe(10);
     expect(fams.SUBTOPIC).toBe(10);
@@ -668,10 +704,16 @@ describe("T-MIG-136a maths-b bundle — the placeholder :SUB_ + alnum spec gramm
   });
 
   test("a maths-b SUBTOPIC code carrying neither letter, dotted, nor placeholder suffix still refuses", () => {
+    // tranche-3 pin refresh: the substitution targets OFFICIAL SUBTOPIC rows
+    // only — substituting the SME picker rows trips the mapper's earlier
+    // picker-shape guard (a different error) instead of the grammar guard
+    // this pin exists to test.
     const broken: BundleCurriculum = {
       ...mathsBBundle,
       nodes: mathsBBundle.nodes.map((n) =>
-        n.family === "SUBTOPIC" ? { ...n, code: "igcse-maths-b-T1:SUB" } : n,
+        n.family === "SUBTOPIC" && n.provenanceTier !== "SME_REFERENCE"
+          ? { ...n, code: "igcse-maths-b-T1:SUB" }
+          : n,
       ),
     };
     expect(() => mapBundleNodes(broken, "x")).toThrow(
@@ -759,7 +801,18 @@ describe("phase-4 CIE widening — the board/qualification vocabulary of record"
         code: "9701-2025-2027",
       },
     ]);
-    expect(summary.nodesCreated).toBe(cie.nodes.length);
+    // T-SME-SEL-W9-2 run-001 disclosed amendment (the wave-9 tranche-2
+    // picker layer): chemistry-25 now carries 127 SME_REFERENCE picker rows
+    // (<course>-SME-S<i> sections + :<slug> topic rows), and the store law
+    // SKIPS the disclosed -SME- classes (the r0 childless-leaf class + the
+    // T-SME-SEL-W1/W2 picker-layer section class, shape-guarded fail-closed
+    // above) — nothing lands, nothing dangles. The of-record assertion is
+    // therefore the ADMITTED count (the non-SME nodes), not the raw bundle
+    // length (which only held while the course had no picker layer). A
+    // -SME- row outside the disclosed shapes refuses upstream before this
+    // assertion can even run, so the count law stays fail-closed end to end.
+    const admitted = cie.nodes.filter((n) => !n.code.includes("-SME-")).length;
+    expect(summary.nodesCreated).toBe(admitted);
     expect(summary.edgesCreated).toBe(cie.edges.length);
     expect(summary.alreadyActive).toBe(false);
     // idempotent re-run: the structural no-op of record
@@ -1284,12 +1337,27 @@ const chemBundle = JSON.parse(readFileSync(CHEM_BUNDLE_PATH, "utf8")) as BundleC
 
 describe("lane C ruling A — the Edexcel bare S-series SUBTOPIC tail (igcse-chemistry-19)", () => {
   test("the real chemistry bundle contract: 1 SUBJECT / 4 TOPIC / 28 SUBTOPIC / 182 SPEC_POINT, bare codes, Edexcel board", () => {
+    // T-SME-SEL-W9-9 tranche-9 disclosed pin-refresh: the wave-9 SME picker
+    // layer appended 32 SME_REFERENCE rows (4 section rows, family TOPIC +
+    // 28 topic rows, family SUBTOPIC) to this bundle — the OFFICIAL pins
+    // below filter the layer out (unchanged law), and the layer carries its
+    // own fail-closed pins. The mapping/gate tests below keep official-only
+    // iteration (the fifth shape is an official-code law; SME rows ride
+    // outside it).
+    const official = chemBundle.nodes.filter((n) => n.provenanceTier !== "SME_REFERENCE");
     const fams = { SUBJECT: 0, TOPIC: 0, SUBTOPIC: 0, SPEC_POINT: 0 } as Record<string, number>;
-    for (const n of chemBundle.nodes) fams[n.family] = (fams[n.family] ?? 0) + 1;
+    for (const n of official) fams[n.family] = (fams[n.family] ?? 0) + 1;
     expect(fams).toEqual({ SUBJECT: 1, TOPIC: 4, SUBTOPIC: 28, SPEC_POINT: 182 });
+    // the wave-9 tranche-9 disclosed SME layer (T-SME-SEL-W9-9 run-001)
+    const sme = chemBundle.nodes.filter((n) => n.provenanceTier === "SME_REFERENCE");
+    expect(sme.length).toBe(32);
+    expect(sme.filter((n) => n.family === "TOPIC").length).toBe(4);
+    expect(sme.filter((n) => n.family === "SUBTOPIC").length).toBe(28);
+    expect(new Set(sme.map((n) => n.provenanceTier))).toEqual(new Set(["SME_REFERENCE"]));
+    expect(chemBundle.nodes.length).toBe(247);
     expect(chemBundle.board).toBe("Pearson Edexcel");
     expect(chemBundle.code).toBe("4CH1");
-    for (const n of chemBundle.nodes) {
+    for (const n of official) {
       if (n.family !== "SUBTOPIC") continue;
       expect(n.code).toMatch(/^4CH1-S\d+-[a-z]$/);
       expect(n.code.includes(":SUB")).toBe(false);
@@ -1297,11 +1365,15 @@ describe("lane C ruling A — the Edexcel bare S-series SUBTOPIC tail (igcse-che
   });
 
   test("the fifth shape lands dbCode = the bundle code VERBATIM, byte-identical with the seeded DB of record", () => {
-    const mapped = mapBundleNodes(chemBundle, "4CH1 official specification structure");
+    // tranche-9 refresh: the fifth shape is an OFFICIAL-code law — map the
+    // official-only bundle (identical to the pre-layer bytes' behavior) so
+    // the SME_REFERENCE rows ride outside every assertion here
+    const officialNodes = chemBundle.nodes.filter((n) => n.provenanceTier !== "SME_REFERENCE");
+    const mapped = mapBundleNodes({ ...chemBundle, nodes: officialNodes }, "4CH1 official specification structure");
     // the 28 bare-tail TOPICs: verbatim dbCodes (the lane C DB probe of record:
     // knowledge_nodes carries 4CH1-S1-a..4CH1-S4-h byte-identical)
     let topics = 0;
-    for (const n of chemBundle.nodes) {
+    for (const n of officialNodes) {
       if (n.family !== "SUBTOPIC") continue;
       const m = mapped.get(n.code)!;
       expect(m.nodeType).toBe("TOPIC");
@@ -1334,15 +1406,17 @@ describe("lane C ruling A — the Edexcel bare S-series SUBTOPIC tail (igcse-che
   test("the CIE gate at the SUBTOPIC branch itself: a CIE-shaped hybrid still refuses the bare tail", () => {
     // give the TOPICs their official -T tails (CIE UNIT law passes) + rewire
     // every parent reference; the SUBTOPIC branch must then refuse the bare
-    // tail because the fifth shape is non-CIE-gated
+    // tail because the fifth shape is non-CIE-gated. (tranche-9 refresh:
+    // official-only construction — the SME rows ride outside the gate law)
+    const officialNodes = chemBundle.nodes.filter((n) => n.provenanceTier !== "SME_REFERENCE");
     const tMap: Record<string, string> = {};
-    for (const n of chemBundle.nodes) {
+    for (const n of officialNodes) {
       if (n.family === "TOPIC") tMap[n.code] = n.code + "-T1";
     }
     const hybrid: BundleCurriculum = {
       ...chemBundle,
       board: "Cambridge International",
-      nodes: chemBundle.nodes.map((n) => ({
+      nodes: officialNodes.map((n) => ({
         ...n,
         code: tMap[n.code] ?? n.code,
         parents: n.parents.map((p) => tMap[p] ?? p),

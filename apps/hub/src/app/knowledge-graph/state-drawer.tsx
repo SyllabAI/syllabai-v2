@@ -211,7 +211,7 @@ function MisconceptionWatchCard({ watch, live = false }: { watch: MisconceptionW
           <span>
             {live
               ? "Probabilities from the backend's misconception model over your real attempt evidence — likelihoods update as you practise."
-              : `${watch.disclaimer ?? "Simulated demo learner state over the course misconception corpus."} The patterns themselves are SME / mark-scheme-documented; the active / watching state is a deterministic demo overlay, not measured evidence.`}
+              : `${watch.disclaimer ?? "Simulated demo learner state for this course."} The patterns come from real mark schemes and subject-expert write-ups; the active / watching state is a demo overlay, not measured evidence.`}
           </span>
         </p>
       </footer>
@@ -619,7 +619,7 @@ export function HistoryTab({ drawer }: { drawer: LearnerDrawerState }) {
   if (drawer.events.length === 0) {
     return (
       <div className="flex flex-col items-center gap-2 rounded-lg border border-dashed px-6 py-10 text-center">
-        <ListChecks className="size-7 text-muted-foreground/60" aria-hidden />
+        <ListChecks className="size-7 text-muted-foreground" aria-hidden />
         <p className="max-w-xs text-xs text-muted-foreground">
           No signals recorded yet. Answer and self-mark a question in Practice or Exam
           Questions — every marked attempt, note read and flashcard rating will appear here.

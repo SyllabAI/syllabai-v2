@@ -146,11 +146,17 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
   test("anchor rows survive parse with level/ref/kind intact (ial-chemistry-17)", async () => {
     const map = await getVideoMap("ial-chemistry-17");
     expect(map).not.toBeNull();
-    // at rest: 70 mappings = 36 lesson rows (9 inherited + 27 P7 remaining-channel-pools)
-    // + 34 anchor rows (17 course, 17 topic) — P7 appended after inherit per the P2F shape
-    expect(map!.mappings.length).toBe(70);
+    // at rest: 654 mappings = 418 lesson rows (the P4-inherit base grown by the P14
+    // parent's channel-recon rows cascading from igcse-chemistry-19/cie-a-level-chemistry-25
+    // + 27 P7 remaining-channel-pools + 12 P18 inherited-external rows) + 236 anchor rows
+    // (219 course — 17 P2F W-code + 73 P14B Dr Hanaa Assil + 4 P15B chem-bio-by-Hosni "Unit N <session>" unit-paper
+    // + 122 P17 Pearson-pipe/Unit-N unit-paper anchors (chem-bio-math-revision-hub +
+    // edexcel-science-channel) + 3 P18 course anchors (chemistry-that-counts WCH +
+    // ial-science-notes, P18B post-inherit) — and 17 topic) — P14B appended after inherit per the
+    // P11B/P13B shape, P15B after that, P2F after that, P17B after that, P18B after that
+    expect(map!.mappings.length).toBe(654);
     const anchor = map!.mappings.filter(isAnchorRow);
-    expect(anchor.length).toBe(34);
+    expect(anchor.length).toBe(236);
     for (const row of anchor) {
       // the accounting rule: coarse anchors are zero-weight enrichment
       expect(row.specs).toEqual([]);
@@ -159,7 +165,7 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
       expect(row.anchor!.ref).toBeTruthy();
       expect(row.reviewed).toBe(true);
     }
-    expect(anchor.filter((r) => r.anchor!.level === "course")).toHaveLength(17);
+    expect(anchor.filter((r) => r.anchor!.level === "course")).toHaveLength(219);
     expect(anchor.filter((r) => r.anchor!.level === "topic")).toHaveLength(17);
     for (const row of anchor.filter((r) => r.anchor!.level === "course"))
       expect(row.kind).toBe("past-paper-walkthrough");
@@ -171,7 +177,11 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
     const map = await getVideoMap("ial-physics-19");
     expect(map).not.toBeNull();
     const buckets = anchorBuckets(map!);
-    expect(buckets.course.length).toBe(32);
+    // 32 P2F/P7-era + 41 P15B Doctor-No Does Science WPH unit-paper + 189 P17
+    // Pearson-pipe/Unit-N unit-paper course anchors (chem-bio-math-revision-hub +
+    // edexcel-science-channel + aravinth + A2Z, P17B post-inherit) + 6 P18 WPH
+    // predicted-paper/unit-paper course anchors (scinova + examcrack, P18B post-inherit)
+    expect(buckets.course.length).toBe(268);
     expect(buckets.topicArea.length).toBe(0);
     expect(buckets.subject.length).toBe(0);
     // buckets + lesson rows = every served mapping, no double counting
@@ -196,10 +206,19 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
 
   test("the four P2F courses carry exactly the shipped anchor rows at rest", async () => {
     const expected: Record<string, number> = {
-      "ial-biology-18": 16,
-      "ial-chemistry-17": 34,
-      "ial-physics-19": 32,
-      "igcse-chemistry-19": 8,
+      // 16 P2F/P7-era + 5 P15B chem-bio-by-Hosni + 90 P17 WBI unit-paper course anchors
+      // (chem-bio-math-revision-hub + dr-sarah, P17B post-inherit) + 3 P18 course anchors
+      // (really-academics WBI + examcrack WBI predicted papers, P18B post-inherit)
+      "ial-biology-18": 114,
+      // 34 P2F (17 course + 17 topic) + 73 P14B Dr Hanaa Assil + 4 P15B Hosni
+      // + 122 P17 Pearson-pipe/Unit-N course anchors + 3 P18 course anchors
+      "ial-chemistry-17": 236,
+      // 32 P2F/P7-era + 41 P15B Doctor-No + 189 P17 Pearson-pipe/Unit-N course anchors
+      // + 6 P18 WPH predicted-paper course anchors
+      "ial-physics-19": 268,
+      // 8 P2F + 39 P14 Dr Hanaa Assil + 19 P15 Belal Sir + 20 P17 4CH1-paper course anchors
+      // + 5 P18 course anchors (chemistry-that-counts 4CH1 topic registers, P18 pre-inherit)
+      "igcse-chemistry-19": 91,
     };
     for (const [slug, count] of Object.entries(expected)) {
       const map = await getVideoMap(slug);

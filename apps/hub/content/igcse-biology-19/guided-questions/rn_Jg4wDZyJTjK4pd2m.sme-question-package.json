@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Nephrons number in the millions, not single figures.",
           "misconception": "quantity invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Around one million"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "The pelvis is a kidney region, not a nephron part.",
           "misconception": "structure confused"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The Bowman's capsule, glomerulus, PCT and DCT",
+            "The ureter and bladder",
+            "The loop of Henle and collecting duct",
+            "Only the renal pelvis"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The Bowman's capsule, glomerulus, PCT and DCT"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Filtering belongs to the nephron's capsule and glomerulus.",
           "misconception": "function invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It filters blood like a second glomerulus",
+            "It collects urine from the collecting ducts into the ureter",
+            "It stores urine for a day",
+            "It makes ADH"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It collects urine from the collecting ducts into the ureter"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "That is the fixed downstream order of the nephron.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "PCT, capsule, duct, loop",
+            "Bowman's capsule, PCT, loop of Henle, DCT, collecting duct",
+            "Glomerulus, collecting duct, loop, PCT",
+            "Loop of Henle, capsule, DCT, PCT, duct"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Bowman's capsule, PCT, loop of Henle, DCT, collecting duct"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,27 @@
           "correct": false,
           "explanation": "The medulla is a kidney region, not a capsule.",
           "misconception": "region wrong"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The Bowman's capsule",
+                    "Bowman's capsule"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

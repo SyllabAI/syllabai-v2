@@ -537,7 +537,7 @@ export function NoteCla({
             <div className="min-w-0 flex-1 pl-2 leading-tight">
               <SheetTitle className="block text-sm font-semibold">{panelTitle}</SheetTitle>
               <SheetDescription className="sr-only">
-                Answers are grounded in this note only.
+                Answers come from this note only.
               </SheetDescription>
             </div>
             {/* pr-9 clears the Sheet's built-in close affordance; the New

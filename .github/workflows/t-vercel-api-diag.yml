@@ -31,6 +31,16 @@ jobs:
   diag:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: T-HUB-INK-BRK run-004 — the adapter-type repro (read-only)
+        env:
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: bun run apps/api/scripts/ink-adapter-repro.ts
       - name: Enumerate teams, projects, domains (READ-ONLY GETs)
         env:
           VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
