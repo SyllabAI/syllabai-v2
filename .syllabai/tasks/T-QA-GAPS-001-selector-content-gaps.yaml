@@ -19,6 +19,17 @@ task:
     empty on all three. Content gap, NOT breakage; re-verified unchanged on live
     production after main advanced 0ca81cca -> cb0f9c3f. Card stays OPEN until a
     content lane claims it; group order in the doc is a suggestion, not a law.
+    UPDATE 2026-11-20 (run-002, operator directive "Proceed" — triage against the
+    corpus): ALL 47 are TRUE corpus gaps, ZERO pipeline dropouts — for every
+    missing layer the corpus bundle is genuinely empty and the live count matches
+    exactly; notes and cards layers matched corpus==live fleet-wide (106 courses).
+    Handoff sharpened: flashcards (26 courses) are a GENERATOR RUN, not authoring
+    from scratch — decks subtopic-anchored (deckSlug mirrors the curriculum row),
+    cards carry specPointCode (86-100%) in 4 fixed types, sourceNoteId unused
+    fleet-wide, and all 16 spot-checked gap courses have 100% of notes placed
+    (sectionSlug); exam questions (12 courses) need QP/MS source material; the
+    all-three trio needs full authoring (curricula exist, content layers empty).
+    The card now hands off with per-layer production mode, not just course lists.
 base:
   repo: "syllabai-v2 @ cb0f9c3f (origin/main at recording; census taken against the
     live prod deploy of the 0ca81cca-era tip and re-verified after the advance)"

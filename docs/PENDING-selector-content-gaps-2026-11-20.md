@@ -1,7 +1,7 @@
 # PENDING — Selector content gaps: 30 courses / 47 empty selectors
 
-> Recorded 2026-11-20 · status: **PENDING content work, NOT breakage** · task card: `.syllabai/tasks/T-QA-GAPS-001-selector-content-gaps.yaml` (status OPEN)
-> Evidence: `docs/selector-census-2026-11-20.csv` (318 rows, one per course × selector view) · receipt: `.syllabai/receipts/T-QA-GAPS-001/run-001.json`
+> Recorded 2026-11-20 · status: **TRIAGED (run-002): all 47 are TRUE corpus gaps — zero pipeline dropouts (corpus == live exactly). PENDING content production** · task card: `.syllabai/tasks/T-QA-GAPS-001-selector-content-gaps.yaml` (status OPEN)
+> Evidence: `docs/selector-census-2026-11-20.csv` (318 rows, one per course × selector view) · receipts: `run-001.json` (live census) + `run-002.json` (corpus triage)
 
 ## What this is
 
@@ -73,6 +73,18 @@ The gap clusters around (a) the **CIE business / economics / humanities cluster*
 4. `cie-igcse-accounting-25` Exam Questions (single view, single course).
 
 Exact prioritization is the operator's call; the grouping above is by learner impact, not effort.
+
+## Triage (run-002, 2026-11-20 — corpus ground truth vs live census)
+
+The live census alone could not distinguish true gaps from pipeline dropouts (content present in the corpus but failing to render). The corpus bundles settle it: **all 47 are true gaps — for every missing layer the corpus bundle is genuinely empty and the live count matches exactly; no course has content in the corpus that fails to render.** The notes and flashcards layers matched corpus==live fleet-wide (zero flags on 106 courses). The sweep's only flags were the triage script's own sets-vs-questions metric mismatch (corpus `questions.json` is a list of SETS; the live header counts QUESTIONS — e.g. maths-b-16 = 65 sets / 1,270 questions).
+
+Layer-by-layer handoff, sharpened:
+
+1. **Flashcards — 26 courses — a generator run, not authoring-from-scratch.** Decks are subtopic-anchored (`deckSlug` mirrors the curriculum row, e.g. `1-1-particles-in-the-atom-and-atomic-radius`), cards carry `specPointCode` (86–100% on sampled contentful courses) and come in 4 fixed types (`question_and_answer`, `true_or_false`, `fill_in_the_blanks`, `keyword_definition`). `sourceNoteId` exists in the schema but is unused (0% on every sampled course). All 16 spot-checked gap courses have 100% of their notes placed (`sectionSlug` non-empty). The upstream deck generator simply hasn't been run/landed for these courses.
+2. **Exam Questions — 12 courses — needs QP/MS source material.** `questions.json` holds paper-derived sets with source/curriculum fields; heavier production than flashcards.
+3. **The all-three trio — full authoring from scratch.** Their bundles are literally empty lists; the curricula DO exist for all three, so the spine and navigation render — only the content layers are missing.
+
+Side finding: `sourceNoteId` being unused fleet-wide is a schema-cleanup candidate upstream (cosmetic, out of this lane).
 
 ## Reproduction
 
