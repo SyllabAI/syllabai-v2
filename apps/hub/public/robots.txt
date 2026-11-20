@@ -12,3 +12,7 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# T-QA-DEF-001 (4): the sitemap route (src/app/sitemap.ts) was added 2026-11-20;
+# the origin here matches layout.tsx's metadataBase by construction.
+Sitemap: https://www.syllab-ai.com/sitemap.xml

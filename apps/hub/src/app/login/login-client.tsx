@@ -49,7 +49,7 @@ const ROLE_STORY: Record<
     heading: "Revision that knows the spec.",
     sub: "Every note, question and hint follows the Edexcel syllabus.",
     bullets: [
-      { icon: BookOpen, text: "Revision notes mapped to the spec for 94 courses" },
+      { icon: BookOpen, text: "Revision notes mapped to the spec for 103 courses" },
       { icon: FileQuestion, text: "Exam-style questions with self-marking" },
       { icon: Sparkles, text: "A tutor that cites the syllabus, not vibes" },
     ],
