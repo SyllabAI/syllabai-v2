@@ -253,6 +253,28 @@ const COURSE_SPECS: Record<string, CourseSpecMap> = {
   "cie-igcse-physics-23": { specs: [`${CI}/igcse/physics/0625`] },
   "cie-igcse-maths-25-core": { specs: [`${CI}/igcse/mathematics/0580`], components: [1, 3] },
   "cie-igcse-maths-25-extended": { specs: [`${CI}/igcse/mathematics/0580`], components: [2, 4] },
+  // ── CIE wave 2 (corpus audit 2026-11-20, syllabai-pastpapers @ main) ──────
+  // Mapped strictly where the archive attests papers: Business 9609 and IGCSE
+  // Economics 0455 (full archives, no filter — like the sciences), plus the
+  // AS faces of 9701/9702/9709 — same spec folders as the A-Level faces,
+  // filtered to AS papers (sciences = papers 1-3; 9709 lanes mirror the
+  // A-Level component banks). Specs whose papers have not landed in the
+  // archive (9700, 9706, 0470, 9618, …) stay unmapped — honest-empty shelves,
+  // never fabricated. Backlog: 34 CIE courses + igcse-history-17 (no 4HI1
+  // papers in the archive).
+  "cie-a-level-business-23": { specs: [`${CI}/ial/business/9609`] },
+  "cie-as-business-23": { specs: [`${CI}/ial/business/9609`], components: [1, 2] },
+  "cie-igcse-economics-20": { specs: [`${CI}/igcse/economics/0455`] },
+  "cie-igcse-economics-25": { specs: [`${CI}/igcse/economics/0455`] },
+  "cie-as-chemistry-25": { specs: [`${CI}/ial/chemistry/9701`], components: [1, 2, 3] },
+  "cie-as-physics-25": { specs: [`${CI}/ial/physics/9702`], components: [1, 2, 3] },
+  "cie-as-maths-20-pure-1": { specs: [`${CI}/ial/mathematics/9709`], components: [1] },
+  "cie-as-maths-20-pure-2": { specs: [`${CI}/ial/mathematics/9709`], components: [2] },
+  "cie-as-maths-20-mechanics": { specs: [`${CI}/ial/mathematics/9709`], components: [4] },
+  "cie-as-maths-20-probability-and-statistics-1": {
+    specs: [`${CI}/ial/mathematics/9709`],
+    components: [5],
+  },
 };
 
 export function corpusSpecsForCourse(slug: string): CourseSpecMap | null {
