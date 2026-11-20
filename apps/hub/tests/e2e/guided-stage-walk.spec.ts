@@ -13,6 +13,13 @@ import path from "node:path";
  * (the conservative fallback law withholds the replay on unmapped checks —
  * the walk advances until it meets a mapped one, which the P1 QA interleave
  * rate guarantees within a few checks).
+ * 2026-11-20 widen bake: the arc traversal is corpus-robust across the three
+ * IGCSE sciences — a §5.4 widget check settles through the widget's own Check
+ * (the option grid is reading furniture, no Submit exists) and is won from
+ * the pinned payload; a gradable written check settles a placeholder to reach
+ * the model answer and moves on. Chemistry's arc has neither before its first
+ * plain MCQ; physics's walk note opens on five widget checks, biology's
+ * widget-walk note opens on five plain MCQs — the loop now traverses all of it.
  * Run after every bake:  bun run test:e2e:guided
  */
 const COURSE = process.env.GUIDED_WALK_COURSE || "igcse-chemistry-19";
@@ -52,8 +59,15 @@ function loadCorpus() {
   const contentDir = path.join(process.cwd(), "content");
   const idx = JSON.parse(fs.readFileSync(path.join(contentDir, COURSE, "guided-import.json"), "utf8"));
   const entry = idx.notes[0];
-  const pkg = JSON.parse(fs.readFileSync(path.join(contentDir, entry.packagePath), "utf8"));
-  return { noteId: entry.noteId as string, pkg: pkg as { questions: PkgQuestion[] } };
+  const pkg = JSON.parse(fs.readFileSync(path.join(contentDir, entry.packagePath), "utf8")) as {
+    questions: (PkgQuestion & { interactions?: PkgInteraction[] })[];
+  };
+  const byStem = new Map<string, PkgInteraction>();
+  for (const q of pkg.questions ?? []) {
+    const ix = (q.interactions ?? [])[0];
+    if (ix) byStem.set(q.stem, ix);
+  }
+  return { noteId: entry.noteId as string, pkg: pkg as { questions: PkgQuestion[] }, byStem };
 }
 
 interface PkgInteraction {
@@ -106,15 +120,26 @@ function splitSpecies(side: string): string[] {
 
 const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
+/** True when a §5.4 interactions[] widget is the check card's answering
+ *  surface (its kind label is rendered; the classic Submit path is not). */
+async function widgetOnStage(stage: Locator): Promise<boolean> {
+  for (const kind of ["table-fill", "sort-match", "drag-label", "eq-builder"] as const) {
+    if (await stage.getByText(widgetKindLabel(kind), { exact: true }).first().isVisible().catch(() => false)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 /** The arc's primary-action buttons (opener/bridge/key-point/layer/example). */
 function nextButton(stage: Locator): Locator {
   return stage
-    .getByRole("button", { name: /^(Got it|Continue|Rate my confidence|Start|Review|Walk through|See the worked|Next)/ })
+    .getByRole("button", { name: /^(Got it|Continue|Rate my confidence|Start|Review|Walk through|See the worked|What happens next|Next)/ })
     .first();
 }
 
 test(`guided stage walk — ${COURSE} (P0 takeover + P1 beats + P2 error loop)`, async ({ page }) => {
-  const { noteId, pkg } = loadCorpus();
+  const { noteId, pkg, byStem } = loadCorpus();
   await seedSession(page);
   await page.goto(`/courses/${COURSE}/guided-lessons/${noteId}`, { waitUntil: "domcontentloaded", timeout: 90_000 });
 
@@ -129,18 +154,70 @@ test(`guided stage walk — ${COURSE} (P0 takeover + P1 beats + P2 error loop)`,
   await expect(stage).toBeVisible();
   await expect(stage.getByRole("button", { name: "Exit the guided lesson" })).toBeVisible();
 
-  // ── P1: advance the beat arc to its first MCQ check surface ─────────────
-  // Bounded primary-action loop. Written checks are skipped the honest way
-  // (reveal the model answer, continue) — the R-3 taxonomy guarantees ≥ 1
-  // MCQ per note, so the loop reaches one within the bound.
+  // ── P1: traverse the beat arc to a plain MCQ check surface ───────────────
+  // Bounded primary-action loop, corpus-robust across the three sciences
+  // (2026-11-20 widen bake): a §5.4 widget check settles through the
+  // widget's own Check button (the option grid is reading furniture — no
+  // Submit exists there) and is won from the pinned payload; a gradable
+  // written check settles a placeholder to reach the model answer; and a
+  // mapped check settled WRONG carries the §5.5 error loop, which the walk
+  // exercises in flight (physics's mapped checks interleave as written
+  // kinds, long before its first plain MCQ).
   let reached = false;
-  for (let i = 0; i < 80 && !reached; i++) {
+  let sawErrorLoop = false;
+  const exerciseErrorLoop = async () => {
+    const seeAgain = stage.getByRole("button", { name: "See it again" }).first();
+    if (!(await seeAgain.isVisible().catch(() => false))) return;
+    // ── P2 error loop of record ────────────────────────────────────────
+    const tutorLink = stage.getByRole("link", { name: "Ask the tutor" }).first();
+    await expect(tutorLink).toBeVisible();
+    expect(await tutorLink.getAttribute("href")).toContain(`/tutor?course=${COURSE}&q=`);
+    await seeAgain.click();
+    const replay = stage.locator('[role="region"][aria-label="The key point this check teaches"]');
+    await expect(replay).toBeVisible();
+    // the toggle's accessible name flips when open (See it again ↔ Hide the key point)
+    await stage.getByRole("button", { name: "Hide the key point" }).first().click();
+    await expect(replay).not.toBeVisible();
+    sawErrorLoop = true;
+  };
+  for (let i = 0; i < 80 && !(reached && sawErrorLoop); i++) {
     const group = page
       .locator('[data-guided-stage="open"] [role="radiogroup"][aria-label^="Options for question"]')
       .first();
-    if (await group.isVisible().catch(() => false)) {
+    const submit = stage.getByRole("button", { name: "Submit answer" }).first();
+    const groupVisible = await group.isVisible().catch(() => false);
+    const submitVisible = await submit.isVisible().catch(() => false);
+    if (groupVisible && submitVisible) {
+      // plain MCQ, unsettled: answer WRONG (an authored distractor) and
+      // settle — a mapped one carries the §5.5 replay
+      const legend = group.locator("xpath=ancestor::fieldset[1]/legend");
+      const legendText = (await legend.innerText()).replace(/^\s*\d+\.\s*/, "").trim();
+      const q = (pkg.questions || []).find((c) => c.stem === legendText);
+      expect(q, `the rendered stem "${legendText.slice(0, 60)}…" resolves in the pinned package`).toBeTruthy();
+      const wrong = (q!.options || []).find((o) => !o.correct);
+      expect(wrong, "the question carries an authored distractor").toBeTruthy();
+      await group.getByRole("radio", { name: new RegExp(esc(wrong!.text.slice(0, 48))) }).first().click();
+      await submit.click();
+      await expect(stage.getByText("Not quite").first()).toBeVisible();
       reached = true;
-      break;
+      await exerciseErrorLoop();
+    } else if (await widgetOnStage(stage)) {
+      // widget-carrying check: win it from the pinned payload
+      const legend = stage.locator("fieldset legend").first();
+      const stem = (await legend.innerText()).replace(/^\s*\d+\.\s*/, "").trim();
+      const payload = byStem.get(stem);
+      expect(payload, `the rendered widget stem "${stem.slice(0, 60)}…" resolves in the pinned package`).toBeTruthy();
+      await winWidget(stage, payload!);
+      await expect(stage.getByText("Great job!").first()).toBeVisible();
+    } else if (
+      submitVisible &&
+      (await stage.getByRole("textbox").first().isVisible().catch(() => false))
+    ) {
+      // gradable written check, unsettled: the honest skip — submit a
+      // placeholder to reach the model answer (never persisted; zero-DB law)
+      await stage.getByRole("textbox").first().fill("Walk-through answer");
+      await submit.click();
+      await exerciseErrorLoop();
     }
     const confidence = stage.getByRole("radio", { name: /^Low/ });
     if ((await confidence.count()) > 0 && (await confidence.first().isVisible())) {
@@ -150,51 +227,17 @@ test(`guided stage walk — ${COURSE} (P0 takeover + P1 beats + P2 error loop)`,
     if (await btn.isVisible().catch(() => false)) {
       await btn.click();
       await page.waitForTimeout(120);
-    } else {
-      break;
+    } else if (!(reached && sawErrorLoop)) {
+      // no primary action and the goals are unmet — one settle beat may
+      // still be rendering; try once more before giving up
+      await page.waitForTimeout(400);
+      const btn2 = nextButton(stage);
+      if (!(await btn2.isVisible().catch(() => false))) break;
+      await btn2.click();
+      await page.waitForTimeout(120);
     }
   }
   expect(reached, "the arc reached an MCQ check within the bounded walk").toBe(true);
-
-  // ── answer checks WRONG until one carries the mapped replay (P1 QA rate) ─
-  let sawErrorLoop = false;
-  for (let attempt = 0; attempt < 8 && !sawErrorLoop; attempt++) {
-    const group = page
-      .locator('[data-guided-stage="open"] [role="radiogroup"][aria-label^="Options for question"]')
-      .first();
-    if (!(await group.isVisible().catch(() => false))) break;
-    const legend = group.locator("xpath=ancestor::fieldset[1]/legend");
-    const legendText = (await legend.innerText()).replace(/^\s*\d+\.\s*/, "").trim();
-    const q = (pkg.questions || []).find((c) => c.stem === legendText);
-    expect(q, `the rendered stem "${legendText.slice(0, 60)}…" resolves in the pinned package`).toBeTruthy();
-    const wrong = (q!.options || []).find((o) => !o.correct);
-    expect(wrong, "the question carries an authored distractor").toBeTruthy();
-    await group.getByRole("radio", { name: new RegExp(esc(wrong!.text.slice(0, 48))) }).first().click();
-    await stage.getByRole("button", { name: "Submit answer" }).first().click();
-
-    await expect(stage.getByText("Not quite").first()).toBeVisible();
-    const seeAgain = stage.getByRole("button", { name: "See it again" }).first();
-    if (await seeAgain.isVisible().catch(() => false)) {
-      // ── P2 error loop of record ────────────────────────────────────────
-      const tutorLink = stage.getByRole("link", { name: "Ask the tutor" }).first();
-      await expect(tutorLink).toBeVisible();
-      expect(await tutorLink.getAttribute("href")).toContain(`/tutor?course=${COURSE}&q=`);
-      await seeAgain.click();
-      const replay = stage.locator('[role="region"][aria-label="The key point this check teaches"]');
-      await expect(replay).toBeVisible();
-      // the toggle's accessible name flips when open (See it again ↔ Hide the key point)
-      await stage.getByRole("button", { name: "Hide the key point" }).first().click();
-      await expect(replay).not.toBeVisible();
-      sawErrorLoop = true;
-      break;
-    }
-    // unmapped check — the conservative law withheld the replay; advance to
-    // the next check surface and try again (Next / Continue)
-    const adv = nextButton(stage);
-    if (!(await adv.isVisible().catch(() => false))) break;
-    await adv.click();
-    await page.waitForTimeout(120);
-  }
   expect(sawErrorLoop, "a mapped check carried the §5.5 error loop (See it again + Ask the tutor)").toBe(true);
 
   // ── P0 exit: Escape closes the takeover, flow state preserved ────────────
@@ -295,6 +338,44 @@ test(`guided stage widget walk — ${COURSE} (P3 interactions[] of record)`, asy
       await winWidget(stage, payload!);
       await expect(stage.getByText("Great job!").first()).toBeVisible();
       wins += 1;
+      const adv = nextButton(stage);
+      if (await adv.isVisible().catch(() => false)) {
+        await adv.click();
+        await page.waitForTimeout(120);
+      }
+      continue;
+    }
+    // plain MCQ, unsettled (no widget): answer and move on — this note's
+    // §5.4 surfaces may sit later in the arc (the bio widget note opens on
+    // MCQs); settle, advance, then keep hunting the widget surfaces
+    const group = page
+      .locator('[data-guided-stage="open"] [role="radiogroup"][aria-label^="Options for question"]')
+      .first();
+    const submit = stage.getByRole("button", { name: "Submit answer" }).first();
+    if (
+      (await group.isVisible().catch(() => false)) &&
+      (await submit.isVisible().catch(() => false))
+    ) {
+      await group.getByRole("radio").last().click();
+      await submit.click();
+      await page.waitForTimeout(120);
+      const adv = nextButton(stage);
+      if (await adv.isVisible().catch(() => false)) {
+        await adv.click();
+        await page.waitForTimeout(120);
+      }
+      continue;
+    }
+    // gradable written check, UNSETTLED only (a settled card's textarea is
+    // disabled — filling it hangs): settle a placeholder to reach the model
+    // answer, then advance
+    if (
+      (await submit.isVisible().catch(() => false)) &&
+      (await stage.getByRole("textbox").first().isVisible().catch(() => false))
+    ) {
+      await stage.getByRole("textbox").first().fill("Walk-through answer");
+      await submit.click();
+      await page.waitForTimeout(120);
       const adv = nextButton(stage);
       if (await adv.isVisible().catch(() => false)) {
         await adv.click();
