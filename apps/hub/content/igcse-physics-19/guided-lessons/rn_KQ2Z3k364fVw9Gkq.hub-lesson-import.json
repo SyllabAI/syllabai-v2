@@ -20,7 +20,7 @@
       }
     ],
     "primer": {
-      "text": "Here the ΔQ = mcΔT equation is turned around and measured, not just used. An immersion heater delivers counted joules into a known mass, a thermometer logs the rise, and the gradient machinery of the plotted graph yields the capacity of water or a solid block — with honest error analysis attached.",
+      "text": "Here ΔQ = mcΔT is measured, not just used. An immersion heater delivers counted joules into a known mass, a thermometer logs the rise, and the graph gradient yields capacity — with honest error analysis.",
       "prerequisiteSubtopic": "Changes of State"
     },
     "modules": [
@@ -49,7 +49,7 @@
             "examPointer": "Variable-naming marks are free if you keep the roles straight: energy supplied is what you change, temperature rise is what you measure, mass is what you hold fixed."
           },
           "medium": {
-            "restatement": "The design computes ΔQ as VIt from ammeter and voltmeter readings timed with a stopwatch, so the energy is known without calorimetry assumptions. Controlling the mass pins the proportionality between energy and temperature rise, and the starting temperature is held near room value to limit unquantified exchange with the surroundings.",
+            "restatement": "The design computes ΔQ as VIt from ammeter and voltmeter readings timed with a stopwatch, so the energy is known without calorimetry assumptions. Controlling the mass pins the energy-to-temperature-rise proportionality, and the start temperature stays near room value to limit unquantified exchange with the surroundings.",
             "analogy": "Calibrating a fuel gauge by driving a known distance at a metered flow: fix the tank size (mass), count the litres (energy), read the needle (temperature), and the car's thirst per kilometre emerges.",
             "examPointer": "If asked why the heater is switched off between readings or readings taken while switching on and off, answer energy accounting — every second of heating counts, including brief overshoots."
           }
@@ -102,7 +102,7 @@
             "examPointer": "Method marks live in the sequence: mass first, then meters zeroed and read, then heating with timed temperature readings — describe the order, not just the list."
           },
           "medium": {
-            "restatement": "The apparatus couples electrical metering to thermal sensing so that ΔQ is known independently of the water's properties. Full submersion and lagging minimise the two leakage classes — energy bypassing the water and heat escaping to air — while fixed-interval sampling turns the run into an energy-versus-temperature dataset suitable for a gradient method.",
+            "restatement": "The apparatus couples electrical metering to thermal sensing, so ΔQ is known independently of water properties. Full submersion and lagging minimise energy leakage, while fixed-interval sampling creates an energy-versus-temperature dataset for gradient analysis.",
             "analogy": "An audit trail: every joule is receipted by the meters (VIt), every degree is receipted by the thermometer, and the auditor (the calculation) compares the two books.",
             "examPointer": "Quote the insulation purpose explicitly — lagging reduces the systematic error of heat lost to the surroundings, which otherwise inflates the measured capacity."
           }
@@ -156,7 +156,7 @@
             "examPointer": "The table earns marks when the energy column is cumulative and aligned with each temperature — a mismatched ledger loses the analysis marks later."
           },
           "medium": {
-            "restatement": "Structuring the table with a cumulative energy column converts the run into paired (ΔQ, ΔT) points suitable for plotting energy against temperature rise. Because ΔQ = mcΔT, the gradient of that plot equals m × c, so the ledger format feeds directly into the gradient analysis rather than relying on a single end-point ratio.",
+            "restatement": "A cumulative energy column creates paired (ΔQ, ΔT) points for plotting energy against temperature rise. Since ΔQ = mcΔT, the gradient equals m × c, so the table feeds directly into gradient analysis.",
             "analogy": "Mileage versus fuel burned, logged at every petrol stop: the slope of the log reveals the car's consumption far better than one end-to-end division.",
             "examPointer": "If the table shows the temperature levelling while energy keeps flowing, suspect a state change or a heater fault — do not force the linear analysis through curved data."
           }
@@ -212,7 +212,7 @@
             "examPointer": "Order the evaluation: name the error, give its direction on c, then the fix — and keep every mains-safety point separate from the thermal analysis."
           },
           "medium": {
-            "restatement": "Rearranging ΔQ = mcΔT gives ΔT = (1/mc)·ΔQ, so the fitted slope yields c for the fixed mass; the dominant systematic term is unaccounted power dissipated outside the sample, biasing c upward, while parallax and timing scatter are random and average out over repeats. Mains safety — dry hands, insulated leads, supervised switching — is a separate, non-negotiable layer.",
+            "restatement": "Rearranging ΔQ = mcΔT gives ΔT = (1/mc)·ΔQ, so the slope yields c. Unaccounted power dissipated outside the sample biases c upward. Parallax and timing scatter are random and average out. Mains safety is non-negotiable.",
             "analogy": "Auditing a delivery route: the odometer counts every kilometre including detours, so the true fuel-per-kilometre needs the detours fenced (lagging) and several runs averaged (repetition) — all with the driver gloved and grounded.",
             "examPointer": "Distinguish the two bias directions before naming fixes: losses and an underestimated rise both inflate c, while a mass overestimate would deflate it — then separate the mains-safety list from the thermal list."
           }
