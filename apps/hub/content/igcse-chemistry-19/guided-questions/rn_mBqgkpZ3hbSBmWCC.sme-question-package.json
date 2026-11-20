@@ -490,32 +490,22 @@
       ],
       "interactions": [
         {
-          "kind": "sort-match",
-          "items": [
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
             {
-              "id": "3",
-              "text": "2,8,8,8"
-            },
-            {
-              "id": "1",
-              "text": "2,8"
-            },
-            {
-              "id": "2",
-              "text": "2,8,1"
-            },
-            {
-              "id": "4",
-              "text": "2,8,8"
+              "cells": [
+                {
+                  "accepts": [
+                    "2,8,8"
+                  ]
+                }
+              ]
             }
           ],
-          "correctOrder": [
-            "1",
-            "2",
-            "4",
-            "3"
-          ],
-          "prompt": "Order the values from smallest to largest — move items, then check."
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

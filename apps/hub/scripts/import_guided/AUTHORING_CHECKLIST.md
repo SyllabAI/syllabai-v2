@@ -38,14 +38,18 @@ feed and violations FAIL-CLOSED before landing.
 
 ## Legacy corpus
 
-The three live courses (chem/phys/bio) predate this law and are
-grandfathered in **report mode**: their budget drift (bridge/opener/layer
-word counts) is reported at import and by the census, but never blocks.
+The three live courses (chem/phys/bio) predate this law and were
+grandfathered in **report mode** until the compression lane landed.
 The P3 backfill landed in two declared runs: **run-002** (the
 `interactions[]` generation — packages-only delta, zero lesson bytes, report
-mode) and **run-003** (the beat-compression lane — re-pins the over-budget
-beats and flips `chunk_law: "enforce"`, so the drift the census table makes
-visible can never re-land).
+mode) and **run-003** (the beat-compression lane — the 853 over-budget beats
+hand-authored to law, every compressed note's stream anchor re-pinned, and
+`chunk_law: "enforce"` live on the three run-003 feeds: the drift the census
+table makes visible can never re-land). Post-run-003 census: **zero
+violations** across all three courses; interleave anchors 71.0% / 67.4% /
+72.0% reproduced (phys mapped count 1644 -> 1643, percentage unchanged —
+the only mapping-input change is the 2 compressed physics key points in
+rn_ZgGMNrRGBKvYxxFf L1/L2, disclosed).
 
 run-003 also carries the run-002 review follow-up (PR #1138 review, operator
 trace c0a36936075e53f86f0bddaa1751a1de): four chemistry sort-match payloads
@@ -56,5 +60,11 @@ rn_Syxyh4Fct8KFg8NQ L1::Q3 / L1::Q4 / L2::Q5 and rn_mBqgkpZ3hbSBmWCC L2::Q3
 ties 2,8,9 vs 2,8,8,1). Re-derive those four checks under the strict
 thousands-grouping gate (`-?\d{1,3}(,\d{3})+(\.\d+)?` — keeps `576,000 s`,
 rejects shell lists) via the KIND_PRIORITY fallback, in the same landing as
-the enforce flip. Zero learner exposure until then: stage mode is
-allowlist-gated and chemistry is not yet allowlisted in production.
+the enforce flip. **DONE in run-003**: three landed as table-fill
+(rn_Syxyh4Fct8KFg8NQ L1::Q3 / L1::Q4, rn_mBqgkpZ3hbSBmWCC L2::Q3) and one as
+drag-label (rn_Syxyh4Fct8KFg8NQ L2::Q5 — the module-aware fallback: table-fill
+would have collapsed that module's opt-in kind mix); plain integers carry no
+comma and are untouched by the gate (the pre-existing legitimate sort-matches,
+e.g. rn_Syxyh4Fct8KFg8NQ L1::Q2's 32/8/18/2 electron counts, stay). Learner
+exposure remains zero: stage mode is allowlist-gated and chemistry is not yet
+allowlisted in production.

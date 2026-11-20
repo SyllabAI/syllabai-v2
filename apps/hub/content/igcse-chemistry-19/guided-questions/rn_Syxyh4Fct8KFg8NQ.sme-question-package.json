@@ -168,32 +168,22 @@
       ],
       "interactions": [
         {
-          "kind": "sort-match",
-          "items": [
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
             {
-              "id": "4",
-              "text": "2,8,9"
-            },
-            {
-              "id": "1",
-              "text": "2,9"
-            },
-            {
-              "id": "3",
-              "text": "2,8,8,1"
-            },
-            {
-              "id": "2",
-              "text": "2,8,8,2"
+              "cells": [
+                {
+                  "accepts": [
+                    "2,8,8,1"
+                  ]
+                }
+              ]
             }
           ],
-          "correctOrder": [
-            "1",
-            "4",
-            "3",
-            "2"
-          ],
-          "prompt": "Order the values from smallest to largest — move items, then check."
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -234,32 +224,22 @@
       ],
       "interactions": [
         {
-          "kind": "sort-match",
-          "items": [
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
             {
-              "id": "2",
-              "text": "4,2"
-            },
-            {
-              "id": "1",
-              "text": "6"
-            },
-            {
-              "id": "3",
-              "text": "2,2,2"
-            },
-            {
-              "id": "4",
-              "text": "2,4"
+              "cells": [
+                {
+                  "accepts": [
+                    "2,4"
+                  ]
+                }
+              ]
             }
           ],
-          "correctOrder": [
-            "1",
-            "4",
-            "2",
-            "3"
-          ],
-          "prompt": "Order the values from smallest to largest — move items, then check."
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -642,32 +622,20 @@
       ],
       "interactions": [
         {
-          "kind": "sort-match",
-          "items": [
+          "kind": "drag-label",
+          "labels": [
+            "2,8,3",
+            "2,8,5",
+            "2,5",
+            "2,8,8,5"
+          ],
+          "slots": [
             {
-              "id": "1",
-              "text": "2,8,3"
-            },
-            {
-              "id": "2",
-              "text": "2,8,5"
-            },
-            {
-              "id": "4",
-              "text": "2,5"
-            },
-            {
-              "id": "3",
-              "text": "2,8,8,5"
+              "id": "Answer",
+              "answer": "2,8,5"
             }
           ],
-          "correctOrder": [
-            "4",
-            "1",
-            "2",
-            "3"
-          ],
-          "prompt": "Order the values from smallest to largest — move items, then check."
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

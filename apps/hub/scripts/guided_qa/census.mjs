@@ -81,7 +81,10 @@ for (const course of COURSES) {
     if (r.violations.length > 0) agg.violationNotes += 1;
     for (const v of r.violations) agg.violations[v.law] += 1;
   }
-  agg.interleaveRate = agg.checks > 0 ? +((100 * agg.mappedChecks) / agg.checks).toFixed(1) : 0;
+  // kept as the fixed-1-decimal string of record (the parity anchors are
+  // pinned as 71.0% / 67.4% / 72.0% — the unary + rendered them as 71% / 72%;
+  // run-003 carries the fix — PR #1138 review finding 3)
+  agg.interleaveRate = agg.checks > 0 ? ((100 * agg.mappedChecks) / agg.checks).toFixed(1) : "0.0";
   // parity cross-check: recompute the mapped count directly from the helpers
   let direct = 0;
   for (const entry of idx.notes) {
