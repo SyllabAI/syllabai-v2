@@ -1,0 +1,40 @@
+{
+  "task": "T-QA-GAPS-001",
+  "run": "run-001",
+  "kind": "census-evidence",
+  "recorded_utc": "2026-11-20T06:24:55Z",
+  "method": "in-session curl sweep of /courses/<slug>/{revision-notes,exam-questions,flashcards} for all 106 courses (318 pages); header counts extracted by regex; generator script lives in the QA session workspace (scripts/selector_census.sh, scripts/make_backlog_docs.py)",
+  "prod_at_verification": {
+    "main_tip_at_first_census": "0ca81cca",
+    "main_tip_at_reverification": "cb0f9c3f",
+    "gaps_unchanged_after_advance": true
+  },
+  "totals": {
+    "courses": 106,
+    "pages": 318,
+    "notes": 9151,
+    "notes_subtopics": 4326,
+    "questions": 44502,
+    "question_sets": 2639,
+    "flashcards": 56572,
+    "flashcard_decks": 1912
+  },
+  "empty_selectors": {
+    "total": 47,
+    "revision-notes": 3,
+    "exam-questions": 15,
+    "flashcards": 29,
+    "courses_affected": 30,
+    "all_three_empty": [
+      "cie-a-level-geography-21",
+      "cie-a-level-maths-20-pure-2",
+      "igcse-history-17"
+    ]
+  },
+  "cross_checks": {
+    "notes_sum_equals_census_of_record": 9151,
+    "browser_verified_count_pairs_reconfirmed": 8,
+    "zero_pages_verified_in_raw_html": true
+  },
+  "verdict": "content gap, not breakage \u2014 all 318 pages render"
+}

@@ -1,0 +1,56 @@
+{
+  "task": "T-QA-ORG-001",
+  "run": "run-001",
+  "kind": "live-audit-evidence",
+  "recorded_utc": "2026-11-20T07:44:47Z",
+  "method": "code audit (selector/page.tsx, spec-tree.ts, courses.ts, topic-tree.tsx at cb0f9c3f) + live 3-course diff: selector page HTML vs note-page sidebar extracted in-session from the demo session; generator scripts live in the QA session workspace (scripts/sidebar_audit.sh, scripts/extract_orgs.py)",
+  "prod_at_verification": {
+    "main_tip_during_live_audit": "cb0f9c3f",
+    "main_tip_at_recording": "118cbd35",
+    "code_cites_unchanged_after_advance": "spec-tree.ts:210 sec.order numbering confirmed on 118cbd35"
+  },
+  "courses_audited": [
+    {
+      "slug": "igcse-maths-b-16",
+      "selector_sections": 10,
+      "selector_numbers": "11-20",
+      "sidebar_topics": 10,
+      "sidebar_numbers": "1-10",
+      "notes_selector": 199,
+      "notes_sidebar_meta_sum": 197
+    },
+    {
+      "slug": "cie-igcse-english-literature-21",
+      "selector_sections": 5,
+      "selector_numbers": "16-20",
+      "sidebar_topics": 15,
+      "sidebar_numbers": "1-15",
+      "notes_selector": 173,
+      "notes_sidebar_meta_sum": 93,
+      "official_spine_note": "Section A: Poetry appears 6x as year-variant topics (2023/2024/2025)"
+    },
+    {
+      "slug": "cie-a-level-chemistry-25",
+      "selector_sections": 37,
+      "selector_numbers": "38-74 (double-numbered: '38. 1. Atomic Structure')",
+      "sidebar_topics": 37,
+      "sidebar_numbers": "1-37",
+      "notes_selector": 239,
+      "notes_sidebar_meta_sum": 70
+    }
+  ],
+  "numbering_offset_law": "offset = exactly the course's official-topic count (10/15/37) — spec-tree.ts:210 uses raw corpus node order (sec.order) which continues after the official topics; official tree numbers by position (spec-tree.ts:134)",
+  "consumers_of_sec_number": [
+    "revision-notes/page.tsx (notes selector)",
+    "exam-questions/page.tsx:159 smeAllRows — verify both surfaces in the fix PR"
+  ],
+  "undercount": {
+    "bridged_notes_without_official_homes_corpus_wide": 598,
+    "source": "smeRowOfNote wave-8 comment (spec-tree.ts:276-308) — 2,077 notes on 27 layered courses resolve 1:1 to SME rows; sidebar counts only official homes"
+  },
+  "demo_bounce": {
+    "observed": "fresh demo session -> note URL client-side redirects to /login?next=... ; curl with the same session cookie gets 200 on the same URL",
+    "classification": "same class as the known /api/v1/learners/me/progress 401; escalated to P0 in the PENDING doc"
+  },
+  "verdict": "mirror law by design (ADR-039 wave 8); corpus-order numbering = defect (P1); sidebar divergence + undercount = product decision (P2, mirroring dissolves both); demo bounce = defect (P0)"
+}

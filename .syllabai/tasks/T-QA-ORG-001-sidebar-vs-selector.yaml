@@ -1,0 +1,60 @@
+version: 1
+task:
+  id: T-QA-ORG-001
+  title: "Sidebar vs selector organization on the 27 SME-layered courses — numbering fix (spec-tree.ts:210), sidebar mirror decision, demo-session note-page bounce: per docs/PENDING-sidebar-organization-2026-11-20.md"
+  owner: "unassigned"
+  status: OPEN
+  priority: P1
+  wave: pending-backlog
+  deps: []
+  execution_record: >
+    Recorded 2026-11-20 by the QA verification session from the user-reported
+    mismatch ("the Topic Trees sidebar beside any revision note — organization
+    of notes does not match the selector page's ones"). Confirmed live on 3
+    courses (igcse-maths-b-16 / cie-igcse-english-literature-21 /
+    cie-a-level-chemistry-25); root cause in code verified at cb0f9c3f and
+    re-verified unchanged on the advanced tip 118cbd35 (spec-tree.ts:210
+    sec.order numbering; exam-questions/page.tsx:159 consumes the same field).
+    The PENDING doc carries the P0-P3 ladder with owner lanes (R5 hub /
+    R3-R4 API / content lane / operator decision). The fixes themselves are
+    NOT in this card's scope — recording only, per the T-QA-GAPS-001 pattern.
+    This card supersedes the earlier "faithfully mirrors the two SME
+    taxonomies, not a bug" note in the QA report: the mirror law is by design,
+    but the corpus-order numbering and the sidebar undercount are defects.
+    UPDATE 2026-11-20 (run-002, operator directive "Ok, proceed"): P1 (numbering)
+    and P2 (sidebar SME mirror, notes+questions variants) IMPLEMENTED on branch
+    t-qa-org-002/fix (0eaf4e23, off origin/main 74b19a41) — pure builder
+    buildSmeSidebar in spec-tree.ts, mirror pick in topic-tree.tsx, 13 law
+    tests, tsc + eslint clean. P0 (demo note-page bounce) RETRACTED same-session:
+    auth 200 + renders; the anonymous 307 is the designed route-gate session
+    gate — erratum in receipts/T-QA-ORG-001/run-002.json. Card stays OPEN until
+    the branch lands (push blocked in the QA sandbox: apply the two
+    download/T-QA-ORG-002 patches IN ORDER with git am, or push the branch).
+    UPDATE 2026-11-20 (run-003, operator directive "Proceed with P3, content
+    lane"): P3 IMPLEMENTED on the same branch (5438494a, off origin/main
+    a144d4d1) — qualifyDuplicateTitles (spec-tree.ts, pure): verbatim-colliding
+    official/SME titles get an honest "(n of k)" qualifier (lit-21's 6x
+    "Section A: Poetry" year-rotation, chem-25's AS/A2 repeats, 22 bundles
+    carry bundle-level dup titles); the paper/component names are unrecoverable
+    in-repo (spine/kg/curriculum all agree), so nothing is invented; cross-tree
+    official-vs-SME pairs intentionally untouched. 18/18 law tests incl. the
+    REAL lit-21 bundle, tsc + eslint clean. Upstream residual: restore real
+    names + untruncated titles at the corpus parse — the rule then no-ops.
+base:
+  repo: "syllabai-v2 @ 118cbd35 (origin/main at recording; live audit run
+    against the prod deploy of cb0f9c3f, code cites re-verified on the new tip)"
+basis: >
+  User report 2026-11-20. Audit evidence: 3-course live diff (selector page
+  HTML vs note-page sidebar), code chain smeRowOfNote/subtopicOfNote/
+  spec-tree.ts:210, demo-session bounce reproduced in-browser while curl gets
+  200. Full narrative in the QA session's browser-qa report; receipt
+  .syllabai/receipts/T-QA-ORG-001/run-001.json.
+scope:
+  allowed:
+    - "docs/PENDING-sidebar-organization-2026-11-20.md"
+    - ".syllabai/tasks/T-QA-ORG-001-sidebar-vs-selector.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-QA-ORG-001/**"
+  forbidden:
+    - "apps/** (R5 hub lane / R3-R4 API lanes own the fixes)"
+    - "packages/** (R2's lane)"
+    - ".syllabai/worklog.md (append-only shepherd law — untouched by this recording)"
