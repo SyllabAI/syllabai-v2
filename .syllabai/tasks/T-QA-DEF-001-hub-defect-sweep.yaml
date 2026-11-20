@@ -42,9 +42,10 @@ execution_record: >
     (3) syllabai.com parked for sale → EXTERNAL/OPS: DNS registrar property,
     not fixable in-repo. NOTE: the codebase's origin of record is
     www.syllab-ai.com (layout.tsx metadataBase) — the sitemap now uses it.
-    Card stays OPEN until (1) and (2) get live repros and the branch lands
-    (push blocked in the QA sandbox: apply download/T-QA-DEF-001/*.patch
-    with git am, or push the branch).
+    LANDED 2026-11-20: defects 4+5 merged to main via PR #1162 (c7cd95b9).
+    The card stays OPEN only for the live-repro items: (1) /progress 401
+    and (2) dashboard #418 need browser-verified repros; (3) is external;
+    (6) is by-design. No sandbox push blocker remains.
 base:
   repo: "syllabai-v2 @ 361a754c (origin/main at fix time)"
 basis: >

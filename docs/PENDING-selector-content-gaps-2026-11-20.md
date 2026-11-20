@@ -1,6 +1,6 @@
 # PENDING — Selector content gaps: 30 courses / 47 empty selectors
 
-> Recorded 2026-11-20 · status: **TRIAGED (run-002): all 47 are TRUE corpus gaps — zero pipeline dropouts (corpus == live exactly). PENDING content production** · task card: `.syllabai/tasks/T-QA-GAPS-001-selector-content-gaps.yaml` (status OPEN)
+> Recorded 2026-11-20 · status: **TRIAGED (run-002): all 47 are TRUE corpus gaps — zero pipeline dropouts (corpus == live exactly). PENDING content production** · records landed via PR #1163 (48fb28be) · task card: `.syllabai/tasks/T-QA-GAPS-001-selector-content-gaps.yaml` (status OPEN)
 > Evidence: `docs/selector-census-2026-11-20.csv` (318 rows, one per course × selector view) · receipts: `run-001.json` (live census) + `run-002.json` (corpus triage)
 
 ## What this is
