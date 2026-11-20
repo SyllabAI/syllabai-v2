@@ -29,15 +29,21 @@
  *  - [2-Var Results] adds the y-set and Σxy; [Reg Results] adds the
  *    linear regression y = a + bx coefficients (a, b) and r.
  *
- * DOCUMENTED RULING (the quartile law): Q1/Q3 are the medians of the
- * lower/upper halves of the SORTED data, with the median value itself
- * included in BOTH halves when n is odd (n even → the halves are the
- * first/last n/2 values). This is the Casio convention as taught
- * across the UK exam boards and coherent with the fx-83GTX manual's
- * worked example {1..10} → Q1 3, Med 5.5, Q3 8; MG's STAT internals
- * were never captured (the card's evidence map), so the law is pinned
- * as OUR convention — the device-verification open question rides the
- * card, exactly like the 83GT "," binding ruling in phase B.
+ * DOCUMENTED RULING (the quartile law — ERRATUM 2026-11-20, the
+ * operator-ruled reversal of the phase-C include-median ruling): Q1/Q3
+ * are the medians of the lower/upper halves of the SORTED data, with
+ * the median value itself EXCLUDED from BOTH halves when n is odd
+ * (n even → the halves are the first/last n/2 values — unchanged).
+ * The device evidence that forced the flip: (1) the LIVE MG STAT probe
+ * ({1..9} → Q1 2.5, Med 5, Q3 7.5 — the exclude-median reading; the
+ * probe closed the card's "MG's STAT internals were never captured"
+ * open question); (2) the official Casio fx-570EX/fx-991EX ClassWiz
+ * guide's odd-n worked example — the data 9,13,7,2,19,17,6,1,10,4,18
+ * (n=11) printed Q1 4, Med 9, Q3 17, exactly the exclude-median
+ * reading (include-median would read 5/15). The even-n {1..10} worked
+ * set (Q1 3, Med 5.5, Q3 8) matches BOTH laws and cannot distinguish
+ * them — the phase-C ruling over-read it; the even-n path is untouched
+ * by this erratum.
  *
  * Table:
  *  - Table Type: f(x)/g(x) both (the initial default), f(x) only, or
@@ -276,10 +282,16 @@ function medianOf(sorted: Rat[]): Rat {
   return mkRat(sorted[mid - 1].n * sorted[mid].d + sorted[mid].n * sorted[mid - 1].d, sorted[mid - 1].d * sorted[mid].d * BigInt(2));
 }
 
-export function quartilesOf(sorted: Rat[]): { q1: Rat; q3: Rat } {
+export function quartilesOf(sorted: Rat[]): { q1: Rat | null; q3: Rat | null } {
   const n = sorted.length;
   if (n === 0) throw new CalcError("Math ERROR");
-  const half = n % 2 ? Math.floor(n / 2) + 1 : n / 2; // the median rides BOTH halves when n is odd
+  // the exclude-median law: the median row is in NEITHER half when n is odd
+  // (the erratum above); even n is the clean first/last n/2 split — unchanged.
+  // n = 1 leaves BOTH halves empty: the device class renders the honest
+  // null ("–" on the MG probe's single-value run; Q1/Q3 = –, Med = the value)
+  // — the same posture as s²x/sx at n < 2, not a fake number.
+  const half = Math.floor(n / 2);
+  if (half === 0) return { q1: null, q3: null };
   const lower = sorted.slice(0, half);
   const upper = sorted.slice(n - half);
   return { q1: medianOf(lower), q3: medianOf(upper) };
@@ -296,8 +308,8 @@ export interface Stat1Var {
   sX: CalcValue | null;
   minX: CalcValue;
   med: CalcValue;
-  q1: CalcValue;
-  q3: CalcValue;
+  q1: CalcValue | null; // null → the device's honest "–" (n = 1: the exclude-median halves are empty)
+  q3: CalcValue | null;
   maxX: CalcValue;
 }
 

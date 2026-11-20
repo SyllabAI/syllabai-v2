@@ -932,13 +932,14 @@ describe("(U14) the Statistics app — the manual's flow, end to end", () => {
     clickCtl(el, "data-calc-screen-btn", "1-Var Results");
     expect(screenOf(el)).toBe("stat-res");
     // the manual's value set: n, x̄, the quartiles — {1,2,3}: n=3, x̄=2,
-    // Q1 3/2 / Med 2 / Q3 5/2 (the include-median halves law; the
-    // fraction display law renders exact rationals as fractions)
+    // Q1 1 / Med 2 / Q3 3 (the exclude-median halves law — the
+    // 2026-11-20 device-verified erratum; the fraction display law
+    // renders exact rationals as fractions)
     expect(cellText(el, '[data-calc-stat-value="n"]')).toBe("3");
     expect(cellText(el, '[data-calc-stat-value="x mean"]')).toBe("2");
-    expect(cellText(el, '[data-calc-stat-value="Q1"]')).toBe("3/2");
+    expect(cellText(el, '[data-calc-stat-value="Q1"]')).toBe("1");
     expect(cellText(el, '[data-calc-stat-value="median"]')).toBe("2");
-    expect(cellText(el, '[data-calc-stat-value="Q3"]')).toBe("5/2");
+    expect(cellText(el, '[data-calc-stat-value="Q3"]')).toBe("3");
     expect(cellText(el, '[data-calc-stat-value="sum x"]')).toBe("6");
     act(() => {
       root.unmount();
