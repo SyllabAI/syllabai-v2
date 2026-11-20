@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "The renal artery brings blood in for filtering.",
           "misconception": "vessel confused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The ureter",
+                    "ureter"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,24 @@
           "correct": false,
           "explanation": "That describes the renal artery.",
           "misconception": "direction flipped"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Urea directly to the liver",
+            "Unfiltered blood towards the kidneys",
+            "Urine towards the bladder",
+            "Filtered blood away from the kidneys"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Filtered blood away from the kidneys"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +156,26 @@
           "explanation": "The kidneys produce urine continuously; they do not store it.",
           "misconception": "organ wrong"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "In the bladder"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +212,26 @@
           "explanation": "The system is paired at those two points.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Two of each"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +267,26 @@
           "correct": false,
           "explanation": "The ureter follows the kidney, not the reverse.",
           "misconception": "route reversed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Kidney, ureter, bladder, urethra"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

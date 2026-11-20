@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Oxygen is always present too.",
           "misconception": "element omitted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Carbon, hydrogen and oxygen"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "Those build proteins.",
           "misconception": "protein units misattributed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Many glucose molecules linked in long chains",
+            "Glycerol and fatty acids",
+            "Amino acids",
+            "Cellulose fragments"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Many glucose molecules linked in long chains"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Insolubility, not solubility, suits storage.",
           "misconception": "property inverted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because they carry nitrogen for growth",
+            "Because they are the smallest sugars available",
+            "Because they dissolve quickly into the blood",
+            "Because they are large and insoluble, so they stay in place inside cells"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because they are large and insoluble, so they stay in place inside cells"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,26 @@
           "explanation": "The note names maltose as two glucose molecules joined.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Two glucose molecules"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +264,24 @@
           "correct": false,
           "explanation": "All four sit in one family.",
           "misconception": "family unity denied"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Proteins; they grow by adding amino acids",
+            "Lipids; they grow from oils to fats",
+            "Carbohydrates; the molecules grow from single units to very long chains",
+            "A mixed list with no single family"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Carbohydrates; the molecules grow from single units to very long chains"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -285,6 +379,26 @@
           "explanation": "Those build proteins.",
           "misconception": "protein units misattributed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Glycerol and fatty acids"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -320,6 +434,24 @@
           "correct": false,
           "explanation": "Both belong to the lipid family.",
           "misconception": "family split invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They are both lipids, differing in their state at room temperature",
+            "Oils contain nitrogen while fats do not",
+            "Fats are carbohydrates and oils are lipids",
+            "Only oils can store energy"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "They are both lipids, differing in their state at room temperature"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +489,24 @@
           "explanation": "Sequence variety is the stated source of protein diversity.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because every protein uses exactly the same order",
+            "Because proteins link to carbohydrates in varied ways",
+            "Because amino acids can be arranged in many different orders",
+            "Because amino acids can turn into glycerol"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because amino acids can be arranged in many different orders"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +543,24 @@
           "explanation": "Fatty acids belong to lipids.",
           "misconception": "lipid unit misattributed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The number of fatty acids attached",
+            "The amount of starch stored nearby",
+            "Its specific amino acid sequence",
+            "The temperature of the cell"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Its specific amino acid sequence"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +596,26 @@
           "correct": false,
           "explanation": "Glycogen is a carbohydrate.",
           "misconception": "carbohydrate misfiled"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Enzymes, haemoglobin and keratin"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

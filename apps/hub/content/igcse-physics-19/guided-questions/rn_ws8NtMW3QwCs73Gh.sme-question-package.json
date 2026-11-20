@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "Deflection is an observation, not the set variable.",
           "misconception": "variable swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the rod material",
+                    "rod material"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,24 @@
           "correct": false,
           "explanation": "String tension is not the measured quantity.",
           "misconception": "irrelevant quantity"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the room temperature",
+            "the charge on the rod",
+            "the string tension",
+            "the rod length"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the charge on the rod"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +156,24 @@
           "explanation": "Touching lets the charge flow away, removing the observed forces.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the rods would melt",
+            "the charge would double",
+            "contact would discharge them and the forces would vanish",
+            "the string would snap"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "contact would discharge them and the forces would vanish"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "The rod hangs clear of the stand.",
           "misconception": "method slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "heat up evenly",
+            "rub against the stand",
+            "touch the cradle",
+            "swing freely when a force acts"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "swing freely when a force acts"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,24 @@
           "correct": false,
           "explanation": "Varying the rubbing undermines the comparison.",
           "misconception": "control slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "rubbing for the same time with the same cloth",
+            "using rods of different lengths",
+            "rubbing faster each time",
+            "changing the cloth each trial"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "rubbing for the same time with the same cloth"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -289,6 +382,24 @@
           "explanation": "Only electrons move; positive charge never travels.",
           "misconception": "particle confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it loses electrons to the cloth",
+            "electrons transfer onto it from the cloth",
+            "the cloth donates positive charge",
+            "protons transfer onto it from the cloth"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "electrons transfer onto it from the cloth"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -324,6 +435,24 @@
           "correct": false,
           "explanation": "If it kept them all it would stay neutral.",
           "misconception": "conservation myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "loses electrons to the cloth",
+            "gains electrons",
+            "keeps every electron",
+            "gains protons"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "loses electrons to the cloth"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -361,6 +490,26 @@
           "explanation": "Like charges repel, so the test rod is also negative.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "charged the same, negative"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -397,6 +546,26 @@
           "explanation": "Charge is not created by proximity.",
           "misconception": "nonsense option"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "opposite to the rod's"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -432,6 +601,24 @@
           "correct": false,
           "explanation": "Mass loss is not measurable at this scale.",
           "misconception": "invented method"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the rod's temperature rise",
+            "the string's angle only",
+            "the number of paper circles picked up",
+            "the cloth's mass loss"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the number of paper circles picked up"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Dispersion is a separate effect.",
           "misconception": "concept swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "splits into colours",
+            "passes into the new medium and bends",
+            "stops entirely",
+            "stays in the original medium, bouncing back"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "stays in the original medium, bouncing back"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "No fixed sum is part of the law.",
           "misconception": "sum invention"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "angle of incidence = angle of refraction",
+            "angle of incidence = angle of reflection",
+            "the angles add to ninety degrees",
+            "angle of incidence is twice the angle of reflection"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "angle of incidence = angle of reflection"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,27 @@
           "explanation": "The normal is the reference line for all such angles.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the normal",
+                    "normal"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "Angles are quoted from the normal, not the surface.",
           "misconception": "reference error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "35 degrees measured from the mirror surface",
+            "35 degrees from the normal on the other side",
+            "55 degrees from the normal",
+            "70 degrees from the normal"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "35 degrees from the normal on the other side"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,24 @@
           "correct": false,
           "explanation": "The spec statement is explicitly about all waves.",
           "misconception": "scope denial"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "all waves, transverse and longitudinal",
+            "transverse waves only",
+            "light only",
+            "none, it is a light-only effect"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "all waves, transverse and longitudinal"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -287,6 +380,26 @@
           "explanation": "Each ray carries one direction arrow.",
           "misconception": "convention confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "towards the boundary"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -322,6 +435,26 @@
           "correct": true,
           "explanation": "Into the denser medium the ray bends towards the normal.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "towards the normal"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -359,6 +492,26 @@
           "explanation": "Rays bend linearly at flat boundaries.",
           "misconception": "shape invention"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "away from the normal"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -395,6 +548,24 @@
           "explanation": "A speed change is the cause of the bending.",
           "misconception": "invariant assumption"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "frequency and speed, but not wavelength",
+            "all three",
+            "speed and wavelength, but not frequency",
+            "none of them"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "speed and wavelength, but not frequency"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -430,6 +601,24 @@
           "correct": true,
           "explanation": "Along the normal there is no direction change on refraction.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "passes straight through without bending",
+            "reflects completely",
+            "bends towards the normal",
+            "stops at the boundary"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "passes straight through without bending"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

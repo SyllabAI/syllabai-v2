@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "The observation is the blue colour, not a colourless solution.",
           "misconception": "dissolving confused with testing"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Blue copper(II) sulfate turns white",
+            "White litmus turns red",
+            "The powder dissolves colourlessly",
+            "White anhydrous copper(II) sulfate turns blue"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "White anhydrous copper(II) sulfate turns blue"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,36 @@
           "correct": false,
           "explanation": "One water undercounts the five held in the crystal.",
           "misconception": "single water assumed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "3",
+              "text": "2"
+            },
+            {
+              "id": "2",
+              "text": "5"
+            },
+            {
+              "id": "4",
+              "text": "1"
+            },
+            {
+              "id": "1",
+              "text": "10"
+            }
+          ],
+          "correctOrder": [
+            "4",
+            "3",
+            "2",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -117,6 +165,26 @@
           "explanation": "One water is not the true hydrated form.",
           "misconception": "waters undercounted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "CuSO4.5H2O"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +221,24 @@
           "explanation": "Bonded water changes the salt's environment and with it the colour.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Water bonds into the crystal structure of the salt",
+            "The salt burns in air",
+            "The salt dissolves and shows its true colour",
+            "The water is boiled away"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Water bonds into the crystal structure of the salt"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +274,27 @@
           "correct": false,
           "explanation": "Green belongs to carbonates and iron(II) compounds, not to this salt.",
           "misconception": "carbonate colour intrudes"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "A white powder",
+                    "white powder"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

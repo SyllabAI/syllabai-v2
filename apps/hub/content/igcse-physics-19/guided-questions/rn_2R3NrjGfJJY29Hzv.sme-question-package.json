@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Weight varies with the local field; mass is the fixed one.",
           "misconception": "invariance swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The volume an object occupies",
+            "The force an object with mass experiences in a gravitational field",
+            "The amount of matter in an object",
+            "A property that stays fixed across planets"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The force an object with mass experiences in a gravitational field"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Many quantities are scalars — energy, temperature, density.",
           "misconception": "exclusivity myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Has magnitude but no direction",
+            "Is measured in newtons",
+            "Is the only scalar in physics",
+            "Changes with location"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Has magnitude but no direction"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,26 @@
           "explanation": "Energy carries no direction.",
           "misconception": "family flip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Weight"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +209,26 @@
           "explanation": "More massive planets have stronger gravitational fields.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Mass"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +264,26 @@
           "correct": false,
           "explanation": "Mass never grows a direction.",
           "misconception": "family flip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Stays exactly the same"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -285,6 +381,36 @@
           "explanation": "W = 6 × 10 = 60 N.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "2",
+              "text": "16 N"
+            },
+            {
+              "id": "1",
+              "text": "0.6 N"
+            },
+            {
+              "id": "4",
+              "text": "60 N"
+            },
+            {
+              "id": "3",
+              "text": "36 N"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -320,6 +446,26 @@
           "correct": false,
           "explanation": "That is a velocity unit.",
           "misconception": "unit slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "N/kg"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -357,6 +503,24 @@
           "explanation": "Unrelated to g.",
           "misconception": "irrelevance"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The acceleration of an object in freefall",
+            "The planet's surface area",
+            "The object's mass density",
+            "The object's volume"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The acceleration of an object in freefall"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +557,26 @@
           "explanation": "Only a fourfold mass change would quadruple the weight.",
           "misconception": "overshoot"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Doubles"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -428,6 +612,36 @@
           "correct": false,
           "explanation": "That imports an out-of-programme value of g.",
           "misconception": "value invention"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "784 N"
+            },
+            {
+              "id": "3",
+              "text": "40 N"
+            },
+            {
+              "id": "2",
+              "text": "800 N"
+            },
+            {
+              "id": "1",
+              "text": "160 N"
+            }
+          ],
+          "correctOrder": [
+            "3",
+            "1",
+            "4",
+            "2"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },

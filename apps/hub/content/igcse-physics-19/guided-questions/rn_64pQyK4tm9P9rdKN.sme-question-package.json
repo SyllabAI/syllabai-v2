@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Coulombs measure charge.",
           "misconception": "unit slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "ohms"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "That defines an ampere, not an ohm.",
           "misconception": "unit swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "one amp producing one volt",
+            "one volt producing one amp",
+            "one coulomb per second",
+            "one joule per coulomb"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "one volt producing one amp"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,26 @@
           "explanation": "Doubling is not blocking; some current still flows.",
           "misconception": "extreme myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "halve"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +211,36 @@
           "explanation": "That divides current by resistance instead of multiplying.",
           "misconception": "division slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "30 V"
+            },
+            {
+              "id": "4",
+              "text": "0.03 V"
+            },
+            {
+              "id": "3",
+              "text": "10.3 V"
+            },
+            {
+              "id": "2",
+              "text": "3 V"
+            }
+          ],
+          "correctOrder": [
+            "4",
+            "2",
+            "3",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -188,6 +276,27 @@
           "correct": false,
           "explanation": "That behaviour belongs to heating components like filaments, not copper wiring.",
           "misconception": "variable myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a very low resistance",
+                    "very low resistance"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

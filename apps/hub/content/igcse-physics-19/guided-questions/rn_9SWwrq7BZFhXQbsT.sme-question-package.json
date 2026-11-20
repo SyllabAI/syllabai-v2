@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -525,6 +525,24 @@
           "explanation": "Mass comes from the balance.",
           "misconception": "role swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "mass can only be found from volume formulas",
+            "density formulas require geometry by definition",
+            "volumes are always too small to measure",
+            "the object's volume is often not stated and must come from its shape"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the object's volume is often not stated and must come from its shape"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -560,6 +578,26 @@
           "correct": true,
           "explanation": "2 × 3 × 4 = 24 cubic metres.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "24 m³"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -597,6 +635,24 @@
           "explanation": "Litres are not the target volume unit here.",
           "misconception": "unit slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the mass converts to grams instead",
+            "the lengths convert to metres, giving a volume in metres cubed",
+            "nothing — centimetres feed kg/m³ directly",
+            "the volume converts to litres"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the lengths convert to metres, giving a volume in metres cubed"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -633,6 +689,24 @@
           "explanation": "Cubing suits cubes, not cylinders.",
           "misconception": "formula slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "cube the radius",
+            "multiply π by the radius squared by the height",
+            "add the radius to the height",
+            "multiply the radius by the height"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "multiply π by the radius squared by the height"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -668,6 +742,24 @@
           "correct": false,
           "explanation": "That inverts the division.",
           "misconception": "inversion slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "density 60 × 0.0072 ≈ 0.43 kg/m³",
+            "volume 1.32 m³, then 60 ÷ 1.32 ≈ 45 kg/m³",
+            "volume 0.0072 m³, then 60 ÷ 0.0072 ≈ 8300 kg/m³",
+            "volume 0.0072 m³, then 0.0072 ÷ 60 ≈ 0.00012 kg/m³"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "volume 0.0072 m³, then 60 ÷ 0.0072 ≈ 8300 kg/m³"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

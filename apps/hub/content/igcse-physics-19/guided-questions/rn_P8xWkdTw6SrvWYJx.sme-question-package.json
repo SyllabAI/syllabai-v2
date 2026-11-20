@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Time period is the dependent variable being measured.",
           "misconception": "variable swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the loudness of the hum test",
+            "the number of divisions on the screen",
+            "the time period of the wave",
+            "the frequency of the tuning fork chosen"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the frequency of the tuning fork chosen"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "The fork’s frequency is fixed by its construction.",
           "misconception": "variable mix-up"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "to make the trace taller",
+            "so that multiple complete waves fit on the screen",
+            "to change the fork’s frequency",
+            "to silence background noise"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "so that multiple complete waves fit on the screen"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "All visible waves span several periods, not one.",
           "misconception": "reading error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "count the divisions spanned by all visible waves",
+            "measure the height of the tallest peak",
+            "count the divisions spanned by one complete wave cycle",
+            "read the frequency directly off the screen"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "count the divisions spanned by one complete wave cycle"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,36 @@
           "explanation": "T = 4 ms = 0.004 s, so f = 1 / 0.004 = 250 Hz.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "2",
+              "text": "0.25 Hz"
+            },
+            {
+              "id": "4",
+              "text": "250 Hz"
+            },
+            {
+              "id": "1",
+              "text": "4000 Hz"
+            },
+            {
+              "id": "3",
+              "text": "4 Hz"
+            }
+          ],
+          "correctOrder": [
+            "2",
+            "3",
+            "4",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -188,6 +272,24 @@
           "correct": false,
           "explanation": "Screens do not need humming.",
           "misconception": "method myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "to clean the microphone",
+            "to warm up the oscilloscope screen",
+            "to set the fork frequency",
+            "to check the microphone displays a signal"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "to check the microphone displays a signal"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

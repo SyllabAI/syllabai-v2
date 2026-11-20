@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Memory helps, but the method backs it up when an unfamiliar ion appears.",
           "misconception": "method skipped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Memorise the charge with no method behind it",
+            "Read the atomic number off the periodic table",
+            "Count the electrons in the outer electron shell",
+            "Count all the electrons the atom holds"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Count the electrons in the outer electron shell"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Sharing belongs to covalent bonding; charge deduction here assumes transfer.",
           "misconception": "covalent sharing imported"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It receives electrons and becomes a negative ion",
+            "It donates the electrons and becomes a positive ion",
+            "It does nothing, being already stable",
+            "It shares electrons to fill the shell"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It donates the electrons and becomes a positive ion"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,26 @@
           "explanation": "The negative sign belongs to receivers; group 2 metals donate.",
           "misconception": "sign flipped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "2+"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +209,26 @@
           "explanation": "Six outer electrons means two short of a full shell, so two arrive and the charge is 2-.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "2-"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +264,24 @@
           "correct": false,
           "explanation": "Molecules are neutral; compound ions carry their charge like any other ion.",
           "misconception": "molecule and ion merged"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It carries a charge greater than 1",
+            "It is built from more than one element",
+            "It is a molecule with no charge",
+            "It forms only from transition metals"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It is built from more than one element"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -289,6 +383,26 @@
           "explanation": "No table row gives silver a 3+; its charge is fixed at 1+.",
           "misconception": "charge invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Ag+"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -324,6 +438,26 @@
           "correct": false,
           "explanation": "No row shows iron at 1+; the pair is 2+ with 3+.",
           "misconception": "wrong pair recalled"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "2+ and 3+"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -361,6 +495,26 @@
           "explanation": "The table lists Zinc(II) at 2+, one fixed charge.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Zn2+"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -397,6 +551,26 @@
           "explanation": "Nitrate is a negative ion; the table lists it at 1-.",
           "misconception": "sign flipped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "NO3-"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -432,6 +606,24 @@
           "correct": false,
           "explanation": "The ammonium subscript is 4, and carbonate's charge is 2-, not 1-.",
           "misconception": "subscript and charge dropped"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Ammonium NH4 2+ and carbonate CO3-",
+            "Ammonium NH3+ and carbonate CO3-",
+            "Ammonium NH4+ and carbonate CO3 2-",
+            "Ammonium NH4- and carbonate CO3 2+"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Ammonium NH4+ and carbonate CO3 2-"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

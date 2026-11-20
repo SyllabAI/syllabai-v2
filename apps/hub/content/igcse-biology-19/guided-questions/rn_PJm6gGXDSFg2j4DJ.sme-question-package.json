@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Tearing protects the surface, it does not focus.",
           "misconception": "function confused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The way the lens performs fine focusing by changing shape",
+            "Tearing in response to irritation",
+            "The widening of the pupil in dim light",
+            "The stretching of the optic nerve"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The way the lens performs fine focusing by changing shape"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Contraction produces the fat lens, not the thin one.",
           "misconception": "lens outcome wrong"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Ciliary muscles contract; lens becomes thinner",
+            "Suspensory ligaments contract; pupil narrows",
+            "Ciliary muscles relax; lens becomes thinner",
+            "Ciliary muscles contract; lens becomes thicker"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Ciliary muscles contract; lens becomes thicker"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,26 @@
           "explanation": "The cornea and lens always bend light somewhat.",
           "misconception": "extreme claimed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Light is refracted less"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "The fat near-lens bends light more strongly.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Near objects: suspensory ligaments tight",
+            "Distant objects: lens fatter",
+            "Distant objects: ciliary muscles contract",
+            "Near objects: light refraction more"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Near objects: light refraction more"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "Tearing risk is not the issue; tissue type is.",
           "misconception": "reason invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because contraction would tear the retina",
+            "Because they only work at night",
+            "Because they are not muscles, so they cannot contract",
+            "Because they are too small to move"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because they are not muscles, so they cannot contract"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "A given decay emits one type (or a subset), not necessarily all three.",
           "misconception": "triple emission"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "decay happens only in artificial sources",
+            "scientists can predict when each nucleus will decay",
+            "decay always emits all three radiations at once",
+            "the timing of a single nucleus’s decay cannot be predicted"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the timing of a single nucleus’s decay cannot be predicted"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Nuclear stability is unrelated to the atomic radius.",
           "misconception": "radius cause"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "an imbalance of protons or neutrons",
+            "absorbing visible light",
+            "a high atomic radius",
+            "too many orbiting electrons"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "an imbalance of protons or neutrons"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "Both carbon isotopes have 6 protons.",
           "misconception": "proton difference"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "carbon-14 has lost electrons",
+            "carbon-14 has extra protons",
+            "carbon-12 is ionised",
+            "carbon-14 carries two extra neutrons"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "carbon-14 carries two extra neutrons"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,27 @@
           "explanation": "The emission carries energy away, settling the nucleus.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "it becomes more stable",
+                    "becomes more stable"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +263,24 @@
           "correct": false,
           "explanation": "The emissions are subatomic, not whole atoms.",
           "misconception": "atom emission"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "only waves",
+            "only particles",
+            "a high-energy particle or a high-energy wave",
+            "slow, heavy atoms"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a high-energy particle or a high-energy wave"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -285,6 +378,27 @@
           "explanation": "That is a beta particle.",
           "misconception": "beta confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a helium nucleus",
+                    "helium nucleus"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -320,6 +434,24 @@
           "correct": false,
           "explanation": "Paper stops alpha; beta sails through.",
           "misconception": "paper absorption"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a few centimetres of air only",
+            "nothing stops beta",
+            "a few millimetres of aluminium",
+            "a sheet of paper"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a few millimetres of aluminium"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +489,26 @@
           "explanation": "Alpha is the most strongly ionising of the three.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "alpha"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -393,6 +545,26 @@
           "explanation": "Beta electrons are fast, and gamma is not an electron at all.",
           "misconception": "electron confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "high-energy electromagnetic waves"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -428,6 +600,26 @@
           "correct": false,
           "explanation": "Gamma would pass aluminium and be cut by thick lead.",
           "misconception": "gamma reading"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "beta only"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

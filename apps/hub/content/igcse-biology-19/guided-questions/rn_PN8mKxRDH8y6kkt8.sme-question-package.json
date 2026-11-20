@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Photosynthesis is a plant process and consumes carbon dioxide.",
           "misconception": "kingdom confused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Aerobic respiration"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "The lungs handle carbon dioxide and water vapour only.",
           "misconception": "organ invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "In the lungs, from carbon dioxide",
+            "In the skin, from sweat",
+            "In the liver, from excess amino acids",
+            "In the kidneys, from filtered blood"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "In the liver, from excess amino acids"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Carbon dioxide does not clog filters; its harm is chemical.",
           "misconception": "mechanism invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It blocks the nephron filters physically",
+            "It raises blood pressure directly",
+            "It binds to haemoglobin permanently",
+            "It dissolves to form an acid that lowers pH and slows enzymes"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It dissolves to form an acid that lowers pH and slows enzymes"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "Faeces never entered cells, so their removal is egestion.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Passing out undigested food as faeces",
+            "Losing urea in urine",
+            "Releasing carbon dioxide at the lungs",
+            "Sweating out excess salts"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Passing out undigested food as faeces"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "The damage is osmotic, not thermal.",
           "misconception": "mechanism invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They draw water out of cells by osmosis, so reactions falter",
+            "They cool the cells below enzyme range",
+            "They dissolve the cell membrane",
+            "They push extra water into cells until they burst"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "They draw water out of cells by osmosis, so reactions falter"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

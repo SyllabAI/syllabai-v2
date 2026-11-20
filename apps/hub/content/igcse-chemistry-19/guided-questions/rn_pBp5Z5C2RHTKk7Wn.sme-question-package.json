@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "That is a different reaction family altogether; no metal is used here.",
           "misconception": "metal-acid route intrudes"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Lead metal and sulfuric acid",
+            "Lead(II) sulfate and potassium nitrate",
+            "Lead(II) nitrate and potassium sulfate",
+            "Lead(II) chloride and potassium sulfate"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Lead(II) nitrate and potassium sulfate"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "The rate is not the issue; the ability to form solutions is.",
           "misconception": "rate fiction"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "So the product dissolves too",
+            "Because insoluble salts are toxic",
+            "So they can be mixed as solutions and react in water",
+            "Because soluble salts precipitate faster"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "So they can be mixed as solutions and react in water"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "Only the insoluble salt precipitates; potassium nitrate is soluble.",
           "misconception": "double precipitation imagined"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It turns into more lead(II) sulfate",
+            "It precipitates alongside the lead(II) sulfate",
+            "It stays dissolved in the liquid and is washed away later",
+            "It evaporates during stirring"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It stays dissolved in the liquid and is washed away later"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,26 @@
           "explanation": "Lead ions and sulfate ions build the insoluble lead(II) sulfate.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Pb2+ and SO42-"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "The equation is balanced as written; the 2 is essential.",
           "misconception": "balancing dismissed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The two nitrate ions in one lead(II) nitrate unit",
+            "Nothing, it is a typographical slip",
+            "The two potassium ions in potassium sulfate",
+            "The two charges on lead"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The two nitrate ions in one lead(II) nitrate unit"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

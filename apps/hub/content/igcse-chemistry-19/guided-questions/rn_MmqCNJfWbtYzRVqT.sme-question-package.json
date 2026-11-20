@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "In the dark the alkane and halogen simply coexist.",
           "misconception": "condition denied"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A plentiful supply of oxygen",
+            "No condition is needed at all",
+            "A temperature of 600 to 700 degrees",
+            "The presence of ultraviolet radiation"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The presence of ultraviolet radiation"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "Dibromo products come from alkene addition, a different family and reaction.",
           "misconception": "addition products used"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Bromomethane and hydrogen bromide"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Merging describes addition, and here two products form.",
           "misconception": "addition confused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because two molecules merge into one product",
+            "Because the molecules merely mix without reacting",
+            "Because the alkane burns in the halogen",
+            "Because a hydrogen atom on the alkane is replaced by a halogen atom"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because a hydrogen atom on the alkane is replaced by a halogen atom"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "The specification limits the treatment to a single swap, giving CH3Br rather than multi-brominated products.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Only methane may take part, ever",
+            "Only one reaction may happen per container",
+            "Only one halogen atom replaces a hydrogen per methane molecule",
+            "Only one UV photon is allowed per second"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Only one halogen atom replaces a hydrogen per methane molecule"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,26 @@
           "correct": false,
           "explanation": "No acid group forms in this substitution.",
           "misconception": "family invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Halogenoalkanes, also called haloalkanes"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

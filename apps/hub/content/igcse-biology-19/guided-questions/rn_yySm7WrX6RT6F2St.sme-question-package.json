@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Blue plays no part in this indicator's scale.",
           "misconception": "colour invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Yellow"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "Tube C holds a leaf in darkness.",
           "misconception": "tube confused"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Tube C, wrapped in foil",
+            "Tube B, in bright light",
+            "Tube A, with no leaf",
+            "Tube D, wrapped in muslin"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Tube A, with no leaf"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Insulation is not the foil's purpose.",
           "misconception": "effect invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The leaf stays warmer",
+            "No light reaches the leaf, so photosynthesis stops",
+            "The indicator evaporates more slowly",
+            "Carbon dioxide cannot enter the tube"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "No light reaches the leaf, so photosynthesis stops"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "The muslin dims the light instead of removing it.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "To let some light through, creating a dim-light treatment",
+            "To make the tube heavier",
+            "To keep the leaf moist",
+            "To block carbon dioxide partially"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "To let some light through, creating a dim-light treatment"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,26 @@
           "correct": false,
           "explanation": "Variation would break the comparison.",
           "misconception": "quantity wrong"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Twenty cubic centimetres"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

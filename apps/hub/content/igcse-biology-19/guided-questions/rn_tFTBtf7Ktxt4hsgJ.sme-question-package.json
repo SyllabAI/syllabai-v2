@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -283,6 +283,24 @@
           "explanation": "Age is not the intensity fix.",
           "misconception": "fix invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Using older participants",
+            "Counting for fifteen seconds",
+            "A controlled exercise such as step-ups at a set pace",
+            "Measuring more variables"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A controlled exercise such as step-ups at a set pace"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -318,6 +336,24 @@
           "correct": false,
           "explanation": "Breaths are visible and countable.",
           "misconception": "reason wrong"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It changes quickly after exercise, so timing errors distort the count",
+            "Because breaths are invisible",
+            "Because participants refuse to cooperate",
+            "Because exercise always stops breathing"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It changes quickly after exercise, so timing errors distort the count"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -355,6 +391,27 @@
           "explanation": "Four quarter-minutes make a minute.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The breaths-per-minute equivalent",
+                    "breaths-per-minute equivalent"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -391,6 +448,26 @@
           "explanation": "Rest settles everyone onto the same baseline.",
           "misconception": "real fix"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Playing loud music throughout"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -426,6 +503,24 @@
           "correct": false,
           "explanation": "It does not; variation is the norm.",
           "misconception": "claim false"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because breaths cannot be counted",
+            "Fitness, motivation and health differ between people",
+            "Because exercise always gives the same change",
+            "Because the stopwatch was broken"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Fitness, motivation and health differ between people"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

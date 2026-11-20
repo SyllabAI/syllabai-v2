@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Vibration is not backwards along the path; it is across it.",
           "misconception": "direction slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "at right angles to the direction of travel",
+            "opposite to the direction of travel",
+            "in every direction at once",
+            "along the direction of travel"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "at right angles to the direction of travel"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,27 @@
           "correct": false,
           "explanation": "A wavefront is a line drawn to represent one wave from above.",
           "misconception": "term confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the peak or crest",
+                    "peak or crest"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +156,24 @@
           "explanation": "Water-surface ripples are a standard transverse example.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a pulse squeezed along a spring",
+            "a sound wave in air",
+            "a ripple moving over a pond",
+            "a P-wave inside the Earth"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a ripple moving over a pond"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "The rope is the thing that vibrates.",
           "misconception": "medium inactivity myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it stays completely still",
+            "each piece oscillates and returns to its rest position",
+            "it travels with the wave to the far end",
+            "it is stretched permanently longer"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "each piece oscillates and returns to its rest position"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,24 @@
           "correct": false,
           "explanation": "EM waves need no medium at all.",
           "misconception": "medium requirement myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "only through liquids and gases",
+            "through a vacuum as well as through matter",
+            "nowhere without particles",
+            "only through solids"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "through a vacuum as well as through matter"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -292,6 +385,24 @@
           "explanation": "The geometry is strictly along the path.",
           "misconception": "angle invention"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "in shrinking circles",
+            "at right angles to the direction of travel",
+            "at 45 degrees to the direction of travel",
+            "parallel to the direction of travel"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "parallel to the direction of travel"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -327,6 +438,27 @@
           "correct": true,
           "explanation": "Compressions are where the medium is squeezed closest.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a compression",
+                    "compression"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -364,6 +496,26 @@
           "explanation": "Electromagnetic waves manage perfectly well in a vacuum.",
           "misconception": "overgeneralisation"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "sound from an explosion"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -400,6 +552,24 @@
           "explanation": "The air is the medium doing the vibrating.",
           "misconception": "medium inactivity myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the air stays untouched",
+            "air particles vibrate back and forth about their own positions",
+            "air particles travel from the drum all the way to your ear",
+            "air particles spin on the spot"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "air particles vibrate back and forth about their own positions"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -435,6 +605,27 @@
           "correct": false,
           "explanation": "Rest position describes an undisturbed level, not a wave region of this kind.",
           "misconception": "term confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a rarefaction",
+                    "rarefaction"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

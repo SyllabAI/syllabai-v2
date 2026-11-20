@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -283,6 +283,24 @@
           "explanation": "Nuclear stability is not set by atomic size.",
           "misconception": "radius cause"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "an imbalance between their protons and neutrons",
+            "having too many electrons",
+            "a large atomic radius",
+            "chemical reactivity of the element"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "an imbalance between their protons and neutrons"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -318,6 +336,26 @@
           "correct": false,
           "explanation": "Deuterium is far more common than tritium.",
           "misconception": "abundance swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "tritium"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -355,6 +393,26 @@
           "explanation": "2/10,000 simplifies to 1/5,000.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "1 in 5,000"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -391,6 +449,24 @@
           "explanation": "Decay changes identity, not the argument about abundance.",
           "misconception": "mass gain"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "because unstable nuclei decay away over time",
+            "because it cannot exist on Earth",
+            "because it is too chemically reactive to form compounds",
+            "because decay makes it heavier"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "because unstable nuclei decay away over time"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -426,6 +502,26 @@
           "correct": false,
           "explanation": "The element symbol is shared.",
           "misconception": "symbol change"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "their likelihood of decaying"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

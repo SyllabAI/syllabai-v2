@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -281,6 +281,26 @@
           "explanation": "With oxygen present the products are oxides, not the bare elements.",
           "misconception": "elements released"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Carbon dioxide and water"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -316,6 +336,24 @@
           "correct": false,
           "explanation": "Plentiful oxygen drives complete burning to carbon dioxide instead.",
           "misconception": "oxygen supply inverted"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The presence of nitrogen in the air",
+            "An unlimited supply of oxygen",
+            "A limited supply of air or oxygen",
+            "Any temperature below 100 degrees Celsius"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A limited supply of air or oxygen"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -353,6 +391,24 @@
           "explanation": "Four hydrogens need two waters, and those two waters plus CO2 need four oxygens, so 2O2 supplies them.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "1 before O2 and 2 before H2O",
+            "4 before O2 and 4 before H2O",
+            "2 before O2 and 2 before H2O",
+            "2 before O2 and 1 before H2O"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "2 before O2 and 2 before H2O"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -389,6 +445,24 @@
           "explanation": "Atoms are conserved; the carbon must appear as CO, soot or CO2, never vanish.",
           "misconception": "atom loss imagined"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Only water, with the carbon vanishing",
+            "Nothing, because methane cannot burn without full oxygen",
+            "Carbon monoxide, or carbon soot in very poor supply",
+            "Sulfur dioxide, from the methane itself"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Carbon monoxide, or carbon soot in very poor supply"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -424,6 +498,24 @@
           "correct": false,
           "explanation": "Combustion needs oxygen and a flame or spark, not ultraviolet radiation.",
           "misconception": "conditions crossed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because it is one of the three named types of organic reaction",
+            "Because it only happens to alkanes",
+            "Because it produces one merged product",
+            "Because it needs ultraviolet light like substitution"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because it is one of the three named types of organic reaction"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

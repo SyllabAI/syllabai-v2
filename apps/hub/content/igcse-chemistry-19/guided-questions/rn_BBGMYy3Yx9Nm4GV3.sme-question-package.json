@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "Ester-making needs an alcohol, which plays no part here.",
           "misconception": "family crossed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "A salt and hydrogen",
+                    "salt and hydrogen"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,24 @@
           "correct": false,
           "explanation": "No oxygen gas is released in either pattern.",
           "misconception": "gas invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A salt and hydrogen",
+            "An ester and hydrogen",
+            "A salt, water and carbon dioxide",
+            "A salt and oxygen"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A salt, water and carbon dioxide"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +156,26 @@
           "explanation": "The ide ending belongs to simple salts such as sodium chloride.",
           "misconception": "naming system crossed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "In anoate"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +212,26 @@
           "explanation": "The metal name fronts the anoate ending taken from ethanoic acid.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Magnesium ethanoate"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +267,26 @@
           "correct": false,
           "explanation": "That is the reactant; the reaction consumes it and builds a new salt.",
           "misconception": "reactant recycled as product"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Potassium butanoate"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -281,6 +380,24 @@
           "explanation": "Hydrogen forms whatever the amount; the ratio is set by charges.",
           "misconception": "excess confused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The magnesium ion needs two ethanoate groups to balance its charge",
+            "One acid molecule is too heavy to react alone",
+            "The second molecule acts as a catalyst",
+            "Hydrogen only forms when acid is in excess"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The magnesium ion needs two ethanoate groups to balance its charge"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -316,6 +433,24 @@
           "correct": false,
           "explanation": "That observation belongs to dichromate oxidations, not carbonates.",
           "misconception": "observation crossed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A colour change from orange to green",
+            "Fizzing as carbon dioxide is released",
+            "A blue flame appearing above the mixture",
+            "A smarting smell of the ester forming"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Fizzing as carbon dioxide is released"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -353,6 +488,26 @@
           "explanation": "The bracket doubles the ethanoate group onto the single magnesium ion.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "(CH3COO)2Mg"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -389,6 +544,24 @@
           "explanation": "Chlorine plays no part in this reaction.",
           "misconception": "gas invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It burns with a squeaky pop, proving hydrogen",
+            "It turns limewater milky, proving carbon dioxide",
+            "It relights a glowing splint, proving oxygen",
+            "It bleaches damp litmus, proving chlorine"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It turns limewater milky, proving carbon dioxide"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -424,6 +597,24 @@
           "correct": false,
           "explanation": "The salt is a solid dissolved in water, not a gas.",
           "misconception": "phase misread"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The potassium ion taking the place of the acidic hydrogen",
+            "A carbon-oxygen-oxygen-potassium gas",
+            "An unreacted piece of the carbonate",
+            "A cooking abbreviation left in the formula"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The potassium ion taking the place of the acidic hydrogen"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -289,6 +289,24 @@
           "explanation": "Sparking is a discharge, not a charging method.",
           "misconception": "mechanism slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "two metals are wired together",
+            "a battery charges a plate",
+            "a spark jumps a gap",
+            "two insulators are rubbed together"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "two insulators are rubbed together"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -324,6 +342,24 @@
           "correct": true,
           "explanation": "The cloth's lost electrons leave a positive charge behind.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "loses electrons and is left positive",
+            "stays neutral always",
+            "gains electrons and turns negative",
+            "gains protons"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "loses electrons and is left positive"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -361,6 +397,24 @@
           "explanation": "Gravity plays no role in charge retention.",
           "misconception": "nonsense option"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it repels everything",
+            "no free charges can carry it away",
+            "gravity holds it",
+            "the air insulates it"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "no free charges can carry it away"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -397,6 +451,26 @@
           "explanation": "Positive charge never travels between insulators.",
           "misconception": "particle confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "electrons"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -432,6 +506,24 @@
           "correct": false,
           "explanation": "Electron mass is far too small to see.",
           "misconception": "scale myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "increase the mass visibly",
+            "power a motor",
+            "cool the surface",
+            "attract objects or produce sparks"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "attract objects or produce sparks"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -533,6 +625,26 @@
           "explanation": "Sparking needs a large built-up charge.",
           "misconception": "phenomenon slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "electrically neutral"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -568,6 +680,26 @@
           "correct": true,
           "explanation": "Extra electrons make the receiver negative.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "negative"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -605,6 +737,24 @@
           "explanation": "Gravity is irrelevant here.",
           "misconception": "nonsense option"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "gravity inverts",
+            "the rod's charge doubles",
+            "opposite charge gathers on the neutral object's surface",
+            "the object loses protons"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "opposite charge gathers on the neutral object's surface"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -641,6 +791,26 @@
           "explanation": "Equal swapping would leave both neutral.",
           "misconception": "balance myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "from rod to cloth"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -676,6 +846,26 @@
           "correct": false,
           "explanation": "In air, with no path, the charges persist.",
           "misconception": "mechanism slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "attract each other"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

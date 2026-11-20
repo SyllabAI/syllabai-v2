@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Low glucose is not adrenaline's trigger here.",
           "misconception": "trigger invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "During deep sleep only",
+            "Circumstances where the body could be facing danger",
+            "When blood glucose falls too low",
+            "After every meal"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Circumstances where the body could be facing danger"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "That is insulin's effect.",
           "misconception": "hormone swapped"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Narrowing of muscle blood vessels",
+            "Slower pulse and widened airways",
+            "Storage of glucose as glycogen",
+            "Faster heart and breathing rates, blood redirected to muscles"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Faster heart and breathing rates, blood redirected to muscles"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "That undoes the emergency mobilisation.",
           "misconception": "direction inverted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It ships the glucose to active muscle cells for respiration",
+            "It converts the glucose back to glycogen at once",
+            "It stores the glucose as fat permanently",
+            "It excretes the glucose in urine"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It ships the glucose to active muscle cells for respiration"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,27 @@
           "explanation": "Pancreatic cells detect the rise and secrete insulin.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The pancreas",
+                    "pancreas"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +263,24 @@
           "correct": false,
           "explanation": "Only the pancreas secretes insulin.",
           "misconception": "source confused"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They take up glucose and store it as glycogen",
+            "They secrete more insulin locally",
+            "They stop respiring entirely",
+            "They release glucose into the blood"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "They take up glucose and store it as glycogen"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -283,6 +376,26 @@
           "explanation": "The pancreas produces insulin.",
           "misconception": "source swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "In the male testes"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -318,6 +431,24 @@
           "correct": false,
           "explanation": "Those are female characteristics driven by oestrogen.",
           "misconception": "sex swapped"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Widening of muscle blood vessels in emergencies",
+            "Breast development and wider hips",
+            "Maintenance of the uterine lining",
+            "Male secondary sexual characteristics such as a deepening voice"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Male secondary sexual characteristics such as a deepening voice"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -355,6 +486,26 @@
           "explanation": "Progesterone blocks additional ovulation while lining is maintained.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Further ovulation"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -391,6 +542,26 @@
           "explanation": "Glucose regulator, not pregnancy hormone.",
           "misconception": "hormone swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Progesterone"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -426,6 +597,26 @@
           "correct": false,
           "explanation": "The pancreas makes insulin.",
           "misconception": "pairing wrong"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Ovaries and progesterone"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -521,6 +712,26 @@
           "explanation": "The adrenal gland produces adrenaline.",
           "misconception": "source swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "By the female ovaries"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -556,6 +767,24 @@
           "correct": true,
           "explanation": "Those are the named female characteristics.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Breast development, wider hips, pubic and underarm hair",
+            "Widening of muscle blood vessels",
+            "Production of dilute urine",
+            "Deepening voice and increased muscle mass"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Breast development, wider hips, pubic and underarm hair"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -593,6 +822,24 @@
           "explanation": "Unrelated hormone system.",
           "misconception": "hormone confused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Permanent closure of the uterus",
+            "Repair of the uterus lining",
+            "Secretion of insulin",
+            "Immediate breakdown of the lining"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Repair of the uterus lining"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -629,6 +876,24 @@
           "explanation": "No such mechanism exists.",
           "misconception": "mechanism invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "By physically pushing the egg out",
+            "By dissolving the ovary wall",
+            "Through its influence on the pituitary hormones FSH and LH",
+            "It has no role in egg release"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Through its influence on the pituitary hormones FSH and LH"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -664,6 +929,26 @@
           "correct": false,
           "explanation": "The adrenal gland gives adrenaline.",
           "misconception": "pairing wrong"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Insulin — pancreas"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

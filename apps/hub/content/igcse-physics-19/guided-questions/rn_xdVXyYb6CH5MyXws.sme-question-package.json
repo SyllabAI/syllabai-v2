@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Hydrogen is not a fossil combustion product.",
           "misconception": "gas swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "carbon dioxide"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "Both are reliable; neither is weather-dependent.",
           "misconception": "category swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "produces carbon dioxide during generation",
+            "reliant on the weather",
+            "runs out of fuel within a year",
+            "radioactive waste that must be stored safely for thousands of years"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "radioactive waste that must be stored safely for thousands of years"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,26 @@
           "explanation": "Nuclear stations cannot be switched on or off quickly.",
           "misconception": "resource swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "fossil fuels"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +211,24 @@
           "explanation": "Energy density is a headline nuclear advantage.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "nuclear — it responds instantly to demand changes",
+            "fossil fuels — they produce no emissions",
+            "nuclear — large energy from small amounts of fuel",
+            "fossil fuels — they never run out"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "nuclear — large energy from small amounts of fuel"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +264,24 @@
           "correct": false,
           "explanation": "Large, consistent output is their strength.",
           "misconception": "inversion slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "their fuel is the most expensive per joule",
+            "they cannot produce large amounts of energy",
+            "they must be rebuilt every few years",
+            "they take many years to build and are expensive to build and maintain"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "they take many years to build and are expensive to build and maintain"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -285,6 +379,24 @@
           "explanation": "Burning emits; growing absorbs.",
           "misconception": "direction slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "they absorb carbon dioxide while being burned",
+            "the carbon dioxide released on burning was absorbed as the crop grew",
+            "they contain no carbon at all",
+            "they release no carbon dioxide at any point"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the carbon dioxide released on burning was absorbed as the crop grew"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +432,24 @@
           "correct": false,
           "explanation": "Wind has no fuel costs once built.",
           "misconception": "inversion slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it works only in estuaries",
+            "it floods large valleys when built",
+            "its fuel is expensive to buy each year",
+            "it only generates when the wind blows at sufficient speed"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it only generates when the wind blows at sufficient speed"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +487,26 @@
           "explanation": "Growing fuel displaces growing food.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "land and resources"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -393,6 +543,24 @@
           "explanation": "Noise pollution and siting limits are both cited.",
           "misconception": "over-claim"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "reliable at all times; heavy fuel costs",
+            "cheap to build; reliable at all times",
+            "renewable and no operating emissions; unreliable without sufficient wind",
+            "no noise at all; unlimited suitable sites"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "renewable and no operating emissions; unreliable without sufficient wind"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +596,24 @@
           "correct": false,
           "explanation": "Nothing radioactive is involved.",
           "misconception": "absurd limit"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "stored carbon is released and habitats are destroyed",
+            "wind speeds drop over the fields",
+            "the fuel becomes radioactive",
+            "the crops absorb too much carbon dioxide"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "stored carbon is released and habitats are destroyed"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

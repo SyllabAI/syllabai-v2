@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -285,6 +285,24 @@
           "explanation": "Expansion belongs to the red giant stage.",
           "misconception": "stage swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it has stopped fusing entirely",
+            "it is collapsing slowly",
+            "it is in equilibrium during its fusion-powered life",
+            "it is expanding rapidly"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it is in equilibrium during its fusion-powered life"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +338,24 @@
           "correct": false,
           "explanation": "Collisions are not part of the sequence.",
           "misconception": "nonsense option"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the hydrogen in the core beginning to run out",
+            "the star immediately exploding",
+            "helium fusion stopping",
+            "the star colliding with a nebula"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the hydrogen in the core beginning to run out"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +393,24 @@
           "explanation": "Helium fusion swells the outer layers; expansion cools them.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "expands outward as its surface cools",
+            "begins fusing hydrogen faster",
+            "stays exactly the same size",
+            "shrinks and heats up"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "expands outward as its surface cools"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +447,27 @@
           "explanation": "Stages do not rewind.",
           "misconception": "sequence error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a red giant",
+                    "red giant"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -428,6 +503,26 @@
           "correct": false,
           "explanation": "Iron belongs to the most massive stars.",
           "misconception": "element error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "helium"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -525,6 +620,24 @@
           "explanation": "Stages do not repeat backwards.",
           "misconception": "sequence error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a red giant again",
+            "a black hole",
+            "a white dwarf, as the star collapses",
+            "a supernova"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a white dwarf, as the star collapses"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -560,6 +673,24 @@
           "correct": true,
           "explanation": "Cooling is the white dwarf's whole career.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "restarts hydrogen fusion",
+            "swells back into a giant",
+            "cools down and emits decreasing energy",
+            "heats up indefinitely"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "cools down and emits decreasing energy"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -597,6 +728,24 @@
           "explanation": "Black holes form from the most massive stars.",
           "misconception": "object mix-up"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "another name for a black hole",
+            "a star that never formed",
+            "a white dwarf that has cooled until it no longer emits light",
+            "a nebula ready to form stars"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a white dwarf that has cooled until it no longer emits light"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -633,6 +782,24 @@
           "explanation": "The main sequence comes first.",
           "misconception": "order error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "main sequence → supernova → neutron star",
+            "red giant → main sequence → white dwarf",
+            "main sequence → white dwarf → red giant",
+            "a white dwarf, once helium fusion finishes"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a white dwarf, once helium fusion finishes"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -668,6 +835,26 @@
           "correct": false,
           "explanation": "Cooling means less emission.",
           "misconception": "direction error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "decreases"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

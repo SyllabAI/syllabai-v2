@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Friction is one contributor, not the summary.",
           "misconception": "member-vs-sum confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The single force equivalent to all the forces acting together",
+            "The largest single force in the set",
+            "The average of the force magnitudes",
+            "The force of friction only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The single force equivalent to all the forces acting together"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Motion is irrelevant; 50 N of resultant is present regardless.",
           "misconception": "static confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Zero, because the crate may not move",
+            "50 N in the pushes' shared direction",
+            "10 N, because forces always subtract",
+            "25 N, the mean of the two pushes"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "50 N in the pushes' shared direction"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,26 @@
           "explanation": "Equal opposing forces cancel: zero resultant, balanced pair.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Balanced"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "That ignores the 10 N force's full size.",
           "misconception": "arithmetic slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "6 N to the right",
+            "6 N to the left",
+            "14 N to the right",
+            "4 N to the right"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "6 N to the right"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": true,
           "explanation": "The same 6 N left and 6 N right are different physical situations.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because forces are vectors: magnitude alone is an incomplete description",
+            "Because the magnitude changes if the direction is omitted",
+            "Because examiners dislike bare numbers",
+            "Directions earn extra marks but carry no physics"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because forces are vectors: magnitude alone is an incomplete description"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

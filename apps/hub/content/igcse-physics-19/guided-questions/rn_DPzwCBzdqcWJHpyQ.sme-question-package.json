@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "The planet's pull is what curves the path.",
           "misconception": "force error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the moon's own gravity alone",
+            "magnetic repulsion from the planet",
+            "the gravitational attraction of the planet",
+            "the moon's engines firing"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the gravitational attraction of the planet"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "The force is not along the motion; that is why the path curves.",
           "misconception": "direction error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "along the direction of travel",
+            "towards the nearest other planet",
+            "away from the larger body",
+            "towards the centre of the larger body"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "towards the centre of the larger body"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,26 @@
           "explanation": "Moons orbit planets.",
           "misconception": "pairing swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "planets orbit the Sun"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +209,27 @@
           "explanation": "Gravity supplies the inward force the orbit needs.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the Earth's gravitational pull",
+                    "Earth's gravitational pull"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +265,24 @@
           "correct": false,
           "explanation": "The course-level answer is comets orbit the Sun.",
           "misconception": "level error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "planets, on square paths",
+            "the Earth, on circular paths",
+            "the Milky Way's centre only",
+            "the Sun, on stretched elliptical paths"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the Sun, on stretched elliptical paths"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -285,6 +380,24 @@
           "explanation": "The directions are common, not random.",
           "misconception": "feature error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "each planet picks its own plane and direction",
+            "they all orbit backwards",
+            "they orbit in random directions",
+            "they all travel the same direction around the Sun, in the same plane"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "they all travel the same direction around the Sun, in the same plane"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +433,24 @@
           "correct": false,
           "explanation": "Near planets are the fast ones.",
           "misconception": "direction error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "slower it travels and the longer its orbit takes",
+            "shorter its orbital time",
+            "more circular its path becomes",
+            "faster it travels"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "slower it travels and the longer its orbit takes"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +488,27 @@
           "explanation": "Moons follow circular orbits around their planets.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a circular path",
+                    "circular path"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -393,6 +545,24 @@
           "explanation": "Orbits do not stand upright like that.",
           "misconception": "nonsense option"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "slower and longer",
+            "unchanged in speed",
+            "faster and shorter in time",
+            "perfectly vertical"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "faster and shorter in time"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +598,24 @@
           "correct": false,
           "explanation": "Radius sets speed: distant planets are slower.",
           "misconception": "no effect myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "all planets share the same orbital radius",
+            "radii change randomly each year",
+            "orbital radius has no effect on speed",
+            "planets orbit at different distances from the Sun"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "planets orbit at different distances from the Sun"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -525,6 +713,26 @@
           "explanation": "Comet orbits are strongly stretched.",
           "misconception": "shape error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "highly elliptical or hyperbolic"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -560,6 +768,26 @@
           "correct": true,
           "explanation": "Approach means speed-up; recession means slow-down.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "increases"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -597,6 +825,26 @@
           "explanation": "Speed has nothing to do with shape here.",
           "misconception": "category error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "decreases"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -633,6 +881,24 @@
           "explanation": "Some comets run counter to the planets.",
           "misconception": "direction myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "never pass close to the Sun",
+            "need not share the planets' plane and may run the opposite direction",
+            "always lie in the planets' plane",
+            "always run the same direction as planets"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "need not share the planets' plane and may run the opposite direction"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -668,6 +934,24 @@
           "correct": false,
           "explanation": "Comets have no engines.",
           "misconception": "nonsense option"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "because comets collide with planets",
+            "because comets fire thrusters",
+            "because the Sun's gravity vanishes far away",
+            "its distance from the Sun changes dramatically on the stretched orbit"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "its distance from the Sun changes dramatically on the stretched orbit"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

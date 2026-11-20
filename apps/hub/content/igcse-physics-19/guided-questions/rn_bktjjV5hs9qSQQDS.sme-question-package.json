@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -285,6 +285,24 @@
           "explanation": "That inverts the relationship.",
           "misconception": "inversion slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "P = W ÷ d",
+            "P = W ÷ t",
+            "P = t ÷ W",
+            "P = W × t"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "P = W ÷ t"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +338,26 @@
           "correct": false,
           "explanation": "That multiplies instead of dividing.",
           "misconception": "operation slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "30 W"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -357,6 +395,24 @@
           "explanation": "Multiply the rate by the seconds to recover the joules.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "W = t ÷ P",
+            "W = P + t",
+            "W = P × t",
+            "W = P ÷ t"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "W = P × t"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +449,26 @@
           "explanation": "That lists the outputs as inputs.",
           "misconception": "role swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "joules, seconds, watts"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -428,6 +504,26 @@
           "correct": false,
           "explanation": "No step produces this value.",
           "misconception": "arithmetic slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "2000 W"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

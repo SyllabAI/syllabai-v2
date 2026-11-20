@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -285,6 +285,26 @@
           "explanation": "The conversion is additive, not multiplicative.",
           "misconception": "operation slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "add 273"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -320,6 +340,36 @@
           "correct": false,
           "explanation": "That forgets the offset entirely.",
           "misconception": "offset drop"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "246 K"
+            },
+            {
+              "id": "4",
+              "text": "27 K"
+            },
+            {
+              "id": "3",
+              "text": "300 K"
+            },
+            {
+              "id": "2",
+              "text": "273 K"
+            }
+          ],
+          "correctOrder": [
+            "4",
+            "1",
+            "2",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -357,6 +407,24 @@
           "explanation": "Only the zero points differ; the degrees are equal.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "they are the same size",
+            "a kelvin is smaller",
+            "they cannot be compared",
+            "a kelvin is bigger"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "they are the same size"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +461,24 @@
           "explanation": "The physics, not the preference, demands kelvin.",
           "misconception": "absurd claim"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "examiners prefer kelvin",
+            "gas laws state proportions to particle energy, which is zero at 0 K",
+            "Celsius readings are always inaccurate",
+            "kelvin numbers are larger and easier"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "gas laws state proportions to particle energy, which is zero at 0 K"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +514,24 @@
           "correct": false,
           "explanation": "Celsius ratios are not physical ratios.",
           "misconception": "scale confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it quadruples",
+            "it stays the same because Celsius doubled too",
+            "it doubles; the Celsius pair is 150 °C to 300 °C",
+            "it doubles; the Celsius pair is −123 °C to 27 °C"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it doubles; the Celsius pair is −123 °C to 27 °C"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

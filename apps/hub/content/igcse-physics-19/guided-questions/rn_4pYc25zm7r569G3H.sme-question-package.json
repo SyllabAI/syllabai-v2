@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -285,6 +285,26 @@
           "explanation": "That is neutron emission.",
           "misconception": "neutron confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "energy only"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -320,6 +340,24 @@
           "correct": false,
           "explanation": "The atomic number did not change.",
           "misconception": "element change"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a different element entirely",
+            "another isotope of the same element",
+            "a helium nucleus",
+            "unchanged in every way"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "another isotope of the same element"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +395,26 @@
           "explanation": "Gamma changes neither count.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "both stay the same"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -393,6 +451,26 @@
           "explanation": "Only gamma leaves the mass number alone.",
           "misconception": "gamma confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "one less than before"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -428,6 +506,24 @@
           "correct": false,
           "explanation": "It leaves alone.",
           "misconception": "cargo myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "because the emitted neutron takes a proton with it",
+            "because neutrons decide the element",
+            "because the electron count rises",
+            "because the proton count, which defines the element, is untouched"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "because the proton count, which defines the element, is untouched"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "The transfer raises, not lowers, the temperature.",
           "misconception": "direction slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "hot"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": true,
           "explanation": "E = I × V × t is the relationship of record.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "current × voltage × time",
+            "voltage ÷ current × time",
+            "current × voltage ÷ time",
+            "current ÷ voltage × time"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "current × voltage × time"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,36 @@
           "explanation": "That used 6 s instead of 60 s.",
           "misconception": "conversion slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "3",
+              "text": "240 J"
+            },
+            {
+              "id": "2",
+              "text": "2.8 J"
+            },
+            {
+              "id": "1",
+              "text": "168 J"
+            },
+            {
+              "id": "4",
+              "text": "16.8 J"
+            }
+          ],
+          "correctOrder": [
+            "2",
+            "4",
+            "1",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -153,6 +221,26 @@
           "explanation": "Halving is not a unit conversion.",
           "misconception": "invented rule"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "converted into seconds"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +276,24 @@
           "correct": false,
           "explanation": "Both are measured in joules.",
           "misconception": "unit myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "unrelated quantities",
+            "different units",
+            "two names for the same quantity",
+            "always different signs"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "two names for the same quantity"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

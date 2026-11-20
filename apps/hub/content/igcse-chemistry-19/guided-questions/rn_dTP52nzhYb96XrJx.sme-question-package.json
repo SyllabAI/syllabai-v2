@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -298,6 +298,24 @@
           "explanation": "Only pH 7 is neutral; 2 is far down the acidic side.",
           "misconception": "small number misread as neutral"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Weakly acidic, because it is below 7",
+            "Strongly alkaline, because the scale runs the other way",
+            "Neutral, because 2 is a small number",
+            "Strongly acidic, because 0 to 3 is the strong acid band"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Strongly acidic, because 0 to 3 is the strong acid band"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -333,6 +351,24 @@
           "correct": false,
           "explanation": "Strong alkalis need pH 11 to 14; 9 is only weakly alkaline.",
           "misconception": "band boundary misplaced"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Weakly acidic, because it is close to 7",
+            "Neutral, because 9 rounds to 7",
+            "Strongly alkaline, because it is above 7",
+            "Weakly alkaline, in the 8 to 10 band"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Weakly alkaline, in the 8 to 10 band"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -370,6 +406,26 @@
           "explanation": "Seven is the fixed neutral point between the acidic and alkaline bands.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "pH 7"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -406,6 +462,24 @@
           "explanation": "Drops are added exactly as with any indicator; the flaw is the gradual colour response.",
           "misconception": "procedure blamed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It cannot be added drop by drop",
+            "It is too expensive to put in a conical flask",
+            "It gives a gradual blend of colours instead of one sharp endpoint change",
+            "It only works in acidic solutions"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It gives a gradual blend of colours instead of one sharp endpoint change"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -441,6 +515,24 @@
           "correct": false,
           "explanation": "No heating is involved; the estimate comes from the colour in the solution.",
           "misconception": "invented step"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Titrate it against litmus paper until the purple vanishes",
+            "Add a few drops, then match the colour against a colour chart",
+            "Read the pH directly from the bottle label",
+            "Boil the solution first, then test the steam"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Add a few drops, then match the colour against a colour chart"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

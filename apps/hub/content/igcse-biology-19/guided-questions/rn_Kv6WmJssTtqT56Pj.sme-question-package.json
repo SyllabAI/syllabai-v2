@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "Ovaries release oestrogen and progesterone.",
           "misconception": "source swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The pituitary gland",
+                    "pituitary gland"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,26 @@
           "correct": false,
           "explanation": "Those detect light, not solutes.",
           "misconception": "role misplaced"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Osmoreceptors in the hypothalamus"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +158,24 @@
           "explanation": "No such effect is described.",
           "misconception": "effect invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The number of nephrons",
+            "The width of the urethra",
+            "The permeability of the collecting ducts to water",
+            "The salt content of sweat"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The permeability of the collecting ducts to water"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +212,24 @@
           "explanation": "Dilute blood suppresses ADH and reabsorption falls.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Less ADH is released, so a large volume of dilute urine forms",
+            "More ADH is released, producing concentrated urine",
+            "The collecting ducts vanish temporarily",
+            "The hypothalamus stops working"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Less ADH is released, so a large volume of dilute urine forms"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +265,24 @@
           "correct": false,
           "explanation": "Production continues, just reduced.",
           "misconception": "extreme claimed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "No urine at all",
+            "Urine of unchanged concentration",
+            "A large volume of very dilute urine",
+            "A small volume of concentrated urine"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A small volume of concentrated urine"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -283,6 +378,24 @@
           "explanation": "That is oestrogen's job.",
           "misconception": "role swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "An egg to start maturing",
+            "Immediate release of the egg",
+            "Thickening of the uterus lining",
+            "Production of adrenaline"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "An egg to start maturing"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -318,6 +431,24 @@
           "correct": false,
           "explanation": "Progesterone is not the LH trigger named here.",
           "misconception": "trigger invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The egg already having been released",
+            "Low blood water content",
+            "Oestrogen levels reaching their peak",
+            "Progesterone falling to zero"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Oestrogen levels reaching their peak"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -355,6 +486,26 @@
           "explanation": "LH releases the egg and stimulates progesterone output.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Ovulation and progesterone production"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -391,6 +542,26 @@
           "explanation": "Adrenaline readies the body for danger.",
           "misconception": "hormone swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Progesterone"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -426,6 +597,27 @@
           "correct": false,
           "explanation": "The hypothalamus detects; the pituitary releases.",
           "misconception": "source swapped"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The pituitary gland",
+                    "pituitary gland"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

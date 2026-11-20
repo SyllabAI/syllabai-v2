@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Gases are fluids too.",
           "misconception": "over-narrow reading"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "liquids and gases"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "Every face is squeezed.",
           "misconception": "over-narrow reading"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "only on the bottom face",
+            "only from above, following gravity",
+            "mostly sideways, ignoring top and bottom",
+            "evenly over its whole surface and in all directions"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "evenly over its whole surface and in all directions"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Parallel pushes slide nothing here.",
           "misconception": "direction slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "along the object's weight direction only",
+            "at right angles to that surface",
+            "parallel to the surface",
+            "in the direction the object is moving"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "at right angles to that surface"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "Even pressure from all sides rounds the bubble.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "ice floats high in a glass",
+            "a kettle whistles when boiling",
+            "a bubble blown underwater is spherical",
+            "a spoon gets hot in soup"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a bubble blown underwater is spherical"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,26 @@
           "correct": false,
           "explanation": "Mass is untouched by pressure.",
           "misconception": "absurd limit"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "forces"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -285,6 +379,24 @@
           "explanation": "Depth is exactly what the equation multiplies.",
           "misconception": "no-transfer slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it decreases, because the fluid thins with depth",
+            "it depends only on the object's mass",
+            "it increases, because the fluid column above it grows",
+            "it stays the same at all depths"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it increases, because the fluid column above it grows"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +432,24 @@
           "correct": false,
           "explanation": "That is the solid-contact pressure equation.",
           "misconception": "equation tangle"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "p = m ÷ V",
+            "p = F ÷ A",
+            "p = h ÷ ρ × g",
+            "p = h × ρ × g"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "p = h × ρ × g"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +487,24 @@
           "explanation": "The SI triple evaluates exactly to pascals.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "metres, kilograms, newtons",
+            "kilometres, tonnes, seconds",
+            "metres, kilograms per metre cubed, newtons per kilogram",
+            "centimetres, grams per cm cubed, newtons per kilogram"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "metres, kilograms per metre cubed, newtons per kilogram"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +541,24 @@
           "explanation": "Temperature is not an input here.",
           "misconception": "variable swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "her body mass alone",
+            "the water's density, g, and the 3 m depth",
+            "the pool's surface area",
+            "the pool's water temperature only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the water's density, g, and the 3 m depth"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +594,26 @@
           "correct": false,
           "explanation": "That divides somewhere along the way.",
           "misconception": "operation slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "20 000 Pa"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

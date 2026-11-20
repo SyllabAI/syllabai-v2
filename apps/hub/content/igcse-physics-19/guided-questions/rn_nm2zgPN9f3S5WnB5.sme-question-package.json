@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "That is beta decay inside a nucleus.",
           "misconception": "beta confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "one big nucleus dividing into two smaller ones",
+            "a nucleus releases a gamma ray only",
+            "two small nuclei join to build a larger nucleus",
+            "a neutron turns into a proton"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "two small nuclei join to build a larger nucleus"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,27 @@
           "correct": false,
           "explanation": "The nuclei join; they do not stay apart.",
           "misconception": "no reaction"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a helium nucleus",
+                    "helium nucleus"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +156,26 @@
           "explanation": "Reactors currently use fission; fusion reactors are still in development.",
           "misconception": "reactor mix-up"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "inside stars"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +212,24 @@
           "explanation": "All three open the energy stored in nuclei.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "fusion, fission and photosynthesis",
+            "fusion, fission and radioactive decay",
+            "fission, decay and combustion",
+            "fusion, burning and evaporation"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "fusion, fission and radioactive decay"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +265,24 @@
           "correct": false,
           "explanation": "The stated factor is ten million, not one million.",
           "misconception": "scale error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "one hundred kilograms of coal",
+            "ten million kilograms of coal",
+            "one million kilograms of coal",
+            "ten thousand kilograms of coal"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "ten million kilograms of coal"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -284,6 +379,24 @@
           "explanation": "Electron loss is ionisation, not nuclear fission.",
           "misconception": "ionisation confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a nucleus releasing only gamma rays",
+            "an atom losing an orbital electron",
+            "one large nucleus splitting into two smaller nuclei",
+            "two small nuclei joining into one larger nucleus"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "one large nucleus splitting into two smaller nuclei"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -319,6 +432,26 @@
           "correct": false,
           "explanation": "The parent is the nucleus that split, not the fragments.",
           "misconception": "naming swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "daughter nuclei"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -356,6 +489,26 @@
           "explanation": "Controlled fission is the working reactor technology.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "nuclear power stations"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -392,6 +545,26 @@
           "explanation": "The topic's word is parent.",
           "misconception": "naming error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "parent nucleus"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -427,6 +600,24 @@
           "correct": false,
           "explanation": "Fission is a net energy release.",
           "misconception": "direction error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "fission only powers weapons",
+            "energy is created from nothing",
+            "energy stored in the nucleus is released when it splits",
+            "fission absorbs more energy than it gives back"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "energy stored in the nucleus is released when it splits"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

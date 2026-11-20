@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Temperature relates to colour, not luminosity directly.",
           "misconception": "quantity swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the star's temperature",
+            "the star's distance from Earth",
+            "the light reflected off the star",
+            "the light energy a star pours out each second"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the light energy a star pours out each second"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "The star's own power matters too.",
           "misconception": "factor omission"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "luminosity only",
+            "the star's colour only",
+            "the star's luminosity and its distance from Earth",
+            "distance only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the star's luminosity and its distance from Earth"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,27 @@
           "explanation": "Higher means dimmer.",
           "misconception": "scale inversion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a lower magnitude",
+                    "lower magnitude"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "More distant stars usually look fainter.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "its magnitude is higher by definition",
+            "Earth's atmosphere blocks it more",
+            "it truly emits less light",
+            "its light has travelled further to reach us"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "its light has travelled further to reach us"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,24 @@
           "correct": false,
           "explanation": "Then they would simply look the same by identity.",
           "misconception": "trivial option"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "higher luminosity and smaller distance",
+            "higher luminosity but greater distance",
+            "equal luminosity and equal distance",
+            "lower luminosity and greater distance"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "higher luminosity but greater distance"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

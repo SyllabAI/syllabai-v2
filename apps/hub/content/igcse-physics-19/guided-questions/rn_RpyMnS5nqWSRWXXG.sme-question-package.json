@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "Returning means distance decreasing — a downward-sloping line.",
           "misconception": "direction misread"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The object is stationary",
+                    "object is stationary"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,24 @@
           "correct": false,
           "explanation": "A stationary object gives a flat line, not a sloped one.",
           "misconception": "sloped-line stationary misread"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "P has travelled further in total",
+            "Q is stationary",
+            "P is accelerating",
+            "P is moving faster than Q"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "P is moving faster than Q"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +156,24 @@
           "explanation": "A straight line is exactly the case where one speed value applies throughout.",
           "misconception": "curves-only misread"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "From how high the line finishes",
+            "From the steepness of the line — steeper means faster",
+            "Straight lines carry no speed information",
+            "From the physical length of the drawn line"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "From the steepness of the line — steeper means faster"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +210,27 @@
           "explanation": "Constant speed demands a constant gradient, which a curve does not have.",
           "misconception": "any-line-constant myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The speed is changing",
+                    "speed is changing"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +266,24 @@
           "correct": false,
           "explanation": "The time axis shows when things happened, not how far.",
           "misconception": "axis-role confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "At the final height of the line",
+            "On the time axis",
+            "At the steepest gradient of the line",
+            "In the area under the line"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "At the final height of the line"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

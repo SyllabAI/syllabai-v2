@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Names are labels, not the organising principle.",
           "misconception": "labelling mistaken for ordering"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Increasing atomic number"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "Doubling would tear through the sequence; the step is one.",
           "misconception": "growth pattern invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Exactly one more"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,24 @@
           "explanation": "The choice is chemical, not cosmetic.",
           "misconception": "trivial reason substituted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "So the table fits neatly on one page",
+            "Because atomic numbers are easier to spell",
+            "Because proton counts can change during reactions",
+            "So that elements with similar properties end up in the same columns"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "So that elements with similar properties end up in the same columns"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +211,27 @@
           "explanation": "Electron changes cannot touch the proton count, so the element keeps its identity.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The atomic number",
+                    "atomic number"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +267,24 @@
           "correct": false,
           "explanation": "The whole design exists to keep chemical families together.",
           "misconception": "design denied"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "In the same vertical column",
+            "Scattered at random",
+            "In the same horizontal row",
+            "Diagonally opposite each other"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "In the same vertical column"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -285,6 +382,24 @@
           "explanation": "Only the vertical columns carry the name group.",
           "misconception": "vocabulary collapsed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Both rows and columns are called groups",
+            "Periods are rows; groups are columns",
+            "Periods are columns; groups are rows",
+            "Neither direction has a special name"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Periods are rows; groups are columns"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +435,24 @@
           "correct": false,
           "explanation": "That is the group number's job, not the period's.",
           "misconception": "group meaning assigned to period"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "How many shells of electrons it holds",
+            "How many neutrons it has",
+            "How many electrons are in the outer shell",
+            "How many protons it has"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "How many shells of electrons it holds"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +490,24 @@
           "explanation": "Group 4 atoms carry four outer electrons; the column is the outer count.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Its atomic mass",
+            "How many isotopes the element has",
+            "How many electrons sit in its outermost shell",
+            "How many shells it holds"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "How many electrons sit in its outermost shell"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +544,24 @@
           "explanation": "This course numbers the groups; letters belong to other table styles.",
           "misconception": "other table styles imported"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "1 to 8 with no exceptions",
+            "0 to 7, starting at the left",
+            "1 to 7, then a final column called Group 0",
+            "Letters A to H"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "1 to 7, then a final column called Group 0"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +597,26 @@
           "correct": false,
           "explanation": "Group 0 is the last column's name, not a home for five outer electrons.",
           "misconception": "Group 0 misapplied"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Period 3, Group 5"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

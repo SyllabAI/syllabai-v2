@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Machines are systems, but so are apples and tables.",
           "misconception": "concept mix-up"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "only a single isolated particle",
+            "a machine that transfers heat",
+            "an object or group of objects",
+            "any source of energy"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "an object or group of objects"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Nothing is stretched in this scenario.",
           "misconception": "concept mix-up"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "elastic store to gravitational store",
+            "gravitational store to kinetic store",
+            "kinetic store to gravitational store",
+            "thermal store to kinetic store"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "gravitational store to kinetic store"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,27 @@
           "explanation": "Nuclei are not involved in a spring.",
           "misconception": "concept mix-up"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the elastic store",
+                    "elastic store"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +210,27 @@
           "explanation": "All objects have energy in their thermal store; hotter means more.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the thermal store",
+                    "thermal store"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +266,27 @@
           "correct": false,
           "explanation": "The thermal store GAINS as the reaction’s energy arrives.",
           "misconception": "direction error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the nuclear store",
+                    "nuclear store"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

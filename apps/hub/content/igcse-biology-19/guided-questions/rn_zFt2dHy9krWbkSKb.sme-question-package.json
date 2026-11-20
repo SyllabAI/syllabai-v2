@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "The conscious brain is not involved in coordinating reflexes.",
           "misconception": "consciousness claimed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Involuntary and automatic"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "Awareness does arrive — just late.",
           "misconception": "awareness denied"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "At the exact moment of detection",
+            "After the response has already been carried out",
+            "Before the response begins",
+            "You never become aware of reflexes"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "After the response has already been carried out"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,27 @@
           "explanation": "Effectors carry out the response; they do not coordinate.",
           "misconception": "role shifted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The spinal cord",
+                    "spinal cord"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +212,26 @@
           "explanation": "Those are the note's three named reflexes.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Blinking, coughing and pain-withdrawal"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +267,24 @@
           "correct": false,
           "explanation": "Sensation is irrelevant to the survival mechanism.",
           "misconception": "reason invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They feel pleasant during danger",
+            "They use less energy than thinking",
+            "They keep the brain busy",
+            "Their speed minimises damage to the body"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Their speed minimises damage to the body"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

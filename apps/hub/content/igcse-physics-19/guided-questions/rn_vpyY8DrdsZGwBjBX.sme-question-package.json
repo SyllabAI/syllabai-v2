@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -284,6 +284,27 @@
           "explanation": "The circles remain circles; only strength changes.",
           "misconception": "shape confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the field becomes stronger",
+                    "field becomes stronger"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -319,6 +340,26 @@
           "correct": false,
           "explanation": "The field weakens with distance, so distant points are weak.",
           "misconception": "distance inversion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "closest to the wire"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -356,6 +397,24 @@
           "explanation": "Wider spacing encodes a weaker field.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the circles become squares far away",
+            "the circles spread further apart with distance",
+            "the arrows get shorter",
+            "they do not — spacing never changes"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the circles spread further apart with distance"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -392,6 +451,24 @@
           "explanation": "Both currents produce fields.",
           "misconception": "denial claim"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the fields are equal at equal distances",
+            "the 3 A wire's field is stronger at that distance",
+            "neither wire has a field",
+            "the 1 A wire's field is stronger"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the 3 A wire's field is stronger at that distance"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -427,6 +504,24 @@
           "correct": false,
           "explanation": "Moving the sensor cannot change the circuit current.",
           "misconception": "cause confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the wire's field weakens with distance",
+            "the compass is broken",
+            "the field reversed direction with distance",
+            "the current dropped when the compass moved"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the wire's field weakens with distance"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

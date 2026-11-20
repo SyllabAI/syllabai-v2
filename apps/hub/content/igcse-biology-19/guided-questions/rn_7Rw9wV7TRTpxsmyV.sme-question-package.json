@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "The heart pumps; plasma is made elsewhere and the kidneys only filter it.",
           "misconception": "function invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Digestion and absorption of food",
+            "Excretion of waste and regulation of blood water content",
+            "Gas exchange and temperature control",
+            "Pumping blood and making plasma"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Excretion of waste and regulation of blood water content"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Even normal fluctuation shifts pressure; failure is not required.",
           "misconception": "extreme claim"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Blood pressure is fixed by the heart alone",
+            "Pressure rises only when kidneys fail entirely",
+            "Water content changes the number of red cells directly",
+            "Water volume determines how much the blood presses on vessel walls"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Water volume determines how much the blood presses on vessel walls"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "That is thorax territory, home of the lungs and heart.",
           "misconception": "cavity confused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "At the back of the abdomen",
+            "Either side of the spine at neck level",
+            "Inside the pelvis",
+            "Behind the ribs in the chest"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "At the back of the abdomen"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,26 @@
           "explanation": "Urea is the nitrogen waste the kidneys are known for removing.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Urea"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "ADH from the pituitary runs the water half; no hormone cleans the blood directly.",
           "misconception": "hormone misplaced"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The bladder performs the regulation",
+            "Hormones from the adrenal gland do both jobs",
+            "Both come from the same filtration of blood through nephrons",
+            "Two separate filters run side by side"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Both come from the same filtration of blood through nephrons"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

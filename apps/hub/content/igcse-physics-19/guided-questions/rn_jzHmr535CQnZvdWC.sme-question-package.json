@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Neither belongs in a transformer's structure.",
           "misconception": "part invention"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a battery and a plastic core",
+            "a single coil and a permanent magnet",
+            "a split-ring commutator and brushes",
+            "primary coil, secondary coil and iron core"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "primary coil, secondary coil and iron core"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,27 @@
           "correct": false,
           "explanation": "Input and output are separate windings.",
           "misconception": "sharing myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the primary coil",
+                    "primary coil"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +156,24 @@
           "explanation": "No change, no induction, no output.",
           "misconception": "pass-through myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "zero, because the core field is not changing",
+            "a larger direct voltage",
+            "the same DC voltage, transformed",
+            "an alternating voltage"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "zero, because the core field is not changing"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "The turns ratio sets the output voltage size.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the amount of energy created",
+            "AC into DC",
+            "the size of the alternating voltage",
+            "the frequency of the supply"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the size of the alternating voltage"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,24 @@
           "correct": false,
           "explanation": "The ratio is geometry; the AC need is induction itself.",
           "misconception": "ratio myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "direct current would melt the primary coil",
+            "the iron core only carries alternating fields",
+            "the turns ratio only works for AC voltages",
+            "the secondary only induces while the core field keeps changing"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the secondary only induces while the core field keeps changing"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -285,6 +378,26 @@
           "explanation": "Dynamos rotate; transformers are static.",
           "misconception": "device swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "step-up transformer"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -320,6 +433,24 @@
           "correct": false,
           "explanation": "That reads the ratio backwards.",
           "misconception": "ratio inversion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the output is zero",
+            "it is stepped down to a quarter of the input",
+            "it is stepped up fourfold",
+            "it equals the input voltage"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it is stepped down to a quarter of the input"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +488,24 @@
           "explanation": "The core field alternates at the input frequency.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the frequency of the alternating voltage",
+            "the number of turns",
+            "the coil's resistance",
+            "the voltage size"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the frequency of the alternating voltage"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +542,24 @@
           "explanation": "Equal turns leave the voltage unchanged at 230 V.",
           "misconception": "ratio confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a step-up transformer with more secondary turns",
+            "a transformer with equal turns on both coils",
+            "a generator",
+            "a step-down transformer with fewer secondary turns"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a step-down transformer with fewer secondary turns"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +595,24 @@
           "correct": false,
           "explanation": "The output stays alternating regardless of turns.",
           "misconception": "conversion myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "drops to zero",
+            "becomes direct current",
+            "increases in proportion to the added turns",
+            "decreases"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "increases in proportion to the added turns"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -525,6 +710,24 @@
           "explanation": "Voltage does not change cable mechanics.",
           "misconception": "mechanical myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "high voltage makes the cables stronger",
+            "electricity travels faster at high voltage",
+            "the lower current then wastes less energy as heat in the cables",
+            "high voltage is required by the transformers only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the lower current then wastes less energy as heat in the cables"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -560,6 +763,27 @@
           "correct": true,
           "explanation": "The voltage is raised before the long journey.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a step-up transformer",
+                    "step-up transformer"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -597,6 +821,24 @@
           "explanation": "Transformers transfer; they do not store.",
           "misconception": "storage myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "store energy for peak demand",
+            "raise the voltage for the cables",
+            "convert AC to DC for homes",
+            "lower the transmission voltage to safe levels"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "lower the transmission voltage to safe levels"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -633,6 +875,26 @@
           "explanation": "Current and voltage trade off at fixed power.",
           "misconception": "no-change claim"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "ten times smaller"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -668,6 +930,24 @@
           "correct": false,
           "explanation": "The loss falls with the current.",
           "misconception": "loss inversion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "more energy wasted in the cables",
+            "less energy wasted heating the cables",
+            "the same energy wasted",
+            "the cables carrying less power"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "less energy wasted heating the cables"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

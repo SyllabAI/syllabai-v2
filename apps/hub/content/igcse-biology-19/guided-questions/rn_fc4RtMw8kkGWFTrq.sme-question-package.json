@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "A nephron is a kidney filtering unit, unrelated to the trigger of a response.",
           "misconception": "organ invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Stimulus"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "Guard cells open and close stomata in leaves, a plant structure outside this control loop.",
           "misconception": "plant structure misplaced"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Receptor cells"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,24 @@
           "explanation": "A stimulus is a change, not a processing structure.",
           "misconception": "category error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "In the effector, which then acts directly",
+            "In the coordination centre — brain, spinal cord or pancreas",
+            "In the stimulus itself",
+            "In the blood plasma"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "In the coordination centre — brain, spinal cord or pancreas"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +211,24 @@
           "explanation": "Muscles and glands are the two named effectors.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A sensory neurone",
+            "A receptor cell in the skin",
+            "The thermoregulatory centre",
+            "A muscle or a gland"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A muscle or a gland"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +264,24 @@
           "correct": false,
           "explanation": "This skips the stimulus that starts the loop.",
           "misconception": "component omitted"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Receptor, then coordination centre, then effector",
+            "Effector, then receptor, then stimulus",
+            "Stimulus, then effector, then receptor",
+            "Stimulus, then receptor, then effector"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Stimulus, then receptor, then effector"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

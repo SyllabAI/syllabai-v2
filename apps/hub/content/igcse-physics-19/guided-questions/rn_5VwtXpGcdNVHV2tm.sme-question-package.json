@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -285,6 +285,26 @@
           "explanation": "That is far weaker than Earth's field.",
           "misconception": "magnitude slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "about 10 N/kg"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -320,6 +340,24 @@
           "correct": false,
           "explanation": "The Moon's field is the weaker one.",
           "misconception": "inverted relation"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "identical, because the mass never changes",
+            "impossible, because there is no gravity anywhere in space",
+            "harder, because the Moon's field is stronger",
+            "easier, because the Moon's field is weaker"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "easier, because the Moon's field is weaker"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +395,24 @@
           "explanation": "Gas giants' stronger fields raise the energy cost of every metre.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Jupiter's field is weaker than Earth's",
+            "the mass itself grows on the way up",
+            "Jupiter's surface field is stronger than Earth's",
+            "Jupiter has no solid surface to stand on, ever"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Jupiter's surface field is stronger than Earth's"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +449,24 @@
           "explanation": "The store tracks position, not the clock.",
           "misconception": "variable swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a loop, showing the store depends on time",
+            "a flat line, showing height does not matter",
+            "a downward curve, showing the store shrinks with height",
+            "a straight line, showing the store grows evenly with height"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a straight line, showing the store grows evenly with height"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +502,36 @@
           "correct": false,
           "explanation": "That drops the field strength.",
           "misconception": "arithmetic slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "20 J"
+            },
+            {
+              "id": "1",
+              "text": "10 J"
+            },
+            {
+              "id": "3",
+              "text": "50 J"
+            },
+            {
+              "id": "2",
+              "text": "100 J"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "4",
+            "3",
+            "2"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },

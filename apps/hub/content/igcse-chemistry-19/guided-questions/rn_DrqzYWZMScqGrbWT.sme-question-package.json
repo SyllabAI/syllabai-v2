@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -281,6 +281,24 @@
           "explanation": "Temperature is a process condition, not the supply quantity.",
           "misconception": "condition confused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "How much crude oil remains underground",
+            "How hot the column must be",
+            "How much of a fraction refining the crude oil can produce",
+            "How much customers want to buy"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "How much of a fraction refining the crude oil can produce"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -316,6 +334,24 @@
           "correct": false,
           "explanation": "If they matched, no cracking would ever be needed; the mismatch is the whole reason.",
           "misconception": "balance assumed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because cracking makes fractions burn more cleanly",
+            "Because demand for some fractions outstrips their supply from refining",
+            "Because supply and demand match perfectly for every fraction",
+            "Because the column cannot run without cracking first"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because demand for some fractions outstrips their supply from refining"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -353,6 +389,26 @@
           "explanation": "The note names these heavy fractions as the surplus ones sent for cracking and modification.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Fuel oil and bitumen"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -389,6 +445,26 @@
           "explanation": "The supply-demand chart measures exactly this comparison.",
           "misconception": "measurement refused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Greater demand than supply"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -424,6 +500,24 @@
           "correct": false,
           "explanation": "Covalent bonds are broken, which is exactly why energy is absorbed.",
           "misconception": "bond energy denied"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Both, depending on the catalyst colour",
+            "Endothermic, because breaking bonds needs heat input",
+            "Exothermic, because the furnace feels hot",
+            "Neither, because no bonds are involved"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Endothermic, because breaking bonds needs heat input"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

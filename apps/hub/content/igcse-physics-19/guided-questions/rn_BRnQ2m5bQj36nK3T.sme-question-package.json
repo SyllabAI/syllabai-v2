@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "A star is far smaller than any galaxy.",
           "misconception": "scale error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the planets orbiting the Sun",
+            "a large collection of billions of galaxies",
+            "a single large star",
+            "a large collection of billions of stars"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a large collection of billions of galaxies"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "That is a planetary system.",
           "misconception": "level swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "one star and its planets",
+            "a large collection of billions of galaxies",
+            "the space between the stars",
+            "a large collection of billions of stars"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a large collection of billions of stars"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "Stars are smaller than galaxies.",
           "misconception": "order error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "star → galaxy → universe",
+            "galaxy → star → universe",
+            "universe → galaxy → star",
+            "star → universe → galaxy"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "star → galaxy → universe"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,24 @@
           "explanation": "The Sun is a typical star.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "huge glowing spheres of gas, like the Sun",
+            "objects that orbit planets",
+            "collections of galaxies",
+            "objects made of rock and ice"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "huge glowing spheres of gas, like the Sun"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +260,27 @@
           "correct": false,
           "explanation": "The Solar System is a single system inside one galaxy.",
           "misconception": "scale error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the entirety of space",
+                    "entirety of space"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -285,6 +378,27 @@
           "explanation": "The Sun is a star, not a place that contains us.",
           "misconception": "nonsense option"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the Milky Way galaxy",
+                    "Milky Way galaxy"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -320,6 +434,27 @@
           "correct": false,
           "explanation": "The Earth is a planet that orbits the Sun.",
           "misconception": "role swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the Sun, a star",
+                    "Sun, a star"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -357,6 +492,27 @@
           "explanation": "Earth is planet three of eight.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the third of eight",
+                    "third of eight"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -393,6 +549,24 @@
           "explanation": "The planetary system's centre is its star.",
           "misconception": "level error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "orbit around each other",
+            "sit motionless in space",
+            "orbit around the galaxy's edge",
+            "orbit around a star at the centre"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "orbit around a star at the centre"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +602,24 @@
           "correct": false,
           "explanation": "Billions of galaxies exist.",
           "misconception": "uniqueness myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "our Solar System is one part of it",
+            "it is smaller than the Solar System",
+            "it is the universe's only galaxy",
+            "it contains only our Sun and its planets"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "our Solar System is one part of it"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

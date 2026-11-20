@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -305,6 +305,24 @@
           "explanation": "Those colours belong to other copper chemistry, such as anhydrous and hydrated copper sulfate.",
           "misconception": "copper colours borrowed from another topic"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Green solid slowly darkening to black",
+            "Black solid turning green",
+            "White solid turning blue",
+            "No colour change at all"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Green solid slowly darkening to black"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -340,6 +358,24 @@
           "correct": false,
           "explanation": "A relighting splint identifies oxygen; carbon dioxide does the opposite and extinguishes flames.",
           "misconception": "gas tests mixed up"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "With a lit splint, which burns with a squeaky pop",
+            "By its sharp smell in the air",
+            "With a glowing splint, which relights",
+            "By passing it through limewater, which turns milky"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "By passing it through limewater, which turns milky"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -377,6 +413,20 @@
           "explanation": "One copper, one carbon and three oxygens appear on each side, so the equation is balanced as written.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "eq-builder",
+          "target": "CuCO3 (s) → CuO (s) + CO2 (g)",
+          "tokens": [
+            "CO2 (g)",
+            "CuCO3 (s)",
+            "CuO (s)",
+            "CO (g)",
+            "Cu (s)"
+          ],
+          "prompt": "Build the equation — tap species tokens to add them to a side, then check."
+        }
       ]
     },
     {
@@ -413,6 +463,24 @@
           "explanation": "Dissolved air does not turn limewater milky; only carbon dioxide produces that signature.",
           "misconception": "wrong gas credited"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because oxygen from the air dissolves in it",
+            "Because the limewater boils in the heat",
+            "Because carbon dioxide from the breakdown reacts with the limewater",
+            "Because copper(II) oxide dust blows into the limewater"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because carbon dioxide from the breakdown reacts with the limewater"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -448,6 +516,24 @@
           "correct": false,
           "explanation": "That step follows the breakdown and releases no carbon dioxide of its own.",
           "misconception": "later step blamed for the gas"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The dissolving of calcium oxide in water",
+            "The breakdown of calcium carbonate, which releases carbon dioxide",
+            "The burning of limestone in nitrogen",
+            "The rusting of iron reinforcements in concrete"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The breakdown of calcium carbonate, which releases carbon dioxide"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

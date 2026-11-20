@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Diffusion never runs uphill.",
           "misconception": "direction flipped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Movement of particles against a gradient",
+            "Movement of water across a partially permeable membrane",
+            "Movement requiring cellular energy",
+            "Net movement of particles from higher to lower concentration"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Net movement of particles from higher to lower concentration"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Amoeba has no organs at all.",
           "misconception": "structure invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "By active transport only",
+            "By diffusion straight across its cell membrane",
+            "Using lungs inherited from larger cells",
+            "Through special pores like stomata"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "By diffusion straight across its cell membrane"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,27 @@
           "explanation": "Gills belong to fish.",
           "misconception": "kingdom misplaced"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The lungs",
+                    "lungs"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +210,27 @@
           "explanation": "Thin barriers shorten each particle's journey.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "A short diffusion distance",
+                    "short diffusion distance"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +266,24 @@
           "correct": false,
           "explanation": "Diffusion slows but does not stop; the point is keeping it fast.",
           "misconception": "overstatement"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because diffusion would stop without movement",
+            "To cool the blood down",
+            "To keep the concentration gradients steep for faster exchange",
+            "To filter dust from the air"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "To keep the concentration gradients steep for faster exchange"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -285,6 +381,26 @@
           "explanation": "Nitrogen takes no part in respiration.",
           "misconception": "gas invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Oxygen"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -320,6 +436,24 @@
           "correct": false,
           "explanation": "That would need photosynthesis, which has stopped.",
           "misconception": "direction flipped"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Out of the leaf, down its gradient",
+            "Into the leaf",
+            "Neither in nor out",
+            "Only through the roots"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Out of the leaf, down its gradient"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +491,24 @@
           "explanation": "Constant consumption holds the inside below the outside.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because the stomata pump air in",
+            "The respiring cells keep internal oxygen low, so the gradient persists",
+            "Because the leaf stores oxygen in vacuoles",
+            "Because oxygen becomes more concentrated inside"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The respiring cells keep internal oxygen low, so the gradient persists"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +545,24 @@
           "explanation": "The exchange is passive and gradient-dependent.",
           "misconception": "process wrong"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Exchange would continue by active transport",
+            "Only carbon dioxide would still leave",
+            "Both gradients would collapse and exchange would cease",
+            "Oxygen would flood in faster"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Both gradients would collapse and exchange would cease"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +598,24 @@
           "correct": false,
           "explanation": "Both run; photosynthesis simply outpaces.",
           "misconception": "claim false"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Only transpiration matters by day",
+            "Respiration, so oxygen floods in",
+            "Photosynthesis, so the leaf takes in carbon dioxide overall",
+            "Neither process runs by day"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Photosynthesis, so the leaf takes in carbon dioxide overall"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -525,6 +713,26 @@
           "explanation": "Oxygen is the product; carbon dioxide is consumed.",
           "misconception": "gas swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Carbon dioxide"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -560,6 +768,24 @@
           "correct": true,
           "explanation": "Produced inside, oxygen builds up and leaves.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Through the roots into the soil",
+            "Out of the leaf, down its gradient",
+            "Into the leaf",
+            "It stays put inside the chloroplasts"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Out of the leaf, down its gradient"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -597,6 +823,24 @@
           "explanation": "It is consumed immediately, not stored.",
           "misconception": "mechanism invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The photosynthesising cells keep internal carbon dioxide low",
+            "Because the leaf stores it for night",
+            "Because the leaf pumps air inwards",
+            "Because carbon dioxide dissolves in the waxy cuticle"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The photosynthesising cells keep internal carbon dioxide low"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -633,6 +877,24 @@
           "explanation": "Respiration claims a share first.",
           "misconception": "fate overstated"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Some is used by respiration and the surplus diffuses out",
+            "It is converted back into carbon dioxide",
+            "All of it leaves immediately",
+            "All of it is stored in the vacuole"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Some is used by respiration and the surplus diffuses out"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -668,6 +930,24 @@
           "correct": false,
           "explanation": "That needs photosynthesis well ahead, which dim light prevents.",
           "misconception": "balance wrong"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Roughly zero — photosynthesis and respiration run at similar rates",
+            "Strong net carbon dioxide release",
+            "Strong net oxygen release",
+            "Exchange switches off entirely"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Roughly zero — photosynthesis and respiration run at similar rates"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
