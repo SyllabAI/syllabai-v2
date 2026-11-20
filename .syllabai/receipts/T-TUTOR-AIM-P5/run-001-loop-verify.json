@@ -1,0 +1,341 @@
+{
+ "format": "p5-loop-verify-receipt/0.1",
+ "run": "T-TUTOR-AIM-P5 run-001",
+ "head": "74b19a4108b0",
+ "verdict": "PASS",
+ "checks_total": 54,
+ "checks_failed": 0,
+ "writer_band_dates": {
+  "tutor_topic_engagements writer": "T-MIG-124 Phase 2, 2026-10-13 (0818c9fe; P2 confidence rider 47e74079 2026-11-17)",
+  "struggle_inferences writer": "T-MIG-131 writer band, 2026-10-18 (bfe12c44)",
+  "review_schedules writer": "T-MIG-126 writer band, 2026-10-18 (0e3a96e9)",
+  "graded-evidence KG join (137a-c)": "T-MIG-137 bands, 2026-10-19 (bf0f1f4b)",
+  "exam-target read extension": "T-TUTOR-AIM-P3 run-003, 2026-11-19 (9ae38034)"
+ },
+ "checks": [
+  {
+   "id": "W1",
+   "name": "tutor_topic_engagements INSERT (engagement-recorder)",
+   "ok": true,
+   "detail": "1 match(es) for 'insert into tutor_topic_engagements' in apps/api/src/services/learner/engagement-recorder.ts"
+  },
+  {
+   "id": "W1a",
+   "name": "FREE_TUTOR sink exported",
+   "ok": true,
+   "detail": "1 match(es) for 'export function tutorEngagementTelemetrySink' in apps/api/src/services/learner/engagement-recorder.ts"
+  },
+  {
+   "id": "W1b",
+   "name": "CLA sink exported",
+   "ok": true,
+   "detail": "1 match(es) for 'export function claInteractionTelemetrySink' in apps/api/src/services/learner/engagement-recorder.ts"
+  },
+  {
+   "id": "W1c",
+   "name": "sink wired on the tutor route",
+   "ok": true,
+   "detail": "1 match(es) for 'telemetry: tutorEngagementTelemetrySink\\\\(sql, defaultClock\\\\)' in apps/api/src/routes/tutor.ts"
+  },
+  {
+   "id": "W1d",
+   "name": "sink wired on the CLA route",
+   "ok": true,
+   "detail": "1 match(es) for 'telemetry: claInteractionTelemetrySink\\\\(sql, defaultClock\\\\)' in apps/api/src/routes/cla.ts"
+  },
+  {
+   "id": "W2",
+   "name": "updateOnAssessmentEvidence exists (model-update)",
+   "ok": true,
+   "detail": "1 match(es) for 'export async function updateOnAssessmentEvidence' in apps/api/src/services/learner-model/model-update.ts"
+  },
+  {
+   "id": "W2a",
+   "name": "skill_states writes in model-update",
+   "ok": true,
+   "detail": "3 insert/update skill_states statements"
+  },
+  {
+   "id": "W2b",
+   "name": "misconception_states writes in model-update",
+   "ok": true,
+   "detail": "2 insert/update misconception_states statements"
+  },
+  {
+   "id": "W2c",
+   "name": "BKT_UPDATED telemetry row",
+   "ok": true,
+   "detail": "7 match(es) for 'BKT_UPDATED' in apps/api/src/services/learner-model/model-update.ts"
+  },
+  {
+   "id": "W2d",
+   "name": "BDT_UPDATED telemetry row",
+   "ok": true,
+   "detail": "8 match(es) for 'BDT_UPDATED' in apps/api/src/services/learner-model/model-update.ts"
+  },
+  {
+   "id": "W3",
+   "name": "createGradedEvidencePublisher (the once-only claim + model write)",
+   "ok": true,
+   "detail": "1 match(es) for 'export function createGradedEvidencePublisher' in apps/api/src/routes/assessment/index.ts"
+  },
+  {
+   "id": "W3a",
+   "name": "publisher: evidence_emitted claim read",
+   "ok": true,
+   "detail": "claim read present"
+  },
+  {
+   "id": "W3b",
+   "name": "publisher: claim suppression (already fired)",
+   "ok": true,
+   "detail": "suppression present"
+  },
+  {
+   "id": "W3c",
+   "name": "publisher: @Order(10) analog \u2014 updateOnAssessmentEvidence first",
+   "ok": true,
+   "detail": "ordered"
+  },
+  {
+   "id": "W3d",
+   "name": "publisher: @Order(100) analog \u2014 struggle inference after",
+   "ok": true,
+   "detail": "struggle phase present"
+  },
+  {
+   "id": "W3smartmark",
+   "name": "smartmark binds createGradedEvidencePublisher",
+   "ok": true,
+   "detail": "1 match(es) for 'createGradedEvidencePublisher\\\\(sql\\\\)' in apps/api/src/routes/smartmark/index.ts"
+  },
+  {
+   "id": "W3teachermarking",
+   "name": "teachermarking binds createGradedEvidencePublisher",
+   "ok": true,
+   "detail": "1 match(es) for 'createGradedEvidencePublisher\\\\(sql\\\\)' in apps/api/src/routes/teachermarking.ts"
+  },
+  {
+   "id": "W3selfmark",
+   "name": "selfmark binds createGradedEvidencePublisher",
+   "ok": true,
+   "detail": "1 match(es) for 'createGradedEvidencePublisher\\\\(sql\\\\)' in apps/api/src/routes/selfmark/index.ts"
+  },
+  {
+   "id": "W3x",
+   "name": "smartmark fires publishGraded with the assembled event",
+   "ok": true,
+   "detail": "1 match(es) for 'publishGraded\\\\(\\\\s*await assembleGradedEvidenceEvent' in apps/api/src/services/smartmark/index.ts"
+  },
+  {
+   "id": "W3y",
+   "name": "teachermarking fires publishGraded (x2 sites)",
+   "ok": true,
+   "detail": "2 match(es) for 'publishGraded\\\\(\\\\s*await assembleGradedEvidenceEvent' in apps/api/src/services/teachermarking/index.ts"
+  },
+  {
+   "id": "W3z",
+   "name": "selfmark fires publishGraded",
+   "ok": true,
+   "detail": "2 match(es) for 'publishGraded\\\\(' in apps/api/src/services/selfmark/index.ts"
+  },
+  {
+   "id": "W3j",
+   "name": "KG join: question_topics read (the topic binding)",
+   "ok": true,
+   "detail": "1 match(es) for 'from question_topics where question_id' in apps/api/src/services/selfmark/index.ts"
+  },
+  {
+   "id": "W3k",
+   "name": "KG join: question_spec_points read",
+   "ok": true,
+   "detail": "1 match(es) for 'from question_spec_points where question_id' in apps/api/src/services/selfmark/index.ts"
+  },
+  {
+   "id": "W3m",
+   "name": "once-only guarded flip (evidence_emitted=true) in smartmark",
+   "ok": true,
+   "detail": "1 match(es) for 'evidence_emitted = true' in apps/api/src/services/smartmark/index.ts"
+  },
+  {
+   "id": "W3n",
+   "name": "once-only guarded flip in teachermarking",
+   "ok": true,
+   "detail": "2 match(es) for 'evidence_emitted = true' in apps/api/src/services/teachermarking/index.ts"
+  },
+  {
+   "id": "W4",
+   "name": "struggle_inferences INSERT",
+   "ok": true,
+   "detail": "1 match(es) for 'insert into struggle_inferences' in apps/api/src/services/learner-model/struggle-inference.ts"
+  },
+  {
+   "id": "W4a",
+   "name": "expiry law (expires_at) on the writer",
+   "ok": true,
+   "detail": "4 match(es) for 'expires_at' in apps/api/src/services/learner-model/struggle-inference.ts"
+  },
+  {
+   "id": "W5",
+   "name": "review_schedules INSERT (T-MIG-126 writer)",
+   "ok": true,
+   "detail": "1 match(es) for 'insert into review_schedules' in apps/api/src/services/cron/review-scheduler.ts"
+  },
+  {
+   "id": "W5a",
+   "name": "DECAY_CROSSED_THRESHOLD reason of record",
+   "ok": true,
+   "detail": "present"
+  },
+  {
+   "id": "W5b",
+   "name": "PENDING dedup law (exists guard)",
+   "ok": true,
+   "detail": "present"
+  },
+  {
+   "id": "W5c",
+   "name": "nightly-decay cron composes the pass",
+   "ok": true,
+   "detail": "3 match(es) for 'runNightlyDispatch' in apps/api/src/routes/cron.ts"
+  },
+  {
+   "id": "R1",
+   "name": "read: skill_statesByRecency",
+   "ok": true,
+   "detail": "3 match(es) for 'skillStatesByRecency' in apps/api/src/services/tutor/learner-model.ts"
+  },
+  {
+   "id": "R2",
+   "name": "read: misconceptionStatesByProbability",
+   "ok": true,
+   "detail": "2 match(es) for 'misconceptionStatesByProbability' in apps/api/src/services/tutor/learner-model.ts"
+  },
+  {
+   "id": "R3",
+   "name": "read: struggle_inferences (unexpired, un-superseded)",
+   "ok": true,
+   "detail": "1 match(es) for 'from struggle_inferences[\\\\s\\\\S]*?expires_at > [\\\\s\\\\S]*?superse' in apps/api/src/services/tutor/learner-model.ts"
+  },
+  {
+   "id": "R4",
+   "name": "read: tutor_topic_engagements (matched-topic scoped)",
+   "ok": true,
+   "detail": "1 match(es) for 'from tutor_topic_engagements' in apps/api/src/services/tutor/learner-model.ts"
+  },
+  {
+   "id": "R5",
+   "name": "read: review_schedules PENDING",
+   "ok": true,
+   "detail": "1 match(es) for 'from review_schedules\\\\s+where learner_id = \\\\$\\\\{learnerId\\\\} a' in apps/api/src/services/tutor/learner-model.ts"
+  },
+  {
+   "id": "R6",
+   "name": "staleness-relaxed misconceptions (re-sort by effective)",
+   "ok": true,
+   "detail": "1 match(es) for 'relaxedToPrior\\\\(' in apps/api/src/services/tutor/learner-model.ts"
+  },
+  {
+   "id": "R7",
+   "name": "M3 one-read-per-ask discipline (assembleContext owns the reads)",
+   "ok": true,
+   "detail": "2 match(es) for 'assembleTutorContext' in apps/api/src/services/tutor/karag.ts"
+  },
+  {
+   "id": "D1",
+   "name": "drill basis selected in the pipeline (decay-due \u2229 matched)",
+   "ok": true,
+   "detail": "1 match(es) for 'selectDrillDirectiveBasis\\\\(' in apps/api/src/services/tutor/karag.ts"
+  },
+  {
+   "id": "D2",
+   "name": "directive minted after the \u00a722 append (route half)",
+   "ok": true,
+   "detail": "2 match(es) for 'mintDrillDirective\\\\(' in apps/api/src/routes/tutor.ts"
+  },
+  {
+   "id": "D3",
+   "name": "directive persisted (tutor_drill_directives)",
+   "ok": true,
+   "detail": "2 match(es) for 'insertDrillDirective\\\\(' in apps/api/src/routes/tutor.ts"
+  },
+  {
+   "id": "D4",
+   "name": "CAS claim exactly-once",
+   "ok": true,
+   "detail": "1 match(es) for 'where directive_id = \\\\$\\\\{directiveId\\\\} and learner_id = \\\\$\\\\{' in apps/api/src/services/tutor/drill-directive.ts"
+  },
+  {
+   "id": "E1",
+   "name": "stale 'NO v2 writers' paragraph still at HEAD (pre-erratum state of record)",
+   "ok": true,
+   "detail": "stale paragraph present at HEAD 74b19a41: True"
+  },
+  {
+   "id": "AC1",
+   "name": "AC1 \u2014 Zero invented mark values (the conformance checker of record)",
+   "ok": true,
+   "detail": "7 match(es) for 'scheme' in apps/api/src/services/tutor/mark-conformance.ts"
+  },
+  {
+   "id": "AC1",
+   "name": "AC1 \u2014 Zero invented mark values (its CI test)",
+   "ok": true,
+   "detail": "6 match(es) for 'describe\\\\(' in apps/api/test/tutor/mark-conformance.test.ts"
+  },
+  {
+   "id": "AC1",
+   "name": "AC1 \u2014 Zero invented mark values (smart-mark golden/band tests)",
+   "ok": true,
+   "detail": "4 match(es) for 'describe\\\\(' in apps/api/test/smartmark/smartmark.test.ts"
+  },
+  {
+   "id": "AC2",
+   "name": "AC2 \u2014 Wrong-paper service verifiable (fail-open guard inheritance) (smartmark route tests)",
+   "ok": true,
+   "detail": "2 match(es) for 'describe\\\\(' in apps/api/test/smartmark/routes.test.ts"
+  },
+  {
+   "id": "AC2",
+   "name": "AC2 \u2014 Wrong-paper service verifiable (fail-open guard inheritance) (paper-marking route tests)",
+   "ok": true,
+   "detail": "5 match(es) for 'describe\\\\(' in apps/api/test/paper-marking/routes.test.ts"
+  },
+  {
+   "id": "AC3",
+   "name": "AC3 \u2014 Tier discipline (no solution content pre-attempt) (mark-context serving law)",
+   "ok": true,
+   "detail": "13 match(es) for 'attempt' in apps/api/src/services/tutor/mark-context.ts"
+  },
+  {
+   "id": "AC3",
+   "name": "AC3 \u2014 Tier discipline (no solution content pre-attempt) (DC-5 mark-context tests)",
+   "ok": true,
+   "detail": "3 match(es) for 'describe\\\\(' in apps/api/test/tutor/mark-context-dc5.test.ts"
+  },
+  {
+   "id": "AC4",
+   "name": "AC4 \u2014 Conformance + chat hygiene (DC-5 lint of record)",
+   "ok": true,
+   "detail": "9 match(es) for 'export' in apps/api/src/services/tutor/mark-conformance.ts"
+  },
+  {
+   "id": "AC4",
+   "name": "AC4 \u2014 Conformance + chat hygiene (chat hygiene (fence/[n] stripping))",
+   "ok": true,
+   "detail": "8 match(es) for 'export' in apps/api/src/services/tutor/sanitize.ts"
+  },
+  {
+   "id": "AC5",
+   "name": "AC5 \u2014 Honest failure (503 tutor_unavailable) (the 503 surface of record)",
+   "ok": true,
+   "detail": "7 match(es) for 'tutor_unavailable' in apps/api/src/routes/tutor.ts"
+  },
+  {
+   "id": "AC6",
+   "name": "AC6 \u2014 Latency envelope (chain timeout 60s of record, 30s default) (chain timeout constants)",
+   "ok": true,
+   "detail": "16 match(es) for '60_000|30000|30000|timeout' in apps/api/src/services/llmchain/adapters.ts"
+  }
+ ]
+}
