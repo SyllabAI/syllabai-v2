@@ -7,7 +7,7 @@
  * dataset, many chrome consumers (SME model, research §4).
  */
 import { createContext, useContext } from "react";
-import type { SpecTree } from "@/lib/spec-tree";
+import type { SmeSidebarData, SpecTree } from "@/lib/spec-tree";
 
 export type SidebarVariant = "hub" | "notes" | "questions" | "flashcards";
 
@@ -32,6 +32,12 @@ export interface SidebarData {
   notesBySubtopic: Record<string, { noteId: string; title: string; guidedStudy: boolean }[]>;
   /** sub-topic code → the individual question sets anchored there, corpus order (tree expander) */
   setsBySubtopic: Record<string, { slug: string; title: string; count: number }[]>;
+  /** T-QA-ORG-001 P2 — the SME selector mirror for the sidebar (undefined on
+   * non-layered courses): when present, the notes and questions sidebar
+   * renders topics/counts/hrefs from HERE — the same organization the
+   * selectors render — and noteRow resolves the reader page's active row.
+   * The hub, flashcards and non-layered courses keep the official spine. */
+  smeSidebar?: SmeSidebarData;
   /** does the bundle carry real past-paper provenance (sourcePaper on parts)? */
   hasPastPapers?: boolean;
   /** does the syllabai-pastpapers archive hold PDFs mapped to this course? */

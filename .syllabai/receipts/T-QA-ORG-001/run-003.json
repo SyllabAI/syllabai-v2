@@ -1,0 +1,26 @@
+{
+  "task": "T-QA-ORG-001",
+  "run": "run-003",
+  "kind": "implementation (P3 — official-spine hygiene)",
+  "recorded_utc": "2026-11-20T10:10:00Z",
+  "branch": "t-qa-org-002/fix @ 0002 (P1+P2 commit 414729a3 rebuilt off origin/main a144d4d1; P3 commit stacks on it)",
+  "operator_directive": "\"Proceed with P3, content lane\" (2026-11-20)",
+  "finding": {
+    "lit21": "the official spine is a year-rotating set-text table: 6x 'Section A: Poetry', 3x 'Section B: Prose', 2x 'Set texts for examination in 2023 – Paper' (+2024, +2025) — and the 'Set texts …' titles are TRUNCATED mid-sentence in the corpus itself",
+    "chem25": "13 intra-tree duplicate-title groups (every AS/A2 topic repeats: 'Chemical energetics' T5/T23, 'Electrochemistry' T6/T24, …)",
+    "fleet": "22 of the content bundles carry bundle-level duplicate TOPIC titles (e.g. maths-b-16 16/20 topics in 8 groups, ial-maths-20-pure-2 8/16 in 4, lit-21 15/21 in 5)",
+    "recoverability": "NO fuller source exists in the repo — spine copy (spines/cie-igcse-english-literature-21.json, built by build_official_spines.py from resourcesSha e9e86e22), the kg export (public/kg/data) and the curriculum all carry identical truncated titles with empty descriptions. The paper/component mapping was lost upstream and cannot be restored here without inventing it.",
+    "cross_tree_nuance": "maths-b-16's 8 groups are official↔SME cross-tree pairs (bare 'Number' vs SME 'Number') — they never render in one list, so the builder rule intentionally no-ops there; the learner-visible collisions are the intra-tree ones (lit-21, chem-25, maths-25, ial-maths units, …)"
+  },
+  "implemented": {
+    "rule": "qualifyDuplicateTitles (spec-tree.ts, pure): verbatim-colliding titles on the rendered trees (official spine + SME picker layer) get an honest '(n of k)' position qualifier — deterministic in corpus order, unique titles untouched, codes/deep links unaffected (they key on codes). Applied at the end of buildSpecTreeIndex before the return, so every consumer (sidebar, /specification, selectors) renders disambiguated rows consistently.",
+    "not_done_deliberately": "no corpus edits (upstream regeneration would overwrite them), no invented paper/component names, subtopic-level collisions untouched (rows render under their own numbered topic context)"
+  },
+  "verification": {
+    "law_tests": "18 pass / 0 fail (sme-sidebar.test.ts) — incl. the REAL lit-21 bundle: post-qualification official titles are UNIQUE, titles[0] === 'Section A: Poetry (1 of 6)', all 6 Section A rows distinct; SME layer titles stay unique (no-op)",
+    "tsc_noEmit": "exit 0 (whole hub app)",
+    "eslint_touched_files": "exit 0"
+  },
+  "upstream_residual": "content lane should restore the real paper/component names + untruncated titles at the corpus parse (importer / build_official_spines.py CIE adapter); the qualification rule then no-ops by construction",
+  "environment_notes": "sandbox recycled mid-task; both working branches were rebuilt from the exported patches (download/T-QA-ORG-002, download/T-QA-GAPS-001, download/T-QA-ORG-001). A stray `bunx tsc` in the incomplete fresh clone saved an unwanted lockfile — reverted before the real `bun install` (990 packages)."
+}
