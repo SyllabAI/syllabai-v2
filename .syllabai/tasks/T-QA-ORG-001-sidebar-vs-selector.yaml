@@ -27,10 +27,19 @@ task:
     buildSmeSidebar in spec-tree.ts, mirror pick in topic-tree.tsx, 13 law
     tests, tsc + eslint clean. P0 (demo note-page bounce) RETRACTED same-session:
     auth 200 + renders; the anonymous 307 is the designed route-gate session
-    gate — erratum in receipts/T-QA-ORG-001/run-002.json. P3 (official-spine
-    year-variant dedup) stays OPEN for the content lane. Card stays OPEN until
-    the branch lands (push blocked in the QA sandbox: apply
-    download/T-QA-ORG-002/0001-*.patch with git am, or push the branch).
+    gate — erratum in receipts/T-QA-ORG-001/run-002.json. Card stays OPEN until
+    the branch lands (push blocked in the QA sandbox: apply the two
+    download/T-QA-ORG-002 patches IN ORDER with git am, or push the branch).
+    UPDATE 2026-11-20 (run-003, operator directive "Proceed with P3, content
+    lane"): P3 IMPLEMENTED on the same branch (5438494a, off origin/main
+    a144d4d1) — qualifyDuplicateTitles (spec-tree.ts, pure): verbatim-colliding
+    official/SME titles get an honest "(n of k)" qualifier (lit-21's 6x
+    "Section A: Poetry" year-rotation, chem-25's AS/A2 repeats, 22 bundles
+    carry bundle-level dup titles); the paper/component names are unrecoverable
+    in-repo (spine/kg/curriculum all agree), so nothing is invented; cross-tree
+    official-vs-SME pairs intentionally untouched. 18/18 law tests incl. the
+    REAL lit-21 bundle, tsc + eslint clean. Upstream residual: restore real
+    names + untruncated titles at the corpus parse — the rule then no-ops.
 base:
   repo: "syllabai-v2 @ 118cbd35 (origin/main at recording; live audit run
     against the prod deploy of cb0f9c3f, code cites re-verified on the new tip)"
