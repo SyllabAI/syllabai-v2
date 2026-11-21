@@ -1,0 +1,126 @@
+{
+ "receipt": "run-042-gates",
+ "family": "RN-DEBRIS-11",
+ "run": "run-042",
+ "kind": "build-time gates (pre-commit, vs the base tip + staged worktree)",
+ "generatedUtc": "2026-11-21",
+ "baseTip": "595e803ba6ee26decb2bc45c212b489778913085",
+ "gates": [
+  {
+   "name": "B1-prefix-worklog.md",
+   "ok": true,
+   "detail": "append-only"
+  },
+  {
+   "name": "B1-ride-sha-worklog.md",
+   "ok": true,
+   "detail": "the run-041 merge record entry present with the merge sha (the house worklog sha form)"
+  },
+  {
+   "name": "B1-entry-once-worklog.md",
+   "ok": true,
+   "detail": "each entry exactly once"
+  },
+  {
+   "name": "B1-marks-worklog.md-<<<",
+   "ok": true,
+   "detail": "<<<<<<< count unchanged vs base"
+  },
+  {
+   "name": "B1-marks-worklog.md->>>",
+   "ok": true,
+   "detail": ">>>>>>> count unchanged vs base"
+  },
+  {
+   "name": "B1-marks-worklog.md-===",
+   "ok": true,
+   "detail": "======= count unchanged vs base"
+  },
+  {
+   "name": "B1-prefix-.syllabai/worklog.md",
+   "ok": true,
+   "detail": "append-only"
+  },
+  {
+   "name": "B1-ride-sha-.syllabai/worklog.md",
+   "ok": true,
+   "detail": "the run-041 merge record entry present with the merge sha (the house worklog sha form)"
+  },
+  {
+   "name": "B1-entry-once-.syllabai/worklog.md",
+   "ok": true,
+   "detail": "each entry exactly once"
+  },
+  {
+   "name": "B1-marks-.syllabai/worklog.md-<<<",
+   "ok": true,
+   "detail": "<<<<<<< count unchanged vs base"
+  },
+  {
+   "name": "B1-marks-.syllabai/worklog.md->>>",
+   "ok": true,
+   "detail": ">>>>>>> count unchanged vs base"
+  },
+  {
+   "name": "B1-marks-.syllabai/worklog.md-===",
+   "ok": true,
+   "detail": "======= count unchanged vs base"
+  },
+  {
+   "name": "G2-diff-shape",
+   "ok": true,
+   "detail": "-1/+11 (the comma replace + the merged block additions); lines 86->96"
+  },
+  {
+   "name": "G2-merged-block",
+   "ok": true,
+   "detail": "merged block fields of record"
+  },
+  {
+   "name": "G2-json-valid",
+   "ok": true,
+   "detail": "the surgered receipt still parses"
+  },
+  {
+   "name": "G3-ride-receipt",
+   "ok": true,
+   "detail": "ride receipt + census + 38th reminder"
+  },
+  {
+   "name": "G3-postReview",
+   "ok": true,
+   "detail": "postReview receipt"
+  },
+  {
+   "name": "G4-scope-7",
+   "ok": true,
+   "detail": "the staged set == the 7 declared paths (asserted at commit time by the union battery)"
+  },
+  {
+   "name": "G5-byte-identity-cie-igcse-computer-science-23.json",
+   "ok": true,
+   "detail": "apps/hub/content-maps/cie-igcse-computer-science-23.json byte-identical vs base (zero content bytes by construction; re-asserted vs base at commit time)"
+  },
+  {
+   "name": "G5-byte-identity-flashcards.json",
+   "ok": true,
+   "detail": "apps/hub/content/cie-igcse-computer-science-23/flashcards.json byte-identical vs base (zero content bytes by construction; re-asserted vs base at commit time)"
+  },
+  {
+   "name": "P0-blob-identity-9-files-x21-bases",
+   "ok": true,
+   "detail": "the 9 non-curriculum content-plane files byte-identical vs 74768c11 / d46e3ff4 / a558f9ad / 9b389dd7 / 2e119201 / ad716b0d / 23ca5924 / 1544165e / 4caa6570 / 94c037f8 / 4a8e7c9e / fe32ffb9 / 466f23e3 / cb0f9c3f / 118cbd35 / 11626b11 / 74b19a41 / fd6e63c0 / 1830efba / 2db10938 / 361a754c"
+  },
+  {
+   "name": "P0-curriculum-drift-class",
+   "ok": true,
+   "detail": "curriculum.json differs from the 5 pre-drift historical bases (the expected other-lane drift class)"
+  },
+  {
+   "name": "P0-curriculum-pinned-to-landing",
+   "ok": true,
+   "detail": "the tip bytes == the 0ec5a6f9 landing of record (86590 B; no further drift)"
+  }
+ ],
+ "allOk": true
+}
