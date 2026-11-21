@@ -1231,9 +1231,7 @@ function TypedAnswerWorkspace({
       if (!res.ok || !j.ok) {
         setMark({
           kind: "error",
-          message:
-            j.detail ??
-            AI_MARK_UNAVAILABLE,
+          message: j.detail ?? "Marking failed — try again in a moment.",
         });
         return;
       }
@@ -1312,9 +1310,11 @@ function TypedAnswerWorkspace({
       <div className="mt-2 flex flex-wrap items-center gap-2">
         {/* UX-2 (Task 38 §6.1): in the core flow the CoreMarkingFlow panel
             below owns the marking story — the legacy lane renders NOTHING
-            here, so the card never shows "AI marking is unavailable" right
-            above a live AI-draft button. */}
-        {coreLive ? null : aiAvailable !== false ? (
+            here. And when the probe says AI marking is off (ADR-029), the
+            lane hides the affordance entirely — no button, no stale
+            unavailable apology (owner order 2026-11-21 retired the
+            shared string; the self-mark footer below is the honest path). */}
+        {coreLive || aiAvailable === false ? null : (
           <Button size="sm" variant="outline" disabled={!canMark} onClick={runMark} className="gap-1.5 text-xs">
             {mark.kind === "loading" ? (
               <Loader2 className="size-3.5 animate-spin" aria-hidden />
@@ -1323,10 +1323,6 @@ function TypedAnswerWorkspace({
             )}
             Mark my answer
           </Button>
-        ) : (
-          <span className="text-2xs text-muted-foreground">
-            {AI_MARK_UNAVAILABLE}
-          </span>
         )}
         {aiAvailable === true && text.trim().length === 0 && (
           <span className="text-2xs text-muted-foreground">Type an answer first</span>
@@ -1416,7 +1412,9 @@ function TypedAnswerWorkspace({
 // Task 38 §6.1/UX-7 (2026-11-20) supersedes the self-mark pointer: a
 // pre-submit status line must never name a control by its post-mark role —
 // the footer "How did you do?" box speaks for itself once it is on screen.
-const AI_MARK_UNAVAILABLE = "AI marking is unavailable right now.";
+// Owner order 2026-11-21: the stale unavailable-apology string those tails
+// shared is retired completely — probe-false lanes hide the affordance
+// (ADR-029 posture) and each failure chip carries its own honest copy.
 
 function hasUsableChoices(part: ExamQuestion["parts"][number]): boolean {
   const c = part.choices;
@@ -2041,7 +2039,7 @@ function CoreMarkingFlow({
                 ? "Sign in to use AI marking."
                 : req.outcome === "unconfigured"
                   ? "AI marking is not configured on the server yet."
-                  : AI_MARK_UNAVAILABLE;
+                  : "Smart Mark couldn't start this mark — try again in a moment.";
           setAdvisory((prev) => ({ ...prev, [t.hubPartId]: { kind: "failed", message } }));
           return;
         }
