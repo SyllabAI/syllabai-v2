@@ -244,34 +244,14 @@ export function QuestionPlayer({
   // the course is the pilot and the learner is signed in (ADR-029 tranche 4)
   const bridge = useAttemptBridge(course, topicSlug);
 
-  // F-QB-2a (honest re-audit 2026-11-20): /api/ai/mark is probed through a
-  // module-level singleton, and every TypedAnswerWorkspace used to render
-  // its own "AI marking is unavailable right now." line off the same false
-  // probe — a 36-copy wall down a 19-question paper. The player consumes
-  // the SAME probe once and owns the single set-level statement instead
-  // (the W2 UX-3 "single liveness statement" law, applied to the AI-mark
-  // lane). Per-box copy stays only where it is contextual (failure cards
-  // after an explicit mark attempt). The banner hides from sets the core
-  // flow covers: there Smart Mark owns marking and an "unavailable" line
-  // would be a lie.
-  const [aiLaneAvailable, setAiLaneAvailable] = useState<boolean | null>(null);
-  useEffect(() => {
-    let live = true;
-    aiMarkAvailable().then((v) => live && setAiLaneAvailable(v));
-    return () => {
-      live = false;
-    };
-  }, []);
-  // only structured parts ever rendered the per-box line — an all-MCQ set
-  // must not grow a banner for a lane it never shows
-  const hasTypedParts = useMemo(
-    () =>
-      questions.some(
-        (q) => q.parts.some((p) => p.questionType !== "multiple_choice" && p.solutionMd),
-      ),
-    [questions],
-  );
-  const coreCoversSet = bridge.kind === "ready" && Object.keys(bridge.data.questions).length > 0;
+  // F-QB-2a (owner order 2026-11-21: the unavailable-marking apology copy
+  // is retired completely): the availability copy is retired in ALL
+  // forms — the per-box line (a 36-copy wall down a 19-question paper)
+  // AND the interim set-level statement. The probe-false lane renders
+  // nothing anywhere (ADR-029's own posture: players hide the AI
+  // affordance); the mark scheme + "How did you do?" self-mark footer
+  // stays the honest path, and explicit mark attempts still surface
+  // their own contextual failure cards with actionable copy.
 
   const counts = useMemo(() => {
     const c: Record<Difficulty, number> = { all: questions.length, easy: 0, medium: 0, hard: 0 };
@@ -448,15 +428,6 @@ export function QuestionPlayer({
     <div className="space-y-5">
       {/* 4CH1 bridge status — one honest line, never a blocker */}
       <BridgeBanner status={bridge} />
-
-      {/* F-QB-2a: the ONE AI-mark availability statement (was one muted line
-          under every answer box — 36 copies on a 19-question paper). */}
-      {aiLaneAvailable === false && hasTypedParts && !coreCoversSet && (
-        <div className="rounded-lg border bg-muted/30 px-4 py-2.5 text-xs leading-relaxed text-muted-foreground">
-          AI marking is unavailable right now — typed answers save in this
-          browser, and self-marking stays available under each question.
-        </div>
-      )}
 
       {/* difficulty tabs + guided practice (SME controls, research §6.2) —
           bank playback ONLY (T-PAPER-PLAYBACK-1): a past paper is a fixed
@@ -1269,9 +1240,7 @@ function TypedAnswerWorkspace({
       if (!res.ok || !j.ok) {
         setMark({
           kind: "error",
-          message:
-            j.detail ??
-            AI_MARK_UNAVAILABLE,
+          message: j.detail ?? "Marking failed — try again in a moment.",
         });
         return;
       }
@@ -1350,11 +1319,10 @@ function TypedAnswerWorkspace({
       <div className="mt-2 flex flex-wrap items-center gap-2">
         {/* UX-2 (Task 38 §6.1): in the core flow the CoreMarkingFlow panel
             below owns the marking story — the legacy lane renders NOTHING
-            here, so the card never shows "AI marking is unavailable" right
-            above a live AI-draft button. F-QB-2a: when the probe says the
-            lane is down, the box renders nothing either — the set-level
-            banner above the list is the sole availability statement (the
-            per-box line repeated it once per part). */}
+            here. F-QB-2a (owner order 2026-11-21): when the probe says the
+            lane is down, the box renders nothing either — no per-box line,
+            no set-level statement; the availability copy is retired in all
+            forms and the self-mark footer is the honest path. */}
         {coreLive || aiAvailable === false ? null : (
           <Button size="sm" variant="outline" disabled={!canMark} onClick={runMark} className="gap-1.5 text-xs">
             {mark.kind === "loading" ? (
@@ -1453,7 +1421,9 @@ function TypedAnswerWorkspace({
 // Task 38 §6.1/UX-7 (2026-11-20) supersedes the self-mark pointer: a
 // pre-submit status line must never name a control by its post-mark role —
 // the footer "How did you do?" box speaks for itself once it is on screen.
-const AI_MARK_UNAVAILABLE = "AI marking is unavailable right now.";
+// Owner order 2026-11-21: the shared unavailable-apology string is retired
+// completely (per-box line, set-level statement, and the failure-tail
+// fallbacks below each carry their own honest copy instead).
 
 function hasUsableChoices(part: ExamQuestion["parts"][number]): boolean {
   const c = part.choices;
@@ -2078,7 +2048,7 @@ function CoreMarkingFlow({
                 ? "Sign in to use AI marking."
                 : req.outcome === "unconfigured"
                   ? "AI marking is not configured on the server yet."
-                  : AI_MARK_UNAVAILABLE;
+                  : "Smart Mark couldn't start this mark — try again in a moment.";
           setAdvisory((prev) => ({ ...prev, [t.hubPartId]: { kind: "failed", message } }));
           return;
         }
