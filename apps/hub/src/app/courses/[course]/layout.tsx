@@ -108,6 +108,9 @@ export default async function CourseLayout({
     noteSubtopic: hub.noteSubtopic,
     notesBySubtopic: hub.notesBySubtopic,
     setsBySubtopic: hub.setListsBySubtopic,
+    // T-QA-ORG-001 P2: the SME selector mirror — undefined on non-layered
+    // courses, so the official spine stays everywhere it always was
+    smeSidebar: hub.smeSidebar,
     // OFFICIAL-PLANE-ONLY LAW (operator order 2026-10-25, trace
     // 1a17e79bb0e50399): "Past Papers" in the sidebar keys on the official
     // parsed plane (real interactive reconstructions) OR the corpus PDF

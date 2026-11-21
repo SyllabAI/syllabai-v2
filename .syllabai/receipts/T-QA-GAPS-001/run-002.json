@@ -1,0 +1,18 @@
+{
+  "task": "T-QA-GAPS-001",
+  "run": "run-002",
+  "kind": "triage (corpus ground truth vs live census)",
+  "recorded_utc": "2026-11-20T11:20:00Z",
+  "branch": "t-qa-gaps-001/qa @ records commit (off origin/main a144d4d1 lineage; QA-branch recording lane)",
+  "operator_directive": "\"Proceed\" (2026-11-20) — after T-QA-ORG-001 P1-P3 completed, the GAPS-001 queue item is next",
+  "verdict": "ALL 47 empty selectors are TRUE corpus gaps. ZERO pipeline dropouts: for every missing layer, the corpus bundle is genuinely empty and the live selector count matches exactly (e.g. cie-a-level-accounting-21 notes=159 present, questions=0/cards=0 in BOTH corpus and live). No course has content in the corpus that fails to render. The notes layer matched corpus==live fleet-wide (0 flags on 106 courses); flashcards likewise.",
+  "metric_notes": "The triage sweep's only flags were the script's own metric mismatch on the questions layer: corpus questions.json is a list of SETS while the live header counts QUESTIONS (e.g. igcse-maths-b-16 = 65 sets / 1,270 questions). True-gap courses agreed at 0==0 regardless. The live 'groups' column for revision-notes did not match any notes-field candidate (distinct topicSlug/sectionSlug/specPoint) — it is a curriculum-tree metric, not pinned further; immaterial to the verdict.",
+  "sharpened_handoff": {
+    "flashcards_26_courses": "GENERATOR RUN, not authoring-from-scratch. Decks are subtopic-anchored (deckSlug mirrors the curriculum row, e.g. '1-1-particles-in-the-atom-and-atomic-radius'), cards carry specPointCode (86-100% on sampled contentful courses) and come in 4 fixed types (question_and_answer, true_or_false, fill_in_the_blanks, keyword_definition). sourceNoteId exists in the schema but is UNUSED (0% on every sampled course). All 16 spot-checked gap courses have 100% of notes placed (sectionSlug non-empty). The upstream deck generator simply hasn't been run/landed for these courses.",
+    "exam_questions_12_courses": "Needs QP/MS source material — questions.json holds paper-derived sets with source/curriculum fields; heavier production than flashcards.",
+    "trio_all_three_missing": "cie-a-level-geography-21, cie-a-level-maths-20-pure-2, igcse-history-17 — bundles are literally empty lists; curricula DO exist for all three, so the spine and navigation render; full authoring from scratch required.",
+    "side_finding": "sourceNoteId being unused fleet-wide is a schema-cleanup candidate upstream (cosmetic, out of this lane)."
+  },
+  "artifacts": "scripts/gaps_triage.py (QA workspace) — corpus-vs-live sweep, 106 courses x 3 layers",
+  "environment_notes": "repo survived this turn's recycle (both branches intact); census CSV and bundles read from the QA-branch worktree"
+}

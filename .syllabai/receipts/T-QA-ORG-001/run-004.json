@@ -1,0 +1,21 @@
+{
+  "task": "T-QA-ORG-001",
+  "run": "run-004",
+  "kind": "landing records (all three QA-branch PRs merged)",
+  "recorded_utc": "2026-11-20T19:45:00Z",
+  "operator_directive": "GitHub PAT supplied 2026-11-20 to unblock the in-sandbox push/PR/merge blockade; governance flow of record executed: push -> PR -> sha-pinned merge",
+  "landed": {
+    "pr_1161_t-qa-org-002/fix": "T-QA-ORG-001 P1+P2+P3 implementation — merge commit eb732f9a; head 3911c29f (patch-transport rebuild of the recorded fixes, content-identical)",
+    "pr_1162_t-qa-def-001/fix": "T-QA-DEF-001 defects 4+5 (/sitemap.xml + robots Sitemap line; login count 94->103) — merge commit c7cd95b9; impl commit sha matches the run-001 receipt of record (6f23389c)",
+    "pr_1163_t-qa-gaps-001/qa": "T-QA-ORG-001 + T-QA-GAPS-001 records (PENDING docs, cards, receipts, census, erratum, triage) — merge commit 48fb28be; head 5e16b2c5 (5 records commits replayed 5/5 from the patches of record)"
+  },
+  "main_of_record": "origin/main 5ae0ccfa -> 48fb28be (3 merge commits)",
+  "governance_lessons": [
+    "§2 claim protocol (coordination_guard.py): ONE OPEN PR PER TASK ID, computed from branch 't-<task>/run-N' and/or title '^T-<task>' / '(T-<task>)'. Opening three PRs at once failed coordination on every head (this PR-set double-claimed qa-org-001). Sequential re-runs pass cleanly — the guard's own stated resolution.",
+    "Title-only attribution quirk: a title 'T-QA-ORG-001 + T-QA-GAPS-001: ...' claims ONLY the FIRST id (prefix regex stops at the space) — the second id is invisible to the guard.",
+    "Stale-run diagnosis: a queued coordination run from PR creation executed late and failed against a world that no longer existed (it saw a PR as open that was already merged). The check-runs list carries BOTH runs; merge gating uses the NEWEST run per required check — poll by newest, not by presence of any failure.",
+    "Branch naming: these lanes used 't-qa-<id>/{fix,qa}' — the §2 rule-2 shape 't-<task>/run-N' was not met, so attribution ran on titles alone (works, but unattributed if a title lacks the id). This landing run uses the proper shape: t-qa-org-001/run-004."
+  ],
+  "card_updates_in_this_run": "T-QA-ORG-001 status -> DONE; T-QA-GAPS-001 stays OPEN (content production pending); T-QA-DEF-001 stays OPEN (live-repro items 1+2 pending, 3 external, 6 by-design)",
+  "credential_hygiene": "The PAT was used transiently (git http.extraheader + API bearer), never stored in files, git records, or output; recommend the operator REVOKE/rotate it now that landing is done (it transited chat in plaintext)."
+}

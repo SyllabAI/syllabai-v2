@@ -1,0 +1,53 @@
+version: 1
+task:
+  id: T-QA-GAPS-001
+  title: "Selector content gaps — 30 courses / 47 empty selectors: produce Revision Notes / Exam Questions / Flashcards per docs/PENDING-selector-content-gaps-2026-11-20.md"
+  owner: "unassigned"
+  status: OPEN
+  priority: P2
+  wave: pending-backlog
+  deps: []
+  execution_record: >
+    Recorded 2026-11-20 by the QA verification session under operator directive
+    ("we will tackle these in the future, so save them somewhere in the repos as
+    pending"). Evidence: docs/PENDING-selector-content-gaps-2026-11-20.md (grouped
+    list with titles + suggested tackle order), docs/selector-census-2026-11-20.csv
+    (318 rows, in-session header extraction), receipt run-001.json. All 318 selector
+    pages render (zero 404s); notes sum 9,151 = census of record EXACT; 47 selectors
+    empty across 30 courses (revision-notes 3 / exam-questions 15 / flashcards 29);
+    cie-a-level-geography-21, cie-a-level-maths-20-pure-2 and igcse-history-17 are
+    empty on all three. Content gap, NOT breakage; re-verified unchanged on live
+    production after main advanced 0ca81cca -> cb0f9c3f. Card stays OPEN until a
+    content lane claims it; group order in the doc is a suggestion, not a law.
+    UPDATE 2026-11-20 (run-002, operator directive "Proceed" — triage against the
+    corpus): ALL 47 are TRUE corpus gaps, ZERO pipeline dropouts — for every
+    missing layer the corpus bundle is genuinely empty and the live count matches
+    exactly; notes and cards layers matched corpus==live fleet-wide (106 courses).
+    Handoff sharpened: flashcards (26 courses) are a GENERATOR RUN, not authoring
+    from scratch — decks subtopic-anchored (deckSlug mirrors the curriculum row),
+    cards carry specPointCode (86-100%) in 4 fixed types, sourceNoteId unused
+    fleet-wide, and all 16 spot-checked gap courses have 100% of notes placed
+    (sectionSlug); exam questions (12 courses) need QP/MS source material; the
+    all-three trio needs full authoring (curricula exist, content layers empty).
+    The card now hands off with per-layer production mode, not just course lists.
+    LANDED 2026-11-20: the records (census run-001 + triage run-002) landed
+    via PR #1163 (48fb28be). The content production itself remains PENDING
+    with the content lane — this card stays OPEN until the 30 courses ship.
+base:
+  repo: "syllabai-v2 @ cb0f9c3f (origin/main at recording; census taken against the
+    live prod deploy of the 0ca81cca-era tip and re-verified after the advance)"
+basis: >
+  Operator directive 2026-11-20: "We will tackle these in the future, so save them
+  somewhere in the repos as pending." Source evidence: the QA session's all-course
+  selector census (318 pages) + full link check (1,641 internal / 5 external, zero
+  broken) recorded in the session's browser-qa report.
+scope:
+  allowed:
+    - "docs/PENDING-selector-content-gaps-2026-11-20.md"
+    - "docs/selector-census-2026-11-20.csv"
+    - ".syllabai/tasks/T-QA-GAPS-001-selector-content-gaps.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-QA-GAPS-001/**"
+  forbidden:
+    - "apps/** (hub/api lanes)"
+    - "packages/** (contracts/db lanes)"
+    - ".syllabai/worklog.md (append-only shepherd law — untouched by this recording)"

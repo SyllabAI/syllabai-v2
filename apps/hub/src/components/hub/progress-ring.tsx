@@ -38,6 +38,7 @@ export function ProgressRing({
   size = 18,
   className,
   projectionPercent,
+  localPercent,
   dimension = "all",
 }: {
   course: Course;
@@ -51,6 +52,13 @@ export function ProgressRing({
    * (the projection-of-events law, never a local counter); null/undefined
    * falls back to the SIMULATED overlay posture (signed-out demo). */
   projectionPercent?: number | null;
+  /** T-QA-ORG-001 P2: the caller's pre-computed percent for rows the
+   * overlay's subtopic keying cannot see — the SME mirror rows carry row
+   * codes, not official subtopic codes, so the projection/overlay lookups
+   * miss. The caller derives it from the same per-note read flags the
+   * overlay itself uses (reads ÷ the row's notes), just keyed by noteId.
+   * Projection still wins when it carries a fact for the node. */
+  localPercent?: number;
   /** "notes" / "questions" / "flashcards" swap the denominator to that
    * select page's own content type (see ProgressRingDimension). The server
    * projection branch above is dimension-agnostic by contract: a caller
@@ -64,6 +72,8 @@ export function ProgressRing({
   let percent = 0;
   if (projectionPercent !== undefined && projectionPercent !== null) {
     percent = projectionPercent;
+  } else if (localPercent !== undefined) {
+    percent = roundPercent(localPercent);
   } else if (subtopic && dimension === "notes") {
     percent = roundPercent(subtopicNotesRing(progress, subtopic, counts).percent);
   } else if (subtopic && dimension === "questions") {

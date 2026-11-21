@@ -13,6 +13,7 @@
  */
 import "server-only";
 import { cache } from "react";
+import type { SmeSidebarData } from "@/lib/spec-tree";
 import { z } from "zod";
 import {
   ConceptGraph,
@@ -354,6 +355,15 @@ export interface HubCourse {
   notesBySubtopic: Record<string, { noteId: string; title: string; guidedStudy: boolean }[]>;
   /** sub-topic code → the question sets anchored there, corpus order (tree expander) */
   setListsBySubtopic: Record<string, { slug: string; title: string; count: number }[]>;
+  /** T-QA-ORG-001 P2 — the sidebar's SME selector mirror. On courses whose
+   * spine ships the SME layer the notes and questions sidebars render THIS
+   * tree — the same organization the selectors render (the ADR-039 mirror
+   * law) — so the tree beside a note agrees with the page that linked to it
+   * and the row counts account for every note (the official-spine sidebar
+   * undercounted: bridged notes have no official home). Undefined on
+   * non-layered courses: the official spine stays everywhere else.
+   * Built by buildSmeSidebar (spec-tree.ts — pure, tested). */
+  smeSidebar?: SmeSidebarData;
   /** sub-topic code → flashcards */
   cardsBySubtopic: Record<string, string[]>;
   /** SME-native deck index — sections → decks, corpus (SME) order. The
@@ -386,7 +396,7 @@ export interface HubCourse {
  */
 export const loadHubCourse = cache(
   async function loadHubCourse(slug: string): Promise<HubCourse | null> {
-  const { buildSpecTreeIndex, generalTopicsOfQuestionTopics, resourceCounts, subtopicOfNote, subtopicOfQuestionSet, subtopicOfFlashcard } =
+  const { buildSpecTreeIndex, generalTopicsOfQuestionTopics, resourceCounts, subtopicOfNote, subtopicOfQuestionSet, subtopicOfFlashcard, buildSmeSidebar } =
     await import("@/lib/spec-tree");
 
   const meta = await getCourseMeta(slug);
@@ -497,6 +507,11 @@ export const loadHubCourse = cache(
       if (!hrefs.flashcards[s]) hrefs.flashcards[s] = `${base}/flashcards/${s}`;
     }
   }
+  // ── T-QA-ORG-001 P2: the sidebar's SME selector mirror (the pure builder
+  // lives in spec-tree.ts beside the smeRow joins it composes; laws + tests
+  // there). Undefined on non-layered courses: the official spine stays the
+  // hub/flashcards view and the whole story there.
+  const smeSidebar = buildSmeSidebar(index.tree.smeSections, notes, questionTopics, base);
   // the flashcards plane's OWN organization (trace 1a19f6776ca5a619): the
   // SME-native deck index — select page rows and deck pages resolve through
   // THIS, not through the spec tree; the sidebar's spec-keyed hrefs above
@@ -517,6 +532,7 @@ export const loadHubCourse = cache(
     cardsBySubtopic,
     deckSections,
     cardsByDeck,
+    smeSidebar,
     notes,
     questionTopics,
     officialPaperTopics,

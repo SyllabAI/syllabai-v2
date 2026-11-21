@@ -42,17 +42,25 @@ export function useActiveSubtopic(variant: SidebarVariant): string | null {
     if (q) return q;
     if (variant === "notes") {
       const noteId = pathname.split("/revision-notes/")[1];
-      if (noteId && data.noteSubtopic[noteId]) return data.noteSubtopic[noteId];
+      // T-QA-ORG-001 P2: on the mirror, the active row is the note's SME row
+      const homes = data.smeSidebar?.noteRow ?? data.noteSubtopic;
+      if (noteId && homes[noteId]) return homes[noteId];
       return null;
     }
     if (variant === "questions" || variant === "flashcards") {
-      const map = data.hrefs[variant];
+      // T-QA-ORG-001 P2: the questions mirror keys its row hrefs/set lists on
+      // the SME rows; flashcards stays on the official spine
+      const map =
+        variant === "questions" && data.smeSidebar
+          ? data.smeSidebar.hrefs.questions
+          : data.hrefs[variant];
       const hit = Object.entries(map).find(([, href]) => href === pathname);
       if (hit) return hit[0];
       // 2nd+ set pages: the sub-topic row's canonical href is the FIRST set,
       // so resolve later sets through the per-sub-topic set lists instead
       if (variant === "questions") {
-        for (const [code, sets] of Object.entries(data.setsBySubtopic)) {
+        const setsMap = data.smeSidebar?.setsByRow ?? data.setsBySubtopic;
+        for (const [code, sets] of Object.entries(setsMap)) {
           if (sets.some((st) => pathname === `${base}/exam-questions/${st.slug}`)) return code;
         }
       }
@@ -84,11 +92,30 @@ export function TopicTree({
   const dimension: ProgressDimension | null =
     variant === "notes" ? "notes" : variant === "questions" ? "questions" : null;
 
+  // T-QA-ORG-001 P2 — the selector-mirror view: on layered courses the notes
+  // and questions sidebars render the SME sections (the same organization
+  // the selectors render — the ADR-039 mirror law), so the tree beside a
+  // note agrees with the page that linked to it and the row counts account
+  // for every note. Hub/flashcards variants and non-layered courses keep the
+  // official spine (smeSidebar undefined there).
+  const sme = variant === "notes" || variant === "questions" ? data.smeSidebar : undefined;
+  const topics = sme ? sme.topics : data.tree.topics;
+  const counts = sme ? sme.counts : data.counts;
+  const hrefs = sme
+    ? {
+        notes: { ...data.hrefs.notes, ...sme.hrefs.notes },
+        questions: { ...data.hrefs.questions, ...sme.hrefs.questions },
+        flashcards: data.hrefs.flashcards,
+      }
+    : data.hrefs;
+  const notesBySubtopic = sme ? sme.notesByRow : data.notesBySubtopic;
+  const setsBySubtopic = sme ? sme.setsByRow : data.setsBySubtopic;
+
   // active topic auto-expansion (render-phase adjustment, React-endorsed)
   const activeTopic = useMemo(() => {
     if (!activeSubtopic) return null;
-    return data.tree.topics.find((t) => t.subtopics.some((s) => s.code === activeSubtopic))?.code ?? null;
-  }, [activeSubtopic, data.tree.topics]);
+    return topics.find((t) => t.subtopics.some((s) => s.code === activeSubtopic))?.code ?? null;
+  }, [activeSubtopic, topics]);
 
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [lastActiveTopic, setLastActiveTopic] = useState<string | null | undefined>(undefined);
@@ -99,9 +126,9 @@ export function TopicTree({
       if (activeTopic) {
         next.add(activeTopic);
       } else if (next.size === 0) {
-        const first = data.tree.topics.find((t) =>
+        const first = topics.find((t) =>
           t.subtopics.some((s) => {
-            const k = data.counts[s.code] ?? ZERO;
+            const k = counts[s.code] ?? ZERO;
             return k.notes + k.questions + k.flashcards > 0;
           }),
         );
@@ -142,9 +169,9 @@ export function TopicTree({
 
   return (
     <ul className="space-y-0.5" aria-label="Specification topic tree">
-      {data.tree.topics.map((topic) => {
+      {topics.map((topic) => {
         const isOpen = expanded.has(topic.code);
-        const ring = topicRing(progress, topic.subtopics.map((s) => s.code), new Map(Object.entries(data.counts)));
+        const ring = topicRing(progress, topic.subtopics.map((s) => s.code), new Map(Object.entries(counts)));
         // DC-7: the topic-level percent reads the same projection when it
         // carries a fact for this node (present — including 0 — wins; null
         // falls back to the overlay topic ring)
@@ -154,11 +181,11 @@ export function TopicTree({
         const subCount = topic.subtopics.length;
         const metaRight =
           variant === "notes"
-            ? `${topic.subtopics.reduce((a, s) => a + (data.counts[s.code]?.notes ?? 0), 0)} Revision Notes`
+            ? `${topic.subtopics.reduce((a, s) => a + (counts[s.code]?.notes ?? 0), 0)} Revision Notes`
             : variant === "questions"
-              ? `${topic.subtopics.reduce((a, s) => a + (data.counts[s.code]?.questions ?? 0), 0)} questions`
+              ? `${topic.subtopics.reduce((a, s) => a + (counts[s.code]?.questions ?? 0), 0)} questions`
               : variant === "flashcards"
-                ? `${topic.subtopics.reduce((a, s) => a + (data.counts[s.code]?.flashcards ?? 0), 0)} cards`
+                ? `${topic.subtopics.reduce((a, s) => a + (counts[s.code]?.flashcards ?? 0), 0)} cards`
                 : `${topic.specPointCount} spec points`;
         return (
           <li key={topic.code}>
@@ -184,16 +211,16 @@ export function TopicTree({
             {isOpen && (
               <ul className="ml-[15px] space-y-0.5 border-l pl-2">
                 {topic.subtopics.map((sub) => {
-                  const k = data.counts[sub.code] ?? ZERO;
+                  const k = counts[sub.code] ?? ZERO;
                   const hasAny = k.notes + k.questions + k.flashcards > 0;
                   const href =
                     variant === "notes"
-                      ? data.hrefs.notes[sub.code]
+                      ? hrefs.notes[sub.code]
                       : variant === "questions"
-                        ? data.hrefs.questions[sub.code]
+                        ? hrefs.questions[sub.code]
                         : variant === "flashcards"
-                          ? data.hrefs.flashcards[sub.code]
-                          : data.hrefs.notes[sub.code] ?? data.hrefs.questions[sub.code] ?? undefined;
+                          ? hrefs.flashcards[sub.code]
+                          : hrefs.notes[sub.code] ?? hrefs.questions[sub.code] ?? undefined;
                   const countLabel =
                     variant === "questions"
                       ? `${k.questions} question${k.questions === 1 ? "" : "s"}`
@@ -208,9 +235,28 @@ export function TopicTree({
                         counts={k}
                         size={16}
                         projectionPercent={
-                          projection && dimension
+                          // T-QA-ORG-001 P2: the projection keys OFFICIAL
+                          // codes — on mirror rows it would fabricate a miss;
+                          // the mirror derives its own percent below
+                          !sme && projection && dimension
                             ? projectionPercentFor(projection, sub.code, dimension)
                             : null
+                        }
+                        localPercent={
+                          // mirror rows key the overlay by noteId (their row
+                          // codes are not official subtopic codes) — reads ÷
+                          // the row's notes from the same flags the overlay
+                          // branch uses. The questions mirror keeps a
+                          // not-started ring until the projection learns
+                          // SME-keyed rows (disclosed residual).
+                          sme && variant === "notes" && k.notes > 0
+                            ? (100 *
+                                (sme.notesByRow[sub.code] ?? []).reduce(
+                                  (a, n) => a + (progress.notesRead[n.noteId] ? 1 : 0),
+                                  0,
+                                )) /
+                              k.notes
+                            : undefined
                         }
                       />
                       <span className="min-w-0 flex-1 truncate">{sub.title}</span>
@@ -235,7 +281,7 @@ export function TopicTree({
                     active: boolean;
                   }[] =
                     variant === "notes"
-                      ? (data.notesBySubtopic[sub.code] ?? []).map((n) => ({
+                      ? (notesBySubtopic[sub.code] ?? []).map((n) => ({
                           key: n.noteId,
                           href: `${nestedBase}/revision-notes/${n.noteId}`,
                           title: n.title,
@@ -243,7 +289,7 @@ export function TopicTree({
                           active: pathname === `${nestedBase}/revision-notes/${n.noteId}`,
                         }))
                       : variant === "questions"
-                        ? (data.setsBySubtopic[sub.code] ?? []).map((st) => ({
+                        ? (setsBySubtopic[sub.code] ?? []).map((st) => ({
                             key: st.slug,
                             href: `${nestedBase}/exam-questions/${st.slug}`,
                             title: st.title,

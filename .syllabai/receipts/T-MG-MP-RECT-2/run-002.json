@@ -1,0 +1,47 @@
+{
+ "task": "T-MG-MP-RECT-2 run-002",
+ "date": "2026-11-20",
+ "class": "content — the 20-paper validation slice (the lane acceptance of the rollout plan §3 Lane B)",
+ "method": "MG's public papers index harvested read-only (83 Edexcel GCSE maths slugs); the 20-slice paper pages parsed from the RSC payload (the paperUrl/markSchemeUrl/paperAssetId); the QP+MS PDFs fetched read-only from the MG CDN (content-hashed filenames) and sha256-pinned in harvest-log.json; MG's PUBLIC pdfMarking.getRegions fetched per paper (the run-001-verified endpoint, documentRef paper_asset) as the validation oracle — the payloads checked in as lane artifacts (MG's region DATA, not document bytes; the PDFs/PNGs stay sandbox-local)",
+ "instrument": "extract_rects2.py — run-001's anchor laws generalized: (1) the MS mark column anchors to the page's own header word 'Mark' (the column x drifts between sessions; run-001's fixed 235..300 band fit only the Jun-2025 layout); (2) the MS parses as a top-ordered EVENT stream (question numbers, part labels at x 85..145, mark codes) with each code binding to the latest label at or above its top +4pt (the label/code vertical alignment drifts between sessions); (3) the split-code law (some sessions kern 'B1' into 'B'+'1' — joined in-band); (4) the parenthesized-code law (the MS's own alternative-branch notation '(C2' parses as C2 with the alt flag; the branch-collapse pops the explicit alternatives FIRST, then run-001's last-row rule); (5) the page-span law (parts may anchor on the page AFTER their question header — run-001's paper had none; part rects carry their own page); (6) the per-paper x-band calibration from the oracle's question/part rect extents (run-001's bands were oracle-derived too — disclosed as CALIBRATION; the y/height/page evidence stays independent); (7) the deficit-capped recovery pass (a question under its footer re-scans its own table span for dropped codes; never over-counts; every recovered row disclosed)",
+ "slice": {
+  "papers": 20,
+  "total_rows": 1522,
+  "G1_exact": 17,
+  "composite_PASS": 4
+ },
+ "gates": {
+  "G1_census_vs_footer": "17/20 exact; the 3 residues are ONE mark each, named per question in question_mark_diffs (Jun2025 3F q17/q23, Jun2025 3H q18, Nov2023 1F q19) — the MS-faithful rows still ship for every captured code",
+  "G2_block_set_match": "20/20",
+  "oracle": "supporting evidence, NOT the gate: MG's region geometry is content-adaptive per region (their widths vary 0.786..0.928), so the strict agreement ranges 68..96% (mean 83%) with ZERO page mismatches across all 20 papers; run-001's 63/64 was one paper where the bands coincided",
+  "visual": "8 spot-check crops rendered (rects drawn on the QP pages: 2F Jun2025 p2/p3, 2H Jun2024 p2/p3, 1F Nov2023 p2/p3, 3H Nov2024 p2/p3); 2 reviewed in-session — the question blocks land exactly on their footers, the furniture excluded (sandbox-local, not committed)"
+ },
+ "deliverables": {
+  "manifests": "apps/api/scripts/fixtures/mark-point-rects-1ma1-<tier>-<session>.json (20 files, each sha256-pinned in the test — hand edits fail loudly)",
+  "lane_artifacts": ".syllabai/lane-artifacts/T-MG-MP-RECT-2/run-002/ (the instrument + the harvest log + the extraction summary + the marks crosscheck + the 20 oracle payloads)",
+  "test": "apps/api/test/paper-regions/manifest.test.ts — the run-002 block"
+ },
+ "discipline": "zero writes to the target site (read-only GETs of public assets, the dossier precedent); zero DB contact (the seed is deployment-time, --dry-run loud-fail); additive-only repo diff (the fixtures + the test + the lane artifacts)",
+ "manifests_sha256": {
+  "mark-point-rects-1ma1-1h-jun2025.json": "3a260dd96f0712b39aee40a7a40ed394c409a04670c8ea922df46515d710b6dc",
+  "mark-point-rects-1ma1-2f-jun2025.json": "7aedbe0a7483a2624de836f90bcc83ffb9b6cc09c9e7befa7887f0b76c7df98a",
+  "mark-point-rects-1ma1-2h-jun2025.json": "e71868d16d07c7c89da78a8721a4d707f84ff26d6c38bb571781a91d07d172bf",
+  "mark-point-rects-1ma1-3f-jun2025.json": "b7d5351e5ca467a2dd80308acee1cfe229d4b4bd498e5ce9967bf16c16713be8",
+  "mark-point-rects-1ma1-3h-jun2025.json": "787b82e2715fbe8d6377c25c835fc83e5cedb636cb493d30d73ee45d3bce3b04",
+  "mark-point-rects-1ma1-1f-nov2024.json": "509b240cafffa171d3a87aa3a0d69a6499d56b9b9a69e20134e51f063f0acffa",
+  "mark-point-rects-1ma1-1h-nov2024.json": "743761d39ecdf7bc408564f5ac7b418a4793f4c12871057553c4cf72ec976c9b",
+  "mark-point-rects-1ma1-2f-nov2024.json": "f93865ff34ff0dcab2b88a5692f73e04b76c43d3b8573677a6725ab3746fde5a",
+  "mark-point-rects-1ma1-2h-nov2024.json": "20a298b5832f8f9c4be63a56694e88b21b208767b60f43659c93bdf3ba02a0e3",
+  "mark-point-rects-1ma1-3f-nov2024.json": "9ab9036e1fb3e9c1d32885079fe7d30415711e1e7df91108eb26bcca46d63f80",
+  "mark-point-rects-1ma1-3h-nov2024.json": "b2ce655d788c12e9a6c03da074eb537fcc6796ed4cf4e21b4f513c66a91706da",
+  "mark-point-rects-1ma1-1f-jun2024.json": "0d645942d97823ecd5a67c044ebc6bdab76251ab6ff5355a63bf4aea15da2b8f",
+  "mark-point-rects-1ma1-1h-jun2024.json": "6df8393aefbf24ed5ce375a0535076f699dffc33c92bd175f027b8c20f1becf9",
+  "mark-point-rects-1ma1-2f-jun2024.json": "e40d9820904ae140e5859f5f190034fc0289692036c4c9eacaae8b2c97c7bec0",
+  "mark-point-rects-1ma1-2h-jun2024.json": "b167f65babb4cd5fc705fd85ba96b1f18ddbf1d4e167284b00baa74ffe3ac687",
+  "mark-point-rects-1ma1-3f-jun2024.json": "5792d0027c008f9727606751a98a8302affc972d5e26f0336524a1420f472483",
+  "mark-point-rects-1ma1-3h-jun2024.json": "3e10b9bc592b0937932e2076500e36800335656baa0b96e228a75d952c2ea1ec",
+  "mark-point-rects-1ma1-1f-nov2023.json": "1bbba19d5e9d215a86dba842b62b31f7705f4cb97d773745d0b97cf6041850ff",
+  "mark-point-rects-1ma1-1h-nov2023.json": "633653b255286558cba8a21d82f26dd7520360de6297738679161652b75bda68",
+  "mark-point-rects-1ma1-3f-nov2023.json": "669c8d817b1cbe39919dec0fe10046ea23bb541075a4958409edd9c5ea1571a5"
+ }
+}
