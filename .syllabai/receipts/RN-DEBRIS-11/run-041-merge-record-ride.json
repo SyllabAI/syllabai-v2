@@ -82,5 +82,15 @@
   ".syllabai/receipts/RN-DEBRIS-11/run-041-postReview.json"
  ],
  "standingReminder": "the PAT remains exposed from chat transmission and MUST be revoked/rotated (the thirty-seventh filing of the standing reminder)",
- "mergePlan": "author does not self-merge — PR for the R0 desk (the filing-time mergePlan law; the desk orders self-merge separately per the run-021/022/023/024/025/026/027/028/029/030/031/032/033/034/035/036/037/038/039/040 precedents); no force-push; fetch-first race-guard at push"
+ "mergePlan": "author does not self-merge — PR for the R0 desk (the filing-time mergePlan law; the desk orders self-merge separately per the run-021/022/023/024/025/026/027/028/029/030/031/032/033/034/035/036/037/038/039/040 precedents); no force-push; fetch-first race-guard at push",
+ "updatedUtc": "2026-11-21 (post-merge record: PR #1160 merged of record; the merged block rides the run-042 receipts per the standing ride-along law)",
+ "merged": {
+  "sha": "5ae0ccfa5ecf5b4d19a35d561d1785d7e81790c5",
+  "mergedAt": "2026-11-20T19:12:29Z",
+  "mergeMethod": "merge (2-parent, no squash)",
+  "shaPinnedTo": "4c0856e80991e91dfacc3225fb8d31e631ba09a5",
+  "mainTipAfter": "5ae0ccfa5ecf5b4d19a35d561d1785d7e81790c5 == the merge commit (verified via API merged=true; parents [361a754ce6768d620ac741a3471861b3b90635ca, 4c0856e80991e91dfacc3225fb8d31e631ba09a5]; the sha verified an ancestor of the live main tip post-merge)",
+  "raceGuard": "the base of record at merge time == 361a754ce6768d620ac741a3471861b3b90635ca (the merge commit first parent — API-verified); the base DID move between filing and merge — the filing base 2db10938 advanced (the concurrent landing 361a754c — the 2db10938..361a754c advance, 5 commits / 3 changed paths, topped by Merge pull request #984 from SyllabAI/t-ops-plane/account-migration-diag) with zero overlap vs the declared 7 and the PR landed mergeable at the receipts head 4c0856e8 (the 2-parent merge commit absorbed the base advance — no branch re-merge round needed; the run-023 union law not triggered); the receipts-PR two-gate law satisfied: CI verify/hub/law-readback/coordination + Vercel ALL success at the head 4c0856e8 + the merge-sha CI settled completed post-merge (verify/hub/law-readback success, coordination skipped — the standard main-merge shape, cross-checked vs the recent main merges of record); no force-push",
+  "operatorOrder": "the merge of record verified from the API of record (merged=true, merged_at 2026-11-20T19:12:29Z, merged_by SyllabAI, zero lost segments); no in-session self-merge receipt for run-041 survives in the lane work (the session environment reset wiped the local receipts — disclosed; the merge of record stands on the API-verified facts with the merge commit second parent == the receipts head 4c0856e8); the post-merge of-record re-verification of record re-derived read-only (verdict RUN041_OF_RECORD_OK, 57 checks 0 fails)"
+ }
 }
