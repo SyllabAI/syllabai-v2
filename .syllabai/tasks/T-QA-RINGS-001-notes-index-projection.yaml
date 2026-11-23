@@ -3,7 +3,7 @@ task:
   id: T-QA-RINGS-001
   title: "Notes-index rings obey the DC-7 projection law (the one remaining ring bypassed the server projection while the sidebar shows it on the same screen)"
   owner: "qa-lane"
-  status: OPEN
+  status: DONE
   priority: P2
   wave: qa-verification
   deps: [T-QA-DEF-001]
@@ -40,6 +40,11 @@ task:
     bypassed for every signed-in demo session; this lane makes the index
     OBEY the law the moment that endpoint answers.
     Card stays OPEN until the branch lands (records close in run-002).
+    LANDED 2026-11-20: PR #1171 merged (bccc48ed, sha-pinned on head 6a35e260b;
+    impl 7e9f9ab6) — the notes-index ring reads the projection of record and
+    the overlay is fallback-only. Card DONE; receipt run-002 records the
+    landing. Remaining queue from the audit: DEF-001 item (1) (/progress 401)
+    — until it lands, the projection tier stays fail-open for the demo session.
   allowed:
     - "apps/hub/src/app/courses/[course]/revision-notes/notes-index.tsx"
     - ".syllabai/tasks/T-QA-RINGS-001-notes-index-projection.yaml (status/execution_record only)"

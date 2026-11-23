@@ -1,0 +1,16 @@
+{
+  "task": "T-QA-RINGS-001",
+  "run": "run-002",
+  "kind": "landing records (run-001 merged; card closes)",
+  "recorded_utc": "2026-11-20T21:05:00Z",
+  "landing": {
+    "pr": "#1171 (merged, sha-pinned on head 6a35e260b)",
+    "merge_commit": "bccc48ed",
+    "impl_commit": "7e9f9ab6",
+    "records_commit": "6a35e260",
+    "checks": "coordination + law-readback + hub + verify all green (polled by newest run per check — the run-004 lesson held)",
+    "claim": "branch t-qa-rings-001/run-001 matches the §2 rule-2 shape; title prefix claims qa-rings-001 uniquely — coordination passed first try"
+  },
+  "card_updates_in_this_run": "T-QA-RINGS-001 status -> DONE; execution_record carries the landing shas",
+  "remaining_from_the_rings_audit": "T-QA-DEF-001 item (1): /progress 401 for the authenticated demo session — needs a live browser repro; the projection tier this lane wired stays fail-open (overlay fallback) until it lands"
+}
