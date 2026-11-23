@@ -1,0 +1,53 @@
+version: 1
+task:
+  id: T-QA-RINGS-001
+  title: "Notes-index rings obey the DC-7 projection law (the one remaining ring bypassed the server projection while the sidebar shows it on the same screen)"
+  owner: "qa-lane"
+  status: OPEN
+  priority: P2
+  wave: qa-verification
+  deps: [T-QA-DEF-001]
+  execution_record: >
+    Audit 2026-11-20, operator question "Topics progress rings — is it working
+    correctly?" (in frontend). First pass ran against a STALE tree (the sandbox
+    recycle had reset the checkout to the 4008e6ce-era snapshot, pre
+    T-SELECT-RINGS-1): findings were (A) notes-index bypasses the DC-7 server
+    projection entirely and (B) the topic-header ring computed from the FIRST
+    subtopic's code/counts. Re-audit on the current tree (46beebbe): (B) is
+    RETRACTED — the T-SELECT-RINGS-1 redesign removed the header ring outright
+    (single-note rows use the note-level ReadTick; the old
+    subtopics[0] header ring is gone), so the defect died with its subject;
+    (A) HOLDS — the one remaining ProgressRing (multi-note rows,
+    dimension="notes") passes no projectionPercent and the file never calls
+    useCourseProjection, so signed-in learners' index rings run the SIMULATED
+    overlay while the sidebar (topic-tree.tsx:237) shows projection truth on
+    the same screen. The stale-tree impl commit (e13c31be, built pre-redesign)
+    was discarded — its cherry-pick conflicted on both redesigned files — and
+    the fix was re-derived on the current tree: impl commit 7e9f9ab6, one file
+    (notes-index.tsx): consume useCourseProjection (the shared per-slug cache —
+    one fetch per page session, shared with the sidebar and the dashboard
+    attribution card) and pass projectionPercentFor(..., sub.code, "notes") per
+    the component's dimension-matching contract. Projection present-0 wins;
+    null (signed out / fetch failed) keeps the SIMULATED overlay fallback.
+    Gates: eslint 0 on the touched file; progress-notes-ring +
+    progress-select-rings + progress-server + note-scroll suites 32/32; tsc
+    error set identical to the main baseline (4 pre-existing env-dependent
+    module-resolution failures in untouched files — the CI hub lane is the
+    build of record). Sidebar untouched. Dormant-tier note of record: until
+    T-QA-DEF-001 item (1) (/progress 401 for the authenticated demo session)
+    is fixed, the projection never engages in practice and both trees run the
+    overlay — consistent, disclosed, but the DC-7 single-source guarantee is
+    bypassed for every signed-in demo session; this lane makes the index
+    OBEY the law the moment that endpoint answers.
+    Card stays OPEN until the branch lands (records close in run-002).
+  allowed:
+    - "apps/hub/src/app/courses/[course]/revision-notes/notes-index.tsx"
+    - ".syllabai/tasks/T-QA-RINGS-001-notes-index-projection.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-QA-RINGS-001/**"
+  forbidden:
+    - "apps/hub/src/components/hub/progress-ring.tsx (the projection contract + dimension law are already of record)"
+    - "apps/hub/src/components/hub/topic-tree.tsx (the sidebar is already law-correct)"
+    - "apps/hub/src/lib/progress.ts / progress-server.ts (the laws are already of record)"
+    - ".syllabai/worklog.md (append-only shepherd law — untouched by this recording)"
+base:
+  repo: "syllabai-v2 @ 46beebbe (origin/main at fix time)"
