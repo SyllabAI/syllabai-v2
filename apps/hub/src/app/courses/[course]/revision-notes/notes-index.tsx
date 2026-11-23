@@ -55,6 +55,7 @@ import { NumberedLabel } from "@/components/hub/chrome";
 import { SelectToolbar } from "@/components/hub/select-toolbar";
 import { ProgressRing } from "@/components/hub/progress-ring";
 import { useCourseProgress, type Course } from "@/lib/progress";
+import { projectionPercentFor, useCourseProjection } from "@/lib/progress-server";
 import { pickResumeNoteId, useNoteScrolls } from "@/lib/note-scroll";
 import { looseAnchorCopy } from "@/lib/loose-copy";
 import { cn } from "@/lib/utils";
@@ -125,6 +126,12 @@ export function NotesIndex({
   initialSubtopic: string | null;
 }) {
   const progress = useCourseProgress(course);
+  // DC-7: signed-in learners' rings read the server projection of the
+  // persisted event rows — the same per-slug-cached projection the sidebar
+  // tree and the dashboard attribution card consume (one fetch per page
+  // session). null = signed out / fetch failed → the SIMULATED overlay
+  // fallback (the of-record posture; the fetch never blocks the page).
+  const projection = useCourseProjection(course);
   const looseCopy = looseAnchorCopy(course);
   const base = `/courses/${course}`;
 
@@ -258,7 +265,14 @@ export function NotesIndex({
                     subNotes.length === 1 ? (
                       <ReadTick read={Boolean(progress.notesRead[subNotes[0].noteId])} />
                     ) : (
-                      <ProgressRing course={course} subtopic={sub.code} counts={countsK} size={18} dimension="notes" />
+                      <ProgressRing
+                        course={course}
+                        subtopic={sub.code}
+                        counts={countsK}
+                        size={18}
+                        dimension="notes"
+                        projectionPercent={projectionPercentFor(projection, sub.code, "notes")}
+                      />
                     );
                   const rowLink = (
                     <>
