@@ -46,6 +46,32 @@ execution_record: >
     The card stays OPEN only for the live-repro items: (1) /progress 401
     and (2) dashboard #418 need browser-verified repros; (3) is external;
     (6) is by-design. No sandbox push blocker remains.
+    ITEM (1) CLOSED 2026-11-20 (run-002, impl 852e2154, branch
+    t-qa-def-001/run-001 off dfa5a93f): ROOT CAUSE FOUND — the of-record
+    "statically symmetric, no root cause" conclusion was correct about the
+    api and aimed at the wrong side of the wire: the hub's projection fetch
+    (progress-server.ts) was BARE — no Authorization header; browsers never
+    auto-attach Bearer tokens, so the request reached the api anonymous and
+    the authz shell (routes/learner/progress.ts:36) answered 401
+    fail-closed, while agenda/courses rode the authed api.ts helpers
+    (:1129/:1204/:1231) and 200'd. The client getToken() gate decided
+    WHETHER to fetch, never HOW. The run-001 directive ("needs a live repro
+    before any auth-semantics change; do NOT blind-fix") is honored: this
+    changes NO auth semantics — the api is untouched (one global middleware,
+    one authenticator instance feeding every /learners/me router per
+    index.ts:179/:284/:307/:320 on the current tree; the fail-closed shell
+    is the designed posture), and the fix makes the hub fetch carry the
+    same header its siblings (drill/study-plan/battle) already carry. The
+    mechanism is deterministic — a valid token plus the missing header fully
+    explains 200-vs-401, and the 200ing siblings prove the token itself was
+    valid; a full-stack browser repro stays available for belt-and-braces
+    verification. FIX: projectionFetchInit(token) — the wire contract of
+    record (Bearer when signed-in, honest absence when not) — wired into the
+    fetch and pinned by 2 law tests. Gates: 34/34 across progress-server +
+    progress-notes-ring + progress-select-rings + note-scroll; tsc error set
+    identical to the main baseline (4 pre-existing env-dependent failures in
+    untouched files — CI hub lane is the build of record); eslint 0. The
+    card stays OPEN only for item (2) (#418 live repro).
 base:
   repo: "syllabai-v2 @ 361a754c (origin/main at fix time)"
 basis: >
