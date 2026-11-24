@@ -1,0 +1,522 @@
+{
+  "schema": "conformance-trend-turns/v1",
+  "notes": "Run-001 capture posture: SYNTHETIC, SCRUBBED wire marked-part turns (no PII). The wire answers and the recorded conformance reports are the SERVING DC-5 LAW'S OWN OUTPUTS (tools/compose-corpus.ts runs lintMarkedPartTurn / MarkConformanceStreamSanitizer / conformanceReport verbatim — zero hand-copying); the deterministic refusal text is prompt.ts TUTOR_REFUSAL verbatim; all other prose is synthetic scrubbed chemistry marking copy. Shapes cover: clean serves, Rule A strips, Rule B alternative/numeric strips, the R-DC5-4 pass-through, the learner-echo pass, the turn-level fail-open, the stream hold-back posture (no report published), the refusal posture (conformance null), multi-violation turns, in-set quoted offers, and the tail-match law. The first LIVE capture replaces this corpus and re-pins the baseline deliberately.",
+  "turns": [
+    {
+      "turnId": "cft-v1-t01",
+      "query": "Why does heating increase the rate of reaction?",
+      "refused": false,
+      "model": "llama-3.3-70b-versatile",
+      "provider": "groq",
+      "finishReason": "stop",
+      "truncated": false,
+      "latencyMs": 1712,
+      "at": "2026-11-20T10:00:00Z",
+      "markContext": {
+        "paperLabel": "IGCSE Chemistry Paper 1B June 2024",
+        "questionNumber": "3",
+        "partLabel": "(b)",
+        "answerText": "the scrubbed learner submission",
+        "totalAwarded": 2,
+        "totalPossible": 2,
+        "points": [
+          {
+            "marks": 1,
+            "awarded": true,
+            "marksAwarded": 1,
+            "ref": "1-a-i",
+            "text": "particles gain kinetic energy"
+          },
+          {
+            "marks": 1,
+            "awarded": true,
+            "marksAwarded": 1,
+            "ref": "1-a-ii",
+            "text": "collisions become more frequent",
+            "alternatives": [
+              "more collisions per second"
+            ]
+          }
+        ]
+      },
+      "path": "blocking",
+      "answer": "Heating raises the average kinetic energy of the particles, so more collisions exceed the activation energy. The steeper gradient at the start of the curve gives the faster initial rate.",
+      "conformance": {
+        "active": true,
+        "stripped": 0,
+        "ruleA": 0,
+        "ruleB": 0,
+        "passThrough": 0
+      }
+    },
+    {
+      "turnId": "cft-v1-t02",
+      "query": "Explain the melting point trend down group 7.",
+      "refused": false,
+      "model": "llama-3.3-70b-versatile",
+      "provider": "groq",
+      "finishReason": "stop",
+      "truncated": false,
+      "latencyMs": 1588,
+      "at": "2026-11-20T10:04:00Z",
+      "markContext": {
+        "paperLabel": "IGCSE Chemistry Paper 1B June 2024",
+        "questionNumber": "3",
+        "partLabel": "(b)",
+        "answerText": "the scrubbed learner submission",
+        "totalAwarded": 2,
+        "totalPossible": 2,
+        "points": [
+          {
+            "marks": 1,
+            "awarded": true,
+            "marksAwarded": 1,
+            "ref": "1-a-i",
+            "text": "larger molecules"
+          },
+          {
+            "marks": 1,
+            "awarded": true,
+            "marksAwarded": 1,
+            "ref": "2-b",
+            "text": "more intermolecular forces to overcome"
+          }
+        ]
+      },
+      "path": "blocking",
+      "answer": "The melting point increases down group 7 because the molecules become larger with more electrons.",
+      "conformance": {
+        "active": true,
+        "stripped": 1,
+        "ruleA": 1,
+        "ruleB": 0,
+        "passThrough": 0
+      }
+    },
+    {
+      "turnId": "cft-v1-t03",
+      "query": "What happens when chlorine water is added to potassium iodide?",
+      "refused": false,
+      "model": "llama-3.3-70b-versatile",
+      "provider": "groq",
+      "finishReason": "stop",
+      "truncated": false,
+      "latencyMs": 1663,
+      "at": "2026-11-20T10:08:00Z",
+      "markContext": {
+        "paperLabel": "IGCSE Chemistry Paper 1B June 2024",
+        "questionNumber": "3",
+        "partLabel": "(b)",
+        "answerText": "the scrubbed learner submission",
+        "totalAwarded": 1,
+        "totalPossible": 2,
+        "points": [
+          {
+            "marks": 1,
+            "awarded": true,
+            "marksAwarded": 1,
+            "ref": "1-a-i",
+            "text": "chlorine displaces iodine"
+          },
+          {
+            "marks": 1,
+            "awarded": false,
+            "marksAwarded": 0,
+            "ref": "3-c",
+            "text": "solution turns orange",
+            "alternatives": [
+              "bromine is displaced by chlorine"
+            ]
+          }
+        ]
+      },
+      "path": "blocking",
+      "answer": "Chlorine is more reactive, so it displaces iodine from the solution.",
+      "conformance": {
+        "active": true,
+        "stripped": 1,
+        "ruleA": 0,
+        "ruleB": 1,
+        "passThrough": 0
+      }
+    },
+    {
+      "turnId": "cft-v1-t04",
+      "query": "How do I calculate the percentage yield?",
+      "refused": false,
+      "model": "llama-3.3-70b-versatile",
+      "provider": "groq",
+      "finishReason": "stop",
+      "truncated": false,
+      "latencyMs": 1741,
+      "at": "2026-11-20T10:12:00Z",
+      "markContext": {
+        "paperLabel": "IGCSE Chemistry Paper 1B June 2024",
+        "questionNumber": "3",
+        "partLabel": "(b)",
+        "answerText": "the scrubbed learner submission",
+        "totalAwarded": 1,
+        "totalPossible": 2,
+        "points": [
+          {
+            "marks": 1,
+            "awarded": true,
+            "marksAwarded": 1,
+            "ref": "2-a",
+            "text": "the theoretical yield calculation"
+          },
+          {
+            "marks": 1,
+            "awarded": false,
+            "marksAwarded": 0,
+            "ref": "2-b",
+            "text": "the percentage yield value",
+            "numericValues": [
+              "66 %"
+            ]
+          }
+        ]
+      },
+      "path": "blocking",
+      "answer": "Divide the actual mass by the theoretical mass and multiply by one hundred.",
+      "conformance": {
+        "active": true,
+        "stripped": 1,
+        "ruleA": 0,
+        "ruleB": 1,
+        "passThrough": 0
+      }
+    },
+    {
+      "turnId": "cft-v1-t05",
+      "query": "Describe the redox change when magnesium burns.",
+      "refused": false,
+      "model": "llama-3.3-70b-versatile",
+      "provider": "groq",
+      "finishReason": "stop",
+      "truncated": false,
+      "latencyMs": 1527,
+      "at": "2026-11-20T10:16:00Z",
+      "markContext": {
+        "paperLabel": "IGCSE Chemistry Paper 1B June 2024",
+        "questionNumber": "3",
+        "partLabel": "(b)",
+        "answerText": "the scrubbed learner submission",
+        "totalAwarded": 1,
+        "totalPossible": 2,
+        "points": [
+          {
+            "marks": 1,
+            "awarded": true,
+            "marksAwarded": 1,
+            "ref": "1-a-i",
+            "text": "magnesium loses two electrons"
+          },
+          {
+            "marks": 1,
+            "awarded": false,
+            "marksAwarded": 0,
+            "ref": "1-a-ii",
+            "text": "oxygen gains two electrons"
+          }
+        ]
+      },
+      "path": "blocking",
+      "answer": "Magnesium is oxidised and oxygen is reduced in the reaction. An alternative answer would be \"magnesium is the reducing agent\" here.",
+      "conformance": {
+        "active": true,
+        "stripped": 0,
+        "ruleA": 0,
+        "ruleB": 0,
+        "passThrough": 1
+      }
+    },
+    {
+      "turnId": "cft-v1-t06",
+      "query": "Did I get the displacement observation right?",
+      "refused": false,
+      "model": "llama-3.3-70b-versatile",
+      "provider": "groq",
+      "finishReason": "stop",
+      "truncated": false,
+      "latencyMs": 1494,
+      "at": "2026-11-20T10:20:00Z",
+      "markContext": {
+        "paperLabel": "IGCSE Chemistry Paper 1B June 2024",
+        "questionNumber": "3",
+        "partLabel": "(b)",
+        "answerText": "the scrubbed learner submission",
+        "totalAwarded": 0,
+        "totalPossible": 1,
+        "points": [
+          {
+            "marks": 1,
+            "awarded": false,
+            "marksAwarded": 0,
+            "ref": "1-b",
+            "text": "chlorine is displaced",
+            "alternatives": [
+              "the solution decolourises"
+            ]
+          }
+        ]
+      },
+      "path": "blocking",
+      "answer": "You wrote \"chlorine is displaced\" and that reading of the observation is the right shape for this part.",
+      "conformance": {
+        "active": true,
+        "stripped": 0,
+        "ruleA": 0,
+        "ruleB": 0,
+        "passThrough": 0
+      }
+    },
+    {
+      "turnId": "cft-v1-t07",
+      "query": "What did I miss on the silver halide test?",
+      "refused": false,
+      "model": "llama-3.3-70b-versatile",
+      "provider": "groq",
+      "finishReason": "stop",
+      "truncated": false,
+      "latencyMs": 1381,
+      "at": "2026-11-20T10:24:00Z",
+      "markContext": {
+        "paperLabel": "IGCSE Chemistry Paper 1B June 2024",
+        "questionNumber": "3",
+        "partLabel": "(b)",
+        "answerText": "the scrubbed learner submission",
+        "totalAwarded": 1,
+        "totalPossible": 1,
+        "points": [
+          {
+            "marks": 1,
+            "awarded": true,
+            "marksAwarded": 1,
+            "ref": "1-a-i",
+            "text": "the precipitate dissolves in excess ammonia"
+          }
+        ]
+      },
+      "path": "blocking",
+      "answer": "You missed point 9 entirely.",
+      "conformance": {
+        "active": true,
+        "stripped": 0,
+        "ruleA": 1,
+        "ruleB": 0,
+        "passThrough": 0
+      }
+    },
+    {
+      "turnId": "cft-v1-t08",
+      "query": "What happens when chlorine water reacts with potassium bromide?",
+      "refused": false,
+      "model": "llama-3.3-70b-versatile",
+      "provider": "groq",
+      "finishReason": "stop",
+      "truncated": false,
+      "latencyMs": 2216,
+      "at": "2026-11-20T10:28:00Z",
+      "markContext": {
+        "paperLabel": "IGCSE Chemistry Paper 1B June 2024",
+        "questionNumber": "3",
+        "partLabel": "(b)",
+        "answerText": "the scrubbed learner submission",
+        "totalAwarded": 1,
+        "totalPossible": 2,
+        "points": [
+          {
+            "marks": 1,
+            "awarded": true,
+            "marksAwarded": 1,
+            "ref": "1-a-i",
+            "text": "chlorine displaces bromine"
+          },
+          {
+            "marks": 1,
+            "awarded": false,
+            "marksAwarded": 0,
+            "ref": "1-a-ii",
+            "text": "the solution turns orange",
+            "alternatives": [
+              "an orange-brown colour forms"
+            ]
+          }
+        ]
+      },
+      "path": "stream",
+      "answer": "Chlorine displaces bromine from the solution. The displacement order decreases down the group. ",
+      "conformance": null
+    },
+    {
+      "turnId": "cft-v1-t09",
+      "path": "blocking",
+      "query": "Work through question 3(b) for me.",
+      "markContext": {
+        "paperLabel": "IGCSE Chemistry Paper 1B June 2024",
+        "questionNumber": "3",
+        "partLabel": "(b)",
+        "answerText": "the scrubbed learner submission",
+        "totalAwarded": 1,
+        "totalPossible": 1,
+        "points": [
+          {
+            "marks": 1,
+            "awarded": true,
+            "marksAwarded": 1,
+            "ref": "2-a",
+            "text": "state the trend in first ionisation energy"
+          }
+        ]
+      },
+      "answer": "I can't answer that from the validated course material yet. There is no\nmatching specification topic or source document for this question here,\nso answering would mean guessing — which SyllabAI never does. Try naming\nthe topic (e.g. \"moles\", \"bonding\", \"equilibria\"), or open the tutor from\ninside your course so it searches that course's material.",
+      "refused": true,
+      "conformance": null,
+      "truncated": false,
+      "finishReason": null,
+      "model": null,
+      "provider": "deterministic-refusal",
+      "latencyMs": 11,
+      "at": "2026-11-20T10:32:00Z"
+    },
+    {
+      "turnId": "cft-v1-t10",
+      "query": "Mark my displacement graph and observation.",
+      "refused": false,
+      "model": "llama-3.3-70b-versatile",
+      "provider": "groq",
+      "finishReason": "stop",
+      "truncated": false,
+      "latencyMs": 1904,
+      "at": "2026-11-20T10:36:00Z",
+      "markContext": {
+        "paperLabel": "IGCSE Chemistry Paper 1B June 2024",
+        "questionNumber": "3",
+        "partLabel": "(b)",
+        "answerText": "the scrubbed learner submission",
+        "totalAwarded": 2,
+        "totalPossible": 3,
+        "points": [
+          {
+            "marks": 1,
+            "awarded": true,
+            "marksAwarded": 1,
+            "ref": "1-a-i",
+            "text": "the graph axes labelled with units"
+          },
+          {
+            "marks": 1,
+            "awarded": true,
+            "marksAwarded": 1,
+            "ref": "1-a-ii",
+            "text": "a single smooth curve drawn"
+          },
+          {
+            "marks": 1,
+            "awarded": false,
+            "marksAwarded": 0,
+            "ref": "2-b",
+            "text": "bromine turns the solution orange",
+            "alternatives": [
+              "an orange colour appears"
+            ]
+          }
+        ]
+      },
+      "path": "blocking",
+      "answer": "The axes and curve are the right shape for the plotted data.",
+      "conformance": {
+        "active": true,
+        "stripped": 2,
+        "ruleA": 1,
+        "ruleB": 1,
+        "passThrough": 0
+      }
+    },
+    {
+      "turnId": "cft-v1-t11",
+      "query": "What is the halide test result for chloride?",
+      "refused": false,
+      "model": "llama-3.3-70b-versatile",
+      "provider": "groq",
+      "finishReason": "stop",
+      "truncated": false,
+      "latencyMs": 1615,
+      "at": "2026-11-20T10:40:00Z",
+      "markContext": {
+        "paperLabel": "IGCSE Chemistry Paper 1B June 2024",
+        "questionNumber": "3",
+        "partLabel": "(b)",
+        "answerText": "the scrubbed learner submission",
+        "totalAwarded": 0,
+        "totalPossible": 1,
+        "points": [
+          {
+            "marks": 1,
+            "awarded": false,
+            "marksAwarded": 0,
+            "ref": "1-a-i",
+            "text": "White precipitate forms with silver nitrate.",
+            "alternatives": [
+              "a white precipitate insoluble in acid"
+            ]
+          }
+        ]
+      },
+      "path": "blocking",
+      "answer": "The nitrate acidifier rules out carbonate fizzes first. The scheme would also score \"white precipitate\" for the halide test.",
+      "conformance": {
+        "active": true,
+        "stripped": 0,
+        "ruleA": 0,
+        "ruleB": 0,
+        "passThrough": 0
+      }
+    },
+    {
+      "turnId": "cft-v1-t12",
+      "query": "Explain the first ionisation energy trend.",
+      "refused": false,
+      "model": "llama-3.3-70b-versatile",
+      "provider": "groq",
+      "finishReason": "stop",
+      "truncated": false,
+      "latencyMs": 1577,
+      "at": "2026-11-20T10:44:00Z",
+      "markContext": {
+        "paperLabel": "IGCSE Chemistry Paper 1B June 2024",
+        "questionNumber": "3",
+        "partLabel": "(b)",
+        "answerText": "the scrubbed learner submission",
+        "totalAwarded": 2,
+        "totalPossible": 2,
+        "points": [
+          {
+            "marks": 1,
+            "awarded": true,
+            "marksAwarded": 1,
+            "ref": "1-a-i",
+            "text": "the trend stated with a comparison"
+          },
+          {
+            "marks": 1,
+            "awarded": true,
+            "marksAwarded": 1,
+            "ref": "2",
+            "text": "the shielding explanation"
+          }
+        ]
+      },
+      "path": "blocking",
+      "answer": "The first ionisation energy decreases down the group as shielding grows. You missed point 2 in your explanation of the trend.",
+      "conformance": {
+        "active": true,
+        "stripped": 0,
+        "ruleA": 0,
+        "ruleB": 0,
+        "passThrough": 0
+      }
+    }
+  ]
+}

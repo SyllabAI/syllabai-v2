@@ -1,0 +1,104 @@
+# T-TUTOR-AUDIT-P4 run-001 — the SCHEDULED weekly conformance trend lane
+# (audit P4-08; the DC-5 false-positive / violation shape on real serves —
+# the report-only → blocking conversation's evidence base of record).
+#
+# WHAT RUNS (weekly, Monday 04:50 UTC — off-peak, after the answer-quality
+# lane's 04:30 publish window):
+#   1. the instrument proves itself first (the fixed-vector selftest — the
+#      harness-sanity discipline);
+#   2. the gate runs (bun test golden/conformance-trend — the same leg the
+#      ci.yml verify lane runs on every PR);
+#   3. the scorer scores the COMMITTED corpus of record through the SERVING
+#      DC-5 law of record (mark-conformance.ts + mark-context.ts imported
+#      verbatim — the no-drift discipline) and cross-checks the COMMITTED
+#      baseline of record (the sha256 corpus pin + the rubric v1 aggregate);
+#   4. the publish of record: the score report lands as a CI artifact
+#      (90-day retention) + the step summary — the conformance pass-rate
+#      trend of record (the P4 exit criterion's first half);
+#   5. the drift alert: baseline drift (a corpus edit without re-pin, a
+#      serving-law change that moves the measurement, a rubric the scorer no
+#      longer speaks) or any serving-law violation on the corpus REDS
+#      this job — the red is the alert of record, never an operator
+#      discovery. A deliberate re-pin is the same-PR conversation (§7: no
+#      silent widening).
+#
+# PROVIDER-FREE: no model is called, no database is touched — the corpus and
+# the baseline are committed files, the scorer is pure (the P1 fold-probe
+# discipline, minus the COW: nothing here needs production).
+#
+# READ-ONLY POSTURE: the report lands as an ARTIFACT, never a tracked-file
+# mutation — the git-diff proof step enforces it (the neon-replay corpus law).
+#
+# No new secrets of record: the job needs nothing beyond checkout.
+
+name: t-tutor-audit-p4-conformance
+
+on:
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "Operator note for this ad-hoc scoring run"
+        required: false
+        default: ""
+  schedule:
+    # The P4-08 standing lane: weekly publish, Monday 04:50 UTC off-peak,
+    # after the answer-quality lane's 04:30 window.
+    - cron: "50 4 * * 1"
+
+permissions:
+  contents: read # read-only posture — the report is an ARTIFACT, nothing dispatches
+
+concurrency:
+  group: t-tutor-audit-p4-conformance
+  cancel-in-progress: false
+
+jobs:
+  conformance-trend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+
+      - name: Install workspace deps (root lockfile, all workspaces)
+        run: bun install --frozen-lockfile
+
+      - name: Harness sanity (the instrument proves itself first)
+        run: bun run --cwd golden/conformance-trend selftest
+
+      - name: The gate (the committed corpus obeys the serving DC-5 law)
+        run: bun test golden/conformance-trend
+
+      - name: Score the corpus of record against the baseline of record
+        id: score
+        run: |
+          bun golden/conformance-trend/score.ts score \
+            --corpus golden/conformance-trend/fixtures/marked-turns-v1.json \
+            --json cft-report.json \
+            --baseline golden/conformance-trend/baseline.json
+
+      - name: Upload the score report of record (the trend lane's artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t-tutor-audit-p4-conformance-${{ github.run_id }}
+          path: cft-report.json
+          retention-days: 90
+          if-no-files-found: warn
+
+      # ── The alert of record: the job RED is the alert — never an operator discovery ──
+      - name: The baseline-drift alert (P4-08's anchor moved)
+        if: always() && steps.score.outputs.drift == 'true'
+        run: |
+          echo "::error::CONFORMANCE-TREND DRIFT — baseline verdict ${{ steps.score.outputs.baseline_verdict }}; violations ${{ steps.score.outputs.violations }}/${{ steps.score.outputs.total }} turns; conformance pass rate ${{ steps.score.outputs.conformance_pass_rate }}; Rule A ${{ steps.score.outputs.rule_a_total }}; Rule B ${{ steps.score.outputs.rule_b_total }}. The committed corpus of record, the serving DC-5 law, or the committed baseline of record moved — disposition: re-pin the baseline DELIBERATELY in the same-PR conversation (§7: no silent widening), or fix the serving law that moved. See the cft-report artifact for the per-turn verdicts of record."
+          exit 1
+
+      - name: READ-ONLY PROOF — the scoring wrote nothing to the repo
+        if: always()
+        run: |
+          git diff --exit-code -- apps/ packages/ scripts/ golden/ docs/ .github/ .syllabai/ \
+            || { echo "::error::repo mutation detected — the read-only posture is VIOLATED"; exit 1; }
+          echo "read-only posture verified: zero tracked-file changes (the score report is artifact-only)"

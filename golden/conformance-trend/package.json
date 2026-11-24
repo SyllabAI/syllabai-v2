@@ -1,0 +1,14 @@
+{
+  "name": "@golden/conformance-trend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Conformance pass-rate trend lane (T-TUTOR-AUDIT-P4, P4-08) — the REAL serving DC-5 conformance law scored over the recorded marked-part wire-turn corpus of record, against the committed baseline of record. Provider-free by construction (no model, no database). Sibling of golden/answer-quality and golden/retrieval-eval.",
+  "scripts": {
+    "test": "bun test",
+    "selftest": "bun run selftest.ts --selftest"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2"
+  }
+}

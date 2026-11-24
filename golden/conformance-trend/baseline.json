@@ -1,0 +1,24 @@
+{
+  "schema": "conformance-trend-baseline/v1",
+  "lane": "T-TUTOR-AUDIT-P4",
+  "run": "run-001",
+  "rubric": "conformance-trend-rubric-v1",
+  "corpusFile": "golden/conformance-trend/fixtures/marked-turns-v1.json",
+  "corpusSha256": "f7ead9d03fb5a7aba5fe23447fcb3f05bb3b0f6f948f02b08e65d24eeb02c8d1",
+  "recordedAt": "2026-11-24T16:04:45.701Z",
+  "notes": "the rubric v1 measurement over the run-001 synthetic corpus of record — ANY drift is the weekly lane's RED; re-pin deliberately in the same PR that moves the corpus",
+  "aggregate": {
+    "total": 12,
+    "refusedTurns": 1,
+    "streamTurns": 1,
+    "eligible": 10,
+    "conformancePassTurns": 5,
+    "conformancePassRate": 0.5,
+    "ruleATotal": 3,
+    "ruleBTotal": 3,
+    "stripTurns": 4,
+    "failOpenTurns": 1,
+    "passThroughTurns": 1,
+    "violationTotal": 0
+  }
+}
