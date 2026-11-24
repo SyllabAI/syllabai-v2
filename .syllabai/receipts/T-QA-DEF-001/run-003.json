@@ -1,0 +1,25 @@
+{
+  "task": "T-QA-DEF-001",
+  "run": "run-003",
+  "kind": "investigation — item (2): #418 live-repro rig built; static sweep re-verified on the current tree; no fix (the do-not-guess-fix directive stands)",
+  "recorded_utc": "2026-11-20T23:20:00Z",
+  "cross_ref": "Extends run-001's item (2) disposition ('needs the live 1-per-load repro — do NOT guess-fix'). No code changed in this run — records only.",
+  "rig": {
+    "what_exists": "A reusable local dev repro rig for /dashboard hydration: apps/hub dev server (bun run dev) with a .env.local SESSION_SECRET (uncommitted, gitignored); a signed sai_session routing-cookie forger (scripts/forge_session_cookie.ts, session.ts shape: HS256, iss/aud syllabai-hub, claims name/email/role/sub) — sign-in needs the api, which cannot run in the sandbox (DB is remote Neon, no credentials); agent-browser (installed) drives the session: cookie set (--domain localhost --path / — the default set drops on reload), synthetic identity at localStorage syllabai.token/syllabai.user, seeded legacy stores (syllabai.lastOpened.v1, syllabai.mySubjects.v1, syllabai-hub:progress:<slug>).",
+    "result": "The dev rig hydrates /dashboard CLEANLY — no #418, no hydration warnings, deterministic across loads, with and without seeded returning-user state.",
+    "known_divergence": "The rig lacks real API responses (all /api/v1/* fail → the designed fallback postures); the QA repro ran against the deployed stack with live data. No CORS layer exists in the api (browser-direct is origin-allowlisted by deployment, not by a localhost dev origin), and no demo self-serve minting endpoint exists — prod parity is credential-blocked."
+  },
+  "static_sweep": {
+    "scope": "The full dashboard closure on the CURRENT tip (post #1171/#1172/#1175/#1176 — the run-001 sweep predated the rings/sidebar landings and is stale otherwise): page.tsx → DashboardShell → DashboardClient → dashboard-sync-status, next-best-actions-card, review-due-strip, set-work-card, exam-series-picker, add-course-overlay, progress-attribution-card, the kit components, chrome/AppShell.",
+    "cleared": [
+      "All store hooks follow the useSyncExternalStore server-snapshot law (last-opened.ts, my-subjects.ts, identity.ts useIdentity, progress.ts bridge) — module-init localStorage reads exist, but the hydration pass reads getServerSnapshot (EMPTY) and the client value arrives in the legal post-hydration re-render.",
+      "dashboard-shell.tsx storage reads effect-guarded (re-verified).",
+      "None of the five dashboard cards has render-path time/locale/random/storage/navigator reads.",
+      "dashboard-client's signedIn branch consumes the hydration-safe identity hook only."
+    ],
+    "verdict": "No deterministic hydration-divergence mechanism on the current tree — run-001's 'no static culprit' verdict HOLDS on fresh code. The divergent subtree is therefore either (a) dependent on real server data, (b) prod-build-specific, or (c) already fixed by a later landing — only the live console component stack can decide."
+  },
+  "operator_need": "One of: (a) a signed-in session against the deployed hub (the QA repro surface) — reload /dashboard and capture the console component stack; or (b) api branch DATABASE_URL credentials so the local api serves real data to the rig; or (c) the #418 console output from any load. The rig makes (b) a five-minute turnaround once credentials exist.",
+  "session_note": "Two more mid-turn recycles this run (node_modules wiped twice, checkout reset to 4008e6ce twice — re-fetched to 1c83ba48 each time); the rig recipe survives in /home/z/my-project/scripts/forge_session_cookie.ts + download/SESSION-STATE.md.",
+  "handoff": "The band card stays OPEN for item (2) with the rig recorded; no guessing at auth-semantics-adjacent behavior, no blind suppression."
+}
