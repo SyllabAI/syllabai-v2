@@ -54,7 +54,6 @@ import {
   Minimize2,
   PanelRightOpen,
   Send,
-  Sparkles,
   SquarePen,
   TriangleAlert,
   X,
@@ -224,12 +223,12 @@ export function NoteCla({
     </button>
   ) : null;
 
-  // SME's gradient header title (background-clip:text) — short, like their
-  // "Explain"; the full product name rides the dialog's aria-label
+  // t-anti-slop-1 (operator DM 2026-11-20T19:05:10Z, trace 4183f8af): the
+  // SME reference's gradient wordmark (background-clip:text) is retired —
+  // flat token ink now. Short, like their "Explain"; the full product name
+  // rides the dialog's aria-label
   const panelTitle = (
-    <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-      CLA
-    </span>
+    <span className="text-primary">CLA</span>
   );
 
   // one panel body, rendered by whichever shell is active
@@ -429,8 +428,7 @@ export function NoteCla({
   // verbatim order)
   const panelHeader = (closeAffordance: React.ReactNode) => (
     <div className="flex items-center gap-1 border-b px-3 py-2.5">
-      <Sparkles className="size-4 shrink-0 text-primary" aria-hidden />
-      <p className="min-w-0 flex-1 truncate pl-1 text-sm font-semibold">{panelTitle}</p>
+      <p className="min-w-0 flex-1 truncate text-sm font-semibold">{panelTitle}</p>
       <button
         type="button"
         onClick={newChat}
@@ -471,7 +469,6 @@ export function NoteCla({
           aria-expanded={open}
           onClick={() => setOpen(true)}
         >
-          <Sparkles className="size-4" aria-hidden />
           CLA
         </Button>
       )}
@@ -533,8 +530,7 @@ export function NoteCla({
           aria-describedby="cla-note-anchor"
         >
           <SheetHeader className="flex-row items-center gap-0 border-b px-4 py-3 text-left">
-            <Sparkles className="size-4 shrink-0 text-primary" aria-hidden />
-            <div className="min-w-0 flex-1 pl-2 leading-tight">
+            <div className="min-w-0 flex-1 leading-tight">
               <SheetTitle className="block text-sm font-semibold">{panelTitle}</SheetTitle>
               <SheetDescription className="sr-only">
                 Answers come from this note only.

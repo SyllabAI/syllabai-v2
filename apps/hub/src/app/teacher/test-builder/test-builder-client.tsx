@@ -84,7 +84,6 @@ import {
   RotateCcw,
   Save,
   Search,
-  Sparkles,
   Target,
   Trash2,
   X,
@@ -1628,7 +1627,6 @@ export function TestBuilderClient({
               <div className="rounded-md border border-primary/30 bg-primary/5 p-3">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <p className="flex items-center gap-1.5 text-sm font-medium">
-                    <Sparkles className="size-4 text-primary" aria-hidden />
                     Auto-build from weak areas
                   </p>
                   <Button

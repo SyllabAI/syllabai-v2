@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, GraduationCap } from "lucide-react";
 import { RequireAuth } from "@/components/auth/require-auth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -92,7 +92,7 @@ export default async function TutorPage({
             className="mx-auto flex size-11 items-center justify-center rounded-full bg-muted text-muted-foreground"
             aria-hidden
           >
-            <Sparkles className="size-5" />
+            <GraduationCap className="size-5" />
           </span>
           <h1 className="mt-3 text-base font-semibold">The tutor isn&apos;t available yet</h1>
           <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
@@ -125,7 +125,7 @@ export default async function TutorPage({
             <Card className="h-full transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center gap-2 text-base">
-                  <Sparkles className="size-4 text-primary" aria-hidden />
+                  <GraduationCap className="size-4 text-primary" aria-hidden />
                   {c.label}
                   <ArrowRight className="ml-auto size-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />
                 </CardTitle>

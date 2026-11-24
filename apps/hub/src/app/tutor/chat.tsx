@@ -81,7 +81,6 @@ import {
   ListChecks,
   PanelLeft,
   Plus,
-  Sparkles,
   Target,
 } from "lucide-react";
 
@@ -867,7 +866,7 @@ export function TutorChat({
           </button>
 
           <span
-            className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/70 text-primary-foreground"
+            className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground"
             aria-hidden
           >
             <GraduationCap className="size-4" />
@@ -1062,7 +1061,6 @@ export function TutorChat({
           <div className="mx-auto w-full max-w-3xl space-y-2 px-3 pt-2 sm:px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
             {anchoredSpec && (
               <div className="flex items-center gap-2 rounded-md border border-primary/30 bg-primary/5 px-3 py-1.5 text-xs">
-                <Sparkles className="size-3.5 shrink-0 text-primary" aria-hidden />
                 <span className="min-w-0 flex-1 truncate">
                   Anchored to specification point{" "}
                   <code className="rounded bg-muted px-1.5 py-0.5 font-mono">{anchoredSpec}</code>
@@ -1202,11 +1200,12 @@ function Welcome({
 }) {
   return (
     <div className="mx-auto flex min-h-full w-full max-w-3xl flex-col justify-center px-4 py-8">
-      {/* the reference's greeting hero: gradient avatar, greet by name,
-          honest grounding promise (HUB-TUTOR-CLA-LOOK) */}
+      {/* the reference's greeting hero: flat identity avatar (de-gradiented
+          in t-anti-slop-1, trace 4183f8af), greet by name, honest grounding
+          promise (HUB-TUTOR-CLA-LOOK) */}
       <div className="flex flex-col items-center gap-3 text-center">
         <span
-          className="flex size-11 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/70 text-primary-foreground shadow-sm"
+          className="flex size-11 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-sm"
           aria-hidden
         >
           <GraduationCap className="size-6" />

@@ -29,7 +29,7 @@
  */
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { CalendarCheck, CheckCircle2, Circle, Loader2, Pencil, Sparkles } from "lucide-react";
+import { CalendarCheck, CheckCircle2, Circle, Loader2, Pencil } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -471,7 +471,6 @@ export function PlanClient() {
                 Back
               </Button>
               <Button size="sm" onClick={() => void generate()}>
-                <Sparkles className="size-4" aria-hidden />
                 Generate my plan
               </Button>
             </div>

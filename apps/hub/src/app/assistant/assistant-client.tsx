@@ -36,7 +36,7 @@ import {
   Loader2,
   Lock,
   PanelLeft,
-  Sparkles,
+  Tag,
   TriangleAlert,
 } from "lucide-react";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
@@ -344,10 +344,10 @@ export function AssistantClient({
             <PanelLeft className="size-4" aria-hidden />
           </Button>
           <span
-            className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/70 text-primary-foreground"
+            className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground"
             aria-hidden="true"
           >
-            <Sparkles className="size-4" />
+            <BookOpenCheck className="size-4" />
           </span>
           <div className="leading-tight">
             <h1 className="text-sm font-semibold">Contextual Learning Assistant</h1>
@@ -387,7 +387,7 @@ export function AssistantClient({
                     : "border-border text-muted-foreground hover:border-primary/60",
                 )}
               >
-                <Sparkles className="size-3" aria-hidden /> Topic
+                <Tag className="size-3" aria-hidden /> Topic
               </button>
               <button
                 type="button"
@@ -535,7 +535,7 @@ export function AssistantClient({
               >
                 {m.value === "HINT" && <Lightbulb className="size-3" aria-hidden />}
                 {m.value === "CHECK" && <BookOpenCheck className="size-3" aria-hidden />}
-                {m.value === "EXPLAIN" && <Sparkles className="size-3" aria-hidden />}
+                {m.value === "EXPLAIN" && <Info className="size-3" aria-hidden />}
                 {m.value === "SUMMARIZE" && <ListChecks className="size-3" aria-hidden />}
                 {m.label}
                 {m.value === "CHECK" && !attempted && question && <Lock className="size-2.5 opacity-60" aria-hidden />}

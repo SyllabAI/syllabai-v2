@@ -17,7 +17,6 @@ import {
   GraduationCap,
   Loader2,
   Map,
-  Sparkles,
 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
@@ -86,7 +85,6 @@ function QuotaBadge({ quota }: { quota: ToolkitQuotaView | null }) {
   if (!quota) return null;
   return (
     <Badge variant="outline" className="gap-1 font-normal">
-      <Sparkles className="size-3" aria-hidden />
       {quota.used} / {quota.limit} today
     </Badge>
   );

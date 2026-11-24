@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from "react";
 import Link from "next/link";
-import { BookOpen, Sparkles } from "lucide-react";
+import { BookOpen, MessagesSquare } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -195,7 +195,7 @@ function DirectoryCard({
               <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs">
                 {tutorReady && (
                   <span className="inline-flex items-center gap-1 font-medium text-foreground/80">
-                    <Sparkles
+                    <MessagesSquare
                       className="size-3 text-primary"
                       aria-hidden
                     />
