@@ -1,238 +1,346 @@
 /**
- * Corpus emphasis normalizer — bold-marker repair for SME-derived content.
+ * Corpus emphasis normalizer v2 — bold-marker repair for SME-derived content.
  *
- * Research finding (2026-09-19): the upstream HTML→markdown conversion often
- * leaves the authoring side's spacing INSIDE the bold delimiters. CommonMark
- * requires the opening `**` to be followed by non-whitespace and the closing
- * `**` to be preceded by non-whitespace, so markers like these render as
- * literal asterisks on the page:
+ * Supersedes the 2026-09-19 normalizer (QA 2026-11-24 ticket CP-1: 1,447 live
+ * pages still leaked literal `**` with the old pass deployed). The old pass
+ * had three structural defects, each confirmed against the corpus:
  *
- *   ** two **      (ICT: "State** two **other types of utility software")
- *   **W **         (chemistry MCQ choice: "**W **and **Y**")
- *   ** Z**         (chemistry MCQ choice: "**X** and** Z**")
- *   **                    **   (mechanics: stray figure/answer-line artifact)
+ *   1. PARAGRAPH SCOPE — it split text only on blank lines, so consecutive
+ *      list items formed one "paragraph". Its CommonMark-claim pass then
+ *      paired an opener in one bullet with a closer two bullets later
+ *      (impossible in CommonMark — every list item is its own block), and the
+ *      greedy leftover repair rewrote the span between them, boxing literal
+ *      `**` markers inside a bogus <strong>.
+ *   2. SINGLE-RUN EARLY RETURN — `if (runs.length < 2) return` meant a lone
+ *      stray run was never cleaned (`=$A$1+B2**"`, `10**<sup> -3`,
+ *      `****an allele`).
+ *   3. ACTIVE HARM — leftover pairing rewrote valid table cells such as
+ *      `| **\$** |` into `| \$** |` (visible junk where the raw page was fine).
  *
- * Corpus audit: 17,524 question parts and 39 notes files carry at least one
- * space-flanked segment; 3,099 `** … **` (whitespace-flanked) segments exist
- * in questions alone. SME renders all of these as bold — parity demands the
- * same here.
- *
- * normalizeCorpusEmphasis repairs them at the text level, OUTSIDE `$…$` /
- * `$$…$$` math spans (44 math segments contain a literal `*` that must stay
- * untouched — KaTeX owns everything between the dollars), outside fenced
- * code blocks and outside inline code spans.
- *
- * Algorithm per paragraph (emphasis never crosses blank lines), verified
- * against the real remark pipeline on corpus samples:
- *
- *   1. runs of 3+ asterisks collapse to exactly two (`*****g*****` → `**g**`);
- *      no bare `***` thematic rules exist in the corpus (verified);
- *   2. `**` runs are paired with CommonMark's own rules for `**` (a run can
- *      open iff left-flanking, close iff right-flanking; right-flanking
- *      closes the nearest open run). These CLAIMED pairs render today, so
- *      their markers stay verbatim;
- *   3. runs the stack could NOT claim are converter artifacts. Leftovers are
- *      paired greedily in order and repaired — every rewrite turns literal
- *      asterisks into real bold:
- *        - whitespace-only pairs (`** **`) collapse to a single space;
- *        - edge whitespace is trimmed and re-inserted OUTSIDE the delimiter
- *          when the neighbouring outer character is alphanumeric (never
- *          doubling an existing space):
- *              State** two **other → State **two** other
- *              **W **and           → **W** and
- *              **X** and** Z**     → **X** and **Z**
- *        - an opener CommonMark rejects (e.g. "place**; …") or a closer it
- *          rejects (radical notation "**·**H") is detached with one space;
- *      leftover pairs whose inner still contains other `**` runs are NOT
- *      rewritten (too speculative) — their markers become deletion
- *      candidates, as do unpaired stray runs. A run is deleted only when at
- *      least one neighbour is whitespace/edge (both-alnum neighbours mean a
- *      possible exponent like 2**3 — content — and are preserved);
- *   4. the paragraph is re-normalized to a fixed point (≤3 passes) so repairs
- *      nested inside claimed spans take effect on the next pass.
- *
- * Single-asterisk *italic* is deliberately left alone: 31k+ candidate spans
- * in the corpus are prose multiplication signs and list artifacts, unsafe to
- * rewrite. Mixed `*…**…*` converter slop is a documented known limitation.
+ * v2 architecture:
+ *   - text is split into PARAGRAPH UNITS the way CommonMark delimits them:
+ *     a unit is a plain paragraph, one list item (with its lazy continuation
+ *     lines), one blockquote (with lazy continuations), one heading, or one
+ *     table row — emphasis can never cross these boundaries, so pairing is
+ *     simulated on exactly the region CommonMark would pair in;
+ *   - inside a unit, math ($…$ / $$…$$) and inline code spans are protected
+ *     (runs inside them are excluded from analysis, never rewritten);
+ *   - a faithful CommonMark delimiter-stack simulation (flanking rules §6.2,
+ *     odd-rule, openers_bottom) decides which runs actually RENDER — only
+ *     unrendered runs are repaired, so valid markup is untouched;
+ *   - table-row units are processed per CELL (emphasis cannot cross `|`);
+ *   - repairs, in priority order: whitespace-flanked leftover pairs are
+ *     trimmed with the space re-inserted outside the delimiter (only against
+ *     an alphanumeric neighbour), partially-consumed runs shrink to their
+ *     rendered length, leftover strays are deleted (never at a unit boundary,
+ *     and never when both neighbours are alphanumeric — `2**3` stays);
+ *     single `*` runs are never touched (prose multiplication signs);
+ *   - the unit is re-simulated to a fixed point (≤3 passes).
  */
 
-const MATH_SPLIT = /\$\$[\s\S]+?\$\$|\$[^$\n]+?\$/g;
+// Math/code protection — mirrors the hub's math-fix.ts delimiter rules
+// (remark-math parity): escaped dollars (\$) are NOT span openers, so money
+// amounts like \$45 000 never shield emphasis runs; the naive "any $ pair"
+// rule shielded the opener of `**\$90 000**` and let the stray-deleter eat
+// its closer — manufacturing a leak on a page that rendered clean.
+const MATH_SPLIT = /(?<![a-zA-Z0-9]\\$)(?<!\\)\$\$([\s\S]+?)\$\$|(?<!\\)(?<!\$)\$(?!\$)((?:[^$\n\\]|\\.)+?)(?<!\\)\$(?!\$)/g;
 // inline code spans — require non-empty content so a fence's ``` markers
 // are never mistaken for an empty `…` span
 const CODE_SPLIT = /`[^`\n]+`/g;
 
+type Run = {
+  pos: number; // start offset in unit text
+  len: number; // delimiter run length
+  canOpen: boolean;
+  canClose: boolean;
+  consumed: number; // delimiters bound by the simulation (rendered)
+};
+
+const ALNUM = /[\p{L}\p{N}]/u;
+
 export function normalizeCorpusEmphasis(src: string): string {
   if (!src.includes("**")) return src;
-
-  let out = "";
-  let last = 0;
-  const protectedRE = new RegExp(
-    `${MATH_SPLIT.source}|${CODE_SPLIT.source}`,
-    "g",
-  );
-  for (const m of src.matchAll(protectedRE)) {
-    const start = m.index ?? 0;
-    out += fixText(src.slice(last, start)) + m[0];
-    last = start + m[0].length;
-  }
-  out += fixText(src.slice(last));
-  return out;
-}
-
-/** Split off fenced code blocks, normalize only the prose between them. */
-function fixText(text: string): string {
-  if (!text.includes("**")) return text;
-
-  const lines = text.split("\n");
+  const lines = src.split("\n");
+  const out: string[] = [];
+  let unit: string[] = [];
   let inFence = false;
-  const chunks: string[] = [];
-  let prose: string[] = [];
   const flush = () => {
-    if (prose.length) {
-      chunks.push(fixProse(prose.join("\n")));
-      prose = [];
+    if (unit.length) {
+      out.push(processUnit(unit.join("\n")));
+      unit = [];
     }
   };
   for (const line of lines) {
     if (/^\s*(```|~~~)/.test(line)) {
       flush();
-      chunks.push(line);
       inFence = !inFence;
+      out.push(line);
       continue;
     }
-    if (inFence) chunks.push(line);
-    else prose.push(line);
+    if (inFence) {
+      out.push(line);
+      continue;
+    }
+    if (line.trim() === "") {
+      flush();
+      out.push(line);
+      continue;
+    }
+    if (startsBlock(line)) {
+      flush();
+      unit = [line];
+      // table rows are processed alone (emphasis cannot cross cells) —
+      // flush() emits the processed row; do NOT push the raw line again
+      if (/^\s*\|/.test(line)) {
+        flush();
+      }
+      continue;
+    }
+    unit.push(line);
   }
   flush();
-  return chunks.join("\n");
+  return out.join("\n");
 }
 
-/** Split into paragraphs (emphasis never pairs across blank lines). */
-function fixProse(text: string): string {
-  const collapsed = text.replace(/\*{3,}/g, "**");
-  if (!collapsed.includes("**")) return collapsed;
+/** Block-boundary detection — a unit never spans these (except lazily).
+ * Indent-agnostic: nested list items live at 4+ spaces in this corpus, and
+ * consecutive nested bullets must be separate units (the 2026-09-19 pass
+ * mispaired across them at indent 0-3; the same bug recurs at indent 4+). */
+function startsBlock(line: string): boolean {
+  const t = line.replace(/^[ \t]+/, "");
+  if (/^([-*+]|\d{1,9}[.)])\s/.test(t)) return true; // list marker
+  if (/^#{1,6}(\s|$)/.test(t)) return true; // ATX heading
+  if (/^>/.test(t)) return true; // blockquote
+  if (/^\|/.test(t)) return true; // table row
+  return false;
+  // NOTE: 4-space-indented lines are deliberately NOT treated as indented
+  // code — in this corpus they are overwhelmingly nested list items (the
+  // old pass processed them too), and true code blocks are fenced.
+}
 
-  const parts = collapsed.split(/(\n[ \t]*\n)/);
-  for (let i = 0; i < parts.length; i += 2) {
-    if (!parts[i].includes("**")) continue;
-    for (let pass = 0; pass < 3; pass++) {
-      const next = fixParagraph(parts[i]);
-      if (next === parts[i]) break;
-      parts[i] = next;
+/** Process one paragraph unit (or table-row line, per cell). */
+function processUnit(block: string): string {
+  if (!block.includes("**")) return block;
+  const trimmed = block.replace(/^[ \t]+/, "");
+  // blockquote-wrapped table rows (`> | a | b |`) get per-cell repair too —
+  // strip the quote prefix before the row check; the split keeps the prefix
+  // in the boundary cell, which passes through untouched
+  if (/^(>+\s*)*\|/.test(trimmed)) return processTableRow(trimmed);
+  return processText(block);
+}
+
+/** Split a table row into cells (respecting \| escapes) and repair each. */
+function processTableRow(line: string): string {
+  const cells: string[] = [];
+  let cur = "";
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === "\\" && line[i + 1] === "|") {
+      cur += "\\|";
+      i++;
+      continue;
     }
+    if (ch === "|") {
+      cells.push(cur);
+      cur = "";
+      continue;
+    }
+    cur += ch;
   }
-  return parts.join("");
+  cells.push(cur);
+  if (cells.length <= 1) return processText(line);
+  // boundary entries (row pipes / blockquote prefix) pass through untouched;
+  // repair rules apply only to len ≥ 2 runs inside real cells
+  const fixed = cells.map((c, k) => processText(c));
+  return fixed.join("|");
 }
 
-type Run = {
-  start: number;
-  end: number;
-  canOpen: boolean;
-  canClose: boolean;
-};
+/** Protected spans (math + inline code) on the unit text. */
+function protectedSpans(text: string): Array<[number, number]> {
+  const spans: Array<[number, number]> = [];
+  const re = new RegExp(`${MATH_SPLIT.source}|${CODE_SPLIT.source}`, "g");
+  for (const m of text.matchAll(re)) {
+    spans.push([m.index ?? 0, (m.index ?? 0) + m[0].length]);
+  }
+  return spans;
+}
 
-const ALNUM = /[\p{L}\p{N}]/u;
+function inProtected(spans: Array<[number, number]>, pos: number): boolean {
+  for (const [a, b] of spans) if (pos >= a && pos < b) return true;
+  return false;
+}
 
-function fixParagraph(text: string): string {
+/** CommonMark flanking rules (spec §6.2) for a `*` delimiter run. */
+function computeFlanking(text: string, pos: number, end: number) {
+  const prev = pos > 0 ? text[pos - 1] : "";
+  const next = end < text.length ? text[end] : "";
+  const prevWs = prev === "" || /\s/.test(prev);
+  const nextWs = next === "" || /\s/.test(next);
+  const prevPunct = prev !== "" && !ALNUM.test(prev) && !/\s/.test(prev);
+  const nextPunct = next !== "" && !ALNUM.test(next) && !/\s/.test(next);
+  const leftFlanking = !nextWs && (!nextPunct || prevWs || prevPunct);
+  const rightFlanking = !prevWs && (!prevPunct || nextWs || nextPunct);
+  // `*` runs carry no intraword restriction (unlike `_`)
+  return { canOpen: leftFlanking, canClose: rightFlanking };
+}
+
+/** Collect runs for the simulation — ALL `*` runs including singles.
+ * CommonMark pairs single `*` runs with the 2+ runs (`***F= ma**** *is`),
+ * so excluding them desynchronises the simulation from the real renderer.
+ * Repairs below still only ever touch len ≥ 2 runs. */
+function collectRuns(text: string): Run[] {
+  const spans = protectedSpans(text);
   const runs: Run[] = [];
-  for (const m of text.matchAll(/\*\*/g)) {
-    const start = m.index;
-    const end = start + 2;
-    const prev = start > 0 ? text[start - 1] : "";
-    const next = end < text.length ? text[end] : "";
-    const prevWs = prev === "" || /\s/.test(prev);
-    const nextWs = next === "" || /\s/.test(next);
-    const prevPunct = prev !== "" && !ALNUM.test(prev) && !/\s/.test(prev);
-    const nextPunct = next !== "" && !ALNUM.test(next) && !/\s/.test(next);
-    // CommonMark flanking definitions (spec §6.2)
-    const leftFlanking = !nextWs && (!nextPunct || prevWs || prevPunct);
-    const rightFlanking = !prevWs && (!prevPunct || nextWs || nextPunct);
-    // Rules 11/12 — for `**` there is no intraword restriction
-    runs.push({ start, end, canOpen: leftFlanking, canClose: rightFlanking });
+  for (const m of text.matchAll(/\*+/g)) {
+    const pos = m.index ?? 0;
+    const len = m[0].length;
+    if (inProtected(spans, pos)) continue;
+    const f = computeFlanking(text, pos, pos + len);
+    runs.push({ pos, len, canOpen: f.canOpen, canClose: f.canClose, consumed: 0 });
   }
-  if (runs.length < 2) return text;
+  return runs;
+}
 
-  // Pass 1 — claim every pair CommonMark itself can render.
-  const stack: number[] = [];
-  const claimed = new Set<number>();
-  for (let i = 0; i < runs.length; i++) {
-    if (runs[i].canClose && stack.length > 0) {
-      claimed.add(stack.pop() as number);
-      claimed.add(i);
-    } else if (runs[i].canOpen) {
-      stack.push(i);
+/**
+ * CommonMark "process emphasis" (spec §6.2) over the run list — sets
+ * `consumed` (delimiters bound into emphasis) per run.
+ */
+function simulate(runs: Run[]): void {
+  for (const r of runs) r.consumed = 0;
+  const remaining = runs.map((r) => r.len);
+  const stack: number[] = []; // run indices that can still open
+  // openers_bottom keyed by closer length % 3 (spec: search floor per class)
+  const openersBottom: number[] = [-1, -1, -1];
+  for (let ci = 0; ci < runs.length; ci++) {
+    const closer = runs[ci];
+    if (closer.canClose && remaining[ci] > 0) {
+      // bind this closer repeatedly while it still has delimiters left.
+      // (A single-bind variant was tested: it repairs a few more deep
+      // `***…**…***` chains but mis-shrinks valid `***x***` sandwiches —
+      // the no-harm gate rejected it. Rebinding keeps valid markup intact.)
+      for (;;) {
+        let found = -1;
+        const bottom = openersBottom[closer.len % 3];
+        for (let si = stack.length - 1; si >= 0; si--) {
+          const oIdx = stack[si];
+          if (bottom >= 0 && oIdx < bottom) break;
+          const o = runs[oIdx];
+          if (remaining[oIdx] <= 0 || !o.canOpen) continue;
+          // odd rule: sum of run lengths must not be a multiple of 3 unless
+          // both runs are multiples of 3 (applies when either run can both
+          // open and close)
+          if (
+            (o.canClose || closer.canOpen) &&
+            (closer.len % 3 !== 0 || o.len % 3 !== 0) &&
+            (closer.len + o.len) % 3 === 0
+          ) {
+            continue;
+          }
+          found = si;
+          break;
+        }
+        if (found < 0) {
+          openersBottom[closer.len % 3] = ci;
+          break;
+        }
+        const oIdx = stack[found];
+        const use = remaining[oIdx] >= 2 && remaining[ci] >= 2 ? 2 : 1;
+        remaining[oIdx] -= use;
+        remaining[ci] -= use;
+        closer.consumed += use;
+        runs[oIdx].consumed += use;
+        // delimiters above the opener can never close now
+        stack.length = found + 1;
+        if (remaining[oIdx] === 0) stack.pop();
+        if (remaining[ci] === 0) break;
+      }
     }
+    if (closer.canOpen && remaining[ci] > 0) stack.push(ci);
   }
+}
 
-  // Pass 2 — leftover runs are converter artifacts; repair greedily.
-  const leftovers = runs
-    .map((_, i) => i)
-    .filter((i) => !claimed.has(i))
-    .sort((a, b) => runs[a].start - runs[b].start);
+type Edit = { start: number; end: number; text: string };
 
-  type Edit = { start: number; end: number; text: string };
+/** Plan + apply one repair pass; returns the new unit text. */
+function repairPass(text: string, runs: Run[]): { out: string; edits: number } {
+  simulate(runs);
   const edits: Edit[] = [];
-  const alnumBefore = (i: number) =>
-    runs[i].start > 0 && ALNUM.test(text[runs[i].start - 1]);
-  const alnumAfter = (i: number) =>
-    runs[i].end < text.length && ALNUM.test(text[runs[i].end]);
 
-  const runIndexesInside = (from: number, to: number) =>
-    runs.some((r, k) => !claimed.has(k) && r.start > from && r.end < to);
+  // leftover runs — unrendered (or partially rendered) candidates
+  const leftovers = runs.filter((r) => r.consumed < r.len);
 
-  for (let k = 0; k + 1 < leftovers.length; k += 2) {
-    const a = leftovers[k];
-    const b = leftovers[k + 1];
-    const open = runs[a];
-    const close = runs[b];
-    const inner = text.slice(open.end, close.start);
+  // E1 — whitespace-flanked leftover pairs: trim, re-insert space outside.
+  // A pair whose span still contains other runs is bogus (the real pairs are
+  // the inner ones) — advance by one so the survivors can pair with their
+  // actual neighbours, and leave the skipped run to E5. Single `*` runs are
+  // never rewritten (prose multiplication signs, list artifacts).
+  const pairable = leftovers.filter((r) => r.consumed === 0 && r.len >= 2);
+  const paired = new Set<number>();
+  for (let k = 0; k + 1 < pairable.length; ) {
+    const a = pairable[k];
+    const b = pairable[k + 1];
+    const inner = text.slice(a.pos + a.len, b.pos);
+    // no other runs inside the span
+    if (runs.some((r) => r !== a && r !== b && r.pos > a.pos && r.pos < b.pos)) {
+      k += 1;
+      continue;
+    }
     const core = inner.replace(/^[ \t]+/, "").replace(/[ \t]+$/, "");
-
-    if (runIndexesInside(open.end, close.start)) {
-      // inner still carries other `**` runs — rewriting the pair would nest
-      // markers inside markers; drop both markers instead (guarded below)
-      continue;
-    }
     if (!core) {
-      edits.push({ start: open.start, end: close.end, text: " " });
-    } else if (core !== inner) {
-      // edge-whitespace pair — trim, re-insert one space outward only when
-      // the neighbouring outer character is alphanumeric (word separator
-      // preservation: "**W **and" must become "**W** and", not "**W**and")
-      const pre = alnumBefore(a) ? " " : "";
-      const post = alnumAfter(b) ? " " : "";
-      edits.push({ start: open.start, end: close.end, text: `${pre}**${core}**${post}` });
-    } else if (!open.canOpen || !close.canClose) {
-      // CommonMark rejects a side ("place**; …" opener after an alnum char,
-      // radical notation "**·**H" closer before one) — detach that side
-      const pre = !open.canOpen && alnumBefore(a) ? " " : "";
-      const post = !close.canClose && alnumAfter(b) ? " " : "";
-      edits.push({ start: open.start, end: close.end, text: `${pre}**${core}**${post}` });
-    } else {
-      // renderable pair that merely went unclaimed — leave the markers
+      // whitespace-only pair (`** **`) → single space
+      edits.push({ start: a.pos, end: b.pos + b.len, text: " " });
+      paired.add(a.pos);
+      paired.add(b.pos);
+      k += 2;
       continue;
     }
-    claimed.add(a);
-    claimed.add(b);
-    // mark consumed so the odd-tail deletion below skips paired runs
-    leftovers[k] = -1;
-    leftovers[k + 1] = -1;
+    // move the trimmed edge whitespace OUTSIDE the delimiters so nothing
+    // glues together (`**W **and` → `**W** and`, `$s$** seconds)**` →
+    // `$s$ **seconds)**`). Insert only against a non-whitespace neighbour —
+    // a whitespace neighbour already separates the words.
+    const prevCh = a.pos > 0 ? text[a.pos - 1] : "";
+    const nextCh = b.pos + b.len < text.length ? text[b.pos + b.len] : "";
+    const pre = prevCh !== "" && !/\s/.test(prevCh) ? " " : "";
+    const post = nextCh !== "" && !/\s/.test(nextCh) ? " " : "";
+    edits.push({
+      start: a.pos,
+      end: b.pos + b.len,
+      text: `${pre}**${core}**${post}`,
+    });
+    paired.add(a.pos);
+    paired.add(b.pos);
+    k += 2;
   }
 
-  // Pass 3 — unpaired stray runs: delete when visually safe. Both-alnum
-  // neighbours mean a possible exponent (2**3) — content — keep it.
-  for (const k of leftovers) {
-    if (k < 0) continue;
-    const run = runs[k];
-    const prev = run.start > 0 ? text[run.start - 1] : "";
-    const next = run.end < text.length ? text[run.end] : "";
-    if (ALNUM.test(prev) && ALNUM.test(next)) continue;
-    edits.push({ start: run.start, end: run.end, text: "" });
+  // E4 — partially consumed runs: shrink to the rendered length
+  for (const r of leftovers) {
+    if (r.consumed === 0 || r.consumed >= r.len) continue;
+    if (edits.some((e) => e.start <= r.pos && e.end >= r.pos + r.len)) continue;
+    edits.push({
+      start: r.pos,
+      end: r.pos + r.len,
+      text: "*".repeat(r.consumed),
+    });
   }
 
-  if (edits.length === 0) return text;
+  // E5 — fully unrendered strays: delete unless both neighbours are alnum
+  // (2**3 exponents stay). Unit boundaries are always hard boundaries in
+  // this architecture (units are complete CommonMark paragraph units), so
+  // no pair can continue past them.
+  for (const r of leftovers) {
+    if (r.len < 2) continue; // single * runs — prose content, never touched
+    if (r.consumed !== 0 || paired.has(r.pos)) continue;
+    if (edits.some((e) => e.start <= r.pos && e.end >= r.pos + r.len)) continue;
+    const prev = r.pos > 0 ? text[r.pos - 1] : "";
+    const next = r.pos + r.len < text.length ? text[r.pos + r.len] : "";
+    if (/\d/.test(prev) && /\d/.test(next)) continue; // 2**3 — content
+    // letter/digit-mixed flanks are authoring junk (`6**x`, `i**ncome`,
+    // `5**b`) — the stars never rendered and carry no exponent meaning
+    edits.push({ start: r.pos, end: r.pos + r.len, text: "" });
+  }
+
+  if (edits.length === 0) return { out: text, edits: 0 };
   edits.sort((x, y) => x.start - y.start);
-
   let out = "";
   let pos = 0;
   for (const e of edits) {
@@ -241,5 +349,17 @@ function fixParagraph(text: string): string {
     pos = e.end;
   }
   out += text.slice(pos);
-  return out;
+  return { out, edits: edits.length };
+}
+
+function processText(block: string): string {
+  let text = block;
+  for (let pass = 0; pass < 3; pass++) {
+    const runs = collectRuns(text);
+    if (runs.length === 0) return text;
+    const next = repairPass(text, runs);
+    if (next.edits === 0) return text;
+    text = next.out;
+  }
+  return text;
 }
