@@ -20,8 +20,11 @@
  */
 
 /** Citation markers whose number indexes the citation list (H2 output
- *  hygiene): 1–3 digit [n]/【n】. Java: [\[\u3010]([0-9]{1,3})[\]\u3011] :96-97 */
-const CITATION_MARKER = /[\u{005B}\u{3010}]([0-9]{1,3})[\u{005D}\u{3011}]/gu;
+ *  hygiene): 1–3 digit [n]/【n】. Java: [\[\u3010]([0-9]{1,3})[\]\u3011] :96-97.
+ *  Exported since the F4 redirect gate (refusal-detect.ts) judges the SAME
+ *  marker shape — one law, one definition. Stateful under `g`: every user
+ *  resets lastIndex before its loop (sanitizeAnswer does; so does the gate). */
+export const CITATION_MARKER = /[\u{005B}\u{3010}]([0-9]{1,3})[\u{005D}\u{3011}]/gu;
 
 export type StrippedCitationSink = ((n: number) => void) | null;
 

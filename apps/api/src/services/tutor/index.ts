@@ -87,6 +87,8 @@ export { retrievalQuery, RETRIEVAL_WINDOW_TURNS, RETRIEVAL_QUERY_MAX_CHARS } fro
 export {
   // T-TUTOR-PIVOT-1: the model-worded refusal truth
   modelRefusalLikely,
+  // F4: the redirect's citation-aware second signal
+  carriesInRangeCitation,
   CANONICAL_REFUSAL_STEMS,
   SOURCE_STEMS,
   REFUSAL_REDIRECT_SUFFIX,

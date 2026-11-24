@@ -17,7 +17,17 @@
  * text at completion. R-LLM doctrine holds: LLM outputs are never
  * golden-gated; this is best-effort truth on the analytics plane (the
  * refused flag of the turn + the research event), never a safety gate.
+ *
+ * F4 (engineering audit 2026-11-17) adds the redirect's second signal: the
+ * head-anchored detector can misfire on a substantive answer ("None of the
+ * three states of matter changes…" + a lack verb in the tail window), and
+ * the deterministic redirect must never ride a cited answer. Refusals
+ * almost never carry in-range citation markers, so an answer that DOES cite
+ * its sources suppresses the append — the detector's refused verdict (the
+ * analytics truth) stands; only the learner-facing append is gated.
  */
+
+import { CITATION_MARKER } from "./sanitize";
 
 /** The v17 canonical stem — the instructed refusal opener. If an answer
  *  opens with it, it IS a refusal: the phrase cannot plausibly open a
@@ -149,6 +159,25 @@ export function modelRefusalLikely(answer: string | null | undefined): boolean {
   return material && negated;
 }
 
+/** F4 — the citation-aware second signal: true exactly when the answer
+ *  carries at least one IN-RANGE citation marker ([n]/【n】, n ∈
+ *  [1..evidenceCount]) — the H2 hygiene's own marker shape and the SAME
+ *  evidenceCount the hygiene judged the markers against, so every marker
+ *  that survived sanitizeAnswer counts and every stripped one does not.
+ *  Zero evidence admits no in-range marker by construction. Deterministic,
+ *  allocation-free apart from the shared regex (lastIndex reset first). */
+export function carriesInRangeCitation(answer: string, evidenceCount: number): boolean {
+  if (evidenceCount <= 0) return false;
+  CITATION_MARKER.lastIndex = 0;
+  for (let m = CITATION_MARKER.exec(answer); m !== null; m = CITATION_MARKER.exec(answer)) {
+    const digits = m[1];
+    if (digits == null) continue;
+    const n = parseInt(digits, 10);
+    if (n >= 1 && n <= evidenceCount) return true;
+  }
+  return false;
+}
+
 /** T-TUTOR-PIVOT-1 run-002 — the DETERMINISTIC redirect. Run-001's live
  *  replay (prod, post-deploy) measured the small-model pool ignoring the
  *  v17 redirect law: 6/6 model-worded refusals ended bare, no way forward
@@ -157,7 +186,11 @@ export function modelRefusalLikely(answer: string | null | undefined): boolean {
  *  detected (blocking: before the answer returns; streaming: as a tail
  *  delta before the completed event). Idempotent: an answer that already
  *  carries a redirect (law-compliant model, or the deterministic
- *  TUTOR_REFUSAL's own "Try naming the topic …") is returned untouched. */
+ *  TUTOR_REFUSAL's own "Try naming the topic …") is returned untouched.
+ *  F4 (audit 2026-11-17): the append carries a SECOND SIGNAL — an answer
+ *  citing its in-range sources is substantive even when the head-anchored
+ *  detector misfires on it, so the redirect is SUPPRESSED there (the
+ *  dominant false-positive shape dies; the refused analytics flag stands). */
 export const REFUSAL_REDIRECT_SUFFIX =
   "\n\nCould you rephrase the question, or start a new conversation on this topic?";
 
@@ -169,8 +202,12 @@ export function hasRedirectLine(answer: string): boolean {
 }
 
 /** The deterministic redirect append — the pipeline's own way-forward line
- *  on every detected model-worded refusal. */
-export function withRefusalRedirect(answer: string): string {
+ *  on every detected model-worded refusal, UNLESS the answer carries an
+ *  in-range citation (F4: the cited answer is substantive — never tack the
+ *  redirect onto it). evidenceCount is the turn's evidence count (the SAME
+ *  count the H2 hygiene judged the answer's markers against). */
+export function withRefusalRedirect(answer: string, evidenceCount: number): string {
   if (hasRedirectLine(answer)) return answer;
+  if (carriesInRangeCitation(answer, evidenceCount)) return answer;
   return answer + REFUSAL_REDIRECT_SUFFIX;
 }

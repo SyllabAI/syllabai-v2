@@ -443,6 +443,51 @@ describe("the §22 probes and the deterministic ask laws", () => {
   });
 });
 
+// ── F3 (engineering audit 2026-11-17) — one degenerate-output semantics ─────
+// A generation whose every token was strippable (out-of-range markers, or
+// echoed fences — neither survives the H2 hygiene) is an EMPTY generation.
+// The stream path already dies on the L2 empty-generation law; the blocking
+// path served answer "" with refused=false. The pair below pins the SAME
+// degenerate chain output dying symmetrically on BOTH paths — the blocking
+// leg is the new raise (the honest 503 tutor_unavailable), the stream leg
+// re-pins the standing L2 law so the parity contract is pinned as a pair.
+
+describe("F3 — a fully-stripped generation is the L2 failure on BOTH paths", () => {
+  const resolver: PaperQuestionResolver = async () => ({
+    items: [oneEvidenceItem()],
+    identityParsed: false,
+    identityLabel: null,
+  });
+  const strippedOnlyLlm: LlmProvider = {
+    available: () => true,
+    // [7] against one evidence item: out-of-range → the sanitized answer is
+    // EMPTY (an echoed fence would strip to the same empty)
+    generate: async () => ({ text: "[7]", model: "fake-model", providerName: "fake-provider" }),
+    stream: async function* () {
+      yield { text: "[7]", model: "fake-model", providerName: "fake-provider" };
+    },
+  };
+
+  test("blocking: the emptied answer is the honest 503 tutor_unavailable — never a blank 200", async () => {
+    const { app } = makeApp({}, { resolver, llm: strippedOnlyLlm });
+    const res = await ask(app, { question: "explain question 10" });
+    expect(res.status).toBe(503);
+    const body = (await res.json()) as Record<string, unknown>;
+    expect(body.error).toBe("tutor_unavailable");
+    expect(body.message).toBe("the tutor is temporarily unavailable — please try again shortly");
+  });
+
+  test("stream: the same degenerate generation dies as the wire error event with the FIXED text", async () => {
+    const { app } = makeApp({}, { resolver, llm: strippedOnlyLlm });
+    const res = await ask(app, { question: "explain question 10" }, "/api/v1/tutor/ask/stream");
+    expect(res.status).toBe(200);
+    const text = await res.text();
+    expect(text).toContain("event: error");
+    // deep-audit M2: the fixed client text, never provider detail
+    expect(text).toContain("the tutor is temporarily unavailable — please try again shortly");
+  });
+});
+
 // ── the SSE stream law ──────────────────────────────────────────────────────
 
 describe("POST /ask/stream — the SSE wire law", () => {
