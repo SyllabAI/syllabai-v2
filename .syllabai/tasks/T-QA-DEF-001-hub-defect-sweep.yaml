@@ -72,6 +72,21 @@ execution_record: >
     identical to the main baseline (4 pre-existing env-dependent failures in
     untouched files — CI hub lane is the build of record); eslint 0. The
     card stays OPEN only for item (2) (#418 live repro).
+    ITEM (2) PROGRESS 2026-11-20 (run-003, records only — no fix, the
+    do-not-guess-fix directive stands): a reusable LOCAL DEV REPRO RIG now
+    exists — hub dev + .env.local SESSION_SECRET + a forged sai_session
+    routing cookie (session.ts HS256 shape) + agent-browser + seeded
+    returning-user localStorage — and it hydrates /dashboard CLEANLY (no
+    #418, deterministic across loads). The static sweep was RE-RUN on the
+    current tip (the run-001 sweep predated the rings/sidebar landings):
+    every store hook follows the useSyncExternalStore server-snapshot law,
+    the five dashboard cards have no render-path time/locale/random/storage
+    reads, the identity branch is hydration-safe — run-001's "no static
+    culprit" verdict HOLDS on fresh code. The divergent subtree therefore
+    needs the live component stack from the deployed signed-in session (or
+    api branch DB credentials to serve the local rig real data — a
+    five-minute turnaround with the rig). The rig recipe is in
+    receipts/T-QA-DEF-001/run-003.json; the card stays OPEN for item (2).
 base:
   repo: "syllabai-v2 @ 361a754c (origin/main at fix time)"
 basis: >
