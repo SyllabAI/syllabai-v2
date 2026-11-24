@@ -1,0 +1,22 @@
+{
+  "schema": "answer-quality-baseline/v1",
+  "lane": "T-TUTOR-AUDIT-P3",
+  "run": "run-001",
+  "rubric": "answer-quality-rubric-v1",
+  "corpusFile": "golden/answer-quality/fixtures/turns-v1.json",
+  "corpusSha256": "eb42f6c7abc79fd3c381b255e61b397790eefae6d99a9389c14ea21b69f63720",
+  "recordedAt": "2026-11-24T14:36:33.778Z",
+  "notes": "the rubric v1 measurement over the run-001 synthetic corpus of record — ANY drift is the weekly lane's RED; re-pin deliberately in the same PR that moves the corpus",
+  "aggregate": {
+    "total": 18,
+    "refused": 8,
+    "citationEligible": 10,
+    "citationSupported": 8,
+    "citationSupportRate": 0.8,
+    "refusalDeadEnds": 0,
+    "refusalCorrectRate": 1,
+    "truncated": 2,
+    "truncationRate": 0.1111111111111111,
+    "violationTotal": 0
+  }
+}
