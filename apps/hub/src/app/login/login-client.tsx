@@ -29,8 +29,8 @@ import {
   FileQuestion,
   GraduationCap,
   Loader2,
+  MessagesSquare,
   ShieldCheck,
-  Sparkles,
   Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -51,7 +51,7 @@ const ROLE_STORY: Record<
     bullets: [
       { icon: BookOpen, text: "Revision notes mapped to the spec for 103 courses" },
       { icon: FileQuestion, text: "Exam-style questions with self-marking" },
-      { icon: Sparkles, text: "A tutor that cites the syllabus, not vibes" },
+      { icon: MessagesSquare, text: "A tutor that cites the syllabus, not vibes" },
     ],
   },
   teacher: {

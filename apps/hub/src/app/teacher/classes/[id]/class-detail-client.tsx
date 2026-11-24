@@ -44,7 +44,6 @@ import {
   ScrollText,
   Send,
   Shield,
-  Sparkles,
   Trash2,
   UserPlus,
 } from "lucide-react";

@@ -13,6 +13,7 @@ import {
   CANONICAL_REFUSAL_STEMS,
   REFUSAL_HEAD_CHARS,
   REFUSAL_REDIRECT_SUFFIX,
+  carriesInRangeCitation,
   modelRefusalLikely,
   withRefusalRedirect,
 } from "../../src/services/tutor/refusal-detect";
@@ -147,17 +148,65 @@ describe("refusal truth detector run-002 — the rotated pool's real wordings", 
 
   test("withRefusalRedirect appends the way-forward line (idempotent)", () => {
     const bare = "The supplied sources do not contain information about the capital city of France.";
-    const appended = withRefusalRedirect(bare);
+    const appended = withRefusalRedirect(bare, 3);
     expect(appended.startsWith(bare)).toBe(true);
     expect(appended).toContain("rephrase");
     expect(appended).toContain("new conversation");
-    expect(withRefusalRedirect(appended)).toBe(appended); // idempotent
+    expect(withRefusalRedirect(appended, 3)).toBe(appended); // idempotent
   });
 
   test("withRefusalRedirect leaves a law-compliant refusal untouched", () => {
     const compliant =
       "I can't answer that from the validated course material yet. Nothing here covers it. " +
       "Could you rephrase the question, or start a new conversation on this topic?";
-    expect(withRefusalRedirect(compliant)).toBe(compliant);
+    expect(withRefusalRedirect(compliant, 2)).toBe(compliant);
+  });
+});
+
+// ── F4 (engineering audit 2026-11-17) — the citation-aware redirect gate ────
+
+/** The gate law: refusals almost never carry in-range citation markers, so
+ *  an answer that DOES cite its in-range sources is substantive even when
+ *  the head-anchored detector misfires on it — the append is SUPPRESSED
+ *  there (the dominant false-positive shape dies; the refused analytics
+ *  flag stands — modelRefusalLikely is untouched by the gate). */
+describe("F4 — the redirect's citation-aware second signal", () => {
+  test("the audit's false-positive shape: a cited, substantive answer is never redirected", () => {
+    // opens "The sources do not …" + a content-lack verb in the tail window
+    // → the detector misfires (pinned here: the analytics flag stands)
+    const substantive =
+      "The sources do not have to be quoted verbatim — put it in your own words and cite the point [1].";
+    expect(modelRefusalLikely(substantive)).toBe(true);
+    // F4: the redirect is suppressed — a cited answer never carries it
+    expect(withRefusalRedirect(substantive, 2)).toBe(substantive);
+  });
+
+  test("out-of-range markers do NOT suppress — only an in-range citation does", () => {
+    const bare = "None of the provided sources mention photosynthesis. [7]";
+    expect(withRefusalRedirect(bare, 3)).toBe(bare + REFUSAL_REDIRECT_SUFFIX);
+    // the SAME answer at a wider evidence pool: [7] is in-range → suppressed
+    expect(withRefusalRedirect(bare, 8)).toBe(bare);
+  });
+
+  test("zero evidence admits no in-range marker — the append never suppresses (deterministic-refusal parity)", () => {
+    const answer = "The sources do not cover it. See [1].";
+    expect(withRefusalRedirect(answer, 0)).toBe(answer + REFUSAL_REDIRECT_SUFFIX);
+  });
+
+  test("【n】 brackets count as in-range citations", () => {
+    const answer = "None of the sources state it that way. 【2】";
+    expect(modelRefusalLikely(answer)).toBe(true);
+    expect(withRefusalRedirect(answer, 2)).toBe(answer);
+  });
+
+  test("carriesInRangeCitation — the second-signal law", () => {
+    expect(carriesInRangeCitation("a [1] b", 3)).toBe(true);
+    expect(carriesInRangeCitation("a [3] b", 3)).toBe(true); // the boundary IS in-range
+    expect(carriesInRangeCitation("a [4] b", 3)).toBe(false);
+    expect(carriesInRangeCitation("a 【2】 b", 2)).toBe(true);
+    expect(carriesInRangeCitation("a [2025] b", 3)).toBe(false); // 4 digits is not a marker
+    expect(carriesInRangeCitation("a [0] b", 3)).toBe(false); // 0 is out-of-range by law
+    expect(carriesInRangeCitation("a [1] b", 0)).toBe(false); // zero evidence admits nothing
+    expect(carriesInRangeCitation("no markers at all", 3)).toBe(false);
   });
 });

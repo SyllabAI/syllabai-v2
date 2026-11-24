@@ -910,7 +910,16 @@ export async function karagAsk(
   // appends the redirect line itself on every detected model-worded
   // refusal; an answer that already carries one is returned untouched.
   if (modelWordedRefusal) {
-    generated = { ...generated, answer: withRefusalRedirect(generated.answer) };
+    // F4 (engineering audit 2026-11-17): the citation-aware second signal —
+    // a detector misfire on a substantive, cited answer must not tack the
+    // redirect onto it. evidenceCount = prep.evidence.length is the SAME
+    // count the H2 hygiene judged the surviving markers against (the
+    // assembled context rides prep.evidence, :794) — an in-range citation
+    // in the answer suppresses the append.
+    generated = {
+      ...generated,
+      answer: withRefusalRedirect(generated.answer, prep.evidence.length),
+    };
   }
 
   const citations = resolveCitations(prep.evidence);
@@ -1109,7 +1118,10 @@ export async function* karagAskStream(
   // event, so the rendered chat itself carries the way forward; the
   // completed event's fullAnswer and the persisted turn match the wire.
   if (modelRefused) {
-    const redirected = withRefusalRedirect(full);
+    // F4: the SAME citation-aware second signal as the blocking path — the
+    // gate runs on the accumulated text + the turn's evidenceCount, so a
+    // cited substantive answer streams with no tacked-on tail delta.
+    const redirected = withRefusalRedirect(full, evidenceCount);
     const tail = redirected.slice(full.length);
     full = redirected;
     if (tail.length > 0) yield { kind: "delta", text: tail };
@@ -1237,6 +1249,16 @@ export function buildGroundedTutorGenerator(
           sanitizeAnswer(response.text, context.evidence.length, open, close, (n) =>
             strippedMarkers.push(n),
           ) ?? "";
+        // F3 (engineering audit 2026-11-17, blocking/stream parity): a
+        // generation whose every token was strippable — echoed fences plus
+        // out-of-range markers, or nothing at all — is an EMPTY generation.
+        // The stream path already dies on the L2 empty-generation law
+        // (karagAskStream: no Meta, no research event, nothing persists);
+        // the blocking path raised nothing and served answer "" with
+        // refused=false. ONE degenerate-output semantics across BOTH paths:
+        // raise the same fixed TutorGenerationError (the route's honest 503
+        // tutor_unavailable surface).
+        if (sanitized.length === 0) throw new TutorGenerationError();
         // DC-5 (docs/DC5-CONFORMANCE-LINT-PLAN.md §4.5): on marked-part
         // turns the conformance lint runs AFTER the H2 hygiene — claimed-
         // missed points must exist in the scheme rows and offered

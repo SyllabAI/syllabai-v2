@@ -11,9 +11,9 @@ import {
   GraduationCap,
   Lightbulb,
   MonitorPlay,
+  MessagesSquare,
   NotebookPen,
   ScrollText,
-  Sparkles,
   SquareStack,
   Swords,
   Target,
@@ -225,7 +225,7 @@ export default async function CourseHubPage({
           // own scoped tutor, and an unmapped one shows the honest
           // "not yet connected" state instead of a dead end. Each course's
           // tutor keeps its own history and conversations separately.
-          icon: Sparkles,
+          icon: MessagesSquare,
           title: "Course Tutor",
           desc: meta.curriculumCode
             ? "A chat built from this course's specification, revision notes and past papers — every answer cites its sources."

@@ -1,0 +1,26 @@
+{
+  "task": "T-QA-RINGS-001",
+  "run": "run-001",
+  "kind": "audit fix — the notes-index rings obey the DC-7 projection law",
+  "recorded_utc": "2026-11-20T20:40:00Z",
+  "operator_trigger": "\"Topics progress rings — do you know about them? Is it working correctly?\" (in frontend)",
+  "audit": {
+    "stale_tree_episode": "First audit pass ran against a 4008e6ce-era snapshot (recycle reset the checkout pre-T-SELECT-RINGS-1). Its impl commit e13c31be was DISCARDED: cherry-pick onto the current tree conflicted on both redesigned files; findings re-derived on 46beebbe.",
+    "finding_A_holds": "The one remaining ProgressRing (multi-note rows, dimension=notes) passed no projectionPercent and notes-index never called useCourseProjection — signed-in learners' index rings ran the SIMULATED overlay while the sidebar (topic-tree.tsx:237) shows projection truth on the same screen (two sources of truth, one screen).",
+    "finding_B_retracted": "The old topic-header ring (first-subtopic defect) no longer exists — the T-SELECT-RINGS-1 redesign replaced single-note-row rings with the note-level ReadTick and removed the header ring outright.",
+    "dormant_tier": "T-QA-DEF-001 item (1) (/progress 401 for the authenticated demo session) still blocks the projection tier in practice; fail-open keeps the overlay honest until then."
+  },
+  "fix": {
+    "commit": "7e9f9ab6",
+    "branch": "t-qa-rings-001/run-001",
+    "base": "46beebbe (origin/main at fix time)",
+    "scope": "exactly apps/hub/src/app/courses/[course]/revision-notes/notes-index.tsx — import, useCourseProjection consumption, projectionPercent on the ring call",
+    "precedence": "projection present-0 wins; null → SIMULATED overlay fallback (the of-record posture)"
+  },
+  "gates": {
+    "eslint": "0 findings on the touched file",
+    "tests": "progress-notes-ring + progress-select-rings + progress-server + note-scroll: 32/32 pass",
+    "tsc": "error set identical to the main baseline (4 pre-existing env-dependent module-resolution failures in untouched files — diff of sorted error lists empty with and without the fix; CI hub lane is the build of record)"
+  },
+  "handoff": "Card stays OPEN until landing; run-002 records the merge and closes the card."
+}

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, BookOpen, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen } from "lucide-react";
 
 import type { BookChapter } from "@syllabai/contracts";
 
@@ -239,7 +239,6 @@ export default async function BookViewerPage({
             className="h-7 shrink-0 gap-1.5 bg-primary/10 px-2.5 text-primary hover:bg-primary/20"
           >
             <Link href={lessonHref} aria-label="Open this chapter as a Lesson">
-              <Sparkles className="h-3.5 w-3.5" aria-hidden />
               Lesson
             </Link>
           </Button>
