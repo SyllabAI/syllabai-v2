@@ -1,0 +1,238 @@
+# T-TUTOR-AUDIT-P1 run-001 — the SCHEDULED daily census-fold probe
+# (audit P1-03 + P1-04, finding F5; the P1 exit criterion: "freshness lag is
+# an alert, not an operator discovery").
+#
+# The audit's cheapest-next-lane ruling: "P1 completion — the scheduled
+# census-fold probe (daily workflow, fold-budget alert, auto-dispatch of
+# t-sib-embed-backfill): CI-native, provider-free, and it IS the instrument
+# that produces the serving-breadth census of record for the exit criterion."
+#
+# WHAT RUNS (daily 03:45 UTC, off-peak, after neon-replay's 02:30 window):
+#   1. the instrument proves itself first (fold-census-probe.ts --selftest —
+#      the neon-replay harness-sanity discipline);
+#   2. a disposable COW of production is provisioned (in-line read_write
+#      endpoint, BRANCH-LOCAL owner password reset — production roles never
+#      touched; the t-sib-embed-backfill cow discipline) and DROPPED with
+#      404-verification even on failure (T-MIG-035);
+#   3. the fold census runs READ-ONLY against the COW through the SERVING
+#      funnel of record (diagnoseEmpty + classifyEmptyCause imported verbatim
+#      from apps/api/src/services/content/retrieval.ts — the P3-01 no-drift
+#      law; the probe re-implements nothing, every cause it reports is the
+#      exact vocabulary the search wire's X-Search-Empty-Cause emits);
+#   4. the fold-budget verdict: fold fraction of ACTIVE curriculum_versions
+#      scopes vs the budget of record (default 0.05). Above budget = the F5
+#      ALERT (this job REDS — the red is the alert of record, never an
+#      operator discovery). Backfill-fixable folds (NOT_EMBEDDED /
+#      EMBED_REV_EMPTY) above budget = the AUTO-DISPATCH fire order;
+#   5. AUTO-DISPATCH of t-sib-embed-backfill (mode=prod-only — the COW proof
+#      is already of record, the input's own embedding-budget disclosure) via
+#      the workflow-dispatches API, ARMED-GATED on the operator's per-run
+#      secrets: the dispatch fires ONLY when SIB_GEMINI_KEY and
+#      SIB_PROD_DATABASE_URL are staged (the booleans are computed in the
+#      env expression — the secret VALUES never enter this process). An
+#      unarmed crossing keeps the job red with the staging instruction — the
+#      operator gate law of the backfill workflow is untouched and its file
+#      stays workflow_dispatch-only (asserted in law_readback_assert.py).
+#      The backfill driver of record is SIB 4CH1-scoped by its own enumeration
+#      law — the dispatch repairs the slice it owns while the alert surfaces
+#      every cause (SCOPE_EMPTY / VALIDATION_GATE_EMPTY stay
+#      operator-disposition; a monotone UNEXPECTED alerts regardless of the
+#      budget — fail loud is the classifier's own law).
+#
+# EVIDENCE: the census receipt of record (per-scope funnel + verdict) lands
+# as a CI artifact (90-day retention) — the serving-breadth census of record
+# the P1 exit criterion names.
+#
+# PROVIDER-FREE: the probe never calls the embedding API — the funnel is two
+# SQL aggregates per scope (classifyEmptyCause is pure); the only provider
+# plane here belongs to the DISPATCHED backfill, which keeps its own secrets.
+#
+# One-time repo setup (operator): the NEON_* secrets/variables neon-replay
+# already uses — no new secrets of record.
+
+name: t-tutor-audit-p1-fold-probe
+
+on:
+  workflow_dispatch:
+    inputs:
+      budget:
+        description: "Fold budget fraction override (0..1); empty = the 0.05 default of record"
+        required: false
+        default: ""
+      note:
+        description: "Operator note for this ad-hoc probe run"
+        required: false
+        default: ""
+  schedule:
+    # The F5 standing probe (P1-03): daily 03:45 UTC off-peak.
+    - cron: "45 3 * * *"
+
+permissions:
+  contents: read
+  actions: write # the fold-budget AUTO-DISPATCH of t-sib-embed-backfill (P1-04)
+
+concurrency:
+  group: t-tutor-audit-p1-fold-probe
+  cancel-in-progress: false
+
+jobs:
+  fold-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+
+      - name: Install workspace deps (root lockfile, all workspaces)
+        run: bun install --frozen-lockfile
+
+      - name: Harness sanity (the instrument proves itself first)
+        run: bun scripts/dbprobe/fold-census-probe.ts --selftest
+
+      - name: Preconditions (Neon config present)
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          miss=0
+          for v in NEON_API_KEY NEON_PROJECT_ID NEON_PARENT_BRANCH_ID; do
+            if [ -z "${!v}" ]; then echo "::error::${v} is not configured (same setup neon-replay documents at the top of its workflow)"; miss=1; fi
+          done
+          exit $miss
+
+      - name: Create the disposable COW branch (in-line read_write endpoint)
+        id: cow
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          set -euo pipefail
+          NAME="fold-probe-cow-${GITHUB_RUN_ID}"
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"parent_id\":\"${NEON_PARENT_BRANCH_ID}\",\"name\":\"${NAME}\"},\"endpoints\":[{\"type\":\"read_write\"}]}")
+          BRANCH_ID=$(echo "$RESP" | jq -r '.branch.id')
+          echo "branch_id=${BRANCH_ID}" >> "$GITHUB_OUTPUT"
+          HOST=""
+          for i in $(seq 1 60); do
+            EP=$(curl -sf "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}/endpoints" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
+            STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
+            if [ -n "$HOST" ] && [ "$STATE" = "ready" ]; then break; fi
+            sleep 3
+          done
+          [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+
+      - name: Reset BRANCH-LOCAL owner password (production roles untouched; 423-aware)
+        id: role
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          PW=""
+          for i in $(seq 1 20); do
+            CODE=$(curl -s -o /tmp/fold-reset.json -w "%{http_code}" \
+              -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neondb_owner/reset_password" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            if [ "$CODE" = "200" ]; then
+              PW=$(jq -r '.role.password' /tmp/fold-reset.json)
+              break
+            fi
+            if [ "$CODE" = "423" ]; then sleep 5; continue; fi
+            echo "unexpected reset status ${CODE}"; exit 1
+          done
+          [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
+          ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+          echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+
+      - name: The fold census (READ-ONLY, serving funnel verbatim, receipt of record)
+        run: |
+          set -euo pipefail
+          printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/fold-cow.uri
+          chmod 600 /tmp/fold-cow.uri
+          bun scripts/dbprobe/fold-census-probe.ts --db "$(cat /tmp/fold-cow.uri)" \
+            --json fold-census.json --budget "${{ inputs.budget || '0.05' }}"
+
+      - name: Fold-budget verdict (outputs + annotations + summary; cross-checks the receipt)
+        id: verdict
+        env:
+          SIB_GEMINI_KEY_STAGED: ${{ secrets.SIB_GEMINI_KEY != '' }}
+          SIB_PROD_DATABASE_URL_STAGED: ${{ secrets.SIB_PROD_DATABASE_URL != '' }}
+        run: |
+          bun scripts/dbprobe/fold-census-probe.ts --verdict fold-census.json \
+            --budget "${{ inputs.budget || '0.05' }}"
+
+      - name: Fold-budget AUTO-DISPATCH of t-sib-embed-backfill (the F5 fire order)
+        if: >-
+          always() &&
+          steps.verdict.outputs.dispatch == 'true' &&
+          steps.verdict.outputs.armed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NOTE: ${{ steps.verdict.outputs.dispatch_note }}
+        run: |
+          set -euo pipefail
+          BODY=$(python3 -c "import json,sys;print(json.dumps({'ref':'main','inputs':{'mode':'prod-only','note':sys.argv[1]}}))" "$NOTE")
+          CODE=$(curl -s -o /tmp/fold-dispatch.json -w "%{http_code}" \
+            -X POST \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/t-sib-embed-backfill.yml/dispatches" \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -d "$BODY")
+          echo "dispatch HTTP ${CODE}"
+          python3 -c "import json,sys;json.dump({'status': int(sys.argv[1]), 'workflow': 't-sib-embed-backfill.yml', 'mode': 'prod-only', 'note': sys.argv[2]}, open('dispatch-receipt.json','w'))" "$CODE" "$NOTE"
+          [ "$CODE" = "204" ] || { echo "::error::AUTO-DISPATCH failed HTTP ${CODE}"; cat /tmp/fold-dispatch.json; exit 1; }
+          echo "::notice::t-sib-embed-backfill dispatched (mode=prod-only) — the fold-budget fire order of record"
+
+      - name: Upload the census receipt of record (the serving-breadth census)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t-tutor-audit-p1-fold-census-${{ github.run_id }}
+          path: |
+            fold-census.json
+            dispatch-receipt.json
+          retention-days: 90
+          if-no-files-found: warn
+
+      # ── The F5 alert of record: the job RED is the alert — never an operator discovery ──
+      - name: The F5 alert (fold budget crossed)
+        if: always() && steps.verdict.outputs.alert == 'true'
+        run: |
+          echo "::error::FOLD BUDGET EXCEEDED — ${{ steps.verdict.outputs.folds }}/${{ steps.verdict.outputs.total }} scopes fold (fraction ${{ steps.verdict.outputs.fold_fraction }} > budget ${{ steps.verdict.outputs.budget }}); backfill-fixable ${{ steps.verdict.outputs.backfill_fixable }}. Freshness lag is now an ALERT of record. Disposition: the embed backfill (auto-dispatched when armed) repairs NOT_EMBEDDED/EMBED_REV_EMPTY; SCOPE_EMPTY/VALIDATION_GATE_EMPTY stay operator-disposition; see the fold-census artifact for the per-scope funnel of record."
+          exit 1
+
+      - name: READ-ONLY PROOF — the census wrote nothing to the repo
+        if: always()
+        run: |
+          git diff --exit-code -- apps/ packages/ scripts/ golden/ docs/ .github/ .syllabai/ \
+            || { echo "::error::repo mutation detected — the read-only posture is VIOLATED"; exit 1; }
+          echo "read-only posture verified: zero tracked-file changes (the census receipt is artifact-only)"
+
+      # ── ALWAYS drop the disposable COW — zero residue (T-MIG-035 discipline) ──
+      - name: DROP the COW + 404-verify (zero residue, even on failure)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          BRANCH_ID="${{ steps.cow.outputs.branch_id }}"
+          [ -n "$BRANCH_ID" ] || { echo "no branch to drop"; exit 0; }
+          curl -sf -X DELETE "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" > /dev/null || true
+          sleep 5
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          echo "post-delete GET = ${CODE}"
+          [ "$CODE" = "404" ] || { echo "COW residue — 404 verification FAILED"; exit 1; }

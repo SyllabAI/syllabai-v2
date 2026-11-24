@@ -79,6 +79,51 @@ if rb is not None:
     check("law-readback" in (rb.get("jobs") or {}), "self: job 'law-readback' present")
     check("coordination" in (rb.get("jobs") or {}), "self: job 'coordination' present")
 
+# ---------------- t-tutor-audit-p1-fold-probe.yml (P1-03 + P1-04, F5) ----------------
+fp, onfp = section_wf(".github/workflows/t-tutor-audit-p1-fold-probe.yml", "t-tutor-audit-p1-fold-probe.yml (the F5 fold probe)")
+if fp is not None:
+    sched = onfp.get("schedule") or []
+    crons = [str(s.get("cron", "")) for s in sched if isinstance(s, dict)]
+    ok_daily = False
+    if len(crons) == 1:
+        parts = crons[0].split()
+        ok_daily = (
+            len(parts) == 5
+            and parts[0].isdigit() and parts[1].isdigit()
+            and parts[2] == "*" and parts[3] == "*" and parts[4] == "*"
+        )
+    check(ok_daily, f"exactly one DAILY cron of record (got {crons!r}) — P1-03: freshness lag is an alert, not an operator discovery")
+    check("workflow_dispatch" in onfp, "workflow_dispatch trigger present (operator ad-hoc probe)")
+    fp_perms = fp.get("permissions")
+    check(isinstance(fp_perms, dict) and fp_perms.get("contents") == "read",
+          f"permissions.contents == read (got {fp_perms.get('contents')!r})" if isinstance(fp_perms, dict) else f"permissions is a mapping (got {fp_perms!r})")
+    check(isinstance(fp_perms, dict) and fp_perms.get("actions") == "write",
+          "permissions.actions == write (the fold-budget AUTO-DISPATCH, P1-04)" if isinstance(fp_perms, dict) else f"permissions is a mapping (got {fp_perms!r})")
+    fp_jobs = fp.get("jobs") or {}
+    check("fold-probe" in fp_jobs, "gate job 'fold-probe' present")
+    fp_steps = (fp_jobs.get("fold-probe") or {}).get("steps") or []
+
+    def step_text(s):
+        env = s.get("env")
+        env_text = " ".join(f"{k}={v}" for k, v in env.items()) if isinstance(env, dict) else ""
+        return str(s.get("run") or "") + " " + env_text
+
+    fp_text = " ".join(step_text(s) for s in fp_steps)
+    check("--selftest" in fp_text, "the instrument proves itself first (fold-census-probe --selftest leg)")
+    check("fold-census-probe.ts --db" in fp_text, "the live fold census runs against the COW (serving funnel verbatim)")
+    check("--verdict" in fp_text, "the fold-budget verdict leg re-derives from the receipt of record")
+    check("t-sib-embed-backfill.yml/dispatches" in fp_text,
+          "fold-budget AUTO-DISPATCH targets t-sib-embed-backfill.yml (P1-04)")
+    check("SIB_GEMINI_KEY" in fp_text and "SIB_PROD_DATABASE_URL" in fp_text,
+          "the dispatch is ARMED-GATED on the operator's staged per-run secrets")
+
+# ---------------- t-sib-embed-backfill.yml stays the operator file of record ----------------
+bf, onbf = section_wf(".github/workflows/t-sib-embed-backfill.yml", "t-sib-embed-backfill.yml (operator gate unchanged)")
+if bf is not None:
+    check("workflow_dispatch" in onbf, "backfill stays workflow_dispatch-dispatchable")
+    check("schedule" not in onbf, "backfill carries NO schedule trigger (the fold probe dispatches it — P1-04)")
+    check("prod-backfill" in (bf.get("jobs") or {}), "gate job 'prod-backfill' present")
+
 # ---------------- the law of record is on main ----------------
 print("== the law of record ==")
 if os.path.exists("docs/AGENT_COORDINATION.md"):
