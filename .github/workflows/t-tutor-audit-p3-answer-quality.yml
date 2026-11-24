@@ -1,0 +1,103 @@
+# T-TUTOR-AUDIT-P3 run-001 — the SCHEDULED weekly answer-quality lane
+# (audit P3-04 + P3-05 + P3-06, finding F2; the P3 exit criterion:
+# "Baseline committed; its first week of trend is the reference for P4 and P5").
+#
+# WHAT RUNS (weekly, Monday 04:30 UTC — off-peak, after the daily fold probe's
+# 03:45 window):
+#   1. the instrument proves itself first (the fixed-vector selftest — the
+#      harness-sanity discipline);
+#   2. the gate runs (bun test golden/answer-quality — the same leg the
+#      ci.yml verify lane runs on every PR);
+#   3. the scorer scores the COMMITTED corpus of record through the SERVING
+#      laws of record (refusal-detect.ts + karag.ts + prompt.ts imported
+#      verbatim — the no-drift discipline) and cross-checks the COMMITTED
+#      baseline of record (the sha256 corpus pin + the rubric v1 aggregate);
+#   4. the publish of record: the score report lands as a CI artifact
+#      (90-day retention) + the step summary — the trend lane of record
+#      that P4 (the conformance trend) and P5 reference;
+#   5. the drift alert: baseline drift (a corpus edit without re-pin, a
+#      serving-law change that moves the measurement, a rubric the scorer
+#      no longer speaks) or any serving-law violation on the corpus REDS
+#      this job — the red is the alert of record, never an operator
+#      discovery. A deliberate re-pin is the same-PR conversation (§7: no
+#      silent widening).
+#
+# PROVIDER-FREE: no model is called, no database is touched — the corpus and
+# the baseline are committed files, the scorer is pure (the P1 fold-probe
+# discipline, minus the COW: nothing here needs production).
+#
+# READ-ONLY POSTURE: the report lands as an ARTIFACT, never a tracked-file
+# mutation — the git-diff proof step enforces it (the neon-replay corpus law).
+#
+# No new secrets of record: the job needs nothing beyond checkout.
+
+name: t-tutor-audit-p3-answer-quality
+
+on:
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "Operator note for this ad-hoc scoring run"
+        required: false
+        default: ""
+  schedule:
+    # The F2 standing lane (P3-05): weekly publish, Monday 04:30 UTC off-peak.
+    - cron: "30 4 * * 1"
+
+permissions:
+  contents: read # read-only posture — the report is an ARTIFACT, nothing dispatches
+
+concurrency:
+  group: t-tutor-audit-p3-answer-quality
+  cancel-in-progress: false
+
+jobs:
+  answer-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+
+      - name: Install workspace deps (root lockfile, all workspaces)
+        run: bun install --frozen-lockfile
+
+      - name: Harness sanity (the instrument proves itself first)
+        run: bun run --cwd golden/answer-quality selftest
+
+      - name: The gate (the committed corpus obeys the serving laws)
+        run: bun test golden/answer-quality
+
+      - name: Score the corpus of record against the baseline of record
+        id: score
+        run: |
+          bun golden/answer-quality/score.ts score \
+            --corpus golden/answer-quality/fixtures/turns-v1.json \
+            --json aq-report.json \
+            --baseline golden/answer-quality/baseline.json
+
+      - name: Upload the score report of record (the trend lane's artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t-tutor-audit-p3-answer-quality-${{ github.run_id }}
+          path: aq-report.json
+          retention-days: 90
+          if-no-files-found: warn
+
+      # ── The F2 alert of record: the job RED is the alert — never an operator discovery ──
+      - name: The baseline-drift alert (P3-06's anchor moved)
+        if: always() && steps.score.outputs.drift == 'true'
+        run: |
+          echo "::error::ANSWER-QUALITY DRIFT — baseline verdict ${{ steps.score.outputs.baseline_verdict }}; violations ${{ steps.score.outputs.violations }}/${{ steps.score.outputs.total }} turns; citation support ${{ steps.score.outputs.citation_support_rate }}; dead ends ${{ steps.score.outputs.refusal_dead_ends }}; truncation ${{ steps.score.outputs.truncation_rate }}. The committed corpus of record, the serving laws, or the committed baseline of record moved — disposition: re-pin the baseline DELIBERATELY in the same-PR conversation (§7: no silent widening), or fix the serving law that moved. See the aq-report artifact for the per-turn verdicts of record."
+          exit 1
+
+      - name: READ-ONLY PROOF — the scoring wrote nothing to the repo
+        if: always()
+        run: |
+          git diff --exit-code -- apps/ packages/ scripts/ golden/ docs/ .github/ .syllabai/ \
+            || { echo "::error::repo mutation detected — the read-only posture is VIOLATED"; exit 1; }
+          echo "read-only posture verified: zero tracked-file changes (the score report is artifact-only)"

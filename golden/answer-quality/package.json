@@ -1,0 +1,14 @@
+{
+  "name": "@golden/answer-quality",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Offline answer-quality lane (T-TUTOR-AUDIT-P3, P3-04/05/06, finding F2) — the REAL serving refusal/citation/truncation laws scored over the recorded wire-turn corpus of record, against the committed baseline of record. Provider-free by construction (no model, no database). Sibling of golden/llm-shadow and golden/retrieval-eval.",
+  "scripts": {
+    "test": "bun test",
+    "selftest": "bun run selftest.ts --selftest"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2"
+  }
+}

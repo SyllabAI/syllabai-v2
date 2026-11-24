@@ -68,6 +68,15 @@ jobs:
       - name: Retrieval eval harness (fusion ablation, provider-free)
         run: bun test golden/retrieval-eval && bun run --cwd golden/retrieval-eval selftest
 
+      # T-TUTOR-AUDIT-P3 (Card D): the offline answer-quality lane — the REAL
+      # serving refusal/citation/truncation laws scored over the committed
+      # recorded wire-turn corpus of record, against the committed baseline
+      # of record (P3-04 + P3-06). Provider-free by construction (no model,
+      # no database); the weekly publish schedule is
+      # t-tutor-audit-p3-answer-quality.yml (P3-05).
+      - name: Answer-quality lane (offline tutor-turn scorer, provider-free)
+        run: bun test golden/answer-quality && bun run --cwd golden/answer-quality selftest
+
       # T-MIG-123 §Z conversion — the zero-core census GATE: the LIVE=0 act of
       # record (operator retirement order trace 1a131d02c805602d; the 48h soak
       # waived by the same order). Exit 0 iff live=0 AND unmapped=0 AND

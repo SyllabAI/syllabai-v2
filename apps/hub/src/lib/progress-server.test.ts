@@ -13,6 +13,7 @@
 import { describe, expect, test } from "bun:test";
 import {
   clearProjectionCache,
+  projectionFetchInit,
   projectionPercentFor,
   type ProgressProjectionPayload,
 } from "./progress-server";
@@ -71,5 +72,24 @@ describe("DC-7 projection consumer — projectionPercentFor", () => {
   test("the cache seam starts empty and clears (the pins start from no facts)", () => {
     clearProjectionCache();
     expect(clearProjectionCache()).toBeUndefined();
+  });
+});
+
+describe("projectionFetchInit — the T-QA-DEF-001 (1) wire contract", () => {
+  test("signed-in: the Authorization Bearer header rides along (the 401 was the bare fetch, never the api)", () => {
+    // T-QA-DEF-001 (1): browsers never auto-attach Authorization — the bare
+    // pre-fix fetch reached the api anonymous and the authz shell answered
+    // 401 fail-closed while the siblings (drill, study-plan, battle) rode
+    // the same header and 200'd. The header is now PINNED — this pin is the
+    // regression guard for the whole defect class.
+    const init = projectionFetchInit("tok-123");
+    expect(init.cache).toBe("no-store");
+    expect((init.headers as Record<string, string>).Authorization).toBe("Bearer tok-123");
+  });
+
+  test("no token: honest absence — no header, still no-store", () => {
+    const init = projectionFetchInit(null);
+    expect(init.cache).toBe("no-store");
+    expect(init.headers).toBeUndefined();
   });
 });

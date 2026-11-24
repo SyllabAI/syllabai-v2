@@ -1,0 +1,30 @@
+{
+  "task": "T-QA-DEF-001",
+  "run": "run-002",
+  "kind": "defect fix — item (1): the /progress 401 was the hub's bare fetch, never the api",
+  "recorded_utc": "2026-11-20T22:30:00Z",
+  "cross_ref": "Supersedes the run-001 investigation disposition of item (1) ('INVESTIGATED, NO STATIC ROOT CAUSE — needs a live repro'); the run-001 directive is honored, see below.",
+  "audit": {
+    "evidence_provenance": "The original audit artifacts lived in download/ and were wiped by a sandbox recycle; the trail was rebuilt from code on the current tree (dfa5a93f), including re-verifying the api-side symmetry the run-001 investigation established.",
+    "root_cause": "apps/hub/src/lib/progress-server.ts fetched GET /api/v1/learners/me/progress with { cache: 'no-store' } and NO Authorization header — browsers never auto-attach Bearer tokens, so the request reached the api anonymous and the authz shell (routes/learner/progress.ts:36 requireAuth) answered 401 fail-closed. The client-side getToken() gate decided WHETHER to fetch, never HOW.",
+    "api_symmetry_verified": "ONE global auth middleware (apps/api/src/index.ts:179) + ONE authenticator instance feed every /learners/me router (learner :284, kg :307, progress :320) — same header, same verdict. The run-001 'mounting symmetric, no root cause' conclusion was correct about the api and aimed at the wrong side of the wire.",
+    "sibling_symmetry": "drill.ts:121, study-plan-client.ts:62, battle.ts:75 all set 'Authorization: Bearer <token>' explicitly — the bare projection fetch was the only unauthenticated call to a protected endpoint in the hub.",
+    "do_not_blind_fix_directive_honored": "The run-001 directive demanded a live repro before any AUTH-SEMANTICS change. This fix changes NO auth semantics: the api is untouched (fail-closed 401 for anonymous is the designed posture), and the hub fetch now carries the same header its siblings already carry. The mechanism is deterministic — a valid token plus the missing header fully explains 200-vs-401, and the 200ing siblings prove the token itself was valid. A full-stack browser repro remains available to the operator for belt-and-braces verification.",
+    "live_repro_note": "If the operator wants the belt-and-braces pass: signed-in demo session → hub devtools network → /progress now shows 'Authorization: Bearer …' → 200; the rings switch from the SIMULATED overlay to the server projection (the DC-7 tier engages)."
+  },
+  "fix": {
+    "commit": "852e2154",
+    "branch": "t-qa-def-001/run-001",
+    "base": "dfa5a93f (origin/main at fix time)",
+    "scope": "exactly apps/hub/src/lib/progress-server.ts + progress-server.test.ts",
+    "mechanism": "projectionFetchInit(token) — Bearer header when signed-in, honest absence when not — wired into the fetch; the fail-open fallback posture unchanged (a genuinely stale token still falls back, disclosed)",
+    "law_pins": "2 tests in progress-server.test.ts pin the wire contract (signed-in header present; null token → no header, still no-store) — the regression guard for the whole defect class"
+  },
+  "gates": {
+    "tests": "34/34: progress-server 7 + progress-notes-ring 7 + progress-select-rings 10 + note-scroll 10",
+    "tsc": "error set identical to the main baseline (4 pre-existing env-dependent module-resolution failures in untouched files — diff of sorted lists empty with and without the fix; CI hub lane is the build of record)",
+    "eslint": "0 findings on both touched files"
+  },
+  "session_note": "Two mid-turn recycles reset the checkout to a 4008e6ce-era snapshot; the fix survived as working-tree edits and was re-derived onto dfa5a93f (origin/main moved #1173 meanwhile). The download/ SESSION-STATE was also wiped and is recreated in this lane's close-out.",
+  "handoff": "Item (2) (#418) remains open — needs its own browser repro. The band card stays OPEN for it; the DC-7 projection tier hub-side (T-QA-RINGS-001) now engages end-to-end once a valid token rides the fetch."
+}
