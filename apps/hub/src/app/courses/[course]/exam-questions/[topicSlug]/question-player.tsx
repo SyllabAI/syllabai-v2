@@ -63,6 +63,7 @@ import {
   MinusCircle,
   PenLine,
   RotateCcw,
+  Sparkles,
   X,
   XCircle,
 } from "lucide-react";
