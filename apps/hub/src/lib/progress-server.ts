@@ -78,6 +78,22 @@ export function clearProjectionCache(): void {
   cache.clear();
 }
 
+/**
+ * The projection fetch init — the T-QA-DEF-001 item (1) wire contract of
+ * record. The fetch MUST carry the learner's Bearer token: browsers never
+ * auto-attach Authorization, so the bare pre-fix fetch reached the api
+ * anonymous and the authz shell answered 401 (fail-closed) — every sibling
+ * consumer (drill, study-plan, battle) rides the same header explicitly.
+ * Signed-in → `Authorization: Bearer <token>` + no-store; null token → no
+ * header (honest absence — the hook never fires signed-out anyway).
+ */
+export function projectionFetchInit(token: string | null): RequestInit {
+  return {
+    cache: "no-store",
+    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+  };
+}
+
 export function useCourseProjection(
   courseSlug: string | undefined,
 ): ProgressProjectionPayload | null {
@@ -101,9 +117,9 @@ export function useCourseProjection(
       try {
         const res = await fetch(
           apiPath(`/api/v1/learners/me/progress?course=${encodeURIComponent(courseSlug)}`),
-          { cache: "no-store" },
+          projectionFetchInit(getToken()),
         );
-        if (!res.ok) return; // 401 / cold core → the fallback posture, disclosed
+        if (!res.ok) return; // 401 (a genuinely stale token) / cold core → the fallback posture, disclosed
         const data = (await res.json()) as ProgressProjectionPayload;
         cache.set(courseSlug, data);
         if (!cancelled) setState({ slug: courseSlug, payload: data });
