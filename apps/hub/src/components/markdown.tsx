@@ -10,6 +10,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { normalizeCorpusMath, sanitizeMathTex } from "@/lib/math-fix";
 import { normalizeCorpusEmphasis } from "@/lib/emphasis-fix";
+import { normalizeCorpusTables } from "@/lib/table-fix";
 import { rehypeKatexMhchem } from "@/lib/rehypeKatexMhchem";
 
 /**
@@ -158,11 +159,15 @@ export function Markdown({
    *  this for text-lg font-medium instead of the prose default). */
   pClassName?: string;
 }) {
-  // SME-derived corpus needs broken-bold repair ("**W **and" → "**W** and")
-  // + glued-macro repair + \(…\) delimiter support before remark sees it
-  // (see the math-fix.ts / emphasis-fix.ts headers for the corpus research
-  // findings).
-  const src = normalizeCorpusMath(normalizeCorpusEmphasis(children));
+  // SME-derived corpus needs table re-flow (glued / nested-table rows →
+  // real GFM tables), broken-bold repair ("**W **and" → "**W** and") and
+  // glued-macro repair + \(…\) delimiter support before remark sees it
+  // (see the table-fix.ts / emphasis-fix.ts / math-fix.ts headers for the
+  // corpus research findings — QA 2026-11-24 CP-1/CP-2). Order matters:
+  // tables → emphasis → math, mirroring the corpus validators.
+  const src = normalizeCorpusMath(
+    normalizeCorpusEmphasis(normalizeCorpusTables(children)),
+  );
   return (
     <div className={cn("prose-sm space-y-3 leading-relaxed", className)}>
       <ReactMarkdown
