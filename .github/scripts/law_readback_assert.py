@@ -124,6 +124,71 @@ if bf is not None:
     check("schedule" not in onbf, "backfill carries NO schedule trigger (the fold probe dispatches it — P1-04)")
     check("prod-backfill" in (bf.get("jobs") or {}), "gate job 'prod-backfill' present")
 
+# ---------------- t-tutor-audit-p3-answer-quality.yml (P3-04 + P3-05 + P3-06, F2) ----------------
+aq, onaq = section_wf(".github/workflows/t-tutor-audit-p3-answer-quality.yml", "t-tutor-audit-p3-answer-quality.yml (the F2 answer-quality lane)")
+if aq is not None:
+    sched_aq = onaq.get("schedule") or []
+    crons_aq = [str(s.get("cron", "")) for s in sched_aq if isinstance(s, dict)]
+    ok_weekly = False
+    if len(crons_aq) == 1:
+        parts = crons_aq[0].split()
+        ok_weekly = (
+            len(parts) == 5
+            and parts[0].isdigit() and parts[1].isdigit() and parts[2] == "*" and parts[3] == "*"
+            and parts[4] == "1"  # Monday — the weekly publish of record
+        )
+    check(ok_weekly, f"exactly one WEEKLY cron of record (got {crons_aq!r}) — P3-05: the first week of trend is the reference")
+    check("workflow_dispatch" in onaq, "workflow_dispatch trigger present (operator ad-hoc scoring run)")
+    aq_perms = aq.get("permissions")
+    check(isinstance(aq_perms, dict) and aq_perms.get("contents") == "read",
+          f"permissions.contents == read (got {aq_perms.get('contents')!r})" if isinstance(aq_perms, dict) else f"permissions is a mapping (got {aq_perms!r})")
+    check(isinstance(aq_perms, dict) and not aq_perms.get("actions"),
+          "permissions.actions ABSENT — nothing dispatches from the scoring lane (provider-free, artifact-only)")
+    aq_jobs = aq.get("jobs") or {}
+    check("answer-quality" in aq_jobs, "gate job 'answer-quality' present")
+    aq_steps = (aq_jobs.get("answer-quality") or {}).get("steps") or []
+    aq_text = " ".join(str(s.get("run") or "") for s in aq_steps)
+    check("--cwd golden/answer-quality selftest" in aq_text, "the instrument proves itself first (the fixed-vector selftest leg)")
+    check("bun test golden/answer-quality" in aq_text, "the gate runs (the committed corpus obeys the serving laws)")
+    check("score.ts score" in aq_text and "--baseline golden/answer-quality/baseline.json" in aq_text,
+          "the score leg scores the corpus of record against the BASELINE of record (P3-06)")
+    check("git diff --exit-code" in aq_text, "the READ-ONLY proof step (the report is an artifact, never a tracked-file mutation)")
+    check(any("aq-report.json" in str((u.get("with") or {}).get("path") or "") for u in aq_steps),
+          "the score report of record is PUBLISHED as an artifact (the weekly publish, P3-05)")
+    check(any(str((u.get("with") or {}).get("retention-days") or "") == "90" for u in aq_steps),
+          "the publish retention is 90 days of record")
+
+# ---------------- the answer-quality lane of record is committed ----------------
+print("== the answer-quality lane of record ==")
+import hashlib
+aq_base_path = "golden/answer-quality/baseline.json"
+aq_corpus_path = "golden/answer-quality/fixtures/turns-v1.json"
+if os.path.exists(aq_base_path) and os.path.exists(aq_corpus_path):
+    import json as _json
+    try:
+        base_rec = _json.loads(open(aq_base_path, encoding="utf-8").read())
+        corpus_sha = hashlib.sha256(open(aq_corpus_path, "rb").read()).hexdigest()
+        check(base_rec.get("schema") == "answer-quality-baseline/v1", "the baseline of record declares the v1 schema (P3-06)")
+        check(base_rec.get("rubric") == "answer-quality-rubric-v1", "the baseline of record speaks the rubric v1")
+        check(base_rec.get("corpusSha256") == corpus_sha,
+              "the baseline pin MATCHES the committed corpus sha256 (a silently edited corpus is RED everywhere)")
+        agg = base_rec.get("aggregate") or {}
+        check(agg.get("total") == 18 and agg.get("violationTotal") == 0,
+              "the pinned aggregate of record is present and violation-free (the corpus of record is all-legal)")
+        for rate in ("citationSupportRate", "refusalCorrectRate", "truncationRate"):
+            check(rate in agg, f"the rubric dimension of record '{rate}' is pinned")
+    except Exception as e:
+        check(False, f"the baseline of record parses: {e}")
+else:
+    check(False, "the baseline + corpus of record exist (golden/answer-quality/**)")
+ci_jobs_aq = None
+if os.path.exists(".github/workflows/ci.yml"):
+    cidata, _ = load_wf(".github/workflows/ci.yml")
+    ci_jobs_aq = (cidata.get("jobs") or {}).get("verify") or {}
+    steps_aq = ci_jobs_aq.get("steps") or []
+    verify_text = " ".join(str(s.get("run") or "") for s in steps_aq)
+    check("golden/answer-quality" in verify_text, "the ci.yml verify lane carries the answer-quality leg (P3-02's lane discipline)")
+
 # ---------------- the law of record is on main ----------------
 print("== the law of record ==")
 if os.path.exists("docs/AGENT_COORDINATION.md"):
