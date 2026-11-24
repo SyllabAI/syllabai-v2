@@ -82,5 +82,15 @@
   ".syllabai/receipts/RN-DEBRIS-11/run-042-postReview.json"
  ],
  "standingReminder": "the PAT remains exposed from chat transmission and MUST be revoked/rotated (the thirty-eighth filing of the standing reminder)",
- "mergePlan": "author does not self-merge — PR for the R0 desk (the filing-time mergePlan law; the desk orders self-merge separately per the run-021/022/023/024/025/026/027/028/029/030/031/032/033/034/035/036/037/038/039/040/041 precedents); no force-push; fetch-first race-guard at push"
+ "mergePlan": "author does not self-merge — PR for the R0 desk (the filing-time mergePlan law; the desk orders self-merge separately per the run-021/022/023/024/025/026/027/028/029/030/031/032/033/034/035/036/037/038/039/040/041 precedents); no force-push; fetch-first race-guard at push",
+ "updatedUtc": "2026-11-24 (post-merge record: PR #1170 merged of record; the merged block rides the run-043 receipts per the standing ride-along law)",
+ "merged": {
+  "sha": "46beebbea6bb3548249fb2a444bb4457bfa78a0b",
+  "mergedAt": "2026-11-23T18:14:04Z",
+  "mergeMethod": "merge (2-parent, no squash)",
+  "shaPinnedTo": "1c145b6ba780bf2d2f131270986ec0ebe109389a",
+  "mainTipAfter": "46beebbea6bb3548249fb2a444bb4457bfa78a0b == the merge commit (verified via API merged=true; parents [595e803ba6ee26decb2bc45c212b489778913085, 1c145b6ba780bf2d2f131270986ec0ebe109389a]; the sha verified an ancestor of the live main tip post-merge)",
+  "raceGuard": "the base of record at merge time == 595e803ba6ee26decb2bc45c212b489778913085 (the merge commit first parent — API-verified); the base did NOT move between filing and merge — the filing base == the merge-time base 595e803b (the direct-PUT shape, no merge round; the premerge probe of record race_hint=false, 0 commits) and the PR landed mergeable at the receipts head 1c145b6b (the merge commit second parent == the receipts head — sha-pinned; the run-023 union law not triggered); the receipts-PR two-gate law satisfied: CI verify/hub/law-readback/coordination + Vercel ALL success at the head 1c145b6b + the merge-sha CI settled completed post-merge (verify/hub/law-readback success, coordination skipped — the standard main-merge shape, cross-checked vs the recent main merges of record); no force-push",
+  "operatorOrder": "the self-merge of record (the in-session receipt rn42_selfmerge.json — verdict RUN042_MERGE_OK, 0 fails; the desk 'Self merge' order trace 1a209970419e8fbd — merged_at 2026-11-23T18:14:04Z, merged_by SyllabAI, zero lost segments); the post-merge of-record re-verification of record re-derived read-only (verdict RUN042_OF_RECORD_OK, 59 checks 0 fails)"
+ }
 }
