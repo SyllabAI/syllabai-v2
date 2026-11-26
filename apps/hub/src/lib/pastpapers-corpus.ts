@@ -109,6 +109,7 @@ const COURSE_SPECS: Record<string, CourseSpecMap> = {
   "igcse-accounting-17-introduction-to-bookkeeping-and-accounting": {
     specs: [`${IG}/accounting/4ac1`],
   },
+  "igcse-bangla-19": { specs: [`${IG}/bangla/4ba0`] },
   "igcse-business-19": { specs: [`${IG}/business/4bs1`] },
   "igcse-economics-17": { specs: [`${IG}/economics/4ec1`], legacySpecs: [`${IG}/economics/4ec0`] },
   "igcse-ict-17": { specs: [`${IG}/ict/4it1`], legacySpecs: [`${IG}/ict/4it0`] },
@@ -119,6 +120,7 @@ const COURSE_SPECS: Record<string, CourseSpecMap> = {
     specs: [`${IG}/english-language-a/4ea1`],
   },
   "igcse-english-language-a-16-paper-3-coursework": { specs: [`${IG}/english-language-a/4ea1`] },
+  "igcse-english-language-b-16": { specs: [`${IG}/english-language-b/4eb1`], legacySpecs: [`${IG}/english-language-b/4eb0`] },
   "igcse-english-literature-16": { specs: [`${IG}/english-literature/4et1`] },
   "igcse-geography-19": { specs: [`${IG}/geography/4ge1`] },
   // Science Double Award 4SD0: one corpus spec, split per science by variant.
@@ -144,6 +146,7 @@ const COURSE_SPECS: Record<string, CourseSpecMap> = {
   // their official PDFs remain reachable through the single-subject courses,
   // which already surface them (4PH0/2P via igcse-physics-19's legacySpecs,
   // 4CH1/4BI1 2-series natively). Scope purity beats interactive counts.
+  "igcse-human-biology-19": { specs: [`${IG}/human-biology/4hb1`], legacySpecs: [`${IG}/human-biology/4hb0`] },
   "igcse-science-double-award-17-biology": {
     specs: [`${IG}/science-double-award/4sd0`],
     variants: ["1B", "1BR"],
@@ -169,14 +172,42 @@ const COURSE_SPECS: Record<string, CourseSpecMap> = {
   },
   "ial-physics-19": {
     specs: [`${IA}/physics/wph11`, `${IA}/physics/wph12`, `${IA}/physics/wph13`, `${IA}/physics/wph14`, `${IA}/physics/wph15`, `${IA}/physics/wph16`],
-    // retired 2008-spec units (WPH01–06)
-    legacySpecs: [`${IA}/physics/wph01`, `${IA}/physics/wph02`, `${IA}/physics/wph03`, `${IA}/physics/wph04`, `${IA}/physics/wph05`, `${IA}/physics/wph06`],
+    // retired 2008-spec units (WPH01–06); WPH07 appended in wave 4 — the
+    // Unit 7 practical examination, cover-verified from the printed
+    // WPH07/01 paper ("Physics Practical Examination (SET A)", June 2017)
+    legacySpecs: [`${IA}/physics/wph01`, `${IA}/physics/wph02`, `${IA}/physics/wph03`, `${IA}/physics/wph04`, `${IA}/physics/wph05`, `${IA}/physics/wph06`, `${IA}/physics/wph07`],
   },
   "ial-biology-18": {
     specs: [`${IA}/biology/wbi11`, `${IA}/biology/wbi12`, `${IA}/biology/wbi13`, `${IA}/biology/wbi14`, `${IA}/biology/wbi15`, `${IA}/biology/wbi16`],
     // retired 2008-spec units (WBI01–06)
     legacySpecs: [`${IA}/biology/wbi01`, `${IA}/biology/wbi02`, `${IA}/biology/wbi03`, `${IA}/biology/wbi04`, `${IA}/biology/wbi05`, `${IA}/biology/wbi06`],
   },
+  // ── GAP-B subjects (wave 4, corpus census 2026-11-26): current IAL
+  // qualifications whose archives are complete but which had no course
+  // rows. Spec years verified on Pearson spec pages (business 2018,
+  // accounting 2015, economics 2018, psychology 2015, IT 2018; law's
+  // slug takes the first archive session, 2019-06). Economics badges the
+  // retired pre-2018 spec (WEC01–04, 2014→2018-10) per the legacySpecs
+  // mechanism; the other five subjects have no retired folders in the
+  // archive — nothing fabricated.
+  "ial-accounting-15": { specs: [`${IA}/accounting/wac11`, `${IA}/accounting/wac12`] },
+  "ial-business-18": { specs: [`${IA}/business/wbs11`, `${IA}/business/wbs12`, `${IA}/business/wbs13`, `${IA}/business/wbs14`] },
+  "ial-economics-18": {
+    specs: [`${IA}/economics/wec11`, `${IA}/economics/wec12`, `${IA}/economics/wec13`, `${IA}/economics/wec14`],
+    // retired pre-2018 IAL economics units (WEC01–04)
+    legacySpecs: [`${IA}/economics/wec01`, `${IA}/economics/wec02`, `${IA}/economics/wec03`, `${IA}/economics/wec04`],
+  },
+  "ial-it-18": { specs: [`${IA}/information-technology/wit11`, `${IA}/information-technology/wit12`, `${IA}/information-technology/wit13`, `${IA}/information-technology/wit14`] },
+  "ial-law-19": { specs: [`${IA}/law/yla1`] },
+  "ial-psychology-15": { specs: [`${IA}/psychology/wps01`, `${IA}/psychology/wps02`, `${IA}/psychology/wps03`, `${IA}/psychology/wps04`] },
+  // ── Legacy UK GCE (2008 spec) archive pages — retired qualifications,
+  // papers-only shelves (no current-spec sibling exists in the registry,
+  // so these are primary specs, not legacySpecs). Six written units per
+  // science; the coursework units (6BI03/6BI06, 6CH03/6CH06, 6PH03/6PH06)
+  // are not held in the archive.
+  "a-level-biology-2008": { specs: ["pearson-edexcel/gce-a-level/biology/biology-2008"] },
+  "a-level-chemistry-2008": { specs: ["pearson-edexcel/gce-a-level/chemistry/chemistry-2008"] },
+  "a-level-physics-2008": { specs: ["pearson-edexcel/gce-a-level/physics/physics-2008"] },
   // ── Modular 2024 (X-series) — first teaching Sept 2024, first assessment
   // June 2025. Corpus specs landed in syllabai-pastpapers 3063c716 (June-2025
   // public set, publisher first-party). One corpus spec per subject; the
@@ -195,6 +226,8 @@ const COURSE_SPECS: Record<string, CourseSpecMap> = {
   "igcse-biology-modular-24-unit-2": { specs: [`${IG}/biology/4xbi1`], units: ["4WBI2"] },
   "igcse-chemistry-modular-24-unit-1": { specs: [`${IG}/chemistry/4xch1`], units: ["4WCH1"] },
   "igcse-chemistry-modular-24-unit-2": { specs: [`${IG}/chemistry/4xch1`], units: ["4WCH2"] },
+  "igcse-commerce-19": { specs: [`${IG}/commerce/4cm1`] },
+  "igcse-computer-science-19": { specs: [`${IG}/computer-science/4cp0`] },
   "igcse-physics-modular-24-unit-1": { specs: [`${IG}/physics/4xph1`], units: ["4WPH1"] },
   "igcse-physics-modular-24-unit-2": { specs: [`${IG}/physics/4xph1`], units: ["4WPH2"] },
   "igcse-maths-a-modular-24-foundation-unit-1": { specs: [`${IG}/mathematics-a/4xmaf-4xmah`], units: ["4WM1F"] },
