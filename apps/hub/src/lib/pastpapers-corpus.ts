@@ -207,14 +207,22 @@ const COURSE_SPECS: Record<string, CourseSpecMap> = {
   "igcse-science-double-award-modular-24-chemistry-unit-2": { specs: [`${IG}/science-double-award/4xsd1`], units: ["4WSD4"] },
   "igcse-science-double-award-modular-24-physics-unit-1": { specs: [`${IG}/science-double-award/4xsd1`], units: ["4WSD5"] },
   "igcse-science-double-award-modular-24-physics-unit-2": { specs: [`${IG}/science-double-award/4xsd1`], units: ["4WSD6"] },
-  "ial-maths-20-pure-1": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WMA11"] },
-  "ial-maths-20-pure-2": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WMA12"] },
-  "ial-maths-20-pure-3": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WMA13"] },
-  "ial-maths-20-pure-4": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WMA14"] },
-  "ial-maths-20-mechanics-1": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WME01"] },
-  "ial-maths-20-mechanics-2": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WME02"] },
-  "ial-maths-20-statistics-1": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WST01"] },
-  "ial-maths-20-statistics-2": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WST02"] },
+  // ── Legacy maths units (wave 3, corpus census 2026-11-25): the retired
+  // pre-2018 archive lives in two folders — wma01 holds WMA01 (C12) plus
+  // the old WME/WST unit dirs, wma02 holds WMA02 (C34). The units filter
+  // applies to legacy entries too (same corpusPapersForCourse loop, legacy
+  // flag from the specKey), so the mech/stats lanes need no unit change —
+  // their retired units share the codes; the pure lanes add the C12/C34
+  // codes explicitly. No WDM/WFM dirs exist in the retired folders — the
+  // decision/further-maths lanes stay honest-empty of legacy papers.
+  "ial-maths-20-pure-1": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WMA11", "WMA01"], legacySpecs: [`${IA}/mathematics/wma01`] },
+  "ial-maths-20-pure-2": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WMA12", "WMA01"], legacySpecs: [`${IA}/mathematics/wma01`] },
+  "ial-maths-20-pure-3": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WMA13", "WMA02"], legacySpecs: [`${IA}/mathematics/wma02`] },
+  "ial-maths-20-pure-4": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WMA14", "WMA02"], legacySpecs: [`${IA}/mathematics/wma02`] },
+  "ial-maths-20-mechanics-1": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WME01"], legacySpecs: [`${IA}/mathematics/wma01`] },
+  "ial-maths-20-mechanics-2": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WME02"], legacySpecs: [`${IA}/mathematics/wma01`] },
+  "ial-maths-20-statistics-1": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WST01"], legacySpecs: [`${IA}/mathematics/wma01`] },
+  "ial-maths-20-statistics-2": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WST02"], legacySpecs: [`${IA}/mathematics/wma01`] },
   "ial-maths-20-decision-1": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WDM11"] },
   "ial-further-maths-18-further-pure-1": {
     specs: [`${IA}/mathematics/mathematics-2018`],
