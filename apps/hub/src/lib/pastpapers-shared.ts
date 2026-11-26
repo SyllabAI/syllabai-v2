@@ -208,6 +208,29 @@ export const CIE_PAPER_TITLES: Record<string, string> = {
   // identity (cie-igcse-maths-25-core / -extended).
 };
 
+/**
+ * GCE unit display names — cover-verified from the corpus prints (wave 5).
+ * Keys are the printed unit codes of the legacy modular GCE Mathematics
+ * archive: the 6663/01 cover prints "Core Mathematics C1" … 6684/01 prints
+ * "Statistics S2"; the four January-2014 "A"-variant prints (6663A/01 …
+ * 6666A/01, covers marked "January 2014 (IAL)"; 6665A attested by its mark
+ * scheme printing "Core Mathematics 3 (6665A)") carry the same unit names.
+ * Codes NOT in the map render the plain "Unit <n>" fallback — never an
+ * assumed name.
+ */
+export const GCE_UNIT_TITLES: Record<string, string> = {
+  "6663": "Core Mathematics C1", "6664": "Core Mathematics C2",
+  "6665": "Core Mathematics C3", "6666": "Core Mathematics C4",
+  "6677": "Mechanics M1", "6678": "Mechanics M2",
+  "6683": "Statistics S1", "6684": "Statistics S2",
+  "6663A": "Core Mathematics C1", "6664A": "Core Mathematics C2",
+  "6665A": "Core Mathematics C3", "6666A": "Core Mathematics C4",
+};
+
+export function gceUnitTitle(unit: string): string {
+  return GCE_UNIT_TITLES[unit] ?? `Unit ${unit.slice(-1)}`;
+}
+
 export function specTitle(spec: CorpusSpec): string {
   const qual =
     spec.qual === "international-gcse" || spec.qual === "igcse"
