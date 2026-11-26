@@ -77,6 +77,15 @@ jobs:
       - name: Answer-quality lane (offline tutor-turn scorer, provider-free)
         run: bun test golden/answer-quality && bun run --cwd golden/answer-quality selftest
 
+      # T-TUTOR-AUDIT-P4 (P4-08): the conformance pass-rate trend lane — the
+      # REAL serving DC-5 conformance law scored over the committed
+      # marked-part wire-turn corpus of record, against the committed
+      # baseline of record. Provider-free by construction (no model, no
+      # database); the weekly publish schedule is
+      # t-tutor-audit-p4-conformance.yml (Monday 04:50 UTC).
+      - name: Conformance trend lane (offline marked-part scorer, provider-free)
+        run: bun test golden/conformance-trend && bun run --cwd golden/conformance-trend selftest
+
       # T-MIG-123 §Z conversion — the zero-core census GATE: the LIVE=0 act of
       # record (operator retirement order trace 1a131d02c805602d; the 48h soak
       # waived by the same order). Exit 0 iff live=0 AND unmapped=0 AND

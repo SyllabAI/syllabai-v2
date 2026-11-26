@@ -189,6 +189,69 @@ if os.path.exists(".github/workflows/ci.yml"):
     verify_text = " ".join(str(s.get("run") or "") for s in steps_aq)
     check("golden/answer-quality" in verify_text, "the ci.yml verify lane carries the answer-quality leg (P3-02's lane discipline)")
 
+# ---------------- t-tutor-audit-p4-conformance.yml (P4-08) ----------------
+cft, oncft = section_wf(".github/workflows/t-tutor-audit-p4-conformance.yml", "t-tutor-audit-p4-conformance.yml (the P4-08 conformance trend lane)")
+if cft is not None:
+    sched_cft = oncft.get("schedule") or []
+    crons_cft = [str(s.get("cron", "")) for s in sched_cft if isinstance(s, dict)]
+    ok_weekly_cft = False
+    if len(crons_cft) == 1:
+        parts = crons_cft[0].split()
+        ok_weekly_cft = (
+            len(parts) == 5
+            and parts[0].isdigit() and parts[1].isdigit() and parts[2] == "*" and parts[3] == "*"
+            and parts[4] == "1"  # Monday — the weekly publish of record
+        )
+    check(ok_weekly_cft, f"exactly one WEEKLY cron of record (got {crons_cft!r}) — P4-08: the conformance pass-rate trend of record")
+    check("workflow_dispatch" in oncft, "workflow_dispatch trigger present (operator ad-hoc scoring run)")
+    cft_perms = cft.get("permissions")
+    check(isinstance(cft_perms, dict) and cft_perms.get("contents") == "read",
+          f"permissions.contents == read (got {cft_perms.get('contents')!r})" if isinstance(cft_perms, dict) else f"permissions is a mapping (got {cft_perms!r})")
+    check(isinstance(cft_perms, dict) and not cft_perms.get("actions"),
+          "permissions.actions ABSENT — nothing dispatches from the scoring lane (provider-free, artifact-only)")
+    cft_jobs = cft.get("jobs") or {}
+    check("conformance-trend" in cft_jobs, "gate job 'conformance-trend' present")
+    cft_steps = (cft_jobs.get("conformance-trend") or {}).get("steps") or []
+    cft_text = " ".join(str(s.get("run") or "") for s in cft_steps)
+    check("--cwd golden/conformance-trend selftest" in cft_text, "the instrument proves itself first (the fixed-vector selftest leg)")
+    check("bun test golden/conformance-trend" in cft_text, "the gate runs (the committed corpus obeys the serving DC-5 law)")
+    check("score.ts score" in cft_text and "--baseline golden/conformance-trend/baseline.json" in cft_text,
+          "the score leg scores the corpus of record against the BASELINE of record (P4-08)")
+    check("git diff --exit-code" in cft_text, "the READ-ONLY proof step (the report is an artifact, never a tracked-file mutation)")
+    check(any("cft-report.json" in str((u.get("with") or {}).get("path") or "") for u in cft_steps),
+          "the score report of record is PUBLISHED as an artifact (the weekly publish, P4-08)")
+    check(any(str((u.get("with") or {}).get("retention-days") or "") == "90" for u in cft_steps),
+          "the publish retention is 90 days of record")
+
+# ---------------- the conformance trend lane of record is committed ----------------
+print("== the conformance trend lane of record ==")
+import hashlib as _hashlib
+cft_base_path = "golden/conformance-trend/baseline.json"
+cft_corpus_path = "golden/conformance-trend/fixtures/marked-turns-v1.json"
+if os.path.exists(cft_base_path) and os.path.exists(cft_corpus_path):
+    try:
+        cft_rec = _json.loads(open(cft_base_path, encoding="utf-8").read())
+        cft_corpus_sha = _hashlib.sha256(open(cft_corpus_path, "rb").read()).hexdigest()
+        check(cft_rec.get("schema") == "conformance-trend-baseline/v1", "the baseline of record declares the v1 schema (P4-08)")
+        check(cft_rec.get("rubric") == "conformance-trend-rubric-v1", "the baseline of record speaks the rubric v1")
+        check(cft_rec.get("corpusSha256") == cft_corpus_sha,
+              "the baseline pin MATCHES the committed corpus sha256 (a silently edited corpus is RED everywhere)")
+        cft_agg = cft_rec.get("aggregate") or {}
+        check(cft_agg.get("total") == 12 and cft_agg.get("violationTotal") == 0,
+              "the pinned aggregate of record is present and violation-free (the corpus of record is all-legal)")
+        for rate in ("conformancePassRate", "ruleATotal", "ruleBTotal"):
+            check(rate in cft_agg, f"the rubric dimension of record '{rate}' is pinned")
+    except Exception as e:
+        check(False, f"the baseline of record parses: {e}")
+else:
+    check(False, "the baseline + corpus of record exist (golden/conformance-trend/**)")
+if os.path.exists(".github/workflows/ci.yml"):
+    cidata_cft, _ = load_wf(".github/workflows/ci.yml")
+    ci_jobs_cft = (cidata_cft.get("jobs") or {}).get("verify") or {}
+    steps_cft = ci_jobs_cft.get("steps") or []
+    verify_text_cft = " ".join(str(s.get("run") or "") for s in steps_cft)
+    check("golden/conformance-trend" in verify_text_cft, "the ci.yml verify lane carries the conformance-trend leg (P3-02's lane discipline)")
+
 # ---------------- the law of record is on main ----------------
 print("== the law of record ==")
 if os.path.exists("docs/AGENT_COORDINATION.md"):
