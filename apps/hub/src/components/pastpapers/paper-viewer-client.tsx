@@ -753,7 +753,7 @@ export function PaperViewerClient({
             </Link>
           </Button>
         )}
-        <h1 className="font-mono text-sm font-semibold tracking-tight">{paper.ref}</h1>
+        <h1 className="font-mono text-base font-semibold tracking-tight">{paper.ref}</h1>
         <span className="hidden min-w-0 truncate text-xs text-muted-foreground md:inline">
           {paper.title}
           {paper.variantChip ? ` · ${paper.variantChip}` : ""} · {sessionLabelStr}

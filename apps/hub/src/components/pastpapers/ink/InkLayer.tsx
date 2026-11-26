@@ -887,7 +887,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
           <Button
             size="sm"
             variant={mode === "pen" ? "secondary" : "ghost"}
-            className="size-8 px-0"
+            className="size-9 px-0 sm:size-8"
             aria-pressed={mode === "pen"}
             aria-label="Draw"
             onClick={() => armTool("pen")}
@@ -897,7 +897,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
           <Button
             size="sm"
             variant={mode === "text" ? "secondary" : "ghost"}
-            className="size-8 px-0"
+            className="size-9 px-0 sm:size-8"
             aria-pressed={mode === "text"}
             aria-label="Text"
             onClick={() => armTool("text")}
@@ -909,7 +909,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
           <Button
             size="sm"
             variant={mode === "math" ? "secondary" : "ghost"}
-            className="size-8 px-0"
+            className="size-9 px-0 sm:size-8"
             aria-pressed={mode === "math"}
             aria-label="Math text box"
             onClick={() => armTool("math")}
@@ -923,7 +923,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
           <Button
             size="sm"
             variant={mode === "select" ? "secondary" : "ghost"}
-            className="size-8 px-0"
+            className="size-9 px-0 sm:size-8"
             aria-pressed={mode === "select"}
             aria-label="Select"
             onClick={() => armTool("select")}
@@ -933,7 +933,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
           <Button
             size="sm"
             variant={mode === "erase" ? "secondary" : "ghost"}
-            className="size-8 px-0"
+            className="size-9 px-0 sm:size-8"
             aria-pressed={mode === "erase"}
             aria-label="Erase"
             onClick={() => armTool("erase")}
@@ -946,7 +946,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
           <Button
             size="sm"
             variant={mode === "line" ? "secondary" : "ghost"}
-            className="size-8 px-0"
+            className="size-9 px-0 sm:size-8"
             aria-pressed={mode === "line"}
             aria-label="Line"
             onClick={() => armTool("line")}
@@ -956,7 +956,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
           <Button
             size="sm"
             variant={mode === "ruler" ? "secondary" : "ghost"}
-            className="size-8 px-0"
+            className="size-9 px-0 sm:size-8"
             aria-pressed={mode === "ruler"}
             aria-label="Ruler"
             onClick={() => armTool("ruler")}
@@ -966,7 +966,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
           <Button
             size="sm"
             variant={mode === "protractor" ? "secondary" : "ghost"}
-            className="size-8 px-0"
+            className="size-9 px-0 sm:size-8"
             aria-pressed={mode === "protractor"}
             aria-label="Protractor"
             onClick={() => armTool("protractor")}
@@ -976,7 +976,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
           <Button
             size="sm"
             variant={mode === "compasses" ? "secondary" : "ghost"}
-            className="size-8 px-0"
+            className="size-9 px-0 sm:size-8"
             aria-pressed={mode === "compasses"}
             aria-label="Compasses"
             onClick={() => armTool("compasses")}
@@ -994,7 +994,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
               <Button
                 size="sm"
                 variant="ghost"
-                className="size-8 gap-1 px-1.5"
+                className="size-9 gap-1 px-1.5 sm:size-8"
                 aria-label={`Pen colour: ${color[0].toUpperCase()}${color.slice(1)}`}
               >
                 <span
@@ -1028,7 +1028,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
               <Button
                 size="sm"
                 variant="ghost"
-                className="size-8 gap-1 px-1.5"
+                className="size-9 gap-1 px-1.5 sm:size-8"
                 aria-label={`Pen thickness: ${INK_WIDTH_NAMES[widthIdx]}`}
               >
                 <span
@@ -1065,7 +1065,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
           <Button
             size="sm"
             variant="ghost"
-            className="size-8 px-0"
+            className="size-9 px-0 sm:size-8"
             aria-label="Undo"
             disabled={pastRef.current.length === 0}
             onClick={undo}
@@ -1075,7 +1075,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
           <Button
             size="sm"
             variant="ghost"
-            className="size-8 px-0"
+            className="size-9 px-0 sm:size-8"
             aria-label="Redo"
             disabled={futureRef.current.length === 0}
             onClick={redo}
@@ -1085,7 +1085,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
           <Button
             size="sm"
             variant="ghost"
-            className="size-8 px-0"
+            className="size-9 px-0 sm:size-8"
             aria-label="Clear all"
             disabled={snap.shapes.length === 0}
             onClick={clearAll}
@@ -1108,7 +1108,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
           <Button
             size="sm"
             variant="ghost"
-            className="h-8 gap-1.5 px-2"
+            className="h-9 gap-1.5 px-2 sm:h-8"
             aria-label="Stylus mode: stylus writes, finger scrolls"
             aria-pressed={penMode}
             data-penmode={penMode ? "on" : "off"}
@@ -1164,7 +1164,7 @@ export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
           <Button
             size="sm"
             variant="ghost"
-            className="sticky right-0 ml-1 shrink-0 rounded-md bg-background/95 size-8 px-0"
+            className="sticky right-0 ml-1 shrink-0 rounded-md bg-background/95 size-9 px-0 sm:size-8"
             aria-label="Collapse annotation tools"
             onClick={toggleCollapsed}
           >
