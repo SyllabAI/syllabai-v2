@@ -181,7 +181,9 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
     // Pearson-pipe/Unit-N unit-paper course anchors (chem-bio-math-revision-hub +
     // edexcel-science-channel + aravinth + A2Z, P17B post-inherit) + 6 P18 WPH
     // predicted-paper/unit-paper course anchors (scinova + examcrack, P18B post-inherit)
-    expect(buckets.course.length).toBe(268);
+    // + 10 P19 spaced 'WPH NN' paper course anchors (the-physics-examiner, P19B
+    // post-inherit — the P14 Assil-law analog)
+    expect(buckets.course.length).toBe(278);
     expect(buckets.topicArea.length).toBe(0);
     expect(buckets.subject.length).toBe(0);
     // buckets + lesson rows = every served mapping, no double counting
@@ -214,8 +216,9 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
       // + 122 P17 Pearson-pipe/Unit-N course anchors + 3 P18 course anchors
       "ial-chemistry-17": 236,
       // 32 P2F/P7-era + 41 P15B Doctor-No + 189 P17 Pearson-pipe/Unit-N course anchors
-      // + 6 P18 WPH predicted-paper course anchors
-      "ial-physics-19": 268,
+      // + 6 P18 WPH predicted-paper course anchors + 10 P19 spaced 'WPH NN' paper
+      // course anchors (the-physics-examiner, P19B post-inherit)
+      "ial-physics-19": 278,
       // 8 P2F + 39 P14 Dr Hanaa Assil + 19 P15 Belal Sir + 20 P17 4CH1-paper course anchors
       // + 5 P18 course anchors (chemistry-that-counts 4CH1 topic registers, P18 pre-inherit)
       "igcse-chemistry-19": 91,
