@@ -63,6 +63,7 @@ import {
   MinusCircle,
   PenLine,
   RotateCcw,
+  Sparkles,
   X,
   XCircle,
 } from "lucide-react";
@@ -244,6 +245,15 @@ export function QuestionPlayer({
   // the course is the pilot and the learner is signed in (ADR-029 tranche 4)
   const bridge = useAttemptBridge(course, topicSlug);
 
+  // F-QB-2a (owner order 2026-11-21: the unavailable-marking apology copy
+  // is retired completely): the availability copy is retired in ALL
+  // forms — the per-box line (a 36-copy wall down a 19-question paper)
+  // AND the interim set-level statement. The probe-false lane renders
+  // nothing anywhere (ADR-029's own posture: players hide the AI
+  // affordance); the mark scheme + "How did you do?" self-mark footer
+  // stays the honest path, and explicit mark attempts still surface
+  // their own contextual failure cards with actionable copy.
+
   const counts = useMemo(() => {
     const c: Record<Difficulty, number> = { all: questions.length, easy: 0, medium: 0, hard: 0 };
     for (const q of questions) {
@@ -414,6 +424,36 @@ export function QuestionPlayer({
     root.querySelectorAll("article[data-qidx]").forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, [visible, single]);
+
+  /** the question the floating button will anchor — the active one when it
+   *  can anchor (verified join), else the nearest that can; null = no
+   *  question on this page is anchorable, so no floating button at all */
+  const claAnchorIdx = useMemo(() => {
+    if (visible.length === 0) return null;
+    const canAnchor = (i: number) =>
+      !!visible[i] && bridge.kind === "ready" && !!bridge.data.questions[visible[i].id];
+    const a = viewIdx ?? 0;
+    if (canAnchor(a)) return a;
+    for (let d = 1; d < visible.length; d++) {
+      if (canAnchor(a + d)) return a + d;
+      if (canAnchor(a - d)) return a - d;
+    }
+    return null;
+  }, [viewIdx, visible, bridge]);
+
+  /** the floating button's disclosure — when the question in view cannot
+   *  anchor, the button opens for the nearest anchorable one. In single
+   *  mode the click ALSO swaps the card to that question (openCla pins
+   *  activeIdx and the single-mode viewIdx follows it), so the disclosure
+   *  names the swap explicitly (T-QVIEW-AUDIT-BCD-1 batch D, the nuance
+   *  disclosed at T-QVIEW-MODES-1); "all" keeps the compact parenthetical
+   *  (the discrepancy there is transient — the scroll-spy re-ties it). */
+  const claAnchorDisclosure =
+    claAnchorIdx !== null && viewIdx !== null && viewIdx !== claAnchorIdx
+      ? single
+        ? ` — question ${qLabel(viewIdx)} in view has no assistant link yet, so this opens question ${qLabel(claAnchorIdx)} instead`
+        : ` (question ${qLabel(viewIdx)} is not anchored for the assistant yet)`
+      : "";
 
   return (
     <div className="space-y-5">
@@ -628,15 +668,44 @@ export function QuestionPlayer({
         </nav>
       )}
 
-      {/* Task 38 §6.4 (UX-5, 2026-11-20): the floating CLA entry (Revision
-          Notes parity — operator trace 1a0ec14f2f7e3581) is retired in
-          favour of the per-question "Ask CLA" entry inside QuestionBody.
-          Rationale: a fixed element ALWAYS intersects content while the
-          student is reading (at 390px it covered the submit-panel advisory;
-          at 1280px it grazed the panel corner — the only High finding),
-          and the inline entry anchors to its own card precisely instead of
-          guessing the active one through the scroll-spy. The per-part
-          lightbulbs remain the precision path. */}
+      {/* the FLOATING CLA entry (Revision Notes parity — operator 2026-09-29,
+          trace 1a0ec14f2f7e3581). One page holds MANY questions, so the
+          button CARRIES its anchor: the chip names the question that will
+          open (the active card, join-gated to the nearest anchorable one),
+          and the title says so too. Hidden while the panel is open (SME
+          hides their chat button when the widget is open), absent when no
+          question on the page can anchor. The per-part lightbulbs remain
+          the precision path; the per-card header button is retired. */}
+      {claAnchorIdx !== null && claFor === null && (
+        <Button
+          size="sm"
+          // audit 2026-10-30 (motion review): entrance fade+zoom from 0.95 —
+          // a fixed-position control must not pop from nothing. The Q-chip
+          // label swap itself stays INSTANT: it re-fires on every anchor
+          // change while scrolling (IntersectionObserver), and animating a
+          // high-frequency swap would breach frequency-appropriateness.
+          // T-QVIEW-AUDIT-BCD-1 batch D (CLA-button clearance): in single
+          // mode the button rides above the pagination footer band
+          // (bottom-24) instead of overlapping the footer's Next control.
+          className={cn(
+            "fixed right-6 z-40 h-12 gap-2 rounded-full px-5 shadow-lg animate-in fade-in-0 zoom-in-95 duration-200 ease-out",
+            single ? "bottom-24" : "bottom-6",
+          )}
+          aria-haspopup="dialog"
+          aria-label={`Ask the contextual assistant about question ${qLabel(claAnchorIdx)}${claAnchorDisclosure}`}
+          title={`Ask CLA about question ${qLabel(claAnchorIdx)}${claAnchorDisclosure}`}
+          onClick={() => openCla(visible[claAnchorIdx], claAnchorIdx, null)}
+        >
+          <Sparkles className="size-4" aria-hidden />
+          Ask CLA
+          <span
+            className="rounded-full bg-primary-foreground/15 px-2 py-0.5 text-2xs font-semibold tabular-nums"
+            aria-hidden
+          >
+            Q{qLabel(claAnchorIdx)}
+          </span>
+        </Button>
+      )}
 
       {/* full-screen question */}
       <Dialog open={!!fullFor} onOpenChange={(o) => !o && setFullFor(null)}>
@@ -830,26 +899,6 @@ function QuestionBody({
 
   return (
     <div className="space-y-4" data-question-block={question.id}>
-      {/* Task 38 §6.4 (UX-5): the per-question CLA entry rides INSIDE the
-          card — a fixed floating trigger always intersects content on some
-          viewport (the 390px audit caught it over the submit advisory),
-          while this entry can never overlap anything and anchors to its own
-          question precisely (no nearest-anchorable guessing). Join-gated:
-          the overlay only renders when the question has a verified join. */}
-      {coreJoin && (
-        <div className="flex justify-end">
-          <Button
-            size="sm"
-            variant="ghost"
-            className="h-8 gap-1.5 px-2 text-xs"
-            onClick={onAskCla}
-            aria-haspopup="dialog"
-            title="Ask CLA — scaffolded help with this question, never the answer"
-          >
-            <MessagesSquare className="size-3.5 text-primary" aria-hidden /> Ask CLA
-          </Button>
-        </div>
-      )}
       {question.parts.map((p, idx) => {
         // the printed part label ("(a)", "(a)(i)") — derived fail-closed from
         // the official id slug / SME questionPart (lib/part-label). null =
@@ -1231,9 +1280,7 @@ function TypedAnswerWorkspace({
       if (!res.ok || !j.ok) {
         setMark({
           kind: "error",
-          message:
-            j.detail ??
-            AI_MARK_UNAVAILABLE,
+          message: j.detail ?? "Marking failed — try again in a moment.",
         });
         return;
       }
@@ -1312,9 +1359,11 @@ function TypedAnswerWorkspace({
       <div className="mt-2 flex flex-wrap items-center gap-2">
         {/* UX-2 (Task 38 §6.1): in the core flow the CoreMarkingFlow panel
             below owns the marking story — the legacy lane renders NOTHING
-            here, so the card never shows "AI marking is unavailable" right
-            above a live AI-draft button. */}
-        {coreLive ? null : aiAvailable !== false ? (
+            here. F-QB-2a (owner order 2026-11-21): when the probe says the
+            lane is down, the box renders nothing either — no per-box line,
+            no set-level statement; the availability copy is retired in all
+            forms and the self-mark footer is the honest path. */}
+        {coreLive || aiAvailable === false ? null : (
           <Button size="sm" variant="outline" disabled={!canMark} onClick={runMark} className="gap-1.5 text-xs">
             {mark.kind === "loading" ? (
               <Loader2 className="size-3.5 animate-spin" aria-hidden />
@@ -1323,10 +1372,6 @@ function TypedAnswerWorkspace({
             )}
             Mark my answer
           </Button>
-        ) : (
-          <span className="text-2xs text-muted-foreground">
-            {AI_MARK_UNAVAILABLE}
-          </span>
         )}
         {aiAvailable === true && text.trim().length === 0 && (
           <span className="text-2xs text-muted-foreground">Type an answer first</span>
@@ -1416,7 +1461,9 @@ function TypedAnswerWorkspace({
 // Task 38 §6.1/UX-7 (2026-11-20) supersedes the self-mark pointer: a
 // pre-submit status line must never name a control by its post-mark role —
 // the footer "How did you do?" box speaks for itself once it is on screen.
-const AI_MARK_UNAVAILABLE = "AI marking is unavailable right now.";
+// Owner order 2026-11-21: the shared unavailable-apology string is retired
+// completely (per-box line, set-level statement, and the failure-tail
+// fallbacks below each carry their own honest copy instead).
 
 function hasUsableChoices(part: ExamQuestion["parts"][number]): boolean {
   const c = part.choices;
@@ -2041,7 +2088,7 @@ function CoreMarkingFlow({
                 ? "Sign in to use AI marking."
                 : req.outcome === "unconfigured"
                   ? "AI marking is not configured on the server yet."
-                  : AI_MARK_UNAVAILABLE;
+                  : "Smart Mark couldn't start this mark — try again in a moment.";
           setAdvisory((prev) => ({ ...prev, [t.hubPartId]: { kind: "failed", message } }));
           return;
         }
