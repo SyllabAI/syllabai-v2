@@ -146,17 +146,22 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
   test("anchor rows survive parse with level/ref/kind intact (ial-chemistry-17)", async () => {
     const map = await getVideoMap("ial-chemistry-17");
     expect(map).not.toBeNull();
-    // at rest: 654 mappings = 418 lesson rows (the P4-inherit base grown by the P14
+    // at rest: 687 mappings = 431 lesson rows (the P4-inherit base grown by the P14
     // parent's channel-recon rows cascading from igcse-chemistry-19/cie-a-level-chemistry-25
-    // + 27 P7 remaining-channel-pools + 12 P18 inherited-external rows) + 236 anchor rows
-    // (219 course — 17 P2F W-code + 73 P14B Dr Hanaa Assil + 4 P15B chem-bio-by-Hosni "Unit N <session>" unit-paper
+    // + 27 P7 remaining-channel-pools + 12 P18 inherited-external rows) + 9 P20 spec rows
+    // (miss-natalie/chembase WCH content, P20B post-inherit) + 256 anchor rows
+    // (239 course — 17 P2F W-code + 73 P14B Dr Hanaa Assil + 4 P15B chem-bio-by-Hosni "Unit N <session>" unit-paper
     // + 122 P17 Pearson-pipe/Unit-N unit-paper anchors (chem-bio-math-revision-hub +
     // edexcel-science-channel) + 3 P18 course anchors (chemistry-that-counts WCH +
-    // ial-science-notes, P18B post-inherit) — and 17 topic) — P14B appended after inherit per the
-    // P11B/P13B shape, P15B after that, P2F after that, P17B after that, P18B after that
-    expect(map!.mappings.length).toBe(654);
+    // ial-science-notes, P18B post-inherit) + 20 P20 WCH unit-question + spaced-NN
+    // paper anchors (miss-natalie x19 + chembase x1, P20B post-inherit) — and 17 topic)
+    // — P14B appended after inherit per the P11B/P13B shape, P15B after that, P2F after
+    // that, P17B after that, P18B after that (the P18B replay re-appends the full
+    // 15-row draft over the 12 shipped video-keyed prior rows, +3 net — the lane
+    // ledger in the content file is the at-rest source of truth), P20B after that
+    expect(map!.mappings.length).toBe(687);
     const anchor = map!.mappings.filter(isAnchorRow);
-    expect(anchor.length).toBe(236);
+    expect(anchor.length).toBe(256);
     for (const row of anchor) {
       // the accounting rule: coarse anchors are zero-weight enrichment
       expect(row.specs).toEqual([]);
@@ -165,7 +170,7 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
       expect(row.anchor!.ref).toBeTruthy();
       expect(row.reviewed).toBe(true);
     }
-    expect(anchor.filter((r) => r.anchor!.level === "course")).toHaveLength(219);
+    expect(anchor.filter((r) => r.anchor!.level === "course")).toHaveLength(239);
     expect(anchor.filter((r) => r.anchor!.level === "topic")).toHaveLength(17);
     for (const row of anchor.filter((r) => r.anchor!.level === "course"))
       expect(row.kind).toBe("past-paper-walkthrough");
@@ -214,7 +219,9 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
       "ial-biology-18": 114,
       // 34 P2F (17 course + 17 topic) + 73 P14B Dr Hanaa Assil + 4 P15B Hosni
       // + 122 P17 Pearson-pipe/Unit-N course anchors + 3 P18 course anchors
-      "ial-chemistry-17": 236,
+      // + 20 P20 WCH unit-question/spaced-NN course anchors (miss-natalie/chembase,
+      // P20B post-inherit)
+      "ial-chemistry-17": 256,
       // 32 P2F/P7-era + 41 P15B Doctor-No + 189 P17 Pearson-pipe/Unit-N course anchors
       // + 6 P18 WPH predicted-paper course anchors + 10 P19 spaced 'WPH NN' paper
       // course anchors (the-physics-examiner, P19B post-inherit)
