@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChevronRight, FileText, Puzzle, ScrollText } from "lucide-react";
+import { ChevronRight, ScrollText } from "lucide-react";
 import { boardOf, loadHubCourse } from "@/lib/courses";
 import { collectPastPapers, paperEstTime, type PastPaper } from "@/lib/past-papers";
 import { corpusViewerUrl } from "@/lib/pastpapers-shared";
 import { fmtCount } from "@/lib/format";
-import { CorpusPdfLink } from "@/components/pastpapers/corpus-pdf-link";
+import { SessionBrowser, type SessionBrowserGroup } from "@/components/pastpapers/session-browser";
 import {
   corpusPapersForCourse,
   corpusSpecsForCourse,
@@ -25,12 +25,23 @@ import {
 } from "@/lib/pastpapers-reconstruction";
 import { CoursePageHeader } from "@/components/hub/course-header";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { InteractiveChip } from "@/components/pastpapers/interactive-chip";
 import { MockResultsStrip } from "@/components/pastpapers/mock-results-strip";
-import { PaperMarksRollup } from "@/components/pastpapers/paper-marks-rollup";
 import { allCourseParams } from "@/lib/static-params";
+
+/** The row's composed meta line, verbatim from the pre-lane row markup. */
+function paperMeta(p: CorpusPaperEntry): string {
+  return [
+    p.specTitle,
+    p.durationMin != null
+      ? `${Math.floor(p.durationMin / 60)}h${p.durationMin % 60 ? ` ${p.durationMin % 60}m` : ""} official`
+      : "",
+    p.qpBytes ? `QP ${prettyBytes(p.qpBytes)}` : "",
+    p.msBytes ? `MS ${prettyBytes(p.msBytes)}` : "",
+  ]
+    .filter(Boolean)
+    .join(" · ");
+}
 
 /** PDFs stream from raw.githubusercontent.com — warm the connection early. */
 function PreconnectCorpus() {
@@ -122,6 +133,51 @@ export default async function PastPapersPage({
       ? "This course's past papers haven't been added yet."
       : undefined;
 
+  // t-pastpapers-ux-1 — the archive's JSON-safe findability payload: the row
+  // JSX moved verbatim into <SessionBrowser/> (client), the data stays here.
+  const browserGroups: SessionBrowserGroup[] = sessions.map(([sessionId, group]) => ({
+    sessionId,
+    label: sessionLabel(sessionId),
+    rows: group.map((p) => ({
+      dir: p.dir,
+      ref: p.ref,
+      title: p.title,
+      meta: paperMeta(p),
+      specBadge: p.specBadge ?? null,
+      variantChip: p.variantChip ?? null,
+      playable: matchKeys.has(`${p.sessionId}:${p.dir}`),
+      marks: { paperCode: p.ref, sessionLabel: sessionLabel(p.sessionId) },
+      qp: p.qpBytes
+        ? {
+            href: `${base}/past-papers/view/${p.sessionId}/${p.dir}?doc=qp`,
+            pdfUrl: corpusViewerUrl(p.qpPath),
+          }
+        : null,
+      ms: p.msBytes
+        ? {
+            href: `${base}/past-papers/view/${p.sessionId}/${p.dir}?doc=ms`,
+            pdfUrl: corpusViewerUrl(p.msPath),
+          }
+        : null,
+      split:
+        p.qpBytes && p.msBytes
+          ? `${base}/past-papers/view/${p.sessionId}/${p.dir}?doc=split`
+          : null,
+      mock: p.qpBytes ? `${base}/past-papers/view/${p.sessionId}/${p.dir}?mode=mock` : null,
+      interactive: parsedCourse
+        ? {
+            href: matchKeys.get(`${p.sessionId}:${p.dir}`)
+              ? `${base}/past-papers/${matchKeys.get(`${p.sessionId}:${p.dir}`)}`
+              : null,
+            coverageLabel: coverageChipLabel(coverages.get(`${p.sessionId}:${p.dir}`) ?? null),
+            coverageTitle: coverages.get(`${p.sessionId}:${p.dir}`)
+              ? coverageTitle(coverages.get(`${p.sessionId}:${p.dir}`)!)
+              : null,
+          }
+        : null,
+    })),
+  }));
+
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
       <PreconnectCorpus />
@@ -129,7 +185,7 @@ export default async function PastPapersPage({
         meta={meta}
         title={`${boardOf(meta)} ${meta.level} ${meta.label} Past Papers`}
         crumb="Past Papers"
-        description="Official past papers grouped by session — view the question paper and mark scheme side by side, solve in your notebook, run a timed mock, or play a paper interactively where its questions are already parsed."
+        description="Official past papers by session — open the QP and MS, self-mark, or run a timed mock."
       >
         {papers.length > 0 && (
           <Badge variant="secondary" className="font-medium">
@@ -167,161 +223,25 @@ export default async function PastPapersPage({
         </div>
       ) : (
         <div className="mt-6 space-y-5">
-          {/* provenance / modes banner */}
+          {/* provenance / modes banner — compacted (t-pastpapers-ux-1 U4:
+              the 375px first screen must reach the paper rows) */}
           <div className="rounded-xl border bg-muted/30 p-3 text-xs leading-relaxed text-muted-foreground print:hidden">
             <p>
               <span className="font-semibold text-foreground">Two ways to use a paper:</span> open
               the <span className="font-medium text-foreground">Question Paper</span> and{" "}
-              <span className="font-medium text-foreground">Mark Scheme</span> PDFs (side-by-side
-              split on desktop, an A/B toggle on mobile) and self-mark, or run a{" "}
-              <span className="font-medium text-foreground">Mock</span> — fullscreen QP with the
-              official timer, then grade against the MS.
-            </p>
-            <p className="mt-1">
-              Official {meta.board ?? "Pearson Edexcel"} documents, matched to this course.
+              <span className="font-medium text-foreground">Mark Scheme</span> PDFs and self-mark,
+              or run a <span className="font-medium text-foreground">Mock</span>. Official
+              documents, matched to this course.
             </p>
           </div>
 
           <MockResultsStrip course={meta.slug} />
 
-          {/* SME-style session sections */}
-          {sessions.map(([sessionId, group]) => (
-            <section key={sessionId} aria-label={sessionLabel(sessionId)} className="space-y-2">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                {sessionLabel(sessionId)}
-                {/* t-ui-polish run-002 — the MG session header carries its
-                    size; the count rides the same quiet recipe. */}
-                <span className="font-normal text-muted-foreground"> · {fmtCount(group.length)}</span>
-              </h2>
-              <ul className="overflow-hidden rounded-xl border">
-                {group.map((p) => (
-                  <li
-                    key={p.dir}
-                    className="border-b last:border-b-0 transition-colors hover:bg-muted/50"
-                  >
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-2 px-3 py-2.5 sm:px-4">
-                      <div className="min-w-0 flex-1 basis-52">
-                        <p className="flex flex-wrap items-center gap-1.5">
-                          <span className="font-mono text-sm font-semibold">{p.ref}</span>
-                          {/* T-MG-FEEDBACK-1: the learner's AI-mark rollup for
-                              this paper, from the award ledger (absent unless
-                              the paper is ingested AND carries marks). */}
-                          <PaperMarksRollup paperCode={p.ref} sessionLabel={sessionLabel(p.sessionId)} />
-                          <span className="text-xs text-muted-foreground">{p.title}</span>
-                          {p.specBadge && (
-                            <Badge variant="outline" className="text-2xs text-muted-foreground">
-                              {p.specBadge}
-                            </Badge>
-                          )}
-                          {p.variantChip && (
-                            <Badge variant="outline" className="text-2xs">
-                              {p.variantChip}
-                            </Badge>
-                          )}
-                          {matchKeys.has(`${p.sessionId}:${p.dir}`) && (
-                            <Badge
-                              variant="outline"
-                              // t-ui-polish run-007: the playable badge speaks the
-                              // house primary-tinted voice (border-primary/60).
-                              className="gap-1 border-primary/60 text-2xs text-primary"
-                            >
-                              <Puzzle className="size-3" aria-hidden />
-                              playable
-                            </Badge>
-                          )}
-                        </p>
-                        <p className="mt-0.5 text-2xs text-muted-foreground">
-                          {p.specTitle}
-                          {p.durationMin != null
-                            ? ` · ${Math.floor(p.durationMin / 60)}h${p.durationMin % 60 ? ` ${p.durationMin % 60}m` : ""} official`
-                            : ""}
-                          {p.qpBytes ? ` · QP ${prettyBytes(p.qpBytes)}` : ""}
-                          {p.msBytes ? ` · MS ${prettyBytes(p.msBytes)}` : ""}
-                        </p>
-                      </div>
-                      {/* t-ui-polish run-002 — the MG paper-row signature:
-                          the resource chips line up into COLUMNS (QP/MS at a
-                          fixed width, right-aligned, never wrapping at sm+)
-                          so a session reads as a table without being one.
-                          Below sm the chips wrap as before. */}
-                      <div className="flex flex-wrap items-center gap-1.5 sm:flex-nowrap sm:justify-end">
-                        {p.qpBytes ? (
-                          <CorpusPdfLink
-                            size="sm"
-                            variant="secondary"
-                            className="h-7 text-xs sm:w-32 sm:justify-center"
-                            href={`${base}/past-papers/view/${p.sessionId}/${p.dir}?doc=qp`}
-                            pdfUrl={corpusViewerUrl(p.qpPath)}
-                          >
-                            <FileText className="size-3.5" aria-hidden />
-                            Question Paper
-                          </CorpusPdfLink>
-                        ) : (
-                          <span
-                            className="inline-flex h-7 items-center rounded-md px-2 text-xs text-muted-foreground/50 sm:w-32 sm:justify-center"
-                            title="No question paper held for this paper"
-                          >
-                            Question Paper
-                          </span>
-                        )}
-                        {p.msBytes ? (
-                          <CorpusPdfLink
-                            size="sm"
-                            variant="outline"
-                            className="h-7 text-xs sm:w-32 sm:justify-center"
-                            href={`${base}/past-papers/view/${p.sessionId}/${p.dir}?doc=ms`}
-                            pdfUrl={corpusViewerUrl(p.msPath)}
-                          >
-                            Mark Scheme
-                          </CorpusPdfLink>
-                        ) : (
-                          <span
-                            className="inline-flex h-7 items-center rounded-md px-2 text-xs text-muted-foreground/50 sm:w-32 sm:justify-center"
-                            title="No mark scheme held for this paper"
-                          >
-                            Mark Scheme
-                          </span>
-                        )}
-                        {p.qpBytes && p.msBytes && (
-                          <CorpusPdfLink
-                            size="sm"
-                            variant="outline"
-                            className="h-7 text-xs"
-                            href={`${base}/past-papers/view/${p.sessionId}/${p.dir}?doc=split`}
-                            pdfUrl={corpusViewerUrl(p.qpPath)}
-                            aria-label={`${p.ref} — split view (question paper and mark scheme)`}
-                          >
-                            Split
-                          </CorpusPdfLink>
-                        )}
-                        {p.qpBytes && (
-                          <Button asChild size="sm" variant="outline" className="h-7 gap-1 text-xs">
-                            <Link
-                              href={`${base}/past-papers/view/${p.sessionId}/${p.dir}?mode=mock`}
-                              aria-label={`${p.ref} — start timed mock`}
-                            >
-                              Mock
-                            </Link>
-                          </Button>
-                        )}
-                        {parsedCourse && (
-                          <InteractiveChip
-                            href={matchKeys.has(`${p.sessionId}:${p.dir}`) ? `${base}/past-papers/${matchKeys.get(`${p.sessionId}:${p.dir}`)}` : null}
-                            paperRef={p.ref}
-                            interactiveCount={interactiveCount}
-                            coverageLabel={coverageChipLabel(coverages.get(`${p.sessionId}:${p.dir}`) ?? null)}
-                            coverageTitle={coverages.get(`${p.sessionId}:${p.dir}`)
-                              ? coverageTitle(coverages.get(`${p.sessionId}:${p.dir}`)!)
-                              : null}
-                          />
-                        )}
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
+          {/* t-pastpapers-ux-1 — the SME-style session sections moved into
+              the client SessionBrowser: filter, sticky jump chips,
+              collapsible groups; deliberately NO pagination (find-in-page
+              preserved whole-corpus; collapsed groups stay in the DOM). */}
+          <SessionBrowser groups={browserGroups} interactiveCount={interactiveCount} />
 
           {/* reconstructions with no PDF counterpart keep their honest archive */}
           {unmatchedReconstructions.length > 0 && (
