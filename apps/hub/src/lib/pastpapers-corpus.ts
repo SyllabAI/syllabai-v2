@@ -27,6 +27,7 @@ import { parseReconstruction } from "@/lib/pastpapers-reconstruction";
 import {
   corpusRawPath,
   CIE_PAPER_TITLES,
+  gceUnitTitle,
   ialUnitTitle,
   parseCieDir,
   sessionRankOf,
@@ -86,6 +87,26 @@ const IA = "pearson-edexcel/international-a-level";
 const CI = "cambridge-international";
 
 const COURSE_SPECS: Record<string, CourseSpecMap> = {
+  // ── Wave 5 (corpus census 2026-11-27): legacy GCE modular Mathematics +
+  // modular-24 English Literature / Geography unit courses. All five spec
+  // keys are in the committed index on main (no #1155 dependency).
+  // a-level-mathematics-modular maps the WHOLE archive folder: the 8371/9371
+  // modular era (C1–C4 2005-2018), the pre-2005 applied-unit sessions and
+  // the specimen set — 245 rows. The four January-2014 "A"-variant dirs are
+  // IAL-marked prints of the Core Maths papers (covers print "January 2014
+  // (IAL)" + refs 6663A/01–6666A/01; 6665A attested by its MS printing
+  // "Core Mathematics 3 (6665A)") — mapped here under their printed unit
+  // names (GCE_UNIT_TITLES); the corpus-side re-homing question stays open
+  // upstream (docs/AUDIT-2026-09-12.md §7 F3) and does not block display.
+  // The 4WET/4WGE folders are the modular-24 English Literature / Geography
+  // generation (covers print "English Literature (Modular) UNIT 1/2",
+  // "Geography (Modular) UNIT 1/2"; first exam 2025-06) — per-unit courses
+  // per the modular-24 family law; resolves the WAVE-4 deferral.
+  "a-level-mathematics-modular": { specs: ["pearson-edexcel/gce-a-level/mathematics/mathematics-modular"] },
+  "igcse-english-literature-modular-24-unit-1": { specs: [`${IG}/english-literature/4wet1`] },
+  "igcse-english-literature-modular-24-unit-2": { specs: [`${IG}/english-literature/4wet2`] },
+  "igcse-geography-modular-24-unit-1": { specs: [`${IG}/geography/4wge1`] },
+  "igcse-geography-modular-24-unit-2": { specs: [`${IG}/geography/4wge2`] },
   "igcse-chemistry-19": {
     specs: [`${IG}/chemistry/4ch1`],
     // retired 4CH0 line (last sat Jan 2019) — same subject, shown badged
@@ -421,7 +442,9 @@ function buildEntry(
       variantChip = "Timezone R";
     }
   } else {
-    title = ialUnitTitle(unit);
+    // wave 5: GCE rows resolve unit names from GCE_UNIT_TITLES (cover-verified);
+    // everything else keeps the IAL map + "Unit <n>" fallback
+    title = spec.qual === "gce-a-level" ? gceUnitTitle(unit) : ialUnitTitle(unit);
     const v = variant.match(/^0\d([A-Z])$/);
     if (v) variantChip = `Variant ${v[1]}`;
   }
