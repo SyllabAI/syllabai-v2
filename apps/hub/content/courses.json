@@ -1,6 +1,6 @@
 {
  "schema": "syllabai-demo.course-registry/1.1",
- "note": "Operator-maintained registry mirroring the SyllabAI/syllabai-resources corpus (authoritative source): 50 Edexcel IAL/IGCSE course variants + 56 Cambridge International lanes, 106 rows of record. Every course has a content bundle under content/<slug>/ imported from the corpus: 'pilot' = official-tree course with the 4CH1 concept graph and learner overlay; 'full' = complete SME-native corpus import (notes, exam questions, flashcards; official-spec mapping pending upstream for all non-4CH1 courses). Slugs, levels, subjects and exam codes come from the upstream manifests — never invented. | RULING (CONTENT-AUDIT run-001-r0 ghost item 3, operator order trace 1a15f79acff5346d \"Proceed with (3) Pure-2 ghost handling\", 2026-10-22): cie-a-level-maths-20-pure-2 is the honest skeleton — CIE 9709 Pure 2 is a real syllabus component but SME never published a P2 course (upstream 404 at the CIE pin and resources main HEAD), so the row is \"registered\" (import-pending class per the courses.ts law) pending a commissioned P2 corpus; the empty bundle stays (validator-acknowledged D1 skeleton) and the 9709 P2 past papers (68) remain served from the syllabai-pastpapers archive via pastpapers-corpus.ts. | WAVE-2 (SME-WAVE2 r0, operator trace 1a17e97cb4e3ae95 'Ok go ahead', 2026-10-28): +12 rows for the SME scrape-lane courses (PR #170 / 7fe3c236) — 9 CIE AS lanes + a-level geography-21 + edexcel igcse-history-17, AS maths split into its 4 unit lanes per corpus layout. status 'registered' (import-pending class; content bundles land in a follow-up import run). Codes are page-sourced from Official-Specifications cover_code (9701/9700/9702/9709/9609/9618/9706/9696/4HI1). curriculumCode and coreBridge deliberately omitted (fail-closed law of record; page-sourced windows exist for 7 lanes and can be added on operator order). Honest empties: as-accounting-21 / a-level-geography-21 / igcse-history-17 have no EQ on SME (no_topic_questions_on_sme); geography-21 + history-17 additionally have no SME notes; flashcards missing on SME for business-23/CS-19/accounting-21/geography-21/history-17. Past papers: NONE of the 12 in syllabai-pastpapers (verified 2026-10-28 — CIE archive carries no a-level/as tree; Edexcel IGCSE carries no history). | COURSES-PAGE AUDIT (select-courses sweep 2026-10-30): census corrected — the 39-Edexcel-variants figure predated the CIE and modular waves (actual 50 Edexcel + 56 Cambridge International = 106). Explicit labels added to the 28 Cambridge lanes sitting in duplicate (subject, code) groups without one (AS/A-Level pairs, syllabus-year republications, International Maths, Combined / Co-ordinated Sciences components), following the registry's existing label conventions. The 3 \"registered\" rows verified NOT status drift: cie-a-level-maths-20-pure-2 per the ruling above; cie-a-level-geography-21 and igcse-history-17 manifests are official-spec honest skeletons (no teaching content bundled yet, manifest license field of record) — statuses stand.",
+ "note": "Operator-maintained registry mirroring the SyllabAI/syllabai-resources corpus (authoritative source): 50 Edexcel IAL/IGCSE course variants + 56 Cambridge International lanes, 106 rows of record. Every course has a content bundle under content/<slug>/ imported from the corpus: 'pilot' = official-tree course with the 4CH1 concept graph and learner overlay; 'full' = complete SME-native corpus import (notes, exam questions, flashcards; official-spec mapping pending upstream for all non-4CH1 courses). Slugs, levels, subjects and exam codes come from the upstream manifests — never invented. | RULING (CONTENT-AUDIT run-001-r0 ghost item 3, operator order trace 1a15f79acff5346d \"Proceed with (3) Pure-2 ghost handling\", 2026-10-22): cie-a-level-maths-20-pure-2 is the honest skeleton — CIE 9709 Pure 2 is a real syllabus component but SME never published a P2 course (upstream 404 at the CIE pin and resources main HEAD), so the row is \"registered\" (import-pending class per the courses.ts law) pending a commissioned P2 corpus; the empty bundle stays (validator-acknowledged D1 skeleton) and the 9709 P2 past papers (68) remain served from the syllabai-pastpapers archive via pastpapers-corpus.ts. | WAVE-2 (SME-WAVE2 r0, operator trace 1a17e97cb4e3ae95 'Ok go ahead', 2026-10-28): +12 rows for the SME scrape-lane courses (PR #170 / 7fe3c236) — 9 CIE AS lanes + a-level geography-21 + edexcel igcse-history-17, AS maths split into its 4 unit lanes per corpus layout. status 'registered' (import-pending class; content bundles land in a follow-up import run). Codes are page-sourced from Official-Specifications cover_code (9701/9700/9702/9709/9609/9618/9706/9696/4HI1). curriculumCode and coreBridge deliberately omitted (fail-closed law of record; page-sourced windows exist for 7 lanes and can be added on operator order). Honest empties: as-accounting-21 / a-level-geography-21 / igcse-history-17 have no EQ on SME (no_topic_questions_on_sme); geography-21 + history-17 additionally have no SME notes; flashcards missing on SME for business-23/CS-19/accounting-21/geography-21/history-17. Past papers: NONE of the 12 in syllabai-pastpapers (verified 2026-10-28 — CIE archive carries no a-level/as tree; Edexcel IGCSE carries no history). | COURSES-PAGE AUDIT (select-courses sweep 2026-10-30): census corrected — the 39-Edexcel-variants figure predated the CIE and modular waves (actual 50 Edexcel + 56 Cambridge International = 106). Explicit labels added to the 28 Cambridge lanes sitting in duplicate (subject, code) groups without one (AS/A-Level pairs, syllabus-year republications, International Maths, Combined / Co-ordinated Sciences components), following the registry's existing label conventions. The 3 \"registered\" rows verified NOT status drift: cie-a-level-maths-20-pure-2 per the ruling above; cie-a-level-geography-21 and igcse-history-17 manifests are official-spec honest skeletons (no teaching content bundled yet, manifest license field of record) — statuses stand. | WAVE-4 (T-PASTPAPERS-WAVE4 r0, corpus census 2026-11-26, operator order \"Ok proceed\"): +14 Edexcel rows — 6 IAL subjects (business 2018 spec, accounting 2015, economics 2018, psychology 2015, information technology 2018, law), 3 legacy UK GCE 2008-spec archive pages (papers-only, no current-spec sibling exists), 5 IGCSE subjects (human biology, commerce, computer science, bangla, English Language B 2016). status 'full' — papers-only archive shelves render complete; curriculumCode/tutorEnabled omitted (tutor honestly gated, no core corpus); coreBridge mirrors sibling Pearson rows. Spec years from Pearson spec pages where verified, else the subject's first archive session (2019-06 for law/human-biology/commerce/CS/bangla). Census now 64 Edexcel + 56 Cambridge International = 120 rows of record. WPH07 (\"Unit 7: Physics Practical Examination (SET A)\", cover-verified from the printed WPH07/01 June 2017 paper) joins ial-physics-19 legacySpecs in pastpapers-corpus.ts. Deferred with rationale: gce mathematics-modular (245 rows — 12 numeric unit dirs 6663–6684 render via the misleading 'Unit N' fallback; needs a unit-title layer first) and the new-gen 2-row IGCSE specs 4WET1/4WET2 + 4WGE1/4WGE2 (first-exam 2025-06, generation semantics unresolved).",
  "courses": [
   {
    "slug": "cie-a-level-chemistry-25",
@@ -685,6 +685,87 @@
    "status": "full"
   },
   {
+   "slug": "ial-accounting-15",
+   "coreBridge": true,
+   "level": "IAL",
+   "subject": "Accounting",
+   "label": "Accounting",
+   "code": "YAC11",
+   "status": "full"
+  },
+  {
+   "slug": "ial-business-18",
+   "coreBridge": true,
+   "level": "IAL",
+   "subject": "Business",
+   "label": "Business",
+   "code": "YBS11",
+   "status": "full"
+  },
+  {
+   "slug": "ial-economics-18",
+   "coreBridge": true,
+   "level": "IAL",
+   "subject": "Economics",
+   "label": "Economics",
+   "code": "YEC11",
+   "status": "full"
+  },
+  {
+   "slug": "ial-it-18",
+   "coreBridge": true,
+   "level": "IAL",
+   "subject": "Information Technology",
+   "label": "Information Technology",
+   "code": "YIT11",
+   "status": "full"
+  },
+  {
+   "slug": "ial-law-19",
+   "coreBridge": true,
+   "level": "IAL",
+   "subject": "Law",
+   "label": "Law",
+   "code": "YLA1",
+   "status": "full"
+  },
+  {
+   "slug": "ial-psychology-15",
+   "coreBridge": true,
+   "level": "IAL",
+   "subject": "Psychology",
+   "label": "Psychology",
+   "code": "YPS01",
+   "status": "full"
+  },
+  {
+   "slug": "a-level-biology-2008",
+   "coreBridge": true,
+   "level": "A-Level",
+   "subject": "Biology",
+   "label": "Biology — A-Level (2008 spec)",
+   "code": "9BI01",
+   "status": "full"
+  },
+  {
+   "slug": "a-level-chemistry-2008",
+   "coreBridge": true,
+   "level": "A-Level",
+   "subject": "Chemistry",
+   "label": "Chemistry — A-Level (2008 spec)",
+   "code": "9CH01",
+   "status": "full"
+  },
+  {
+   "slug": "a-level-physics-2008",
+   "coreBridge": true,
+   "level": "A-Level",
+   "subject": "Physics",
+   "label": "Physics — A-Level (2008 spec)",
+   "code": "9PH01",
+   "status": "full"
+  },
+  {
    "slug": "igcse-accounting-17-financial-statements",
    "coreBridge": true,
    "level": "IGCSE",
@@ -700,6 +781,15 @@
    "subject": "Accounting",
    "label": "Accounting",
    "code": "4AC1",
+   "status": "full"
+  },
+  {
+   "slug": "igcse-bangla-19",
+   "coreBridge": true,
+   "level": "IGCSE",
+   "subject": "Bangla",
+   "label": "Bangla",
+   "code": "4BA0",
    "status": "full"
   },
   {
@@ -767,6 +857,24 @@
    "status": "full"
   },
   {
+   "slug": "igcse-commerce-19",
+   "coreBridge": true,
+   "level": "IGCSE",
+   "subject": "Commerce",
+   "label": "Commerce",
+   "code": "4CM1",
+   "status": "full"
+  },
+  {
+   "slug": "igcse-computer-science-19",
+   "coreBridge": true,
+   "level": "IGCSE",
+   "subject": "Computer Science",
+   "label": "Computer Science",
+   "code": "4CP0",
+   "status": "full"
+  },
+  {
    "slug": "igcse-economics-17",
    "coreBridge": true,
    "level": "IGCSE",
@@ -800,6 +908,15 @@
    "status": "full"
   },
   {
+   "slug": "igcse-english-language-b-16",
+   "coreBridge": true,
+   "level": "IGCSE",
+   "subject": "English Language B",
+   "label": "English Language B",
+   "code": "4EB1",
+   "status": "full"
+  },
+  {
    "slug": "igcse-english-literature-16",
    "level": "IGCSE",
    "subject": "English Literature",
@@ -822,6 +939,15 @@
    "subject": "Geography",
    "label": "Geography",
    "code": "4GE1",
+   "status": "full"
+  },
+  {
+   "slug": "igcse-human-biology-19",
+   "coreBridge": true,
+   "level": "IGCSE",
+   "subject": "Human Biology",
+   "label": "Human Biology",
+   "code": "4HB1",
    "status": "full"
   },
   {
