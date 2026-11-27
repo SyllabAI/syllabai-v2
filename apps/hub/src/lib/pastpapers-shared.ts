@@ -140,6 +140,10 @@ export function sessionRankOf(id: string): number {
 export const IAL_UNIT_TITLES: Record<string, string> = {
   WMA11: "Pure 1", WMA12: "Pure 2", WMA13: "Pure 3", WMA14: "Pure 4",
   WME01: "Mechanics 1", WME02: "Mechanics 2", WME03: "Mechanics 3",
+  // Unit 7 practical examination — cover-verified from the printed WPH07/01
+  // paper ("Physics Practical Examination (SET A)", June 2017); surfaces on
+  // the ial-physics-19 legacy shelf (wave 4).
+  WPH07: "Physics Practical Examination (SET A)",
   WST01: "Statistics 1", WST02: "Statistics 2", WST03: "Statistics 3",
   WDM11: "Decision 1",
   WFM01: "Further Pure 1", WFM02: "Further Pure 2", WFM03: "Further Pure 3",
