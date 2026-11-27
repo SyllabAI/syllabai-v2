@@ -6,7 +6,12 @@
   "provider": "inherited (multi (freesciencelessons / doodlescience / amoeba-sisters / cognito channel-only))",
   "label": "cie-igcse-science-combined-science-23-chemistry",
   "method": "deterministic spec-title-containment inheritance (>= 0.55, min 3 informative tokens) of the owner-approved external-lane rows of cie-igcse-chemistry-23; map: Videos/drafts/_p4/inheritance-map.json; no new LLM mapping decisions",
-  "enumeratedUtc": "2026-11-01T01:04:15Z"
+  "enumeratedUtc": "2026-11-01T01:04:15Z",
+  "p20": {
+   "provider": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried)",
+   "method": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) flat-enumerated 2026-11-26T08:45:00Z; routing: machine-checkable Tier B anchors (CIE A-level sciences 9700/9701/9702 papers 1-3 AS / 4-5 A2; CIE A-level accounting 9706 papers 1-2 AS / 3-4 A2; CIE A-level maths 9709 components P1/P2/P3 + P4/M1 + P5/S1 + P6/S2 (the P20 component routing of record); 9618 papers 1-2 AS / 3-4 A2; 0478/0984; 0606 (+ the disclosed 4037/4024 duals incl. the hashtag session class); 0580 papers 2/4 extended vs 1/3 core; 0610/0620/0625 (+ the 0971/0972/0973 duals); 0653 combined (the shared-paper law); 0417/0983; 4IT1/4IT0; 0452/0985 (+ the disclosed 7707 dual); 0455; 0450 (+ the disclosed 7115/0264 duals); 0680; 0460 (both geo faces); 9708; 9609 (pool-scoped); 4CH1/4BI1/4PH1/4SD0 Ed-IGCSE (+ 4WCH1/2/4WPH1/2/4WB1/2 modular-24); WCH/WPH IAL unit-content + question-set + spaced-NN anchors) + the 9700/9701 lesson-series concept-label law (the biochemlogy label-agreement amendment) + the P16 Class W set-text predicate + section-marker narrowing with the label-agreement gate + the topic-overclaim re-adjudication gate + section-name binding + distinctive-token Tier A (df<=3, the stemmed-token vocabulary) + the four-gate topic-lecture class + the P20 subtopic-scoped lecture gate + the numbered-lesson-series concept law, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-26T18:57:24Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P4 (inheritance lane)",
@@ -14,7 +19,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 134,
+  "rowsApproved": 169,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +30,18 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 134,
+    "rowsApproved": 161,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p20 (p20-gap-profile judgment lane: the fresh post-P19 residual sweep — the 9700/9701/9702 CIE A-level sciences paper-number registers, the 9706 accounting paper-level law with the specimen/question class, the 9709 component routing of record (P1/P2/P3/M1/S1/S2 — bare component-less walkthroughs still skip per ANCHOR-GRANULARITY section 6), 9618/0478 CS, the combined-0653 shared-paper law, the 0460 dual-face law, the WCH/WPH unit-question + spaced-NN classes, the modular-science Unit-N-over-code law, the biochemlogy label-agreement law of record (channels renumber by playlist index — the marker/label gate), the topic-overclaim re-adjudication gate, the numbered-lesson-series concept law, the subtopic-scoped lecture gate; honest register calls: mathlete 4MA1 = the 0580 re-adjudication (the 4MA1 deficits stay open), hendrik IBDP + walter 9231 = no spine course 0 binds, the-lightup-hub lit = 1 Class W bind with the AQA-branded remainder skipped)",
+    "task": "T-VIDEOMAP-P20 (gap-profile judgment lane: the P20 filing PR #366 pool set admitted by owner order 'run P20 judgment'; 10,611 pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P20 profile filed 2026-11-26 (PR #366), pools admitted and judgment ordered \"run P20 judgment\" 2026-11-26",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P20 profile filed 2026-11-26 (PR #366), pools admitted and judgment ordered \"run P20 judgment\" 2026-11-26)",
+    "ruledUtc": "2026-11-26T18:57:24Z",
+    "evidenceBasis": "Identity: oEmbed sweep 1827/1827 routed videos alive — 1818 author_url channel == channel-of-record via UC id (0 mismatch) + 9 thumbnail-liveness fallbacks disclosed per the P2D law (oembed HTTP 200 all-null payload; identity rides on the channel-of-record upload provenance), 0 bad. Tier B: session/paper codes regex-verified in titles (the P15/P17/P18/P19 registers plus the P20 additions of record: the 9700/9701/9702 AS/A2 paper law, the 9706 accounting paper-level law with the specimen/question class, the 9709 component routing (P1/P2/P3/M1/S1/S2), 9618 papers 1-2/3-4, 0478/0984, the combined-0653 shared-paper law, the 0460 dual-face law, the WCH/WPH unit-question and spaced-NN classes, the modular-science Unit-N-over-code law). Class W: the P16 committed predicate with the P17/P18 amendments. Tier A: the P13/P15 gate ladder (section-marker narrowing with the P20 label-agreement gate, verbatim section-name binding with the topic-overclaim re-adjudication gate, deduped distinctive-token binds df<=3 on the stemmed vocabulary, the four-gate topic-lecture class, the P20 subtopic-scoped lecture gate and the numbered-lesson-series concept law) over EVERY routed pair with the degenerate-bind re-adjudication bar. Guidance/promo/tuition, meta announcements, the O-Level register (the disclosed duals exempt + the 0264 token), the IBDP register, the 9231 register (no spine course), the IAL ICT register (no spine course) and out-of-spine boards skipped with reasons (8784 ledgered in work/p20/skips.json by class: {'no honest binding at the df<=3 bar (incl. the subject-name forms the ladder cannot bind honestly)': 4254, 'meta announcement (grade thresholds/timetables/results/celebration/graduation)': 23, 'guidance/advice/marketing register': 347, 'O-Level register with no IGCSE spine-code token (the generalized P14 spine-code precedence law; the disclosed 4037/2281/7707/5090/7115 duals exempt)': 1081, 'NT-board titles (AQA/OCR/IB/...) incl. the final sanity pass re-adjudications': 419, 'channel promo/tuition marketing (no qualification register)': 141, 'other honest skips': 262, 'UK-GCSE Computer Science — no spine course (the spine carries CIE 0478)': 6, 'lit register: work not on the 0475 2023-2025 set-text lists': 641, 'lit register: out-of-spine board (AQA/Eduqas/WJEC/Edexcel/GCSE) naming no spine set text': 338, 'lit register: character-study title without a set-text token': 134, 'lit guidance/skills register with no set-text bind': 2, 'board-agnostic forms with no board register (the bare \"A-Level Business\"/accounting-shorts remainders)': 1136}).",
+    "rowsApproved": 8,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -1634,6 +1650,391 @@
    "levelTag": "igcse",
    "boardNote": "IGCSE Study Buddy (coded CIE trio series — 0610/0620/0625 topic lectures with leading/pipe 'N. {Topic}' numbers, 97% International, disclosed; the leading-number register binds the trio topic at index N with stem token-agreement; promo/meta remainder skipped) (oEmbed author verified per video)",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "-C5Lmj-4LFc",
+   "title": "(OLD 2021) GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - Stoichiometry and moles - MCQ work 1",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=-C5Lmj-4LFc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-U4LIrg0mdY",
+   "title": "(OLD 2021) GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - States of matter - Lecture tutorial",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=-U4LIrg0mdY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "1wjAWTErovM",
+   "title": "IGCSE 0620 | OL 5070 CHEMISTRY • CHAPTER 04 - ELECTROCHEMISTRY",
+   "provider": "biochemlogy",
+   "watchUrl": "https://www.youtube.com/watch?v=1wjAWTErovM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biochemlogy (the A2/AS 9700/9701 chapter class 'A2 BIO 9700 | CHAPTER 14 - HOMEOSTASIS | 14.3 - THE HUMAN KIDNEY' — the chapter/section numbers are the channel's own index where they disagree with the spine (the biochemlogy law of record: the label-agreement gate demotes the number to noise and the honest bind rides the token evidence); EDEXCEL CHEM 4CH1 subset) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2UP69b_b2Ho",
+   "title": "GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - Practical - Exothermic vs endothermic reactions",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=2UP69b_b2Ho",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3lIZU8FAmPs",
+   "title": "(OLD 2021) GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - States of matter - Work 1",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=3lIZU8FAmPs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8x7VCWz9stw",
+   "title": "IGCSE chemistry stoichiometry( moles, formulae, equations)",
+   "provider": "wimzee-cambridge-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=8x7VCWz9stw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Wimzee Cambridge Academy (micro multi CIE — the bare 'IGCSE chemistry/biology' subject-name series + the 'AS level Chemistry' Cambridge-branded subset (the ginger context amendment, disclosed); the mr-quakers precedent) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9eAwACr5LAE",
+   "title": "(OLD 2021) GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - States of matter - Work 4",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=9eAwACr5LAE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "AgY8opfrf7U",
+   "title": "IGCSE chemistry states of matter ",
+   "provider": "wimzee-cambridge-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=AgY8opfrf7U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Wimzee Cambridge Academy (micro multi CIE — the bare 'IGCSE chemistry/biology' subject-name series + the 'AS level Chemistry' Cambridge-branded subset (the ginger context amendment, disclosed); the mr-quakers precedent) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Gm0hKjMfun8",
+   "title": "IGCSE Chemistry 0620 || Chapter 7 Chemical Energetics|| Crash Course",
+   "provider": "ilm-online-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=Gm0hKjMfun8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Ilm Online Academy (multi CIE: explicit 'Cambridge IGCSE Maths 0580' chapter lectures (the 4MA1 x25 family read as the 0580 register per the ginger law, disclosed) + 0620/0625/0610 session/content) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "H3kDaEfHm8M",
+   "title": "(OLD 2021) GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - States of matter - Topical test",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=H3kDaEfHm8M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KlJFc69I7gI",
+   "title": "(OLD 2021) GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - States of matter - Checkpoint questions",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=KlJFc69I7gI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MhJzV4FQAmY",
+   "title": "GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - Rate of reaction - Part 2",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=MhJzV4FQAmY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Nnnzc4bSlJc",
+   "title": "IGCSE chemistry chemical energetics (exothermic and endothermic reactions)",
+   "provider": "wimzee-cambridge-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=Nnnzc4bSlJc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Wimzee Cambridge Academy (micro multi CIE — the bare 'IGCSE chemistry/biology' subject-name series + the 'AS level Chemistry' Cambridge-branded subset (the ginger context amendment, disclosed); the mr-quakers precedent) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "P7MPShi-cis",
+   "title": "GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - Purification(fractional distillation) of crude oil",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=P7MPShi-cis",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SUeYTSKCdCU",
+   "title": "(OLD 2021) GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - Elements, compounds, mixtures - Lecture",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=SUeYTSKCdCU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Tv1CIsUZ6F0",
+   "title": "GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - Alkane vs alkene reactivity - Part 1",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=Tv1CIsUZ6F0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UZ1nak1aKZM",
+   "title": "(OLD 2021) GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - Stoichiometry and moles - MCQ work 3",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=UZ1nak1aKZM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XmZDwi17QDA",
+   "title": "IGCSE Chemistry 0620 || Chapter 13 Periodic Table || Crash Course",
+   "provider": "ilm-online-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=XmZDwi17QDA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Ilm Online Academy (multi CIE: explicit 'Cambridge IGCSE Maths 0580' chapter lectures (the 4MA1 x25 family read as the 0580 register per the ginger law, disclosed) + 0620/0625/0610 session/content) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "aavDRlWQpyg",
+   "title": "(OLD 2021) GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - States of matter - Work 2",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=aavDRlWQpyg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dx-3pkyO8Lg",
+   "title": "(OLD 2021) GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - Stoichiometry and moles - MCQ work 2",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=dx-3pkyO8Lg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "h6UE6hCpfKw",
+   "title": "GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - Alkane vs alkene reactivity - Part 2",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=h6UE6hCpfKw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "l0A1En57KiQ",
+   "title": "(OLD 2021) GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - States of matter - Work 3",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=l0A1En57KiQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "l89RMBU7WQE",
+   "title": "IGCSE Chemistry 0620 || Chapter 17 Chemistry of Our Environment || Crash Course",
+   "provider": "ilm-online-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=l89RMBU7WQE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Ilm Online Academy (multi CIE: explicit 'Cambridge IGCSE Maths 0580' chapter lectures (the 4MA1 x25 family read as the 0580 register per the ginger law, disclosed) + 0620/0625/0610 session/content) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "srgw8hUohNw",
+   "title": "GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - Rate of reaction - Part 1",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=srgw8hUohNw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tSCFkTArsqo",
+   "title": "IGCSE Chemistry 0620 || Chapter 1 - States Of Matter || Crash Course",
+   "provider": "ilm-online-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=tSCFkTArsqo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Ilm Online Academy (multi CIE: explicit 'Cambridge IGCSE Maths 0580' chapter lectures (the 4MA1 x25 family read as the 0580 register per the ginger law, disclosed) + 0620/0625/0610 session/content) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vCt7B-HS604",
+   "title": "GCSE, IGCSE, O Level Chemistry 5070, 0620, 6092 - Chemical energetics - Part 1",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=vCt7B-HS604",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "z9a7LLsNyi8",
+   "title": "IGCSE Chemistry 0620 || Chapter 6 Electrochemistry || Crash Course",
+   "provider": "ilm-online-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=z9a7LLsNyi8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Ilm Online Academy (multi CIE: explicit 'Cambridge IGCSE Maths 0580' chapter lectures (the 4MA1 x25 family read as the 0580 register per the ginger law, disclosed) + 0620/0625/0610 session/content) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2vlHppzrMS0",
+   "title": "Combined Science chemistry 5129 Year 11 revision - The Periodic Table - Part 5",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=2vlHppzrMS0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "80PbUV-oNp4",
+   "title": "Combined Science chemistry 5129 Year 11 revision - The Periodic Table - Part 8",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=80PbUV-oNp4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BN6eG1VPmfg",
+   "title": "Combined Science chemistry 5129 Year 11 revision - The Periodic Table - Part 1",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=BN6eG1VPmfg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JYgO6nK5MTo",
+   "title": "Combined Science chemistry 5129 Year 11 revision - The Periodic Table - Part 4",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=JYgO6nK5MTo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QcYmwGioh9o",
+   "title": "Combined Science chemistry 5129 Year 11 revisionn - The Periodic Table - Part 6",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=QcYmwGioh9o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "T3Pa2mmFhoI",
+   "title": "Combined Science chemistry 5129 Year 11 revision - The Periodic Table - Part 3",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=T3Pa2mmFhoI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_VA37FaXHDo",
+   "title": "Combined Science chemistry 5129 Year 11 revision - The Periodic Table - Part 2",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=_VA37FaXHDo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tsdWJee9ApY",
+   "title": "Combined Science chemistry 5129 Year 11 revision - The Periodic Table - Part 7",
+   "provider": "ptet-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=tsdWJee9ApY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "PTET Chemistry (multi CIE chemistry: 9701 papers 1-5 session anchors + content binds, 0620 session/content onto the trio chem face, the 0653 combined-science register (session walkthroughs bind all three combined faces, the shared-paper law), Ed-IGCSE 4CH1 subset; the 5070 O-Level chemistry dual and NT x150 remainders skip honest; p19-swept-uninventoried disclosure carried) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
@@ -1858,6 +2259,204 @@
    }
   },
   {
+   "video": "H3kDaEfHm8M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.1.1",
+    "C1.1.2",
+    "C1.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'States of matter' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "9eAwACr5LAE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.1.1",
+    "C1.1.2",
+    "C1.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'States of matter' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "-U4LIrg0mdY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.1.1",
+    "C1.1.2",
+    "C1.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'States of matter' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "l0A1En57KiQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.1.1",
+    "C1.1.2",
+    "C1.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'States of matter' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "KlJFc69I7gI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.1.1",
+    "C1.1.2",
+    "C1.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'States of matter' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "3lIZU8FAmPs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.1.1",
+    "C1.1.2",
+    "C1.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'States of matter' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "aavDRlWQpyg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.1.1",
+    "C1.1.2",
+    "C1.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'States of matter' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "tSCFkTArsqo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.1.1",
+    "C1.1.2",
+    "C1.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'States of matter' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "AgY8opfrf7U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.1.1",
+    "C1.1.2",
+    "C1.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'States of matter' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "hkBrw2fG75U",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2052,6 +2651,26 @@
    ],
    "confidence": "medium",
    "evidence": "title 'GCSE Chemistry Revision \"Fractional Distillation of Crude Oil\"' -> 12.4.1 'Describe and explain methods of separation and' via distinctive token(s) distillation, fractional; 11.3.5 'Describe the separation of petroleum into usef' via distinctive token(s) distillation, fractional (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "P7MPShi-cis",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C2.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 12.4.1 'Describe and explain methods of separation and purification ' via token(s) ['distillation', 'fractional', 'purification'] (df 6); title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2552,6 +3171,26 @@
    }
   },
   {
+   "video": "SUeYTSKCdCU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Elements, compounds and mixtures' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "xuF-y5I2Dsk",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2922,6 +3561,50 @@
    }
   },
   {
+   "video": "1wjAWTErovM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.4.1",
+    "C5.1.1",
+    "C5.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Electrochemistry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "z9a7LLsNyi8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.4.1",
+    "C5.1.1",
+    "C5.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Electrochemistry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "MdU44WeiLps",
    "lessonRef": null,
    "lessonUrl": null,
@@ -3215,6 +3898,90 @@
    }
   },
   {
+   "video": "UZ1nak1aKZM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C4.1.1",
+    "C4.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Stoichiometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "dx-3pkyO8Lg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C4.1.1",
+    "C4.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Stoichiometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "-C5Lmj-4LFc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C4.1.1",
+    "C4.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Stoichiometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "8x7VCWz9stw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C4.1.1",
+    "C4.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Stoichiometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "6WjC_Vi4roA",
    "lessonRef": null,
    "lessonUrl": null,
@@ -3406,6 +4173,94 @@
    }
   },
   {
+   "video": "2UP69b_b2Ho",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C6.1.2",
+    "C6.1.3",
+    "C6.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Exothermic and endothermic reactions' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "vCt7B-HS604",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C6.1.2",
+    "C6.1.3",
+    "C6.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemical energetics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Gm0hKjMfun8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C6.1.2",
+    "C6.1.3",
+    "C6.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Chemical energetics' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Nnnzc4bSlJc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C6.1.2",
+    "C6.1.3",
+    "C6.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemical energetics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "hNNvIsQLSV8",
    "lessonRef": null,
    "lessonUrl": null,
@@ -3474,6 +4329,46 @@
    ],
    "confidence": "low",
    "evidence": "section-name binding (verbatim field match): title field names subtopic 'Rate of reaction' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the P19 stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "MhJzV4FQAmY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C7.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Rate of reaction' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "srgw8hUohNw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C7.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Rate of reaction' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3806,6 +4701,28 @@
    ],
    "confidence": "low",
    "evidence": "section-name binding (verbatim field match): title field names topic 'The Periodic Table' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the P19 stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "XmZDwi17QDA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C9.2.1",
+    "C9.4.1",
+    "C9.5.1"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'The Periodic Table' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -4240,6 +5157,29 @@
    }
   },
   {
+   "video": "l89RMBU7WQE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C11.1.1",
+    "C11.1.2",
+    "C11.2.2",
+    "C11.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Chemistry of the environment' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "mR3GI7SXNqA",
    "lessonRef": null,
    "lessonUrl": null,
@@ -4387,6 +5327,56 @@
    }
   },
   {
+   "video": "h6UE6hCpfKw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C12.1.1",
+    "C12.1.2",
+    "C12.1.3",
+    "C12.3.2",
+    "C12.4.1",
+    "C12.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Organic chemistry' via topic-unique token(s) ['alkane', 'alkene'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Tv1CIsUZ6F0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C12.1.1",
+    "C12.1.2",
+    "C12.1.3",
+    "C12.3.2",
+    "C12.4.1",
+    "C12.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Organic chemistry' via topic-unique token(s) ['alkane', 'alkene'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "MvC2nieIv3A",
    "lessonRef": null,
    "lessonUrl": null,
@@ -4506,20 +5496,140 @@
     "threshold": 0.55,
     "map": "Videos/drafts/_p4/inheritance-map.json"
    }
+  },
+  {
+   "video": "2vlHppzrMS0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C9.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'The Periodic Table' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P20 profile filed 2026-11-26 (PR #366), pools admitted and judgment ordered \"run P20 judgment\" 2026-11-26)",
+   "reviewedUtc": "2026-11-26T18:57:24Z"
+  },
+  {
+   "video": "80PbUV-oNp4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C9.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'The Periodic Table' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P20 profile filed 2026-11-26 (PR #366), pools admitted and judgment ordered \"run P20 judgment\" 2026-11-26)",
+   "reviewedUtc": "2026-11-26T18:57:24Z"
+  },
+  {
+   "video": "BN6eG1VPmfg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C9.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'The Periodic Table' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P20 profile filed 2026-11-26 (PR #366), pools admitted and judgment ordered \"run P20 judgment\" 2026-11-26)",
+   "reviewedUtc": "2026-11-26T18:57:24Z"
+  },
+  {
+   "video": "JYgO6nK5MTo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C9.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'The Periodic Table' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P20 profile filed 2026-11-26 (PR #366), pools admitted and judgment ordered \"run P20 judgment\" 2026-11-26)",
+   "reviewedUtc": "2026-11-26T18:57:24Z"
+  },
+  {
+   "video": "QcYmwGioh9o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C9.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'The Periodic Table' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P20 profile filed 2026-11-26 (PR #366), pools admitted and judgment ordered \"run P20 judgment\" 2026-11-26)",
+   "reviewedUtc": "2026-11-26T18:57:24Z"
+  },
+  {
+   "video": "T3Pa2mmFhoI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C9.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'The Periodic Table' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P20 profile filed 2026-11-26 (PR #366), pools admitted and judgment ordered \"run P20 judgment\" 2026-11-26)",
+   "reviewedUtc": "2026-11-26T18:57:24Z"
+  },
+  {
+   "video": "_VA37FaXHDo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C9.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'The Periodic Table' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P20 profile filed 2026-11-26 (PR #366), pools admitted and judgment ordered \"run P20 judgment\" 2026-11-26)",
+   "reviewedUtc": "2026-11-26T18:57:24Z"
+  },
+  {
+   "video": "tsdWJee9ApY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C9.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'The Periodic Table' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3, the stemmed-token vocabulary) or the disclosed higher title-only bar for section-name/topic-lecture/chapter-scoped/section-scoped rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P20 profile filed 2026-11-26 (PR #366), pools admitted and judgment ordered \"run P20 judgment\" 2026-11-26)",
+   "reviewedUtc": "2026-11-26T18:57:24Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 82,
-  "specPointsMapped": 40,
-  "specPointsUnmapped": 42,
-  "videosTotal": 134,
-  "videosMapped": 134,
+  "specPointsMapped": 41,
+  "specPointsUnmapped": 41,
+  "videosTotal": 169,
+  "videosMapped": 169,
   "videosUnmapped": 0,
-  "mappingRows": 134,
+  "mappingRows": 169,
   "byConfidence": {
    "high": 0,
-   "medium": 32,
-   "low": 102
+   "medium": 33,
+   "low": 136
   }
  },
  "inputs": {
@@ -4540,7 +5650,13 @@
     "Videos/drafts/cie-igcse-chemistry-23/video-map.draft.external.json"
    ],
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
+  },
+  "p20": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-science-combined-science-23-chemistry/video-map.draft.external-p20.json",
+   "task": "T-VIDEOMAP-P20 (gap-profile judgment lane: the P20 filing PR #366 pool set admitted by owner order 'run P20 judgment'; 10,611 pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-26T18:57:24Z"
   }
  },
- "generatedUtc": "2026-11-25T17:52:18.863Z"
+ "generatedUtc": "2026-11-26T19:04:50.831Z"
 }
