@@ -137,6 +137,18 @@ const BRIDGED_WAVE4_SLUGS: readonly string[] = [
   "igcse-human-biology-19",
 ];
 
+// T-PASTPAPERS-WAVE5 r0 (2026-11-27): +5 Edexcel rows flagged — legacy GCE
+// modular Mathematics archive + the modular-24 English Literature / Geography
+// unit courses (resolves the wave-4 deferral; wave-5 courses.json note).
+const BRIDGED_WAVE5_SLUGS: readonly string[] = [
+  "a-level-mathematics-modular",
+  "igcse-english-literature-modular-24-unit-1",
+  "igcse-english-literature-modular-24-unit-2",
+  "igcse-geography-modular-24-unit-1",
+  "igcse-geography-modular-24-unit-2",
+];
+
+
 
 // ── the fill-where-served law (HUB-REGISTRY, ADR-030 — the run-009 onGreen
 //    fill, trace 1a15dbaad30a6cc1) ────────────────────────────────────────
@@ -195,7 +207,10 @@ const reg = JSON.parse(readFileSync(path.join(CONTENT, "courses.json"), "utf8"))
 // T-PASTPAPERS-WAVE4 r0 (corpus census 2026-11-26, operator order "Ok proceed"):
 // +14 Edexcel rows — 6 IAL subjects, 3 legacy GCE 2008 archives, 5 IGCSE subjects
 // = 64 Edexcel + 56 CIE
-check("registry carries 120 rows (64 Edexcel + 56 CIE)", reg.courses.length === 120, String(reg.courses.length));
+// T-PASTPAPERS-WAVE5 r0 (corpus census 2026-11-27, operator order "Proceed with
+// remaining work"): +5 Edexcel rows — legacy GCE modular Mathematics + modular-24
+// English Literature & Geography unit courses = 69 Edexcel + 56 CIE
+check("registry carries 125 rows (69 Edexcel + 56 CIE)", reg.courses.length === 125, String(reg.courses.length));
 for (const exp of EXPECT) {
   const row = reg.courses.find((c) => c.slug === exp.slug);
   if (!row) { check(`registry row ${exp.slug}`, false, "MISSING"); continue; }
@@ -406,7 +421,7 @@ check("registry coreBridge CIE law of record: exactly the 26 T-SM-BRIDGE-WIDEN r
     )
   && reg.courses.filter((c) => c.board === BOARD && c.coreBridge === true).length
     === BRIDGED_CIE_SLUGS.length);
-check("registry coreBridge of record: the T-SM-BRIDGE-WIDEN r0 set + the T-SM-EDX-INGEST-R1 r0 set — the two 4MA1 maths-a rows (T-MIG-135d) + igcse-maths-b-16 + the two T-SM-EDX-INGEST linear science rows (igcse-biology-19, igcse-physics-19; bank-verified 2026-10-22: 322+489 refs, all VALIDATED) + the three T-SM-SD0-FIX-R0 4SD0 strand rows (bank-verified 2026-10-24) + the 26 CIE rows (21 T-SM-BRIDGE-WIDEN + 0452/0606/0653x3 bank-verified 2026-10-25: family-gate FULL) + the 28 T-SM-EDX-INGEST-R1 Edexcel point-scheme rows (bank-verified 2026-10-25: the family census of record — 60 FULL rows incl. YMA01x9 3,411 families, YBI11/YCH11/YPH11/YFM01, 4XBI1/4XCH1/4XPH1/4XMAF/4XMAH modular units, 4AC1x2, 4EC1, 4PM1, 4IT1; receipt .syllabai/receipts/T-SM-EDX-INGEST-R1/ingest-r1.json), every flagged row true — +14 T-PASTPAPERS-WAVE4 rows (2026-11-26)",
+check("registry coreBridge of record: the T-SM-BRIDGE-WIDEN r0 set + the T-SM-EDX-INGEST-R1 r0 set — the two 4MA1 maths-a rows (T-MIG-135d) + igcse-maths-b-16 + the two T-SM-EDX-INGEST linear science rows (igcse-biology-19, igcse-physics-19; bank-verified 2026-10-22: 322+489 refs, all VALIDATED) + the three T-SM-SD0-FIX-R0 4SD0 strand rows (bank-verified 2026-10-24) + the 26 CIE rows (21 T-SM-BRIDGE-WIDEN + 0452/0606/0653x3 bank-verified 2026-10-25: family-gate FULL) + the 28 T-SM-EDX-INGEST-R1 Edexcel point-scheme rows (bank-verified 2026-10-25: the family census of record — 60 FULL rows incl. YMA01x9 3,411 families, YBI11/YCH11/YPH11/YFM01, 4XBI1/4XCH1/4XPH1/4XMAF/4XMAH modular units, 4AC1x2, 4EC1, 4PM1, 4IT1; receipt .syllabai/receipts/T-SM-EDX-INGEST-R1/ingest-r1.json), every flagged row true — +14 T-PASTPAPERS-WAVE4 rows (2026-11-26) + 5 T-PASTPAPERS-WAVE5 rows (2026-11-27)",
   (() => {
     const expected = new Set<string>([
       "igcse-maths-a-18-foundation",
@@ -420,6 +435,7 @@ check("registry coreBridge of record: the T-SM-BRIDGE-WIDEN r0 set + the T-SM-ED
       ...BRIDGED_CIE_SLUGS,
       ...BRIDGED_R1_EDX_SLUGS,
       ...BRIDGED_WAVE4_SLUGS,
+      ...BRIDGED_WAVE5_SLUGS,
     ]);
     const flagged = reg.courses.filter((c) => c.coreBridge !== undefined);
     return (
