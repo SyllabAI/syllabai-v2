@@ -143,6 +143,10 @@ export const IAL_UNIT_TITLES: Record<string, string> = {
   WST01: "Statistics 1", WST02: "Statistics 2", WST03: "Statistics 3",
   WDM11: "Decision 1",
   WFM01: "Further Pure 1", WFM02: "Further Pure 2", WFM03: "Further Pure 3",
+  // retired pre-2018 core codes (C12 ≈ P1+P2, C34 ≈ P3+P4) — old-spec dirs live in the
+  // wma01/wma02 archive folders and surface per lane via legacySpecs (wave 3); without
+  // these entries ialUnitTitle's fallback renders them as the misleading "Unit 1"/"Unit 2".
+  WMA01: "Core 1 & 2", WMA02: "Core 3 & 4",
 };
 
 export function ialUnitTitle(unit: string): string {
