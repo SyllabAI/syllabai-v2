@@ -447,11 +447,16 @@ check("with-D1 coverage == 2,232 (98.8%)", withD1 === 2232, String(withD1));
 
 // ── 4. corpus-wide CIE holdings + D2 (component-7 stays archive-only) ────────
 const cieSpecs = Object.entries(corpusIndex.specs).filter(([k]) => k.startsWith("cambridge-international/"));
-check("6 CIE specs in the index", cieSpecs.length === 6, String(cieSpecs.length));
+// WAVE-2 (corpus audit 2026-11-20, syllabai-pastpapers @ main): the committed
+// index reaches parity with the upstream archive — Business 9609 and IGCSE
+// Economics 0455 join the sciences in the index (8 CIE specs, 2,417 holdings)
+// and the archive browser exposes 113 specs in total. This PR ships that
+// parity, so the baselines of record move with it.
+check("8 CIE specs in the index", cieSpecs.length === 8, String(cieSpecs.length));
 const cieTotal = cieSpecs.reduce((a, [, s]) => a + s.sessions.reduce(
   (n, ses) => n + ses.papers.filter((p) => p.qp != null || p.ms != null).length, 0), 0);
-check("CIE archive holdings == 2,259", cieTotal === 2259, String(cieTotal));
-check("archive browser still exposes 108 specs", allArchiveSpecs().length === 108, String(allArchiveSpecs().length));
+check("CIE archive holdings == 2,417", cieTotal === 2417, String(cieTotal));
+check("archive browser still exposes 113 specs", allArchiveSpecs().length === 113, String(allArchiveSpecs().length));
 // D2: no course page claims component-7 — the 27 legacy rows are reachable
 // only through the archive browser's per-spec page
 const c7OnCourses = EXPECT.flatMap((e) => corpusPapersForCourse(e.slug))
