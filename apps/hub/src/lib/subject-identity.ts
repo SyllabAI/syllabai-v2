@@ -97,6 +97,11 @@ export interface SubjectIdentity {
  * distinct canonical subjects in content/courses.json (2026-11-07 census:
  * 106 course rows → 20 raw subject strings → 18 after folding Mathematics
  * into Maths and the Ict case variant into ICT).
+ * T-PASTPAPERS-WAVE4 r0 (2026-11-26): +7 canonical subjects (Information
+ * Technology, Law, Psychology, Bangla, Commerce, English Language B, Human
+ * Biology) join with the 14 Edexcel rows — 25 canonical subjects at the
+ * 120-row census. Wave 5 adds no subject (English Literature, Geography,
+ * Mathematics all resolve).
  */
 export const SUBJECT_IDENTITY = {
   Chemistry: {
@@ -206,6 +211,54 @@ export const SUBJECT_IDENTITY = {
     family: "humanities",
     glyph: "environmental",
     tile: { bg: "#ecfccb", fg: "#4d7c0f" },
+  },
+  // ── T-PASTPAPERS-WAVE4 r0 (2026-11-26): 7 subjects join the registry with
+  // the 14 Edexcel rows. Identities follow the family order law; glyphs reuse
+  // the closest bespoke design (ict / english-language / business / biology /
+  // history / science) — the approved mockup predates these subjects, so
+  // dedicated glyphs are a follow-up design task. "English Language B" shares
+  // the English Language tile pair by design (same visual lane).
+  "Information Technology": {
+    subject: "Information Technology",
+    family: "maths-cs",
+    glyph: "ict",
+    tile: { bg: "#cffafe", fg: "#0e7490" },
+  },
+  "Law": {
+    subject: "Law",
+    family: "humanities",
+    glyph: "history",
+    tile: { bg: "#fee2e2", fg: "#b91c1c" },
+  },
+  "Psychology": {
+    subject: "Psychology",
+    family: "sciences",
+    glyph: "science",
+    tile: { bg: "#fce7f3", fg: "#db2777" },
+  },
+  "Bangla": {
+    subject: "Bangla",
+    family: "english",
+    glyph: "english-language",
+    tile: { bg: "#fff1f2", fg: "#9f1239" },
+  },
+  "Commerce": {
+    subject: "Commerce",
+    family: "business-econ",
+    glyph: "business",
+    tile: { bg: "#d9f99d", fg: "#65a30d" },
+  },
+  "English Language B": {
+    subject: "English Language B",
+    family: "english",
+    glyph: "english-language",
+    tile: { bg: "#ffe4e6", fg: "#e11d48" },
+  },
+  "Human Biology": {
+    subject: "Human Biology",
+    family: "sciences",
+    glyph: "biology",
+    tile: { bg: "#f0fdf4", fg: "#166534" },
   },
 } as const satisfies Record<string, SubjectIdentity>;
 
